@@ -83,5 +83,28 @@ try{
   await db.exec('reset role;set role anon');
   await assert.rejects(db.query('select * from public.idrg_profiles'));
   await assert.rejects(rpc('idrg_start_packet',['4']));
+  await assert.rejects(rpc('idrg_start_packet_versioned',['4','2026-11-23.4']));
+  await login(uid1);
+  const current=await rpc('idrg_start_packet_versioned',['4','2026-11-23.4']);
+  const legacy=await rpc('idrg_start_packet',['4']);
+  assert.equal(current.revision,'2026-11-23.4');
+  assert.equal(legacy.revision,'2026-11-23.3');
+  assert.notEqual(current.id,legacy.id,'new content must not overwrite an older attempt');
+  assert.equal((await rpc('idrg_start_packet_versioned',['4','2026-11-23.4'])).id,current.id);
+  await assert.rejects(rpc('idrg_start_packet_versioned',['4','2099-01-01.1']));
+  await assert.rejects(rpc('idrg_start_packet_versioned',['unknown','2026-11-23.4']));
+  const latestAnswers=Object.fromEntries(bank.filter(c=>c.module===4).flatMap(c=>c.items.map((q,i)=>[c.id+'-'+i,String(q.correct)])));
+  const latestResult=await rpc('idrg_submit_attempt',[current.id,latestAnswers,current.version]);
+  assert.equal(latestResult.correct_count,44);
+  const currentReview=await rpc('idrg_review',[current.id]);
+  assert(currentReview.find(q=>q.item_id==='M4-01-3').prompt.includes('8 November'));
+  const legacyResult=await rpc('idrg_submit_attempt',[legacy.id,{},legacy.version]);
+  const legacyReview=await rpc('idrg_review',[legacy.id]);
+  assert(legacyReview.find(q=>q.item_id==='M4-01-3').prompt.includes('belum tercantum'));
+  assert.equal(legacyResult.correct_count,0);
+  assert.deepEqual((await rpc('idrg_attempt_history',[attempt.id])).map(h=>h.correct_count),[6,8]);
+  await login(uid2);
+  // uid2 is no longer an active admin after its email was made unverified above.
+  await assert.rejects(rpc('idrg_review',[current.id]));
   console.log('PASS: PostgreSQL RLS, signup profiles, no self-promotion, owner isolation, server grading, immutable submission, revision keys, optimistic conflicts, admin filters, anonymous denial.');
 }finally{await db.close();}

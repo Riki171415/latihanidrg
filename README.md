@@ -72,3 +72,13 @@ python scripts/generate_pdfs.py --font-dir C:/Windows/Fonts
 ```
 
 Font Arial reguler dan tebal diperlukan pada mesin pembuat PDF. Netlify memakai PDF yang sudah disertakan di repositori.
+
+## Resume medis simulasi — versi 2026-11-23.4
+
+27 berkas klinis menggunakan resume lengkap: identitas dan waktu pelayanan, anamnesis, riwayat, pemeriksaan fisik/penunjang, diagnosis dokter, perjalanan perawatan dan terapi, laporan tindakan, kondisi akhir, dan tindak lanjut. Berkas pembanding memisahkan setiap pasien dalam episode tersendiri. M2-01 tetap berupa lembar kerja pembacaan kode grouper. Identitas serta data klinis adalah simulasi pembelajaran yang diizinkan penyelenggara, bukan data pasien nyata atau salinan verbatim contoh ICS.
+
+PDF aktif memakai URL dengan versi. Tautan lama di /cases tetap mengarah ke dokumen terbaru; riwayat memakai /cases/archive/2026-11-23.3 dan bank publik tanpa kunci di /banks. Klien terbaru meminta idrg_start_packet_versioned dengan versi eksplisit. Klien yang sudah terbuka tetap memakai fungsi lama dan bank 2026-11-23.3; karena itu flag active bank lama sengaja dipertahankan. Bank baru dapat dikerjakan melalui RPC berversi walaupun active=false.
+
+Jawaban dan nilai terdahulu tidak dipindahkan atau dinilai ulang menggunakan soal baru. Rekap menampilkan hasil/draf versi sebelumnya terpisah; peserta dapat melanjutkan draf lama dengan naskah serta PDF lama. Pembatasan satu revisi berlaku per pengerjaan paket dan versi. Kunci/pembahasan historis tetap dipertahankan di Supabase.
+
+Regenerasi PDF: python scripts/generate_pdfs.py (memerlukan ReportLab, PyMuPDF, serta Arial lokal). Setiap PDF bertanda SIMULASI. Rujukan penelaahan klinis disimpan di docs/clinical-review.md.

@@ -1,5 +1,16 @@
 "use strict";
 const bank = JSON.parse(document.getElementById("case-data").textContent);
+const bankRevision = bank[0].contentRevision;
+const bankCache = new Map([[bankRevision,bank]]);
+async function bankForRevision(revision) {
+  if(bankCache.has(revision))return bankCache.get(revision);
+  if(!/^\d{4}-\d{2}-\d{2}\.\d+$/.test(revision))throw new Error("Versi soal tidak dikenal.");
+  const response=await fetch("banks/"+revision+".json");
+  if(!response.ok)throw new Error("Berkas soal versi sebelumnya belum dapat dimuat. Coba kembali.");
+  const entries=await response.json();
+  if(!Array.isArray(entries)||entries.length!==28||entries.some(c=>c.contentRevision!==revision))throw new Error("Versi berkas soal tidak sesuai.");
+  bankCache.set(revision,entries);return entries;
+}
 const $ = id => document.getElementById(id);
 const modules = [
   {id:"2-casemix", name:"Casemix · Materi 2", title:"Grouper, validasi, dan isian episode"},
@@ -9,10 +20,10 @@ const modules = [
 ];
 const moduleCases = id => bank.filter(c => String(c.module) === id);
 const casemixIds = new Set(["M2-01", "M2-02"]);
-const availableCases = id => {
-  if (id === "2-casemix") return bank.filter(c => casemixIds.has(c.id));
-  if (id === "2-coding") return moduleCases("2").filter(c => !casemixIds.has(c.id));
-  return moduleCases(id);
+const availableCases = (id, entries=bank) => {
+  if (id === "2-casemix") return entries.filter(c => casemixIds.has(c.id));
+  if (id === "2-coding") return entries.filter(c=>String(c.module)==="2"&&!casemixIds.has(c.id));
+  return entries.filter(c=>String(c.module)===id);
 };
 const moduleInfo = id => modules.find(m => m.id === id);
 const letter = i => "ABCDE"[i];
@@ -30,7 +41,7 @@ let profile = null;
 let activeModule = null;
 let session = null;
 let wrongOnly = false;
-const cases = () => availableCases(activeModule);
+const cases = () => availableCases(activeModule,session?.caseBank??bank);
 const keyFor = (c, i) => c.id + "-" + i;
 const hasAnswer = value => value !== undefined && String(value).trim() !== "";
 function notify(message, retry = false) {
@@ -124,7 +135,7 @@ function renderCase(focus = false) {
   const all = cases();
   const c = all[pos];
   $("student-label").textContent = profile.name + " · " + moduleInfo(activeModule).name;
-  $("case-module").textContent = (c.displayId??c.id) + " · Kasus " + (pos + 1) + " dari " + all.length;
+  $("case-module").textContent = (c.displayId??c.id) + " · Kasus " + (pos + 1) + " dari " + all.length + " · Versi " + c.contentRevision;
   $("case-title").textContent = c.title;
   $("case-selector").replaceChildren();
   all.forEach((entry, i) => {
@@ -136,6 +147,7 @@ function renderCase(focus = false) {
     $("case-selector").append(b);
   });
   $("record-body").replaceChildren();
+  if(c.simulation)$("record-body").append(make("div","RESUME MEDIS SIMULASI · Seluruh identitas dan data klinis dibuat untuk pembelajaran.","simulation-note"));
   $("case-pdf").dataset.src = c.pdf;
   if (!$("case-pdf").hidden) renderCasePdf(c.pdf);
   else {
@@ -144,8 +156,6 @@ function renderCase(focus = false) {
   }
   $("pdf-filename").textContent = (c.displayId??c.id) + ".pdf";
   $("pdf-open").href = c.pdf;
-  $("pdf-download").href = c.pdf;
-  $("pdf-download").download = (c.displayId??c.id) + "_Berkas_Latihan.pdf";
   $("case-pdf").setAttribute("aria-label","Berkas kasus " + (c.displayId??c.id) + " — " + c.title);
   c.records.forEach(([label, body]) => {
     const p = make("p");
@@ -242,15 +252,18 @@ function summarize(review) {
   const answered = all.filter(i => i.answered).length;
   return {right, answered, total:all.length, wrong:answered - right, missing:all.length - answered};
 }
-async function openModule(id) {
+async function openModule(id, previousAttempt=null) {
   const request=++moduleRequest, owner=identity?.id;
   if (!profile?.complete) return openAccount();
   try {
     await flushSave();
-    const row = await cloud.rpc("idrg_start_packet",{p_packet_id:id});
+    const row = previousAttempt ? null : await cloud.rpc("idrg_start_packet_versioned",{p_packet_id:id,p_revision:bankRevision});
+    const nextSession=previousAttempt??cloud.attemptFromRow(row);
+    const caseBank=await bankForRevision(nextSession.revision);
     if(request!==moduleRequest||identity?.id!==owner)return;
     activeModule = id;
-    session = cloud.attemptFromRow(row);
+    session = nextSession;
+    session.caseBank=caseBank;
     try {
       const cached = JSON.parse(localStorage.getItem(draftKey(session)));
       if (!session.finished && cached && cached.version===session.version) {
@@ -258,7 +271,7 @@ async function openModule(id) {
         notify("Jawaban yang belum terkirim dipulihkan. Menyimpan kembali…",true);
       } else if(cached && cached.version!==session.version) notify("Ada perubahan dari perangkat lain. Data terbaru dari server digunakan.");
     } catch {}
-    profile.materials[id] = session;
+    if(session.revision===bankRevision)profile.materials[id] = session;
     if (session.finished) {
       await loadReview(session);
       if(request!==moduleRequest||identity?.id!==owner)return;
@@ -345,6 +358,15 @@ function renderScores() {
     row.append(score,actionCell);
     $("score-table").append(row);
   }
+  for(const attempt of profile.olderMaterials??[]){
+    const packet=moduleInfo(attempt.packetId),row=make("tr");
+    row.className="archived-attempt";
+    row.append(make("td",packet.name+" · versi "+attempt.revision),make("td",attempt.finished?"Hasil sebelumnya":"Draf sebelumnya"),
+      make("td",attempt.finished?attempt.correctCount+" / "+attempt.totalCount:"—"),
+      make("td",attempt.finished?grade(attempt.correctCount,attempt.totalCount):"—"));
+    const cell=make("td"),button=make("button",attempt.finished?"Lihat hasil lama":"Lanjutkan versi lama","secondary");
+    button.type="button";button.addEventListener("click",()=>openModule(attempt.packetId,attempt));cell.append(button);row.append(cell);$("score-table").append(row);
+  }
   $("completion-summary").textContent = submitted + " dari " + modules.length + " paket selesai";
   $("recap-total").textContent = total ? grade(right,total) : "—";
   $("recap-detail").textContent = total ? right + " dari " + total + " butir benar" : "Kirim satu paket untuk melihat nilai.";
@@ -359,7 +381,7 @@ function renderResult(focus = true) {
   const review = reviewFor(cases(), session.answers, session.review);
   const {right, total, wrong, missing} = summarize(review);
   $("result-title").textContent = "Nilai " + moduleInfo(activeModule).name;
-  $("result-student").textContent = profile.name + " · " + moduleInfo(activeModule).title;
+  $("result-student").textContent = profile.name + " · " + moduleInfo(activeModule).title + " · Versi " + session.revision;
   $("score").replaceChildren(document.createTextNode(grade(right, total)), make("small", " / 100"));
   $("result-key").replaceChildren();
   [[right + " / " + total, "Benar"], [wrong, "Salah"], [missing, "Kosong"]].forEach(([value, name]) => {
@@ -480,7 +502,7 @@ async function renderCasePdf(url) {
     await viewer.renderPdf(url,$("case-pdf"),pdfZoom);
   } catch {
     if (request !== pdfRequest) return;
-    $("case-pdf").replaceChildren(make("p","PDF belum dapat dimuat. Gunakan Buka atau Unduh pada bilah berkas.","pdf-status"));
+    $("case-pdf").replaceChildren(make("p","PDF belum dapat dimuat. Gunakan Buka pada bilah berkas.","pdf-status"));
     $("case-pdf").setAttribute("aria-busy", "false");
   }
 }
@@ -552,8 +574,12 @@ async function restoreAccount(){
       if(epoch!==authEpoch)return;
       if(!account){clearIdentity();return;}
       identity=account.user;isAdmin=account.admin;
-      profile={name:account.person?.full_name??account.user.email,person:account.person,complete:!!account.person,materials:{}};
-      for(const row of account.attempts)profile.materials[row.packet_id]=cloud.attemptFromRow(row);
+      profile={name:account.person?.full_name??account.user.email,person:account.person,complete:!!account.person,materials:{},olderMaterials:[]};
+      for(const row of account.attempts){
+        const attempt={...cloud.attemptFromRow(row),packetId:row.packet_id};
+        if(row.revision===bankRevision)profile.materials[row.packet_id]=attempt;
+        else profile.olderMaterials.push(attempt);
+      }
       $("nav-admin").hidden=!isAdmin;$("nav-account").hidden=false;
       $("save-state").textContent="Terhubung ke akun Anda";
       if(!profile.complete)openAccount();else if(isAdmin)await openAdmin();else renderRecap();
@@ -683,8 +709,9 @@ async function adminReview(attempt){
   if(!isAdmin)return;const owner=identity?.id;
   $("detail-review").replaceChildren(make("p","Memuat jawaban…"));
   try{
+    const draftBank=attempt.submitted_at?null:await bankForRevision(attempt.revision);
     const [questions,history]=await Promise.all([
-      attempt.submitted_at?cloud.rpc("idrg_review",{p_id:attempt.id}):Promise.resolve(availableCases(attempt.packet_id).flatMap(c=>c.items.map((q,i)=>({...q,item_id:keyFor(c,i)})))),
+      attempt.submitted_at?cloud.rpc("idrg_review",{p_id:attempt.id}):Promise.resolve(availableCases(attempt.packet_id,draftBank).flatMap(c=>c.items.map((q,i)=>({...q,item_id:keyFor(c,i)})))),
       cloud.rpc("idrg_attempt_history",{p_id:attempt.id})]);
     if(!isAdmin||identity?.id!==owner)return;
     $("detail-review").replaceChildren();

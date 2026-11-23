@@ -7,6 +7,7 @@ Netlify only needs the committed PDFs and the Node build.
 import argparse
 import json
 import os
+import shutil
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -16,7 +17,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, KeepTogether
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, KeepTogether, PageBreak
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
@@ -34,18 +35,18 @@ line = colors.HexColor('#d8e0ea')
 light = colors.HexColor('#f4f7fb')
 white = colors.white
 W = 176*mm
-body = ParagraphStyle('Body', fontName='Clinical', fontSize=10.4, leading=16.2, textColor=navy)
+body = ParagraphStyle('Body', fontName='Clinical', fontSize=10.3, leading=15.8, textColor=navy, spaceAfter=3*mm)
 label_style = ParagraphStyle('Label', parent=body, fontName='ClinicalBold', fontSize=8.2, leading=12, textColor=blue)
 small = ParagraphStyle('Small', parent=body, fontSize=7.8, leading=11.8, textColor=muted)
 subtitle = ParagraphStyle('Subtitle', parent=body, fontSize=11, leading=16, textColor=blue)
 title = ParagraphStyle('Title', parent=body, fontName='ClinicalBold', fontSize=21, leading=27)
 tag = ParagraphStyle('Tag', parent=small, fontName='ClinicalBold', fontSize=7, leading=11, textColor=blue)
-section_title = ParagraphStyle('SectionTitle', parent=body, fontName='ClinicalBold', fontSize=9.3, leading=14, textColor=navy)
+section_title = ParagraphStyle('SectionTitle', parent=body, fontName='ClinicalBold', fontSize=9.3, leading=14, textColor=navy, keepWithNext=True, spaceBefore=3*mm, spaceAfter=2*mm)
 meta = ParagraphStyle('Meta', parent=body, fontSize=8.5, leading=13)
 
 
 def p(text, style=body):
-    return Paragraph(escape(text), style)
+    return Paragraph(escape(text).replace('\n','<br/>'), style)
 
 
 def frame(canvas, document):
@@ -56,7 +57,7 @@ def frame(canvas, document):
     canvas.drawString(17*mm, h-20*mm, 'iDRG')
     canvas.setFont('Clinical', 7)
     canvas.setFillColor(muted)
-    canvas.drawString(33*mm, h-20*mm, 'LEARNING / CLINICAL CASE FILE')
+    canvas.drawString(33*mm, h-20*mm, 'SIMULASI REKAM MEDIS / LATIHAN PENGODEAN')
     canvas.setFont('ClinicalBold', 8.5)
     canvas.setFillColor(blue)
     canvas.drawRightString(w-17*mm, h-20*mm, document.case_id)
@@ -68,7 +69,7 @@ def frame(canvas, document):
     canvas.line(17*mm, 18*mm, w-17*mm, 18*mm)
     canvas.setFillColor(muted)
     canvas.setFont('Clinical', 7)
-    canvas.drawString(17*mm, 12.5*mm, 'DOKUMEN PEMBELAJARAN  /  ICS 2026')
+    canvas.drawString(17*mm, 12.5*mm, 'DATA PASIEN SIMULASI / BUKAN DOKUMEN PELAYANAN NYATA')
     canvas.drawRightString(w-17*mm, 12.5*mm, f'{document.case_id}  /  HALAMAN {document.page}')
     canvas.restoreState()
 
@@ -78,7 +79,7 @@ def metadata(case):
     rows = [[
         Paragraph('<font color="#7c899b" size="7">ID DOKUMEN</font><br/><b>'+case.get('displayId',case['id'])+'</b>', meta),
         Paragraph('<font color="#7c899b" size="7">MATERI PELATIHAN</font><br/><b>Materi '+material+'</b>', meta),
-        Paragraph('<font color="#7c899b" size="7">SUMBER DOKUMENTASI</font><br/><b>ICS 2026</b>', meta),
+        Paragraph('<font color="#7c899b" size="7">ACUAN PENGODEAN</font><br/><b>ICS 2026</b>', meta),
     ]]
     t = Table(rows, colWidths=[W*.28, W*.34, W*.38], hAlign='LEFT')
     t.setStyle(TableStyle([
@@ -113,7 +114,12 @@ def identity(case):
 
 
 def roman(number):
-    return ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'][number]
+    result=''
+    for value,symbol in [(10,'X'),(9,'IX'),(5,'V'),(4,'IV'),(1,'I')]:
+        while number>=value:
+            result+=symbol
+            number-=value
+    return result
 
 
 def group_result(case):
@@ -131,30 +137,46 @@ cases = json.loads((ROOT/'src/cases.json').read_text(encoding='utf-8'))
 for case in cases:
     audit = case['id']=='M2-01'
     path = ROOT/'public'/case['pdf']
+    path.parent.mkdir(parents=True,exist_ok=True)
     document = SimpleDocTemplate(str(path), pagesize=(210*mm,297*mm),
         leftMargin=17*mm,rightMargin=17*mm,topMargin=33*mm,bottomMargin=24*mm,
         title=case.get('displayId',case['id'])+' | '+case['title'], author='iDRG Learning',
-        subject='Rekonstruksi berkas kasus dari materi ICS 2026')
+        subject='Resume medis simulasi untuk latihan pengodean berbasis ICS 2026')
     document.case_id = case.get('displayId',case['id'])
     story = [p('BERKAS LATIHAN / '+('AUDIT CASEMIX' if audit else 'DOKUMENTASI KLINIS'),tag),
         Spacer(1,2*mm),p('LEMBAR KERJA CASEMIX' if audit else 'RESUME MEDIS',title),
-        Spacer(1,1.5*mm),p(case['title'],subtitle),Spacer(1,6*mm),metadata(case),Spacer(1,6*mm)]
+        Spacer(1,1.5*mm),p(case['title'],subtitle),Spacer(1,4*mm),metadata(case),Spacer(1,3*mm),
+        p('SIMULASI PEMBELAJARAN — Identitas, tanggal, hasil pemeriksaan, dan perjalanan klinis disusun untuk latihan. Bukan rekam medis pasien nyata.',small)]
     if audit:
         for label,text in case['records']:
             story.extend([p(text),Spacer(1,6*mm)])
         story.extend([group_result(case),Spacer(1,6*mm)])
     else:
-        story.extend([p('I. IDENTITAS BERKAS',section_title),Spacer(1,2*mm),identity(case),Spacer(1,5*mm)])
-        for index,(label,text) in enumerate(case['records'],2):
-            story.extend([KeepTogether([p(roman(index)+'. '+label.upper(),section_title),Spacer(1,2*mm),p(text),Spacer(1,4*mm)])])
+        current_episode=None
+        index=0
+        for label,text in case['records']:
+            if ' / ' in label and label.startswith('Episode '):
+                episode,label=label.split(' / ',1)
+                if episode!=current_episode:
+                    if current_episode is not None: story.append(PageBreak())
+                    story.extend([p(episode.upper()+' · PASIEN TERPISAH',subtitle)])
+                    index=0
+                    current_episode=episode
+            index+=1
+            story.extend([p(roman(index)+'. '+label.upper(),section_title),p(text)])
+        story.extend([Spacer(1,3*mm),p('PENANGGUNG JAWAB DOKUMEN',tag),
+            p('DPJP dan petugas pada dokumen ini merupakan peran simulasi. Tidak memuat tanda tangan, SIP, atau pengesahan pelayanan nyata.',small)])
     note = ('Baca kasus dan hasil grouping di atas, lalu jawab pertanyaan pada aplikasi latihan.' if audit else
-        'Identitas pasien dan tanggal pelayanan tidak dicantumkan pada sumber. Hanya informasi klinis yang tersedia dalam materi yang ditampilkan.')
+        'Baca diagnosis dokter, kronologi perawatan, dan laporan tindakan sebelum menjawab soal pada aplikasi. Bagian yang sengaja belum lengkap menjadi objek klarifikasi pada soal terkait.')
     story.extend([Spacer(1,3*mm),p('KELENGKAPAN DOKUMEN',tag),Spacer(1,1*mm),p(note,small),Spacer(1,2*mm),
-        p('Berkas ini merupakan rekonstruksi untuk latihan, bukan salinan rekam medis pasien. Tidak ada rincian identitas, hasil pemeriksaan, atau tindakan yang ditambahkan di luar sumber.',small)])
+        p('Kode jawaban dan pembahasan diberikan setelah paket dikirim pada aplikasi. Lembar audit, bila ada, berisi draf isian yang perlu diperiksa peserta.',small)])
     document.build(story,onFirstPage=frame,onLaterPages=frame)
+    # Older bookmarks continue to resolve to the latest clinical document.
+    alias=ROOT/'public/cases'/(case['id']+'.pdf')
+    if alias!=path: shutil.copyfile(path,alias)
     with pymupdf.open(path) as pdf:
         text=''.join(page.get_text() for page in pdf)
-        assert len(pdf)<=2, (case['id'],len(pdf))
+        assert len(pdf)<=9, (case['id'],len(pdf))
         assert case.get('displayId',case['id']) in text and 'KELENGKAPAN DOKUMEN' in text
         for page in pdf:
             for block in page.get_text('blocks'):

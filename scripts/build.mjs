@@ -13,6 +13,8 @@ const ids = new Set();
 for (const item of data) {
   if (ids.has(item.id)) throw new Error("Nomor kasus ganda " + item.id);
   ids.add(item.id);
+  if(item.id!=="M2-01"&&(!item.simulation||item.records.length<10))throw new Error("Resume klinis belum lengkap "+item.id);
+  if(item.contentRevision!==data[0].contentRevision)throw new Error("Versi naskah soal tidak konsisten.");
   if (!item.pdf.startsWith("cases/") || item.pdf.includes("..")) throw new Error("Path PDF tidak valid.");
   const pdf = await fs.readFile(path.join(root,"public",item.pdf));
   if (pdf.subarray(0,5).toString() !== "%PDF-") throw new Error("PDF tidak valid " + item.id);
@@ -23,11 +25,14 @@ for (const item of data) {
     }
   }
 }
+// Historical banks are public question text only; never ship grading keys.
+const oldBank=JSON.parse(await fs.readFile(path.join(root,"public/banks/2026-11-23.3.json"),"utf8"));
+if(oldBank.length!==28||oldBank.some(c=>c.items.some(q=>"correct" in q||"feedback" in q)))throw new Error("Arsip publik tidak valid.");
 await fs.mkdir(dist,{recursive:true});
 await fs.cp(path.join(root,"public"),dist,{recursive:true});
 const template = await fs.readFile(path.join(root,"index.html"),"utf8");
 const publicBank=data.map(c=>({id:c.id,module:c.module,title:c.title,records:c.records,pdf:c.pdf,
-  reference:c.reference,displayId:c.displayId,displayModule:c.displayModule,contentRevision:c.contentRevision,items:c.items.map(q=>({prompt:q.prompt,options:q.options}))}));
+  reference:c.reference,displayId:c.displayId,displayModule:c.displayModule,simulation:c.simulation,documentType:c.documentType,contentRevision:c.contentRevision,items:c.items.map(q=>({prompt:q.prompt,options:q.options}))}));
 const payload = JSON.stringify(publicBank).replaceAll("<",String.fromCharCode(92)+"u003c");
 const config=JSON.parse(await fs.readFile(path.join(root,'src/config.json'),'utf8'));
 config.supabaseUrl=process.env.SUPABASE_URL||config.supabaseUrl;

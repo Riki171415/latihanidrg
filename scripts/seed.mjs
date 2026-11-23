@@ -3,12 +3,16 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const bank=JSON.parse(await fs.readFile(path.join(root,'src/cases.json'),'utf8'));
-export const revision='2026-11-23.3';
+export const revision='2026-11-23.4';
 const quote=value=>"'"+String(value).replaceAll("'","''")+"'";
 const rows=bank.flatMap(c=>c.items.map((q,i)=>'('+[revision,c.id+'-'+i,c.id,
   ['M2-01','M2-02'].includes(c.id)?'2-casemix':String(c.module)==='2'?'2-coding':String(c.module),
   q.prompt,JSON.stringify(q.options),q.correct,q.feedback].map(quote).join(',')+')'));
-const sql=`begin;\nupdate idrg_private.bank_versions set active=false where active and revision<>${quote(revision)};\ninsert into idrg_private.bank_versions(revision,active) values(${quote(revision)},true) on conflict(revision) do update set active=true;\ninsert into idrg_private.questions(revision,item_id,case_id,packet_id,prompt,options,correct,feedback) values\n${rows.join(',\n')}\non conflict(revision,item_id) do nothing;\ncommit;\n`;
+// Existing tabs use the legacy RPC and legacy bank. New clients request the
+// explicit revision so an open browser never mixes new keys with old questions.
+const legacy=await fs.readFile(path.join(root,'supabase/banks/2026-11-23.3.sql'),'utf8');
+const current=`begin;\ninsert into idrg_private.bank_versions(revision,active) values(${quote(revision)},false) on conflict(revision) do nothing;\ninsert into idrg_private.questions(revision,item_id,case_id,packet_id,prompt,options,correct,feedback) values\n${rows.join(',\n')}\non conflict(revision,item_id) do nothing;\ncommit;\n`;
+const sql=legacy+'\n'+current;
 await fs.mkdir(path.join(root,'supabase'),{recursive:true});
 await fs.writeFile(path.join(root,'supabase/seed.sql'),sql);
 console.log('Seed ready: 112 questions; existing revision keys stay immutable.');
