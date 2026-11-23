@@ -57,7 +57,7 @@ def frame(canvas, document):
     canvas.drawString(17*mm, h-20*mm, 'iDRG')
     canvas.setFont('Clinical', 7)
     canvas.setFillColor(muted)
-    canvas.drawString(33*mm, h-20*mm, 'SIMULASI REKAM MEDIS / LATIHAN PENGODEAN')
+    canvas.drawString(33*mm, h-20*mm, 'BERKAS REKAM MEDIS')
     canvas.setFont('ClinicalBold', 8.5)
     canvas.setFillColor(blue)
     canvas.drawRightString(w-17*mm, h-20*mm, document.case_id)
@@ -69,7 +69,7 @@ def frame(canvas, document):
     canvas.line(17*mm, 18*mm, w-17*mm, 18*mm)
     canvas.setFillColor(muted)
     canvas.setFont('Clinical', 7)
-    canvas.drawString(17*mm, 12.5*mm, 'DATA PASIEN SIMULASI / BUKAN DOKUMEN PELAYANAN NYATA')
+    canvas.drawString(17*mm, 12.5*mm, 'BERKAS KASUS / PELATIHAN iDRG')
     canvas.drawRightString(w-17*mm, 12.5*mm, f'{document.case_id}  /  HALAMAN {document.page}')
     canvas.restoreState()
 
@@ -141,12 +141,11 @@ for case in cases:
     document = SimpleDocTemplate(str(path), pagesize=(210*mm,297*mm),
         leftMargin=17*mm,rightMargin=17*mm,topMargin=33*mm,bottomMargin=24*mm,
         title=case.get('displayId',case['id'])+' | '+case['title'], author='iDRG Learning',
-        subject='Resume medis simulasi untuk latihan pengodean berbasis ICS 2026')
+        subject='Resume medis dan laporan tindakan')
     document.case_id = case.get('displayId',case['id'])
-    story = [p('BERKAS LATIHAN / '+('AUDIT CASEMIX' if audit else 'DOKUMENTASI KLINIS'),tag),
+    story = [p('DOKUMEN CASEMIX' if audit else 'DOKUMEN REKAM MEDIS',tag),
         Spacer(1,2*mm),p('LEMBAR KERJA CASEMIX' if audit else 'RESUME MEDIS',title),
-        Spacer(1,1.5*mm),p(case['title'],subtitle),Spacer(1,4*mm),metadata(case),Spacer(1,3*mm),
-        p('SIMULASI PEMBELAJARAN — Identitas, tanggal, hasil pemeriksaan, dan perjalanan klinis disusun untuk latihan. Bukan rekam medis pasien nyata.',small)]
+        Spacer(1,1.5*mm),p(case['title'],subtitle),Spacer(1,4*mm),metadata(case),Spacer(1,3*mm)]
     if audit:
         for label,text in case['records']:
             story.extend([p(text),Spacer(1,6*mm)])
@@ -164,20 +163,15 @@ for case in cases:
                     current_episode=episode
             index+=1
             story.extend([p(roman(index)+'. '+label.upper(),section_title),p(text)])
-        story.extend([Spacer(1,3*mm),p('PENANGGUNG JAWAB DOKUMEN',tag),
-            p('DPJP dan petugas pada dokumen ini merupakan peran simulasi. Tidak memuat tanda tangan, SIP, atau pengesahan pelayanan nyata.',small)])
-    note = ('Baca kasus dan hasil grouping di atas, lalu jawab pertanyaan pada aplikasi latihan.' if audit else
-        'Baca diagnosis dokter, kronologi perawatan, dan laporan tindakan sebelum menjawab soal pada aplikasi. Bagian yang sengaja belum lengkap menjadi objek klarifikasi pada soal terkait.')
-    story.extend([Spacer(1,3*mm),p('KELENGKAPAN DOKUMEN',tag),Spacer(1,1*mm),p(note,small),Spacer(1,2*mm),
-        p('Kode jawaban dan pembahasan diberikan setelah paket dikirim pada aplikasi. Lembar audit, bila ada, berisi draf isian yang perlu diperiksa peserta.',small)])
     document.build(story,onFirstPage=frame,onLaterPages=frame)
     # Older bookmarks continue to resolve to the latest clinical document.
     alias=ROOT/'public/cases'/(case['id']+'.pdf')
     if alias!=path: shutil.copyfile(path,alias)
     with pymupdf.open(path) as pdf:
         text=''.join(page.get_text() for page in pdf)
-        assert len(pdf)<=9, (case['id'],len(pdf))
-        assert case.get('displayId',case['id']) in text and 'KELENGKAPAN DOKUMEN' in text
+        assert 'simulasi' not in text.lower()
+        assert len(pdf)<=12, (case['id'],len(pdf))
+        assert case.get('displayId',case['id']) in text and ('RESUME MEDIS' in text or 'LEMBAR KERJA CASEMIX' in text)
         for page in pdf:
             for block in page.get_text('blocks'):
                 assert block[0]>=40 and block[2]<560 and block[1]>20 and block[3]<820, (case['id'],block)

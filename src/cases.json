@@ -11,7 +11,7 @@
     ],
     "items": [
       {
-        "prompt": "Seorang petugas memasukkan kode ICD diagnosis dan tindakan, lalu menjalankan grouping dan memperoleh grup iDRG 2401210. Berapakah MDC dan Base DC dari grup tersebut?",
+        "prompt": "Petugas memasukkan kode ICD diagnosis dan tindakan, lalu menjalankan grouping. Hasilnya adalah grup iDRG 2401210. Berapa MDC dan Base DC pada grup tersebut?",
         "feedback": "MDC adalah dua digit pertama, yaitu 24. Base DC adalah empat digit pertama, yaitu 2401. Keduanya dibaca dari grup iDRG 2401210.",
         "codes": [
           "24",
@@ -28,7 +28,7 @@
         ]
       },
       {
-        "prompt": "Dari grup iDRG 2401210, berapakah DC lengkap dan angka pembeda kelompok (split)-nya?",
+        "prompt": "Pada grup iDRG 2401210, berapa DC lengkap dan nilai split-nya?",
         "feedback": "DC lengkap adalah lima digit pertama, yaitu 24012. Angka kelima adalah 2; angka ini merupakan split atau pembeda kelompok pada kode tersebut.",
         "codes": [
           "24012",
@@ -45,7 +45,7 @@
         ]
       },
       {
-        "prompt": "Pada grup iDRG 2401210, digit keenam adalah 1 dan digit ketujuh adalah 0. Apa arti PTD 1 dan CL 0 tersebut?",
+        "prompt": "Apa arti digit keenam (PTD 1) dan ketujuh (CL 0) pada grup iDRG 2401210?",
         "feedback": "Pada grup ini, PTD 1 menunjukkan rawat inap. CL 0 menunjukkan No CC, yaitu tanpa komplikasi atau komorbiditas pada tingkat kelompok ini.",
         "correct": 3,
         "options": [
@@ -57,7 +57,7 @@
         ]
       },
       {
-        "prompt": "Petugas memasukkan kode ICD diagnosis dan tindakan sebelum menjalankan grouping. Dalam proses ini, kode yang dimasukkan petugas termasuk apa?",
+        "prompt": "Apa fungsi kode ICD diagnosis dan tindakan yang dimasukkan sebelum grouping?",
         "feedback": "Kode ICD diagnosis dan tindakan adalah data masukan. Petugas memasukkan data tersebut lebih dahulu, kemudian aplikasi memprosesnya dan menghasilkan grup iDRG 2401210.",
         "correct": 4,
         "options": [
@@ -70,8 +70,8 @@
       }
     ],
     "reference": "ICS Bab A.1 dan Gambar A.1",
-    "pdf": "cases/2026-11-23.4/M2-01.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M2-01.pdf",
+    "contentRevision": "2026-11-24.1",
     "groupCode": "2401210"
   },
   {
@@ -81,7 +81,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Ny. S-02, perempuan, 26 tahun; G1P0A0, usia kehamilan 39 minggu berdasarkan USG trimester pertama. No. RM SIM-M2-02. Pelayanan ibu, rawat inap obstetri. Masuk 3 November 2026 pukul 07.00; pulang 5 November 2026 pukul 10.00. DPJP: dokter spesialis obstetri dan ginekologi simulasi."
+        "Ny. B., perempuan, 26 tahun; G1P0A0, usia kehamilan 39 minggu berdasarkan USG trimester pertama. No. RM 26-11-0003. Pelayanan ibu, rawat inap obstetri. Masuk 3 November 2026 pukul 07.00; pulang 5 November 2026 pukul 10.00. DPJP: dokter spesialis obstetri dan ginekologi."
       ],
       [
         "Anamnesis",
@@ -109,7 +109,7 @@
       ],
       [
         "Laporan tindakan",
-        "3 November pukul 14.20: persalinan pervaginam spontan dengan presentasi kepala. Episiotomi mediolateral dilakukan dengan anestesi lokal dan dijahit setelah plasenta lahir lengkap. Bayi tunggal laki-laki, berat 3.150 gram, Apgar 8/9. Perdarahan diperkirakan 250 mL. Tidak digunakan vakum atau forsep. Tidak ada robekan derajat III/IV."
+        "Tanggal dan waktu: 3 November 2026, persalinan pukul 14.20; penjahitan selesai pukul 14.45.\nOperator: dokter spesialis obstetri dan ginekologi; didampingi bidan ruang bersalin.\nDiagnosis sebelum tindakan: primigravida aterm, ketuban pecah dini, persalinan kala II, presentasi kepala. Diagnosis setelah tindakan: persalinan spontan, satu bayi lahir hidup.\nIndikasi episiotomi: perineum sangat tegang saat kepala lahir; keputusan diambil secara selektif setelah penilaian operator. Anestesi: infiltrasi lidokain lokal.\nPelaksanaan: ibu dalam posisi litotomi, area perineum dibersihkan. Setelah anestesi bekerja, dibuat episiotomi mediolateral kanan saat kepala meregangkan perineum. Kepala lahir spontan, diikuti bahu dan badan tanpa vakum atau forsep. Lahir bayi laki-laki, berat 3.150 gram, Apgar 8/9. Plasenta lahir lengkap dan uterus berkontraksi baik.\nEvaluasi luka: tidak ada perluasan ke sfingter ani atau rektum. Mukosa vagina, otot perineum, dan kulit dijahit berlapis menggunakan benang absorbabel hingga hemostasis tercapai. Pemeriksaan akhir memastikan tidak ada perdarahan aktif dan tidak ada jahitan menembus rektum.\nPerdarahan keseluruhan: sekitar 250 mL. Transfusi: tidak ada. Komplikasi: tidak ada. Keadaan akhir: ibu sadar dan stabil, bayi dirawat bersama ibu."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -126,8 +126,8 @@
     ],
     "items": [
       {
-        "prompt": "Berdasarkan resume persalinan, kode apa yang seharusnya menjadi diagnosis utama pada berkas ibu?",
-        "feedback": "Ketuban pecah dini menjadi alasan ibu datang dan dirawat. Karena persalinan dimulai dalam 24 jam, diagnosis utama pada contoh ini adalah O42.0.",
+        "prompt": "Apa kode diagnosis utama pada perawatan ibu ini?",
+        "feedback": "Ketuban pecah dini menjadi alasan ibu datang dan dirawat. Karena persalinan dimulai dalam 24 jam, diagnosis utama pada kasus ini adalah O42.0.",
         "codes": [
           "O42.0"
         ],
@@ -142,7 +142,7 @@
         ]
       },
       {
-        "prompt": "Setelah diagnosis utama diperbaiki menjadi O42.0, pasangan kode apa yang dicatat sebagai diagnosis sekunder ibu?",
+        "prompt": "Jika O42.0 menjadi diagnosis utama, pasangan kode mana yang digunakan sebagai diagnosis sekunder pada berkas ibu?",
         "feedback": "Gunakan O80.0 untuk cara persalinan spontan presentasi kepala dan Z37.0 untuk hasil kelahiran satu bayi hidup.",
         "codes": [
           "O80.0",
@@ -159,7 +159,7 @@
         ]
       },
       {
-        "prompt": "Kolom tindakan sudah berisi 73.59. Kode apa yang masih perlu ditambahkan untuk episiotomi?",
+        "prompt": "Petugas baru memasukkan tindakan 73.59. Kode apa yang perlu ditambahkan untuk episiotomi?",
         "feedback": "Tambahkan 73.6 karena catatan persalinan menyebut episiotomi sudah dilakukan.",
         "codes": [
           "73.6"
@@ -175,7 +175,7 @@
         ]
       },
       {
-        "prompt": "Semua kode sudah diperbaiki. Apa langkah berikutnya agar petugas dapat mencatat hasil grouping yang benar?",
+        "prompt": "Setelah kode diperbaiki, apa langkah berikutnya sebelum hasil grouping dicatat?",
         "feedback": "Periksa kembali isian yang sudah diperbaiki dan selesaikan pesan ketidaksesuaian. Jalankan grouping, lalu catat kode grup beserta uraiannya dari hasil yang sama.",
         "correct": 1,
         "options": [
@@ -188,10 +188,10 @@
       }
     ],
     "reference": "ICS Tabel C.80 dan Bab A.1",
-    "pdf": "cases/2026-11-23.4/M2-02.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M2-02.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M2-03",
@@ -200,7 +200,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Ny. S-03, perempuan, 47 tahun; No. RM SIM-M3-01. Rawat inap ginekologi, 1–22 Oktober 2026. DPJP: spesialis obstetri dan ginekologi simulasi. Berkas meliputi resume, hasil histopatologi, laporan operasi, dan catatan konsultasi."
+        "Ny. C., perempuan, 47 tahun; No. RM 26-11-0006. Rawat inap ginekologi, 1–22 Oktober 2026. DPJP: spesialis obstetri dan ginekologi. Berkas meliputi resume, hasil histopatologi, laporan operasi, dan catatan konsultasi."
       ],
       [
         "Anamnesis",
@@ -228,7 +228,7 @@
       ],
       [
         "Laporan tindakan",
-        "Histerektomi total dilaksanakan pada 7 Oktober oleh tim ginekologi sesuai rencana setelah konseling. Rahim dan serviks diangkat; spesimen dikirim untuk histopatologi. Perdarahan 200 mL, tidak memerlukan transfusi. Hasil patologi operasi konsisten dengan diagnosis endoserviks dan tepi reseksi bebas. Laporan operasi tersedia dalam episode yang sama."
+        "Tanggal operasi: 7 Oktober 2026; pukul 08.00–10.00. Ruang: kamar operasi ginekologi.\nOperator: spesialis obstetri dan ginekologi; asisten: dokter residen. Anestesi umum oleh spesialis anestesi.\nDiagnosis praoperasi dan pascaoperasi: karsinoma mikroinvasif endoserviks. Indikasi: penanganan definitif penyakit serviks setelah pembahasan hasil konisasi dan konseling pilihan terapi; pasien tidak merencanakan kehamilan lagi.\nTindakan: histerektomi total abdominal. Pasien telentang, dilakukan persiapan aseptik, pemasangan kateter urin, dan verifikasi tindakan. Insisi Pfannenstiel dilanjutkan melalui fasia dan peritoneum. Eksplorasi menunjukkan uterus tidak membesar, tanpa massa adneksa atau keterlibatan parametrium yang tampak. Kedua ovarium dipertahankan.\nLigamen penyangga dibebaskan bertahap; ureter diidentifikasi dan dilindungi. Pedikel vaskular uterus dikendalikan dan diikat. Uterus beserta seluruh serviks dilepaskan pada pertemuan serviks-vagina. Tidak dilakukan pengangkatan sebagian serviks saja atau reseksi radikal parametrium. Puncak vagina ditutup dengan benang absorbabel.\nHemostasis diperiksa, rongga abdomen dibersihkan, dan jumlah kasa serta instrumen dinyatakan lengkap. Fasia, subkutis, dan kulit ditutup berlapis. Spesimen uterus dan serviks dikirim ke patologi anatomi.\nPerdarahan: sekitar 200 mL. Transfusi: tidak ada. Komplikasi intraoperatif: tidak ada. Urin jernih pada akhir operasi. Pasien dipindahkan ke ruang pulih dalam kondisi stabil."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -245,7 +245,7 @@
     ],
     "items": [
       {
-        "prompt": "Sinusitis akut masih ditulis sebagai diagnosis utama. Setelah klarifikasi belum berhasil diperoleh, kode apa yang dipilih kembali sebagai diagnosis utama berdasarkan berkas perawatan ini?",
+        "prompt": "Sinusitis akut tertulis sebagai diagnosis utama. Permintaan klarifikasi kepada DPJP belum terjawab. Apa kode diagnosis utama hasil reseleksi berdasarkan perawatan yang diberikan?",
         "feedback": "Pilih C53.0 untuk karsinoma endoserviks. Pasien menjalani histerektomi total dan dirawat di layanan ginekologi. Pada contoh ini, setelah klarifikasi tidak berhasil, kedua catatan tersebut mendukung pemilihan kembali diagnosis utama dengan MB1.",
         "codes": [
           "C53.0"
@@ -261,7 +261,7 @@
         ]
       },
       {
-        "prompt": "Penyakit yang menjadi fokus operasi justru ditulis sebagai diagnosis sekunder. Aturan MB manakah yang digunakan untuk memperbaiki pilihan diagnosis utama pada kasus ini?",
+        "prompt": "Aturan MB mana yang digunakan ketika kondisi yang lebih berperan dalam perawatan justru tertulis sebagai diagnosis sekunder?",
         "feedback": "Gunakan MB1. Pada kasus ini, kondisi yang lebih berperan dalam perawatan ditulis sebagai diagnosis sekunder, sedangkan sinusitis akut ditulis sebagai diagnosis utama. Klarifikasi dokter sudah diupayakan tetapi belum berhasil.",
         "codes": [
           "MB1"
@@ -277,7 +277,7 @@
         ]
       },
       {
-        "prompt": "Catatan tindakan dan layanan apa yang mendukung pemilihan karsinoma endoserviks sebagai diagnosis utama?",
+        "prompt": "Informasi mana yang mendukung reseleksi karsinoma endoserviks sebagai diagnosis utama?",
         "feedback": "Histerektomi total dan perawatan di layanan ginekologi mendukung bahwa perawatan berfokus pada kondisi ginekologi.",
         "correct": 2,
         "options": [
@@ -289,8 +289,8 @@
         ]
       },
       {
-        "prompt": "Jika karsinoma endoserviks dipilih sebagai diagnosis utama, dua kondisi apa yang dicatat sebagai diagnosis sekunder pada kasus ini?",
-        "feedback": "Sinusitis akut dan hipertensi menempati diagnosis sekunder dalam contoh ini.",
+        "prompt": "Setelah karsinoma endoserviks dipilih sebagai diagnosis utama, dua penyakit mana yang menjadi diagnosis sekunder?",
+        "feedback": "Sinusitis akut dan hipertensi menempati diagnosis sekunder pada kasus ini.",
         "correct": 3,
         "options": [
           "Hipertensi saja",
@@ -302,12 +302,12 @@
       }
     ],
     "reference": "ICS B.2.a Contoh 1",
-    "pdf": "cases/2026-11-23.4/M2-03.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M2-03.pdf",
+    "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-01",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M2-04",
@@ -316,7 +316,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-04, laki-laki, 63 tahun; No. RM SIM-M3-02. Rawat inap neurologi 1 Oktober–5 November 2026, dilanjutkan pemulihan fungsi selama episode yang sama. DPJP: spesialis neurologi simulasi."
+        "Tn. D., laki-laki, 63 tahun; No. RM 26-11-0009. Rawat inap neurologi 1 Oktober–5 November 2026, dilanjutkan pemulihan fungsi selama episode yang sama. DPJP: spesialis neurologi."
       ],
       [
         "Anamnesis",
@@ -361,7 +361,7 @@
     ],
     "items": [
       {
-        "prompt": "Tiga penyakit ditulis sebagai diagnosis utama dan klarifikasi belum dijawab. Berdasarkan fokus pemeriksaan serta pengobatan pada episode neurologi ini, kode mana yang dipilih sebagai diagnosis utama?",
+        "prompt": "Dokter menulis tiga penyakit sebagai diagnosis utama dan belum menjawab klarifikasi. Berdasarkan fokus pemeriksaan dan pengobatan, apa kode diagnosis utama yang dipilih?",
         "options": [
           "G00.3",
           "G00.1",
@@ -373,7 +373,7 @@
         "feedback": "G00.3 mewakili meningitis stafilokokus. Resume menulis beberapa diagnosis sebagai utama; pada MB2, fokus pemeriksaan dan pengobatan membantu memilih satu kondisi. Meningitis mendapat evaluasi cairan serebrospinal, kultur, antibiotik, dan pemantauan neurologis. Spesialisasi layanan saja bukan satu-satunya dasar."
       },
       {
-        "prompt": "Dokter menulis beberapa penyakit sekaligus sebagai diagnosis utama. Aturan MB manakah yang digunakan untuk memilih satu diagnosis utama?",
+        "prompt": "Aturan MB mana yang digunakan untuk memilih satu diagnosis utama ketika dokter menulis beberapa penyakit pada kolom diagnosis utama?",
         "feedback": "MB2 digunakan untuk memilih satu diagnosis utama ketika beberapa kondisi ditulis sebagai diagnosis utama.",
         "codes": [
           "MB2"
@@ -389,7 +389,7 @@
         ]
       },
       {
-        "prompt": "Bukti mana yang paling kuat menunjukkan fokus perawatan untuk memilih satu diagnosis utama dari beberapa diagnosis yang tertulis?",
+        "prompt": "Informasi mana yang paling kuat menunjukkan penyakit yang menjadi fokus perawatan?",
         "options": [
           "Katarak ditulis paling awal.",
           "Kolom diagnosis sekunder kosong.",
@@ -401,8 +401,8 @@
         "feedback": "Pada MB2, penentuan didasarkan pada kondisi yang terutama diperiksa atau diobati. Dokumentasi pemeriksaan dan terapi meningitis lebih kuat daripada urutan tulisan, lama rawat, atau nama layanan semata."
       },
       {
-        "prompt": "Jika meningitis stafilokokus dipilih sebagai diagnosis utama, dua kondisi apa yang dicatat sebagai diagnosis sekunder pada kasus ini?",
-        "feedback": "Katarak dan penyakit jantung iskemik menjadi diagnosis sekunder dalam contoh ini.",
+        "prompt": "Setelah meningitis stafilokokus dipilih sebagai diagnosis utama, dua penyakit mana yang menjadi diagnosis sekunder?",
+        "feedback": "Katarak dan penyakit jantung iskemik menjadi diagnosis sekunder pada kasus ini.",
         "correct": 3,
         "options": [
           "Meningitis stafilokokus dan penyakit jantung iskemik",
@@ -414,12 +414,12 @@
       }
     ],
     "reference": "ICS B.2.b Contoh 1",
-    "pdf": "cases/2026-11-23.4/M2-04.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M2-04.pdf",
+    "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-02",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M2-05",
@@ -428,7 +428,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-05, laki-laki, 52 tahun; No. RM SIM-M3-03. Rawat inap 4–10 November 2026 di layanan endokrinologi dengan perawatan awal intensif. DPJP: spesialis penyakit dalam simulasi."
+        "Tn. E., laki-laki, 52 tahun; No. RM 26-11-0012. Rawat inap 4–10 November 2026 di layanan endokrinologi dengan perawatan awal intensif. DPJP: spesialis penyakit dalam."
       ],
       [
         "Anamnesis",
@@ -473,7 +473,7 @@
     ],
     "items": [
       {
-        "prompt": "Dokter menyatakan koma berkaitan dengan diabetes melitus dependen insulin. Kode apa yang mencakup diabetes beserta koma dan dipilih sebagai diagnosis utama?",
+        "prompt": "DPJP menyatakan koma disebabkan oleh diabetes melitus tipe 1. Apa kode diagnosis utama yang mencakup diabetes dengan koma?",
         "feedback": "E10.0 mencakup diabetes melitus dependen insulin dengan koma dalam satu kode. Dokter sudah mengaitkan koma dengan diabetes, dan diabetes mendapat penanganan selama perawatan.",
         "codes": [
           "E10.0"
@@ -489,8 +489,8 @@
         ]
       },
       {
-        "prompt": "Koma ditulis sebagai diagnosis utama, padahal diabetes penyebabnya sudah diketahui dan ditangani. Aturan MB manakah yang digunakan untuk memperbaikinya?",
-        "feedback": "Gunakan MB3. Koma adalah gejala atau manifestasi dari diabetes yang sudah diketahui dan ditangani. Karena itu, penyakit penyebab dipilih kembali sebagai diagnosis utama pada contoh ini.",
+        "prompt": "Dokter menulis koma sebagai diagnosis utama, sementara penyakit penyebabnya sudah diketahui dan ditangani. Aturan MB mana yang digunakan untuk reseleksi?",
+        "feedback": "Gunakan MB3. Koma adalah gejala atau manifestasi dari diabetes yang sudah diketahui dan ditangani. Karena itu, penyakit penyebab dipilih kembali sebagai diagnosis utama pada kasus ini.",
         "codes": [
           "MB3"
         ],
@@ -505,7 +505,7 @@
         ]
       },
       {
-        "prompt": "Dua keterangan apa yang menunjukkan hubungan koma dengan diabetes dan bahwa diabetes ditangani selama perawatan?",
+        "prompt": "Informasi mana yang mendukung bahwa koma disebabkan oleh diabetes dan diabetes ditangani selama rawat?",
         "feedback": "Catatan mengaitkan koma dengan diabetes dan mencatat penentuan dosis insulin selama rawat.",
         "correct": 4,
         "options": [
@@ -517,7 +517,7 @@
         ]
       },
       {
-        "prompt": "Kode E10.0 sudah digunakan untuk diabetes dengan koma. Apakah kode gejala koma masih perlu ditambahkan?",
+        "prompt": "Jika diabetes dengan koma sudah dikode E10.0, apakah kode gejala koma perlu ditambahkan?",
         "feedback": "Koma sudah tercakup dalam E10.0, sehingga tidak perlu diberi kode gejala terpisah.",
         "correct": 0,
         "options": [
@@ -530,12 +530,12 @@
       }
     ],
     "reference": "ICS B.2.c Contoh 2",
-    "pdf": "cases/2026-11-23.4/M2-05.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M2-05.pdf",
+    "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-03",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M2-06",
@@ -544,7 +544,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "An. S-06, perempuan, 8 tahun; No. RM SIM-M3-04. Rawat inap evaluasi kardiologi anak 5–7 November 2026. DPJP: spesialis anak konsultan kardiologi simulasi."
+        "An. F., perempuan, 8 tahun; No. RM 26-11-0015. Rawat inap evaluasi kardiologi anak 5–7 November 2026. DPJP: spesialis anak konsultan kardiologi."
       ],
       [
         "Anamnesis",
@@ -589,7 +589,7 @@
     ],
     "items": [
       {
-        "prompt": "Dokter menulis penyakit jantung kongenital dan defek septum ventrikel untuk kelainan yang sama. Kode apa yang paling spesifik sebagai diagnosis utama?",
+        "prompt": "Istilah penyakit jantung kongenital dan defek septum ventrikel merujuk pada kelainan yang sama. Apa kode diagnosis utama yang paling spesifik?",
         "feedback": "Q21.0 untuk defek septum ventrikel.",
         "codes": [
           "Q21.0"
@@ -605,7 +605,7 @@
         ]
       },
       {
-        "prompt": "Diagnosis sekunder menyebut kelainan yang lebih spesifik daripada diagnosis utama, tetapi keduanya merujuk pada kondisi yang sama. Aturan MB manakah yang digunakan?",
+        "prompt": "Diagnosis sekunder menjelaskan diagnosis utama secara lebih spesifik, dan keduanya merupakan kondisi yang sama. Aturan MB mana yang digunakan?",
         "feedback": "Gunakan MB4. Istilah defek septum ventrikel menjelaskan kelainan yang sama secara lebih spesifik daripada istilah umum penyakit jantung kongenital.",
         "codes": [
           "MB4"
@@ -621,7 +621,7 @@
         ]
       },
       {
-        "prompt": "Dari istilah pada resume, mana yang secara jelas menyebut jenis kelainan pada sekat jantung?",
+        "prompt": "Istilah mana pada resume yang menyebut kelainan anatomi jantung secara spesifik?",
         "feedback": "“Defek septum ventrikel” menyebut lokasi defek secara spesifik.",
         "correct": 2,
         "options": [
@@ -633,7 +633,7 @@
         ]
       },
       {
-        "prompt": "Defek septum ventrikel sudah diberi kode. Apakah istilah umum “penyakit jantung kongenital” untuk kelainan yang sama masih perlu diberi kode terpisah?",
+        "prompt": "Setelah defek septum ventrikel dikode, apakah istilah umum penyakit jantung kongenital perlu dikode lagi sebagai penyakit terpisah?",
         "feedback": "Tidak ada kode tambahan untuk sebutan umum karena kedua istilah merujuk pada kondisi yang sama.",
         "correct": 2,
         "options": [
@@ -646,12 +646,12 @@
       }
     ],
     "reference": "ICS B.2.d Contoh 2",
-    "pdf": "cases/2026-11-23.4/M2-06.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M2-06.pdf",
+    "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-04",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M2-07",
@@ -660,7 +660,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Ny. S-07, perempuan, 42 tahun; No. RM SIM-M3-05. Rawat inap penyakit dalam 6–10 November 2026. DPJP: spesialis penyakit dalam simulasi."
+        "Ny. G., perempuan, 42 tahun; No. RM 26-11-0018. Rawat inap penyakit dalam 6–10 November 2026. DPJP: spesialis penyakit dalam."
       ],
       [
         "Anamnesis",
@@ -705,7 +705,7 @@
     ],
     "items": [
       {
-        "prompt": "Dokter menulis “kolesistitis akut atau pankreatitis akut” dan klarifikasi belum berhasil diperoleh. Berdasarkan aturan MB5, kode apa yang dipilih sebagai diagnosis utama?",
+        "prompt": "Pada diagnosis akhir tertulis “kolesistitis akut atau pankreatitis akut”. Klarifikasi kepada DPJP belum terjawab. Apa kode diagnosis utama yang dipilih?",
         "feedback": "Pilih K81.0 untuk kolesistitis akut. Pada contoh MB5 ini, kedua penyakit ditulis sebagai alternatif dan klarifikasi belum berhasil; diagnosis yang ditulis pertama dipilih sebagai diagnosis utama.",
         "codes": [
           "K81.0"
@@ -721,7 +721,7 @@
         ]
       },
       {
-        "prompt": "Diagnosis utama ditulis sebagai dua pilihan yang dihubungkan kata “atau”. Aturan MB manakah yang digunakan?",
+        "prompt": "Aturan MB mana yang digunakan untuk dua diagnosis alternatif yang dihubungkan dengan kata “atau”?",
         "feedback": "MB5 mengatur pemilihan diagnosis utama saat dokter menuliskan diagnosis alternatif.",
         "codes": [
           "MB5"
@@ -737,11 +737,11 @@
         ]
       },
       {
-        "prompt": "Pada catatan “kolesistitis akut atau pankreatitis akut”, bagaimana diagnosis utama dipilih menurut aturan MB5 untuk kasus ini?",
-        "feedback": "Kata “atau” menunjukkan dua pilihan diagnosis, bukan dua penyakit yang dipastikan terjadi bersama. Sesuai aturan MB5 pada contoh ini, pilih diagnosis yang ditulis pertama, yaitu kolesistitis akut.",
+        "prompt": "Bagaimana memilih diagnosis utama dari pernyataan “kolesistitis akut atau pankreatitis akut” ketika klarifikasi belum terjawab?",
+        "feedback": "Kata “atau” menunjukkan dua pilihan diagnosis, bukan dua penyakit yang dipastikan terjadi bersama. Sesuai aturan MB5 pada kasus ini, pilih diagnosis yang ditulis pertama, yaitu kolesistitis akut.",
         "correct": 0,
         "options": [
-          "Kata “atau” menandai alternatif; diagnosis yang ditulis pertama dipilih pada contoh ini.",
+          "Kata “atau” menandai alternatif; diagnosis yang ditulis pertama dipilih pada kasus ini.",
           "Kata “atau” menandai alternatif; diagnosis yang ditulis terakhir dipilih.",
           "Kedua alternatif dicatat sebagai dua diagnosis utama.",
           "Kedua alternatif diperlakukan sebagai dua kondisi yang pasti ada.",
@@ -749,7 +749,7 @@
         ]
       },
       {
-        "prompt": "Pankreatitis akut hanya disebut sebagai pilihan setelah kata “atau”. Apakah kondisi itu boleh langsung dicatat sebagai diagnosis sekunder?",
+        "prompt": "Apakah pankreatitis akut yang hanya tertulis sebagai alternatif boleh langsung dimasukkan sebagai diagnosis sekunder?",
         "feedback": "Tidak. Dalam pernyataan dokter, pankreatitis akut merupakan alternatif, sehingga belum ditetapkan sebagai diagnosis sekunder.",
         "correct": 2,
         "options": [
@@ -762,12 +762,12 @@
       }
     ],
     "reference": "ICS B.2.e Contoh 2",
-    "pdf": "cases/2026-11-23.4/M2-07.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M2-07.pdf",
+    "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-05",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M2-08",
@@ -776,7 +776,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-08, laki-laki, 38 tahun; No. RM SIM-M3-06. Rawat inap kardiologi 2–11 November 2026. DPJP: spesialis jantung dengan konsultasi penyakit dalam infeksi simulasi."
+        "Tn. H., laki-laki, 38 tahun; No. RM 26-11-0021. Rawat inap kardiologi 2–11 November 2026. DPJP: spesialis jantung dengan konsultasi penyakit dalam infeksi."
       ],
       [
         "Anamnesis",
@@ -804,7 +804,7 @@
       ],
       [
         "Laporan tindakan",
-        "Perikardiosentesis dengan panduan ekokardiografi dilakukan untuk indikasi diagnostik dan mengurangi gejala. Cairan dikirim untuk hitung sel, mikrobiologi, dan sitologi. Tidak ada komplikasi tindakan. Drain dilepas setelah produksi minimal sesuai penilaian dokter."
+        "Tanggal tindakan: 3 November 2026; pukul 10.00–10.40. Operator: spesialis jantung. Tindakan: perikardiosentesis dengan panduan ekokardiografi dan pemasangan drain.\nDiagnosis sebelum dan sesudah tindakan: efusi perikardium simptomatik; etiologi dinilai melalui pemeriksaan cairan. Indikasi: sesak akibat efusi sedang-besar dan kebutuhan pengambilan spesimen. Pasien tidak dalam syok.\nPasien diposisikan sesuai lokasi cairan pada ekokardiografi. Dilakukan verifikasi pasien, penjelasan, persetujuan tindakan, antisepsis, dan anestesi lokal. Jalur yang dinilai aman ditentukan dengan ekokardiografi. Jarum dimasukkan ke ruang perikardium dengan pemantauan; cairan teraspirasi, kemudian kawat pemandu dan kateter drain dipasang menggunakan teknik Seldinger.\nCairan sebanyak 450 mL dikeluarkan bertahap sambil memantau tekanan darah dan gejala. Spesimen dibagi untuk hitung sel, pemeriksaan mikrobiologi termasuk TB, serta sitologi. Drain difiksasi dan disambungkan ke penampung tertutup. Ekokardiografi akhir menunjukkan efusi berkurang tanpa komplikasi yang tampak.\nPerdarahan tindakan minimal. Tidak terjadi aritmia menetap, cedera organ, atau hipotensi. Pasien dipantau di bangsal; drain dilepas setelah produksi minimal dan evaluasi ulang memadai. Hasil pemeriksaan cairan kemudian mendukung penetapan perikarditis tuberkulosa oleh DPJP."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -817,7 +817,7 @@
     ],
     "items": [
       {
-        "prompt": "Pada perikarditis tuberkulosa, kode apa yang menunjukkan tuberkulosis sebagai penyakit penyebab?",
+        "prompt": "Apa kode untuk tuberkulosis sebagai penyebab perikarditis pada pasien ini?",
         "feedback": "A18.8 mewakili tuberkulosis sebagai penyakit penyebab dalam pasangan ini.",
         "codes": [
           "A18.8"
@@ -833,7 +833,7 @@
         ]
       },
       {
-        "prompt": "Kode apa yang menunjukkan perikarditis sebagai manifestasi tuberkulosis pada kasus ini?",
+        "prompt": "Apa kode untuk manifestasi perikarditis akibat tuberkulosis?",
         "feedback": "I32.0 mewakili perikarditis sebagai manifestasi penyakit penyebab.",
         "codes": [
           "I32.0"
@@ -849,7 +849,7 @@
         ]
       },
       {
-        "prompt": "Untuk perikarditis tuberkulosa, pasangan kode dan penempatan diagnosis utama serta sekundernya manakah yang benar?",
+        "prompt": "Pasangan kode dan urutan diagnosis mana yang tepat untuk perikarditis tuberkulosa?",
         "feedback": "A18.8 ditempatkan sebagai diagnosis utama dan I32.0 sebagai diagnosis sekunder.",
         "codes": [
           "A18.8",
@@ -866,7 +866,7 @@
         ]
       },
       {
-        "prompt": "Dokter hanya menulis “perikarditis tuberkulosa”. Mengapa pengodean diagnosis ini tetap membutuhkan dua kode?",
+        "prompt": "Mengapa diagnosis perikarditis tuberkulosa memerlukan dua kode meskipun dokter hanya menulis satu diagnosis?",
         "feedback": "Perikarditis tuberkulosa diwakili oleh dua kode sesuai klasifikasi: A18.8 untuk penyakit penyebab dan I32.0 untuk manifestasinya pada perikardium. Dua kode ini berasal dari satu diagnosis dokter, bukan dari dua penyakit baru yang ditambahkan koder.",
         "correct": 1,
         "options": [
@@ -879,12 +879,12 @@
       }
     ],
     "reference": "ICS B.6 Contoh 1",
-    "pdf": "cases/2026-11-23.4/M2-08.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M2-08.pdf",
+    "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-06",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M2-09",
@@ -893,7 +893,7 @@
     "records": [
       [
         "Episode A / Identitas dan episode pelayanan",
-        "Tn. S-09A, laki-laki, 45 tahun; No. RM SIM-M3-07-A. Rawat inap bedah saraf 3–9 November 2026. Episode A berdiri sendiri dan tidak digabung dengan episode pembanding. DPJP: spesialis bedah saraf simulasi."
+        "Tn. A., laki-laki, 45 tahun; No. RM 26-11-0025. Rawat inap bedah saraf 3–9 November 2026. Episode A berdiri sendiri dan tidak digabung dengan episode pembanding. DPJP: spesialis bedah saraf."
       ],
       [
         "Episode A / Anamnesis",
@@ -921,7 +921,7 @@
       ],
       [
         "Episode A / Laporan tindakan",
-        "Operator mencatat: pembukaan tulang tengkorak dengan kraniotomi untuk mencapai tumor, kemudian reseksi tumor dilakukan dan spesimen dikirim untuk histopatologi. Kraniotomi merupakan tahap akses dari operasi yang sama. Lampiran uraian lokasi anatomi rinci dan teknik reseksi belum terlampir pada berkas yang diterima."
+        "Tanggal operasi: 4 November 2026; pukul 08.00–11.15. Operator: spesialis bedah saraf; asisten: dokter residen; anestesi umum oleh spesialis anestesi.\nDiagnosis praoperasi: massa intraaksial frontal kiri. Diagnosis pascaoperasi: tumor otak frontal kiri, menunggu konfirmasi histopatologi. Indikasi: massa dengan efek desak dan gejala neurologis.\nPasien telentang dengan kepala difiksasi. Setelah verifikasi lokasi dan persiapan aseptik, dibuat insisi kulit kepala di regio frontal kiri. Jaringan lunak direfleksikan, lubang bor dibuat, kemudian flap tulang diangkat. Dura dibuka untuk mencapai permukaan otak. Kraniotomi ini merupakan akses untuk tindakan pada tumor.\nMassa intraaksial frontal kiri diidentifikasi. Dengan bantuan pembesaran, tumor direseksi bertahap menggunakan diseksi dan aspirasi sambil menjaga jaringan serta pembuluh di sekitarnya. Jaringan tumor dikirim ke patologi anatomi. Tidak dilakukan pengangkatan seluruh lobus otak; dura tidak menjadi lokasi utama tumor yang direseksi.\nSetelah reseksi, rongga operasi diperiksa dan hemostasis dilakukan. Dura ditutup, flap tulang dikembalikan dan difiksasi, lalu jaringan kulit kepala ditutup berlapis. Jumlah kasa serta instrumen lengkap.\nPerdarahan: sekitar 250 mL. Transfusi: tidak ada. Komplikasi intraoperatif: tidak ada. Pasien dipindahkan ke ICU untuk pemantauan neurologis. Catatan operator menegaskan reseksi tumor telah dilakukan pada operasi yang sama dengan kraniotomi."
       ],
       [
         "Episode A / Kondisi akhir pelayanan",
@@ -933,7 +933,7 @@
       ],
       [
         "Episode B / Identitas dan episode pelayanan",
-        "Tn. S-09B, laki-laki, 51 tahun; No. RM SIM-M3-07-B. Rawat inap bedah saraf 12–18 November 2026. Episode B berdiri sendiri dan tidak digabung dengan episode pembanding. DPJP: spesialis bedah saraf simulasi."
+        "Tn. B., laki-laki, 51 tahun; No. RM 26-11-0026. Rawat inap bedah saraf 12–18 November 2026. Episode B berdiri sendiri dan tidak digabung dengan episode pembanding. DPJP: spesialis bedah saraf."
       ],
       [
         "Episode B / Anamnesis",
@@ -961,7 +961,7 @@
       ],
       [
         "Episode B / Laporan tindakan",
-        "Operator mencatat: kraniotomi telah selesai sebagai akses menuju tumor. Karena ketidakstabilan hemodinamik, tindakan dihentikan sebelum reseksi atau biopsi. Tidak ada pengangkatan tumor atau tindakan definitif lain. Luka ditutup setelah hemostasis. Jangan mengode reseksi yang baru direncanakan."
+        "Tanggal operasi: 13 November 2026; pukul 08.00–09.20. Operator: spesialis bedah saraf; asisten: dokter residen; anestesi umum oleh spesialis anestesi.\nDiagnosis praoperasi: massa intrakranial frontal kiri. Diagnosis pascaoperasi: sama; reseksi belum dilakukan. Rencana awal: kraniotomi dan reseksi tumor.\nSetelah verifikasi, persiapan aseptik, dan posisi kepala, dibuat insisi kulit kepala pada lokasi yang direncanakan. Jaringan lunak direfleksikan, lubang bor dibuat, dan flap tulang diangkat. Tahap kraniotomi telah selesai.\nSebelum dura dibuka untuk tindakan pada massa, timbul aritmia disertai penurunan tekanan darah. Tim anestesi melakukan stabilisasi. Setelah pembahasan risiko, operator menghentikan operasi dan tidak melanjutkan reseksi. Tidak dilakukan biopsi, pengeluaran tumor, atau tindakan definitif lain pada massa.\nArea operasi diperiksa; flap tulang dikembalikan dan difiksasi. Luka ditutup berlapis. Tidak ada spesimen jaringan tumor yang dikirim. Jumlah kasa dan instrumen lengkap.\nPerdarahan: sekitar 100 mL; transfusi tidak ada. Kejadian intraoperatif: aritmia dan ketidakstabilan hemodinamik, membaik setelah penanganan anestesi. Pasien dipindahkan ke ICU dalam kondisi hemodinamik stabil untuk evaluasi lebih lanjut sebelum perencanaan operasi berikutnya."
       ],
       [
         "Episode B / Kondisi akhir pelayanan",
@@ -974,7 +974,7 @@
     ],
     "items": [
       {
-        "prompt": "Pada laporan A, kraniotomi dilakukan untuk mencapai tumor. Tindakan mana yang kemudian dilakukan untuk menangani tumornya?",
+        "prompt": "Pada pasien A, tindakan apa yang dilakukan untuk menangani tumor setelah kraniotomi?",
         "feedback": "Tindakan untuk menangani tumor pada laporan A adalah reseksi tumor. Kraniotomi dilakukan lebih dahulu untuk mencapai lokasi tumor.",
         "correct": 4,
         "options": [
@@ -986,8 +986,8 @@
         ]
       },
       {
-        "prompt": "Pada laporan A, kraniotomi hanya menjadi jalan masuk untuk reseksi tumor. Apakah kraniotomi perlu diberi kode tersendiri?",
-        "feedback": "Kraniotomi pada laporan A hanya menjadi jalan masuk untuk reseksi tumor. Sesuai petunjuk omit code pada contoh ini, kraniotomi tersebut tidak diberi kode terpisah.",
+        "prompt": "Pada pasien A, apakah kraniotomi sebagai akses menuju reseksi tumor perlu dikode terpisah?",
+        "feedback": "Kraniotomi pada laporan A hanya menjadi jalan masuk untuk reseksi tumor. Sesuai petunjuk omit code pada kasus ini, kraniotomi tersebut tidak diberi kode terpisah.",
         "correct": 4,
         "options": [
           "Kraniotomi diberi kode terpisah karena dilakukan lebih dahulu daripada reseksi.",
@@ -998,7 +998,7 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, operasi berhenti setelah kraniotomi tanpa reseksi tumor. Kode apa yang digunakan untuk kraniotomi tersebut?",
+        "prompt": "Pada pasien B, operasi dihentikan setelah kraniotomi dan tumor belum direseksi. Apa kode tindakan yang sudah dilakukan?",
         "feedback": "Gunakan 01.24. Pada laporan B, tindakan berhenti pada kraniotomi; tidak ada reseksi tumor atau tindakan lanjutan lain.",
         "codes": [
           "01.24"
@@ -1014,7 +1014,7 @@
         ]
       },
       {
-        "prompt": "Sebelum memilih kode reseksi tumor pada laporan A, rincian apa yang perlu diperiksa pada laporan operasi lengkap?",
+        "prompt": "Rincian apa pada laporan operasi pasien A yang harus dicocokkan sebelum menentukan kode reseksi tumor?",
         "feedback": "Telusuri lokasi anatomi tumor dan bagaimana reseksi dilakukan pada laporan operasi yang lengkap.",
         "correct": 1,
         "options": [
@@ -1027,12 +1027,12 @@
       }
     ],
     "reference": "ICS B.3.a Omit code dan contoh kraniotomi",
-    "pdf": "cases/2026-11-23.4/M2-09.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M2-09.pdf",
+    "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-07",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-01",
@@ -1041,7 +1041,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-401, laki-laki, 59 tahun; No. RM SIM-M4-01. Rawat inap ICU rumah sakit penerima 8–15 November 2026. Tiba dari rumah sakit pengirim pada 8 November pukul 10.00 dalam keadaan terintubasi. DPJP: spesialis anestesi/intensif simulasi."
+        "Tn. J., laki-laki, 59 tahun; No. RM 26-11-0027. Rawat inap ICU rumah sakit penerima 8–15 November 2026. Tiba dari rumah sakit pengirim pada 8 November pukul 10.00 dalam keadaan terintubasi. DPJP: spesialis anestesi/intensif."
       ],
       [
         "Anamnesis",
@@ -1086,7 +1086,7 @@
     ],
     "items": [
       {
-        "prompt": "Pasien sudah terintubasi sebelum tiba. Kapan durasi penggunaan ventilator mulai dihitung untuk perawatan di rumah sakit penerima?",
+        "prompt": "Pasien tiba dalam keadaan terintubasi dan langsung melanjutkan ventilasi invasif. Kapan penghitungan durasi ventilasi di rumah sakit penerima dimulai?",
         "feedback": "Durasi untuk rumah sakit penerima dimulai sejak pasien masuk dengan bukti penggunaan ventilator pada perawatan tersebut. Waktu intubasi di rumah sakit pengirim tidak dipakai sebagai awal durasi rumah sakit penerima.",
         "correct": 2,
         "options": [
@@ -1098,7 +1098,7 @@
         ]
       },
       {
-        "prompt": "Catatan waktu apa yang harus dicocokkan untuk menentukan awal penggunaan ventilator di rumah sakit penerima?",
+        "prompt": "Dua catatan waktu mana yang harus dicocokkan untuk menentukan awal ventilasi di rumah sakit penerima?",
         "feedback": "Cocokkan waktu masuk pasien dengan catatan pemasangan atau penggunaan ventilator di rumah sakit penerima. Kedua catatan diperlukan untuk menentukan awal durasi yang sesuai.",
         "correct": 3,
         "options": [
@@ -1110,7 +1110,7 @@
         ]
       },
       {
-        "prompt": "Jika rumah sakit penerima kemudian merujuk pasien ke rumah sakit berikutnya, kapan penghitungan durasi ventilasi di rumah sakit penerima dihentikan?",
+        "prompt": "Jika pasien dirujuk lagi ke rumah sakit lain, kapan penghitungan durasi ventilasi di rumah sakit penerima dihentikan?",
         "feedback": "Jika rumah sakit penerima merujuk pasien lagi, penghitungan untuk rumah sakit penerima berakhir saat ventilator dilepas di rumah sakit tersebut. Jangan meneruskan durasinya sampai penggunaan alat di rumah sakit berikutnya.",
         "correct": 3,
         "options": [
@@ -1122,7 +1122,7 @@
         ]
       },
       {
-        "prompt": "Ventilasi invasif di rumah sakit penerima berlangsung terus dari 8 November pukul 10.00 sampai 11 November pukul 10.00. Berapa durasi untuk episode rumah sakit penerima?",
+        "prompt": "Ventilasi invasif berlangsung tanpa jeda dari 8 November pukul 10.00 sampai 11 November pukul 10.00. Berapa durasinya di rumah sakit penerima?",
         "options": [
           "48 jam.",
           "74 jam 30 menit.",
@@ -1135,10 +1135,10 @@
       }
     ],
     "reference": "ICS Bab C MDC 10 Pre-MDC",
-    "pdf": "cases/2026-11-23.4/M4-01.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-01.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-02",
@@ -1147,7 +1147,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-402, laki-laki, 61 tahun; No. RM SIM-M4-02. Rawat inap unit stroke 9–14 November 2026. Berat badan terukur 70 kg. DPJP: spesialis neurologi simulasi."
+        "Tn. K., laki-laki, 61 tahun; No. RM 26-11-0030. Rawat inap unit stroke 9–14 November 2026. Berat badan terukur 70 kg. DPJP: spesialis neurologi."
       ],
       [
         "Anamnesis",
@@ -1175,7 +1175,7 @@
       ],
       [
         "Laporan tindakan",
-        "Lembar pemberian obat: alteplase total 63 mg intravena; 6,3 mg bolus pukul 10.00 dan 56,7 mg infus selama 60 menit, selesai pukul 11.00. Nama pemberi dan verifikasi tercatat dalam lembar simulasi. Ini merupakan obat yang sudah diberikan, bukan pesanan farmasi atau rencana terapi."
+        "Lembar pemberian obat: alteplase total 63 mg intravena; 6,3 mg bolus pukul 10.00 dan 56,7 mg infus selama 60 menit, selesai pukul 11.00. Nama pemberi dan verifikasi tercatat dalam lembar. Ini merupakan obat yang sudah diberikan, bukan pesanan farmasi atau rencana terapi."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -1188,7 +1188,7 @@
     ],
     "items": [
       {
-        "prompt": "Agen trombolitik sudah diberikan melalui injeksi atau infus. Kode tindakan apa yang sesuai?",
+        "prompt": "Alteplase intravena sudah diberikan. Apa kode tindakan pemberian trombolitik tersebut?",
         "feedback": "99.10 untuk injeksi atau infus agen trombolitik.",
         "codes": [
           "99.10"
@@ -1204,7 +1204,7 @@
         ]
       },
       {
-        "prompt": "Dokumen apa yang menjadi bukti bahwa agen trombolitik sudah diberikan pada perawatan ini?",
+        "prompt": "Dokumen mana yang membuktikan alteplase sudah diberikan pada perawatan ini?",
         "feedback": "Gunakan catatan pelaksanaan atau lembar pemberian obat yang menunjukkan tindakan sudah dikerjakan.",
         "correct": 4,
         "options": [
@@ -1216,7 +1216,7 @@
         ]
       },
       {
-        "prompt": "Pada berkas lain, hanya ada instruksi pemberian trombolitik tanpa catatan bahwa obat sudah diberikan. Apa yang seharusnya dilakukan koder?",
+        "prompt": "Jika berkas hanya memuat instruksi trombolisis tanpa bukti pemberian obat, apa yang harus dilakukan koder?",
         "feedback": "Tunda pengodean sampai tersedia bukti bahwa pemberian telah dilakukan.",
         "correct": 0,
         "options": [
@@ -1228,7 +1228,7 @@
         ]
       },
       {
-        "prompt": "Jika hanya ada catatan pemberian trombolitik tanpa diagnosis akhir dokter, apakah koder boleh menyimpulkan sendiri penyakit pasien?",
+        "prompt": "Jika diagnosis akhir tidak tercantum, apakah koder boleh menetapkan penyakit hanya dari catatan pemberian trombolitik?",
         "feedback": "Tidak. Diagnosis spesifik mengikuti diagnosis yang ditetapkan dokter, sementara catatan pemberian mendukung kode tindakan.",
         "correct": 0,
         "options": [
@@ -1241,10 +1241,10 @@
       }
     ],
     "reference": "ICS Bab C Perhatian Khusus MDC 11",
-    "pdf": "cases/2026-11-23.4/M4-02.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-02.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-03",
@@ -1253,7 +1253,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-403, laki-laki, 58 tahun; No. RM SIM-M4-03. Rawat jalan mata 10 November 2026. Vitrektomi mata kanan telah dilakukan pada episode terpisah dua minggu sebelumnya. DPJP: spesialis mata simulasi."
+        "Tn. L., laki-laki, 58 tahun; No. RM 26-11-0033. Rawat jalan mata 10 November 2026. Vitrektomi mata kanan telah dilakukan pada episode terpisah dua minggu sebelumnya. DPJP: spesialis mata."
       ],
       [
         "Anamnesis",
@@ -1269,7 +1269,7 @@
       ],
       [
         "Pemeriksaan penunjang",
-        "Pemeriksaan fundus dilakukan setelah dilatasi pupil dan hasilnya dinilai dokter: retina melekat serta tidak ada perdarahan baru. Pada kolom tindakan petugas hanya menulis “funduskopi”. Tidak dicantumkan alat/teknik pemeriksaan atau dokumentasi foto; kekurangan spesifikasi ini sengaja menjadi fokus klarifikasi pengodean."
+        "Pemeriksaan fundus dilakukan setelah dilatasi pupil dan hasilnya dinilai dokter: retina melekat serta tidak ada perdarahan baru. Pada kolom tindakan petugas hanya menulis “funduskopi”. Tidak dicantumkan alat/teknik pemeriksaan atau dokumentasi foto; kekurangan spesifikasi ini belum dilengkapi dalam laporan."
       ],
       [
         "Diagnosis dokter",
@@ -1298,8 +1298,8 @@
     ],
     "items": [
       {
-        "prompt": "Pasien datang untuk kontrol setelah vitrektomi dan tidak menjalani perawatan luka. Kode diagnosis utama apa yang digunakan sesuai kasus pada ICS?",
-        "feedback": "Z48.8 digunakan untuk kontrol pascaoperasi mata pada contoh ini.",
+        "prompt": "Pasien menjalani kontrol pascavitrektomi dan tidak dilakukan perawatan luka. Apa kode diagnosis utama kunjungan ini menurut ketentuan ICS?",
+        "feedback": "Z48.8 digunakan untuk kontrol pascaoperasi mata pada kasus ini.",
         "codes": [
           "Z48.8"
         ],
@@ -1314,7 +1314,7 @@
         ]
       },
       {
-        "prompt": "Hipertensi esensial ditulis sebagai diagnosis sekunder. Kode apa yang sesuai?",
+        "prompt": "Apa kode diagnosis sekunder untuk hipertensi esensial pada pasien ini?",
         "feedback": "I10 untuk hipertensi esensial.",
         "codes": [
           "I10"
@@ -1330,7 +1330,7 @@
         ]
       },
       {
-        "prompt": "Dokter hanya menulis “funduskopi”. Pertanyaan mana yang meminta penjelasan teknik pemeriksaan tanpa menyarankan jawaban tertentu?",
+        "prompt": "Catatan tindakan hanya menyebut funduskopi. Pertanyaan klarifikasi mana yang tepat untuk mengetahui alat dan teknik pemeriksaannya?",
         "feedback": "Minta dokter menjelaskan alat dan teknik yang digunakan. Jangan langsung meminta dokter menyebut kamera fundus atau oftalmoskop, karena tekniknya belum diketahui dari catatan.",
         "correct": 3,
         "options": [
@@ -1342,7 +1342,7 @@
         ]
       },
       {
-        "prompt": "Untuk membedakan teknik pemeriksaan, pasangan kode manakah yang benar untuk foto fundus dan oftalmoskopi?",
+        "prompt": "Pasangan kode mana yang tepat untuk foto fundus dan oftalmoskopi?",
         "feedback": "Foto fundus dikode 95.11. Oftalmoskopi dikode 16.21.",
         "codes": [
           "95.11",
@@ -1360,10 +1360,10 @@
       }
     ],
     "reference": "ICS Bab C MDC 12 dan Tabel C.22",
-    "pdf": "cases/2026-11-23.4/M4-03.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-03.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-04",
@@ -1372,7 +1372,7 @@
     "records": [
       [
         "Episode A / Identitas dan episode pelayanan",
-        "Tn. S-404A, laki-laki, 35 tahun; No. RM SIM-M4-04-A. Tindakan rawat jalan THT pada 11 November 2026. Episode A terpisah dari pasien pembanding. DPJP: spesialis THT simulasi."
+        "Tn. A., laki-laki, 35 tahun; No. RM 26-11-0037. Tindakan rawat jalan THT pada 11 November 2026. Episode A terpisah dari pasien pembanding. DPJP: spesialis THT."
       ],
       [
         "Episode A / Anamnesis",
@@ -1388,7 +1388,7 @@
       ],
       [
         "Episode A / Pemeriksaan penunjang",
-        "Penilaian praoperasi tidak menunjukkan risiko perdarahan khusus. Pada episode ini tidak ada pemeriksaan patologi anatomi yang dilakukan atau ditagihkan dalam dokumen simulasi."
+        "Penilaian praoperasi tidak menunjukkan risiko perdarahan khusus. Pada episode ini tidak ada pemeriksaan patologi anatomi yang dilakukan atau ditagihkan dalam dokumen."
       ],
       [
         "Episode A / Diagnosis dokter",
@@ -1400,7 +1400,7 @@
       ],
       [
         "Episode A / Laporan tindakan",
-        "Operator mengangkat lesi telinga luar secara eksisi hingga tidak tampak lesi tersisa, untuk menghilangkan keluhan. Dasar luka dirawat dan ditutup. Tujuannya pengangkatan terapeutik, bukan pengambilan sebagian jaringan untuk biopsi."
+        "Tanggal tindakan: 11 November 2026; pukul 09.00–09.25. Operator: spesialis THT. Anestesi: infiltrasi lokal.\nDiagnosis pra- dan pascatindakan: lesi bertangkai pada daun telinga kiri. Indikasi: lesi sering tergesek dan mengganggu penggunaan masker. Tindakan: eksisi lokal lesi telinga luar untuk terapi.\nSetelah persetujuan dan verifikasi sisi, daun telinga kiri dibersihkan dan ditutup duk steril. Anestesi lokal diinfiltrasikan di dasar lesi. Lesi berukuran 6 mm diidentifikasi, kemudian diangkat pada pangkalnya hingga tidak tampak jaringan lesi tersisa.\nEksisi terbatas pada lesi di daun telinga, tanpa pengangkatan sebagian atau seluruh daun telinga, tanpa reseksi radikal, dan tanpa tindakan pada liang telinga atau telinga tengah. Perdarahan kecil dikendalikan; luka ditutup dengan jahitan sederhana dan balutan.\nTujuan tindakan: mengangkat lesi, bukan mengambil sampel sebagian lesi. Pemeriksaan patologi anatomi tidak dilakukan pada kunjungan ini. Perdarahan kurang dari 5 mL; transfusi tidak ada. Tidak ada komplikasi. Pasien pulang setelah observasi dengan instruksi perawatan luka."
       ],
       [
         "Episode A / Kondisi akhir pelayanan",
@@ -1412,7 +1412,7 @@
       ],
       [
         "Episode B / Identitas dan episode pelayanan",
-        "Tn. S-404B, laki-laki, 62 tahun; No. RM SIM-M4-04-B. Tindakan rawat jalan THT pada 11 November 2026. Episode B terpisah dari pasien pembanding. DPJP: spesialis THT simulasi."
+        "Tn. B., laki-laki, 62 tahun; No. RM 26-11-0038. Tindakan rawat jalan THT pada 11 November 2026. Episode B terpisah dari pasien pembanding. DPJP: spesialis THT."
       ],
       [
         "Episode B / Anamnesis",
@@ -1440,7 +1440,7 @@
       ],
       [
         "Episode B / Laporan tindakan",
-        "Operator mengambil sebagian jaringan pada tepi lesi telinga luar dengan biopsi insisional. Lesi tidak diangkat seluruhnya. Spesimen diberi label dan dikirim ke patologi anatomi; pemeriksaan jaringan telah dilaksanakan."
+        "Tanggal tindakan: 11 November 2026; pukul 10.00–10.20. Operator: spesialis THT. Anestesi: infiltrasi lokal.\nDiagnosis pra-tindakan: lesi berulkus pada heliks kanan, perlu penentuan histologi. Diagnosis sesudah tindakan: sama, menunggu hasil patologi. Indikasi: lesi menetap dan mudah berdarah. Tindakan: biopsi insisional telinga luar.\nSetelah verifikasi sisi dan persiapan aseptik, diberikan anestesi lokal. Pada tepi lesi 1,2 cm dipilih area yang mewakili jaringan abnormal. Sebagian jaringan kulit dan jaringan di bawahnya diambil sebagai spesimen biopsi; keseluruhan lesi tidak dieksisi dan kartilago tidak diangkat.\nSpesimen dimasukkan ke wadah berlabel dan dikirim untuk pemeriksaan histopatologi. Luka biopsi dikendalikan perdarahannya, dijahit seperlunya, kemudian dibalut. Tidak dilakukan eksisi radikal atau rekonstruksi daun telinga.\nPerdarahan kurang dari 5 mL; transfusi tidak ada. Tidak ada komplikasi. Pasien stabil setelah observasi. Laporan histopatologi yang terbit kemudian menunjukkan karsinoma sel skuamosa dan telah ditelaah DPJP untuk merencanakan terapi definitif."
       ],
       [
         "Episode B / Kondisi akhir pelayanan",
@@ -1453,7 +1453,7 @@
     ],
     "items": [
       {
-        "prompt": "Pada laporan A, lesi telinga luar diangkat untuk terapi. Kode tindakan apa yang sesuai?",
+        "prompt": "Pada pasien A, lesi telinga luar diangkat untuk terapi. Apa kode tindakannya?",
         "feedback": "18.29 untuk eksisi lesi telinga luar pada laporan A.",
         "codes": [
           "18.29"
@@ -1469,7 +1469,7 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, dokter mengambil sampel jaringan telinga luar untuk biopsi. Kode tindakan apa yang sesuai?",
+        "prompt": "Pada pasien B, sebagian jaringan telinga luar diambil untuk biopsi. Apa kode tindakannya?",
         "feedback": "18.12 untuk biopsi telinga luar pada laporan B.",
         "codes": [
           "18.12"
@@ -1485,7 +1485,7 @@
         ]
       },
       {
-        "prompt": "Sampel pada laporan B sudah diperiksa dengan patologi anatomi. Kelompok kode manakah yang perlu diperiksa untuk memilih kode pemeriksaan tersebut?",
+        "prompt": "Jaringan biopsi pasien B sudah diperiksa secara histopatologi. Kelompok kode mana yang perlu ditelusuri untuk pemeriksaan tersebut?",
         "feedback": "Periksa kelompok 91.86- untuk pemeriksaan patologi anatomi sesuai petunjuk ICS. Tanda hubung berarti kode perlu dilengkapi sesuai rincian pemeriksaan; 91.86- bukan kode akhir untuk langsung dimasukkan.",
         "codes": [
           "91.86"
@@ -1501,7 +1501,7 @@
         ]
       },
       {
-        "prompt": "Apa perbedaan tujuan pengambilan jaringan pada laporan A dan laporan B?",
+        "prompt": "Apa perbedaan tujuan pengambilan jaringan pada pasien A dan B?",
         "feedback": "Pada laporan A, lesi diangkat untuk terapi. Pada laporan B, jaringan diambil untuk diperiksa sebagai biopsi.",
         "correct": 2,
         "options": [
@@ -1514,10 +1514,10 @@
       }
     ],
     "reference": "ICS Bab C Perhatian Khusus MDC 13",
-    "pdf": "cases/2026-11-23.4/M4-04.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-04.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-05",
@@ -1526,7 +1526,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-405, laki-laki, 41 tahun; No. RM SIM-M4-05. Rawat jalan layanan TB pada 12 November 2026. DPJP: spesialis paru simulasi. Seluruh identitas dan hasil pemeriksaan pada kasus ini merupakan data simulasi."
+        "Tn. N., laki-laki, 41 tahun; No. RM 26-11-0039. Rawat jalan layanan TB pada 12 November 2026. DPJP: spesialis paru."
       ],
       [
         "Anamnesis",
@@ -1571,7 +1571,7 @@
     ],
     "items": [
       {
-        "prompt": "Untuk TB resistan obat, informasi tambahan apa yang perlu dikodekan selain kode dasar TB sesuai petunjuk ICS?",
+        "prompt": "Selain kode dasar TB, informasi resistansi apa yang perlu dilengkapi menurut ICS?",
         "feedback": "ICS meminta penelusuran dua kelompok tambahan: TB Episode of Care untuk kategori resistansi TB, dan Drug Types untuk jenis obat terkait resistansi. Kategori resistansi dan obat yang terlibat harus diperjelas sebelum kode spesifik dipilih.",
         "correct": 2,
         "options": [
@@ -1583,7 +1583,7 @@
         ]
       },
       {
-        "prompt": "Data mana dalam resume yang menjadi dasar pemilihan kode dasar TB pada kasus ini?",
+        "prompt": "Data mana yang menjadi dasar pemilihan kode dasar TB pada pasien ini?",
         "options": [
           "Riwayat batuk saja.",
           "Foto toraks saja tanpa diagnosis dokter.",
@@ -1595,7 +1595,7 @@
         "feedback": "Lokasi paru ditetapkan dokter dan Mycobacterium tuberculosis terdeteksi pada dahak. Kode dasar TB harus sesuai lokasi dan dasar konfirmasi, kemudian dilengkapi informasi resistansi sesuai ICS."
       },
       {
-        "prompt": "Obat mana yang sudah terbukti resistan pada hasil pemeriksaan pasien ini?",
+        "prompt": "Obat apa yang sudah terbukti resistan berdasarkan hasil pemeriksaan?",
         "options": [
           "Isoniazid.",
           "Semua obat TB lini pertama.",
@@ -1607,7 +1607,7 @@
         "feedback": "TCM menyatakan resistansi rifampisin terdeteksi. Hasil untuk obat lain belum tersedia; resistansi terhadap obat-obat tersebut tidak boleh diasumsikan."
       },
       {
-        "prompt": "Apakah hasil resistansi rifampisin saja sudah cukup untuk menyimpulkan bahwa pasien pasti mengalami MDR-TB?",
+        "prompt": "Apakah resistansi rifampisin saja sudah cukup untuk menetapkan MDR-TB?",
         "options": [
           "Ya, semua RR-TB pasti resistan terhadap isoniazid.",
           "Belum; resistansi isoniazid perlu diketahui dan kategori akhir mengikuti penetapan dokter.",
@@ -1620,10 +1620,10 @@
       }
     ],
     "reference": "ICS Bab C MDC 14 dan MDC 36",
-    "pdf": "cases/2026-11-23.4/M4-05.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-05.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-06",
@@ -1632,7 +1632,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-406, laki-laki, 57 tahun; No. RM SIM-M4-06. Rawat inap kardiologi 10–13 November 2026. DPJP: spesialis jantung intervensi simulasi."
+        "Tn. O., laki-laki, 57 tahun; No. RM 26-11-0042. Rawat inap kardiologi 10–13 November 2026. DPJP: spesialis jantung intervensi."
       ],
       [
         "Anamnesis",
@@ -1660,7 +1660,7 @@
       ],
       [
         "Laporan tindakan",
-        "11 November: angioplasti koroner perkutan dengan balon dilakukan pada satu pembuluh LAD dan dipasang satu stent pada lesi tersebut. Hasil akhir aliran koroner baik tanpa komplikasi akut. Laporan menyebut jumlah pembuluh satu dan jumlah stent satu, tetapi tidak menyebut apakah stent berlapis obat atau stent logam tanpa obat. Kartu implan belum terlampir."
+        "Tanggal tindakan: 11 November 2026; pukul 10.00–11.10. Operator: spesialis jantung intervensi. Anestesi lokal pada tempat akses dengan pemantauan hemodinamik.\nDiagnosis pra- dan pascatindakan: sindrom koroner akut tanpa elevasi ST dengan infark miokard. Indikasi: gejala dan biomarker iskemia dengan lesi koroner yang memerlukan intervensi.\nSetelah persetujuan, verifikasi, dan persiapan steril, akses perkutan dibuat melalui arteri radialis kanan. Kateter diarahkan ke arteri koroner dengan fluoroskopi. Angiografi menunjukkan stenosis berat pada LAD sebagai pembuluh target; tidak ada intervensi pada pembuluh lain.\nKawat pemandu melewati lesi LAD. Dilatasi balon dilakukan, kemudian satu stent dipasang pada lesi tersebut. Dilakukan optimasi ekspansi dan penilaian angiografi akhir; aliran distal baik tanpa diseksi yang membatasi aliran atau perforasi. Jumlah pembuluh yang diterapi: satu. Jumlah stent: satu. Merek, bahan, serta status pelapis obat stent belum dicantumkan dan kartu implan belum terlampir.\nKateter dan sheath dilepas sesuai prosedur, hemostasis akses dicapai dengan alat kompresi radial. Tidak ada komplikasi segera. Perdarahan akses minimal, transfusi tidak ada. Pasien dipindahkan ke ruang pemantauan tanpa nyeri dada, dengan perfusi tangan kanan baik."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -1673,7 +1673,7 @@
     ],
     "items": [
       {
-        "prompt": "Dokter sudah melakukan PTCA. Kode tindakan apa yang digunakan?",
+        "prompt": "Apa kode untuk angioplasti koroner perkutan yang sudah dilakukan?",
         "feedback": "00.66 untuk tindakan PTCA.",
         "codes": [
           "00.66"
@@ -1689,7 +1689,7 @@
         ]
       },
       {
-        "prompt": "PTCA dilakukan pada satu pembuluh koroner. Kode tambahan apa yang menunjukkan jumlah pembuluh tersebut?",
+        "prompt": "PTCA dilakukan pada satu pembuluh koroner. Apa kode tambahan untuk jumlah pembuluh tersebut?",
         "feedback": "00.40 menunjukkan tindakan pada satu pembuluh.",
         "codes": [
           "00.40"
@@ -1705,7 +1705,7 @@
         ]
       },
       {
-        "prompt": "Dokter memasang satu stent. Kode tambahan apa yang menunjukkan jumlah stent tersebut?",
+        "prompt": "Satu stent dipasang pada tindakan ini. Apa kode tambahan untuk jumlah stent?",
         "feedback": "00.45 menunjukkan jumlah stent yang dipasang, yaitu satu.",
         "codes": [
           "00.45"
@@ -1721,7 +1721,7 @@
         ]
       },
       {
-        "prompt": "Jenis stent belum tercantum dalam laporan. Apa yang harus diperiksa atau ditanyakan sebelum memilih kode jenis stent?",
+        "prompt": "Jenis stent belum tercantum. Dokumen atau klarifikasi apa yang dibutuhkan sebelum menentukan kode jenis stent?",
         "feedback": "Periksa kartu atau catatan implan, atau minta operator menjelaskan jenis stent yang dipasang pada episode ini.",
         "correct": 4,
         "options": [
@@ -1734,10 +1734,10 @@
       }
     ],
     "reference": "ICS Bab C MDC 15 Circulatory Disease Procedures",
-    "pdf": "cases/2026-11-23.4/M4-06.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-06.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-07",
@@ -1746,7 +1746,7 @@
     "records": [
       [
         "Episode A / Identitas dan episode pelayanan",
-        "Tn. S-407A, laki-laki, 32 tahun; No. RM SIM-M4-07-A. Rawat inap bedah digestif 4–10 November 2026. DPJP: spesialis bedah simulasi. Episode A adalah pasien yang berbeda."
+        "Tn. A., laki-laki, 32 tahun; No. RM 26-11-0046. Rawat inap bedah digestif 4–10 November 2026. DPJP: spesialis bedah. Episode A adalah pasien yang berbeda."
       ],
       [
         "Episode A / Anamnesis",
@@ -1774,7 +1774,7 @@
       ],
       [
         "Episode A / Laporan tindakan",
-        "Apendektomi dilakukan segera setelah stabilisasi. Operator menemukan perforasi apendiks dan kontaminasi purulen pada beberapa kuadran abdomen, lalu melakukan pengendalian sumber infeksi serta pembersihan rongga peritoneum."
+        "Tanggal operasi: 4 November 2026; pukul 18.00–19.20. Operator: spesialis bedah; asisten: dokter residen. Anestesi umum.\nDiagnosis praoperasi: apendisitis akut dengan perforasi dan peritonitis umum. Diagnosis pascaoperasi: sama. Indikasi: perforasi apendiks dengan kontaminasi rongga peritoneum yang memerlukan pengendalian sumber infeksi.\nSetelah stabilisasi, verifikasi tindakan, dan persiapan aseptik, dibuat insisi abdomen terbuka untuk eksplorasi. Ditemukan apendiks inflamasi dengan perforasi serta cairan purulen di beberapa kuadran abdomen. Temuan tidak terbatas di fosa iliaka kanan.\nApendiks diidentifikasi, mesoapendiks dibebaskan dengan pengendalian pembuluh darah. Pangkal apendiks diamankan dan apendiks diangkat. Rongga abdomen dibersihkan, cairan terkontaminasi dikeluarkan, dan tunggul diperiksa untuk memastikan hemostasis serta tidak ada kebocoran yang tampak. Spesimen apendiks dikirim ke patologi anatomi.\nSetelah evaluasi akhir dan perhitungan kasa serta instrumen lengkap, dinding abdomen ditutup sesuai lapisan. Perdarahan sekitar 100 mL; transfusi tidak ada. Tidak ada cedera organ intraoperatif. Pasien dipindahkan ke ruang pemulihan dalam kondisi stabil untuk melanjutkan antibiotik dan observasi pascaoperasi."
       ],
       [
         "Episode A / Kondisi akhir pelayanan",
@@ -1786,7 +1786,7 @@
       ],
       [
         "Episode B / Identitas dan episode pelayanan",
-        "Tn. S-407B, laki-laki, 24 tahun; No. RM SIM-M4-07-B. Rawat inap bedah digestif 12–15 November 2026. DPJP: spesialis bedah simulasi. Episode B adalah pasien yang berbeda."
+        "Tn. B., laki-laki, 24 tahun; No. RM 26-11-0047. Rawat inap bedah digestif 12–15 November 2026. DPJP: spesialis bedah. Episode B adalah pasien yang berbeda."
       ],
       [
         "Episode B / Anamnesis",
@@ -1814,7 +1814,7 @@
       ],
       [
         "Episode B / Laporan tindakan",
-        "Apendektomi dilakukan. Operator mencatat inflamasi dan eksudat terbatas di sekitar apendiks serta fosa iliaka kanan. Tidak ditemukan kontaminasi purulen difus atau peritonitis umum."
+        "Tanggal operasi: 12 November 2026; pukul 17.00–17.50. Operator: spesialis bedah; asisten: dokter residen. Anestesi umum.\nDiagnosis praoperasi: apendisitis akut dengan peritonitis lokal. Diagnosis pascaoperasi: sama. Indikasi: inflamasi apendiks dengan iritasi peritoneum setempat.\nPasien telentang, dilakukan verifikasi dan persiapan aseptik. Dengan akses laparoskopi, rongga abdomen diperiksa. Apendiks membengkak dan hiperemis; eksudat terbatas di sekitar apendiks serta fosa iliaka kanan. Tidak ditemukan kontaminasi purulen di kuadran lain atau peritonitis umum.\nMesoapendiks dibebaskan, pembuluh dikendalikan, kemudian pangkal apendiks diamankan dan apendiks dipotong. Spesimen dikeluarkan menggunakan kantong melalui portal dan dikirim ke patologi anatomi. Area operasi diperiksa dan dibersihkan; hemostasis baik.\nGas dikeluarkan, trokar dilepas, lalu fasia portal yang memerlukan penutupan dan kulit dijahit. Jumlah instrumen serta kasa lengkap. Perdarahan sekitar 20 mL; transfusi tidak ada. Tidak ada komplikasi intraoperatif. Pasien dipindahkan ke ruang pulih dengan tanda vital stabil."
       ],
       [
         "Episode B / Kondisi akhir pelayanan",
@@ -1827,7 +1827,7 @@
     ],
     "items": [
       {
-        "prompt": "Pada resume A, dokter menulis apendisitis akut dengan perforasi dan peritonitis umum. Kode diagnosis apa yang sesuai?",
+        "prompt": "Pasien A mengalami apendisitis akut dengan perforasi dan peritonitis umum. Apa kode diagnosisnya?",
         "feedback": "K35.2 untuk apendisitis akut dengan peritonitis umum.",
         "codes": [
           "K35.2"
@@ -1843,7 +1843,7 @@
         ]
       },
       {
-        "prompt": "Pada resume B, dokter menulis apendisitis akut dengan peritonitis lokal. Kode diagnosis apa yang sesuai?",
+        "prompt": "Pasien B mengalami apendisitis akut dengan peritonitis lokal. Apa kode diagnosisnya?",
         "feedback": "K35.3 untuk apendisitis akut dengan peritonitis lokal.",
         "codes": [
           "K35.3"
@@ -1859,7 +1859,7 @@
         ]
       },
       {
-        "prompt": "Istilah apa pada resume A yang menunjukkan bahwa peritonitisnya lebih luas daripada pada resume B?",
+        "prompt": "Istilah mana yang membedakan luas peritonitis pada pasien A dari pasien B?",
         "feedback": "Frasa “peritonitis umum” menunjukkan luas peritonitis pada episode A.",
         "correct": 2,
         "options": [
@@ -1871,7 +1871,7 @@
         ]
       },
       {
-        "prompt": "Kode apendisitis dengan peritonitis umum sudah digunakan pada resume A. Apakah peritonitis masih perlu diberi kode terpisah?",
+        "prompt": "Apakah peritonitis perlu dikode terpisah jika sudah tercakup dalam kode apendisitis dengan peritonitis umum?",
         "feedback": "Peritonitis umum sudah tercakup dalam kode kombinasi apendisitis akut pada episode A.",
         "correct": 3,
         "options": [
@@ -1884,10 +1884,10 @@
       }
     ],
     "reference": "ICS Bab C MDC 16 Appendicitis",
-    "pdf": "cases/2026-11-23.4/M4-07.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-07.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-08",
@@ -1896,7 +1896,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Ny. S-408, perempuan, 49 tahun; No. RM SIM-M4-08. Rawat inap digestif 13–16 November 2026. DPJP: spesialis penyakit dalam konsultan gastroenterohepatologi simulasi."
+        "Ny. Q., perempuan, 49 tahun; No. RM 26-11-0048. Rawat inap digestif 13–16 November 2026. DPJP: spesialis penyakit dalam konsultan gastroenterohepatologi."
       ],
       [
         "Anamnesis",
@@ -1924,7 +1924,7 @@
       ],
       [
         "Laporan tindakan",
-        "14 November: duodenoskop mencapai papila; saluran empedu dikannulasi dan batu duktus koledokus dikeluarkan menggunakan perangkat ekstraksi endoskopik. Operator menulis batu berhasil dikeluarkan dan pemeriksaan akhir menunjukkan pembersihan saluran. Tidak ada ERCP diagnostik terpisah pada episode ini; pencitraan saluran merupakan bagian tindakan terapeutik yang sama."
+        "Tanggal tindakan: 14 November 2026; pukul 09.00–09.50. Operator: spesialis penyakit dalam konsultan gastroenterohepatologi; pendamping anestesi melakukan sedasi dan pemantauan.\nDiagnosis pra- dan pascatindakan: batu duktus koledokus dengan obstruksi bilier. Indikasi: batu saluran empedu disertai ikterus obstruktif. Tindakan: ERCP terapeutik dengan pengeluaran batu.\nSetelah verifikasi, persetujuan, serta penilaian jalan napas, duodenoskop dimasukkan melalui mulut, esofagus, dan lambung hingga duodenum. Papila diidentifikasi. Dilakukan kanulasi selektif saluran empedu dengan kawat pemandu dan penilaian fluoroskopi menggunakan kontras; terlihat batu sekitar 7 mm dalam duktus koledokus.\nUntuk akses ekstraksi dilakukan sfingterotomi terbatas sesuai penilaian operator. Balon ekstraksi dilewatkan ke proksimal batu, lalu batu dikeluarkan melalui papila ke lumen duodenum. Penyapuan ulang dan kolangiogram akhir tidak menunjukkan sisa batu yang tampak; aliran empedu baik. Tidak dipasang stent bilier atau drain nasobilier.\nDuodenoskop dikeluarkan setelah evaluasi akhir. Tidak ada perdarahan aktif, perforasi, atau komplikasi anestesi segera. Pasien sadar setelah observasi. Dokumentasi memuat satu sesi ERCP terapeutik; tidak ada sesi ERCP diagnostik terpisah. Pemantauan nyeri, demam, dan tanda pankreatitis dilakukan setelah tindakan."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -1937,8 +1937,8 @@
     ],
     "items": [
       {
-        "prompt": "Dokter berhasil mengeluarkan batu saluran empedu melalui ERCP. Kode tindakan apa yang sesuai?",
-        "feedback": "51.88 untuk pengangkatan batu dari saluran empedu secara endoskopik pada contoh ini.",
+        "prompt": "Batu duktus koledokus berhasil dikeluarkan secara endoskopik melalui ERCP. Apa kode tindakannya?",
+        "feedback": "51.88 untuk pengangkatan batu dari saluran empedu secara endoskopik pada kasus ini.",
         "codes": [
           "51.88"
         ],
@@ -1953,7 +1953,7 @@
         ]
       },
       {
-        "prompt": "Pengambilan batu melalui ERCP sudah diberi kode. Apakah 51.10 untuk ERCP diagnostik perlu ditambahkan pada tindakan yang sama?",
+        "prompt": "Apakah kode ERCP diagnostik 51.10 perlu ditambahkan pada tindakan pengeluaran batu yang sama?",
         "feedback": "Untuk contoh ini, gunakan kode tindakan yang spesifik. Kode ERCP diagnostik 51.10 tidak ditambahkan pada sesi yang sama.",
         "correct": 1,
         "options": [
@@ -1965,7 +1965,7 @@
         ]
       },
       {
-        "prompt": "Bagian laporan mana yang membuktikan batu sudah dikeluarkan, bukan baru direncanakan untuk dikeluarkan?",
+        "prompt": "Catatan mana yang membuktikan pengeluaran batu sudah dilakukan?",
         "feedback": "Uraian operator menyatakan bahwa batu telah dikeluarkan dari saluran empedu melalui endoskop.",
         "correct": 4,
         "options": [
@@ -1977,7 +1977,7 @@
         ]
       },
       {
-        "prompt": "Jika laporan hanya menulis “ERCP”, informasi apa yang masih perlu diperiksa sebelum memberi kode pengambilan batu?",
+        "prompt": "Jika laporan hanya bertuliskan ERCP, informasi apa yang harus diperiksa sebelum mengode pengeluaran batu?",
         "feedback": "Periksa uraian prosedur untuk memastikan bahwa pengambilan batu terlaksana dan bahwa batunya berasal dari saluran empedu.",
         "correct": 4,
         "options": [
@@ -1990,10 +1990,10 @@
       }
     ],
     "reference": "ICS Bab C MDC 17 Prosedur ERCP",
-    "pdf": "cases/2026-11-23.4/M4-08.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-08.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-09",
@@ -2002,7 +2002,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-409, laki-laki, 29 tahun; No. RM SIM-M4-09. Rawat inap ortopedi 14–16 November 2026. Sisi tindakan: lutut kanan. DPJP: spesialis ortopedi simulasi."
+        "Tn. R., laki-laki, 29 tahun; No. RM 26-11-0051. Rawat inap ortopedi 14–16 November 2026. Sisi tindakan: lutut kanan. DPJP: spesialis ortopedi."
       ],
       [
         "Anamnesis",
@@ -2030,7 +2030,7 @@
       ],
       [
         "Laporan tindakan",
-        "15 November: artroskopi lutut kanan dilakukan melalui portal. Operator memeriksa struktur intraartikular dan melakukan reparasi primer ligamen krusiat yang masih dapat diperbaiki; tidak digunakan graft untuk rekonstruksi. Pada uraian tercatat “other repair of cruciate ligament”. Judul singkat lembar tindakan hanya bertuliskan “artroskopi lutut”, sehingga uraian lengkap harus dibaca."
+        "Tanggal operasi: 15 November 2026; pukul 08.00–09.30. Operator: spesialis ortopedi; asisten: dokter residen. Anestesi spinal. Sisi operasi: lutut kanan.\nDiagnosis pra- dan pascaoperasi: robekan proksimal ligamen krusiat anterior kanan dengan instabilitas. Indikasi: instabilitas menetap setelah penanganan awal; jaringan sisa dinilai layak direparasi.\nSetelah penandaan sisi, verifikasi, dan persiapan aseptik, dibuat portal artroskopi anterolateral dan anteromedial. Rongga sendi diperiksa secara sistematis. Ditemukan robekan proksimal ligamen krusiat anterior dengan jaringan yang masih dapat dipertahankan. Tidak ada prosedur meniskus yang dilakukan.\nUjung ligamen disiapkan, kemudian dijahit dan direfiksasi ke lokasi perlekatannya dengan perangkat fiksasi jahitan. Operator mencatat reparasi primer ligamen krusiat, kategori other repair. Tidak diambil graft tendon dan tidak dilakukan rekonstruksi ligamen dengan graft pengganti.\nStabilitas serta rentang gerak dinilai setelah reparasi. Sendi diirigasi, instrumen dikeluarkan, dan luka portal dijahit. Balutan serta penyangga dipasang sesuai rencana rehabilitasi. Perdarahan sekitar 20 mL; transfusi tidak ada. Tidak ada komplikasi. Perfusi dan sensasi kaki tetap baik; pasien dipindahkan ke ruang pulih."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -2043,7 +2043,7 @@
     ],
     "items": [
       {
-        "prompt": "Kode tindakan apa yang digunakan untuk artroskopi lutut?",
+        "prompt": "Apa kode tindakan artroskopi lutut?",
         "feedback": "80.26 untuk artroskopi lutut.",
         "codes": [
           "80.26"
@@ -2059,7 +2059,7 @@
         ]
       },
       {
-        "prompt": "Selain artroskopi, dokter melakukan reparasi ligamen krusiat kategori other repair. Kode apa yang sesuai untuk reparasi tersebut?",
+        "prompt": "Operator melakukan reparasi ligamen krusiat kategori other repair. Apa kode untuk reparasi tersebut?",
         "feedback": "Gunakan 81.45 untuk other repair of the cruciate ligaments, yaitu kategori reparasi lain ligamen krusiat sebagaimana dicatat pada laporan.",
         "codes": [
           "81.45"
@@ -2075,7 +2075,7 @@
         ]
       },
       {
-        "prompt": "Menurut daftar pada ICS, apakah reparasi ligamen krusiat yang dilakukan bersama artroskopi ini termasuk prosedur kompleks?",
+        "prompt": "Apakah reparasi ligamen krusiat yang dilakukan bersama artroskopi termasuk prosedur kompleks menurut daftar ICS?",
         "feedback": "Ya. Reparasi yang didokumentasikan termasuk dalam daftar prosedur kompleks untuk artroskopi pada ICS.",
         "correct": 2,
         "options": [
@@ -2087,7 +2087,7 @@
         ]
       },
       {
-        "prompt": "Dokumen mana yang membuktikan reparasi ligamen krusiat sudah dilakukan, meskipun judul lembar tindakan hanya menyebut artroskopi?",
+        "prompt": "Bagian berkas mana yang membuktikan reparasi ligamen sudah dilakukan meskipun judul tindakan hanya menyebut artroskopi?",
         "feedback": "Uraian operasi menyebut ligamen yang ditangani dan menyatakan bahwa reparasi dilakukan.",
         "correct": 3,
         "options": [
@@ -2100,10 +2100,10 @@
       }
     ],
     "reference": "ICS Bab C MDC 18 Knee Arthroscopy dan Perhatian Khusus",
-    "pdf": "cases/2026-11-23.4/M4-09.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-09.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-10",
@@ -2112,7 +2112,7 @@
     "records": [
       [
         "Episode A / Identitas dan episode pelayanan",
-        "Tn. S-410A, laki-laki, 46 tahun; No. RM SIM-M4-10-A. Layanan bedah/perawatan luka, 16 November 2026. Episode A merupakan pasien yang berbeda. DPJP: spesialis bedah simulasi."
+        "Tn. A., laki-laki, 46 tahun; No. RM 26-11-0055. Layanan bedah/perawatan luka, 16 November 2026. Episode A merupakan pasien yang berbeda. DPJP: spesialis bedah."
       ],
       [
         "Episode A / Anamnesis",
@@ -2140,7 +2140,7 @@
       ],
       [
         "Episode A / Laporan tindakan",
-        "Operator menulis: dilakukan eksisi tajam jaringan devitalisasi pada kulit dan subkutis menggunakan pisau bedah hingga tepi jaringan viable. Ini debridemen eksisional kulit/subkutis; tidak mengeksisi otot, tendon, atau tulang. Hemostasis tercapai dan luka dibalut."
+        "Tanggal tindakan: 16 November 2026; pukul 09.00–09.25. Operator: spesialis bedah. Anestesi lokal.\nDiagnosis sebelum dan sesudah tindakan: luka tungkai dengan jaringan kulit dan subkutis devitalisasi. Indikasi: jaringan mati menghambat penyembuhan luka. Tindakan: debridemen eksisional.\nLuka berukuran 3 × 2 cm diverifikasi dan dibersihkan. Setelah anestesi bekerja, jaringan devitalisasi dipotong serta diangkat menggunakan pisau bedah dan gunting. Eksisi mencapai kulit dan subkutis hingga tampak jaringan viable dengan perdarahan titik. Tidak dilakukan pengangkatan fascia, otot, tendon, atau tulang.\nLuka diirigasi, sisa jaringan lepas dibersihkan, dan hemostasis dicapai. Luka tidak ditutup primer; dipasang balutan sesuai kondisi dasar luka. Tidak ada implan atau spesimen untuk pemeriksaan histologi.\nPerdarahan kurang dari 10 mL; transfusi tidak ada. Tidak ada komplikasi. Pasien stabil setelah tindakan dan mendapat instruksi perawatan luka serta jadwal kontrol."
       ],
       [
         "Episode A / Kondisi akhir pelayanan",
@@ -2152,7 +2152,7 @@
       ],
       [
         "Episode B / Identitas dan episode pelayanan",
-        "Tn. S-410B, laki-laki, 47 tahun; No. RM SIM-M4-10-B. Layanan bedah/perawatan luka, 16 November 2026. Episode B merupakan pasien yang berbeda. DPJP: spesialis bedah simulasi."
+        "Tn. B., laki-laki, 47 tahun; No. RM 26-11-0056. Layanan bedah/perawatan luka, 16 November 2026. Episode B merupakan pasien yang berbeda. DPJP: spesialis bedah."
       ],
       [
         "Episode B / Anamnesis",
@@ -2180,7 +2180,7 @@
       ],
       [
         "Episode B / Laporan tindakan",
-        "Operator menulis: dilakukan irigasi dan pembersihan mekanis jaringan devitalisasi yang longgar dengan kasa, tanpa memotong atau mengeksisi jaringan. Ini debridemen noneksisional kulit/subkutis, tanpa tindakan pada otot atau tulang."
+        "Tanggal tindakan: 16 November 2026; pukul 10.00–10.20. Pelaksana: dokter layanan perawatan luka. Analgesia diberikan sesuai kebutuhan; tidak memerlukan anestesi umum.\nDiagnosis sebelum dan sesudah tindakan: luka tungkai dengan jaringan devitalisasi superfisial. Indikasi: membersihkan jaringan lepas dan kotoran pada permukaan luka. Tindakan: debridemen noneksisional.\nLuka 3 × 2 cm dinilai, kemudian diirigasi dengan larutan pembersih luka. Jaringan devitalisasi yang longgar dibersihkan secara mekanis menggunakan kasa. Tidak dilakukan insisi, pemotongan, atau eksisi jaringan dengan pisau/gunting; tidak ada pengangkatan otot, tendon, atau tulang.\nSetelah pembersihan, dasar luka diperiksa, lalu dipasang balutan. Tidak dilakukan jahitan penutupan primer dan tidak digunakan implan. Tidak ada jaringan yang dikirim untuk pemeriksaan histologi.\nPerdarahan minimal; transfusi tidak ada. Tidak ada komplikasi. Pasien sadar, nyeri terkontrol, dan dapat pulang setelah edukasi perawatan serta tanda infeksi."
       ],
       [
         "Episode B / Kondisi akhir pelayanan",
@@ -2192,7 +2192,7 @@
       ],
       [
         "Episode C / Identitas dan episode pelayanan",
-        "Tn. S-410C, laki-laki, 48 tahun; No. RM SIM-M4-10-C. Layanan bedah/perawatan luka, 16 November 2026. Episode C merupakan pasien yang berbeda. DPJP: spesialis bedah simulasi."
+        "Tn. C., laki-laki, 48 tahun; No. RM 26-11-0057. Layanan bedah/perawatan luka, 16 November 2026. Episode C merupakan pasien yang berbeda. DPJP: spesialis bedah."
       ],
       [
         "Episode C / Anamnesis",
@@ -2220,7 +2220,7 @@
       ],
       [
         "Episode C / Laporan tindakan",
-        "Pada kolom prosedur operator hanya menulis “debridemen telah dilakukan”. Teknik, alat yang digunakan, dan jaringan terdalam yang ditangani belum dijelaskan."
+        "Tanggal tindakan: 16 November 2026; pukul 11.00–11.20. Pelaksana: dokter layanan perawatan luka.\nDiagnosis sebelum dan sesudah tindakan: luka tungkai dengan jaringan devitalisasi. Indikasi: pembersihan jaringan mati pada luka. Persetujuan tindakan dan penilaian kondisi pasien tercatat.\nPada kolom pelaksanaan tertulis: “Debridemen luka dilakukan, dilanjutkan pembersihan dan pemasangan balutan; perdarahan terkontrol.” Uraian ini tidak menyebut apakah jaringan dipotong/dieksisi atau dibersihkan secara noneksisional. Alat yang digunakan dan jaringan terdalam yang ditangani juga belum dicantumkan.\nTidak ada catatan penggunaan implan atau pengiriman spesimen. Jumlah perdarahan belum diisi; catatan observasi tidak menunjukkan perdarahan aktif. Tidak ada komplikasi yang tercatat. Pasien stabil setelah tindakan.\nInstruksi akhir: perawatan balutan dan kontrol luka. Klarifikasi kepada pelaksana diperlukan untuk melengkapi teknik serta kedalaman debridemen sebelum kode tindakan dipilih."
       ],
       [
         "Episode C / Kondisi akhir pelayanan",
@@ -2233,8 +2233,8 @@
     ],
     "items": [
       {
-        "prompt": "Pada laporan A, dokter mengeksisi jaringan luka saat debridemen. Kode tindakan apa yang sesuai?",
-        "feedback": "86.22 untuk debridemen eksisional pada contoh ini.",
+        "prompt": "Pada pasien A, jaringan kulit dan subkutis yang mati dieksisi saat debridemen. Apa kode tindakannya?",
+        "feedback": "86.22 untuk debridemen eksisional pada kasus ini.",
         "codes": [
           "86.22"
         ],
@@ -2249,7 +2249,7 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, dokter menulis debridemen noneksisional. Kode tindakan apa yang sesuai?",
+        "prompt": "Pada pasien B, debridemen dilakukan tanpa eksisi jaringan. Apa kode tindakannya?",
         "feedback": "86.28 untuk debridemen noneksisional.",
         "codes": [
           "86.28"
@@ -2265,7 +2265,7 @@
         ]
       },
       {
-        "prompt": "Keterangan mana dalam laporan A yang menunjukkan debridemen dilakukan dengan teknik eksisional?",
+        "prompt": "Catatan mana yang menunjukkan debridemen pasien A dilakukan secara eksisional?",
         "feedback": "Frasa “mengeksisi jaringan luka” menunjukkan teknik eksisional.",
         "correct": 0,
         "options": [
@@ -2277,7 +2277,7 @@
         ]
       },
       {
-        "prompt": "Pada laporan C, dokter hanya menulis “debridemen”. Apa pertanyaan yang tepat untuk memperjelas tindakan sebelum kode dipilih?",
+        "prompt": "Laporan pasien C hanya menyebut debridemen. Pertanyaan klarifikasi mana yang tepat sebelum menentukan kode?",
         "feedback": "Tanyakan teknik debridemen serta jaringan yang ditangani tanpa menyarankan teknik tertentu.",
         "correct": 4,
         "options": [
@@ -2290,10 +2290,10 @@
       }
     ],
     "reference": "ICS Bab C Perhatian Khusus MDC 19",
-    "pdf": "cases/2026-11-23.4/M4-10.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-10.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M4-11",
@@ -2302,7 +2302,7 @@
     "records": [
       [
         "Episode A / Identitas dan episode pelayanan",
-        "Tn. S-411A, laki-laki, 56 tahun; No. RM SIM-M4-11-A. Layanan penyakit dalam dan perawatan luka 17–20 November 2026. Episode A adalah pasien berbeda. DPJP: spesialis penyakit dalam simulasi."
+        "Tn. A., laki-laki, 56 tahun; No. RM 26-11-0058. Layanan penyakit dalam dan perawatan luka 17–20 November 2026. Episode A adalah pasien berbeda. DPJP: spesialis penyakit dalam."
       ],
       [
         "Episode A / Anamnesis",
@@ -2342,7 +2342,7 @@
       ],
       [
         "Episode B / Identitas dan episode pelayanan",
-        "Tn. S-411B, laki-laki, 60 tahun; No. RM SIM-M4-11-B. Layanan penyakit dalam dan perawatan luka 18–20 November 2026. Episode B adalah pasien berbeda. DPJP: spesialis penyakit dalam simulasi."
+        "Tn. B., laki-laki, 60 tahun; No. RM 26-11-0059. Layanan penyakit dalam dan perawatan luka 18–20 November 2026. Episode B adalah pasien berbeda. DPJP: spesialis penyakit dalam."
       ],
       [
         "Episode B / Anamnesis",
@@ -2383,8 +2383,8 @@
     ],
     "items": [
       {
-        "prompt": "Dokter menulis “diabetes melitus tipe 2 dengan ulkus diabetik” pada resume utama. Kode apa yang mencakup diagnosis tersebut sesuai contoh ICS?",
-        "feedback": "E11.5 adalah kode kombinasi yang digunakan untuk diagnosis pada contoh ICS ini.",
+        "prompt": "Pada pasien A, dokter menetapkan diabetes melitus tipe 2 dengan ulkus diabetik. Apa kode diagnosisnya menurut ICS?",
+        "feedback": "E11.5 adalah kode kombinasi yang digunakan untuk diagnosis menurut ICS.",
         "codes": [
           "E11.5"
         ],
@@ -2399,7 +2399,7 @@
         ]
       },
       {
-        "prompt": "Kata mana pada resume utama yang menunjukkan dokter mengaitkan ulkus dengan diabetes?",
+        "prompt": "Istilah mana pada diagnosis pasien A yang menunjukkan hubungan ulkus dengan diabetes?",
         "feedback": "“Ulkus diabetik” menyatakan bahwa dokter mengaitkan ulkus dengan diabetes.",
         "correct": 2,
         "options": [
@@ -2411,7 +2411,7 @@
         ]
       },
       {
-        "prompt": "Kode untuk diabetes dengan ulkus sudah digunakan. Sesuai contoh ICS ini, apakah ulkus masih perlu diberi kode terpisah?",
+        "prompt": "Menurut ketentuan ICS yang digunakan pada kasus ini, apakah ulkus perlu dikode terpisah setelah diabetes dengan ulkus dikode?",
         "feedback": "Pada contoh ini, ulkus sudah tercakup dalam kode kombinasi sehingga tidak dicatat lagi sebagai diagnosis sekunder.",
         "correct": 2,
         "options": [
@@ -2423,7 +2423,7 @@
         ]
       },
       {
-        "prompt": "Pada resume pembanding, dokter menulis diabetes dan ulkus tanpa menjelaskan kaitannya. Pertanyaan apa yang tepat untuk memperjelas hubungan kedua kondisi?",
+        "prompt": "Pada pasien B, hubungan diabetes dengan ulkus belum dijelaskan. Apa pertanyaan klarifikasi yang tepat?",
         "feedback": "Tanyakan apakah ulkus memiliki hubungan klinis dengan diabetes. Pertanyaan ini meminta penjelasan, tanpa mengarahkan dokter untuk menyatakan bahwa ulkus pasti merupakan komplikasi diabetes.",
         "correct": 1,
         "options": [
@@ -2436,10 +2436,10 @@
       }
     ],
     "reference": "ICS Bab C MDC 20 Diabetes Mellitus",
-    "pdf": "cases/2026-11-23.4/M4-11.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M4-11.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M6-01",
@@ -2448,7 +2448,7 @@
     "records": [
       [
         "Episode A / Identitas dan episode pelayanan",
-        "Ny. S-601A, perempuan, 36 tahun; No. RM SIM-M6-01-A. Rawat inap penyakit dalam 7–11 November 2026. Episode A tidak berkaitan dengan pasien pemasangan akses dialisis pada episode B. DPJP: spesialis penyakit dalam simulasi."
+        "Ny. A., perempuan, 36 tahun; No. RM 26-11-0061. Rawat inap penyakit dalam 7–11 November 2026. Episode A tidak berkaitan dengan pasien pemasangan akses dialisis pada episode B. DPJP: spesialis penyakit dalam."
       ],
       [
         "Episode A / Anamnesis",
@@ -2488,7 +2488,7 @@
       ],
       [
         "Episode B / Identitas dan episode pelayanan",
-        "Tn. S-601B, laki-laki, 64 tahun; No. RM SIM-M6-01-B. Rawat inap terencana nefrologi 12–13 November 2026 untuk persiapan akses dialisis. Pasien berbeda dari episode A. DPJP: spesialis penyakit dalam konsultan ginjal simulasi."
+        "Tn. B., laki-laki, 64 tahun; No. RM 26-11-0062. Rawat inap terencana nefrologi 12–13 November 2026 untuk persiapan akses dialisis. Pasien berbeda dari episode A. DPJP: spesialis penyakit dalam konsultan ginjal."
       ],
       [
         "Episode B / Anamnesis",
@@ -2516,7 +2516,7 @@
       ],
       [
         "Episode B / Laporan tindakan",
-        "Kateter hemodialisis bertunnel dipasang melalui vena jugularis interna kanan dengan panduan pencitraan. Dibentuk tunnel subkutan dan posisi ujung kateter diperiksa. Kedua lumen berfungsi. Tidak ada komplikasi segera. Ini bukan pemasangan kateter nontunnel dan bukan pembentukan fistula arteriovenosa."
+        "Tanggal tindakan: 12 November 2026; pukul 09.00–09.45. Operator: dokter pelaksana akses vaskular; anestesi lokal dengan pemantauan.\nDiagnosis pra- dan pascatindakan: penyakit ginjal kronik lanjut, memerlukan akses untuk rencana dialisis. Indikasi: persiapan akses karena akses arteriovenosa belum siap digunakan. Tindakan: pemasangan kateter hemodialisis bertunnel melalui vena jugularis interna kanan.\nSetelah verifikasi, persetujuan, dan persiapan steril pada leher serta dada kanan, vena dipetakan menggunakan ultrasonografi. Dilakukan pungsi vena dan pemasangan kawat pemandu dengan konfirmasi posisi. Dibuat jalur tunnel subkutan dari lokasi keluar di dada kanan menuju tempat masuk vena; bagian cuff ditempatkan di dalam tunnel.\nKateter dimasukkan melalui sheath dengan panduan pencitraan. Posisi ujung pada lokasi yang ditargetkan dikonfirmasi, kedua lumen diuji aspirasi dan alirannya, kemudian dikunci sesuai protokol akses. Kateter difiksasi dan luka diberi balutan steril. Tidak dilakukan pembentukan fistula atau graft arteriovenosa.\nPerdarahan minimal, transfusi tidak ada. Tidak ada pneumotoraks atau komplikasi segera. Pasien stabil setelah observasi. Pemasangan akses telah selesai; sesi hemodialisis tidak dilakukan pada episode ini."
       ],
       [
         "Episode B / Kondisi akhir pelayanan",
@@ -2529,7 +2529,7 @@
     ],
     "items": [
       {
-        "prompt": "Pada berkas A, dokter belum menulis stadium AKI. Apa pertanyaan yang tepat untuk meminta penjelasan dokter?",
+        "prompt": "DPJP belum menulis stadium AKI pasien A. Apa pertanyaan klarifikasi yang tepat?",
         "feedback": "Minta DPJP menjelaskan stadium AKI bila dapat ditentukan, tanpa mengusulkan salah satu stadium.",
         "correct": 1,
         "options": [
@@ -2541,7 +2541,7 @@
         ]
       },
       {
-        "prompt": "Kreatinin pasien A meningkat, tetapi DPJP hanya menulis AKI tanpa stadium. Apa langkah yang tepat sebelum memilih kode AKI dengan stadium tertentu?",
+        "prompt": "Kreatinin pasien A meningkat, tetapi stadium AKI belum ditulis. Apa langkah yang tepat sebelum memilih kode AKI dengan stadium tertentu?",
         "options": [
           "Langsung menetapkan stadium tertinggi.",
           "Mengambil stadium dari pasien B.",
@@ -2553,8 +2553,8 @@
         "feedback": "Data serial membantu klarifikasi, tetapi koder tidak menetapkan stadium sendiri. Minta penjelasan DPJP secara netral dan gunakan hanya data pasien A. Dokumen pasien B tidak berhubungan dengan episode ini."
       },
       {
-        "prompt": "Pada berkas B, kateter dialisis bertunnel sudah dipasang. Kode tindakan spesifik apa yang digunakan sesuai ICS?",
-        "feedback": "38.950 sesuai untuk pemasangan tunneled dialysis catheter pada contoh ICS ini.",
+        "prompt": "Pasien B sudah menjalani pemasangan kateter dialisis bertunnel. Apa kode tindakan spesifiknya menurut ICS?",
+        "feedback": "38.950 sesuai untuk pemasangan tunneled dialysis catheter menurut ICS.",
         "codes": [
           "38.950"
         ],
@@ -2569,7 +2569,7 @@
         ]
       },
       {
-        "prompt": "Pada berkas B, kateter dialisis sudah dipasang tetapi tidak ada catatan sesi dialisis. Apakah kode pelaksanaan dialisis boleh langsung ditambahkan?",
+        "prompt": "Kateter dialisis pasien B sudah dipasang, tetapi dialisis belum dilakukan. Apakah kode pelaksanaan dialisis boleh langsung ditambahkan?",
         "feedback": "Pemasangan kateter menyediakan akses dialisis. Hal itu belum membuktikan sesi dialisis sudah dilakukan. Kode pelaksanaan dialisis memerlukan catatan pelaksanaan tersendiri.",
         "correct": 0,
         "options": [
@@ -2582,10 +2582,10 @@
       }
     ],
     "reference": "ICS Bab C MDC 21 AKI dan Pemasangan Akses Hemodialisis",
-    "pdf": "cases/2026-11-23.4/M6-01.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M6-01.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M6-02",
@@ -2594,7 +2594,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Ny. S-602, perempuan, 25 tahun; G1P0A0, hamil 38 minggu 5 hari berdasarkan USG awal. No. RM SIM-M6-02. Episode ibu, rawat inap obstetri 15–17 November 2026. DPJP: spesialis obstetri dan ginekologi simulasi."
+        "Ny. V., perempuan, 25 tahun; G1P0A0, hamil 38 minggu 5 hari berdasarkan USG awal. No. RM 26-11-0063. Episode ibu, rawat inap obstetri 15–17 November 2026. DPJP: spesialis obstetri dan ginekologi."
       ],
       [
         "Anamnesis",
@@ -2622,7 +2622,7 @@
       ],
       [
         "Laporan tindakan",
-        "15 November pukul 13.10 lahir satu bayi perempuan hidup, presentasi kepala, berat 3.000 gram, Apgar 8/9. Episiotomi mediolateral dengan anestesi lokal telah dilakukan dan dijahit. Plasenta lengkap; perdarahan 200 mL. Tidak ada vakum, forsep, atau operasi sesar."
+        "Tanggal dan waktu: 15 November 2026, kelahiran pukul 13.10; penjahitan selesai pukul 13.35. Operator: spesialis obstetri dan ginekologi, didampingi bidan.\nDiagnosis sebelum tindakan: primigravida aterm, KPD dengan onset persalinan dalam 24 jam, kala II presentasi kepala. Diagnosis sesudah tindakan: persalinan spontan dan satu bayi lahir hidup.\nIndikasi episiotomi: perineum sangat tegang pada saat kepala lahir dan operator memutuskan tindakan selektif. Anestesi: infiltrasi lokal.\nSetelah verifikasi dan persiapan perineum, dibuat episiotomi mediolateral kanan saat kepala meregangkan perineum. Kepala, bahu, dan tubuh bayi lahir spontan tanpa vakum atau forsep. Bayi perempuan, berat 3.000 gram, Apgar 8/9. Plasenta dilahirkan lengkap; uterus berkontraksi baik setelah tata laksana kala III.\nInspeksi jalan lahir tidak menunjukkan robekan yang meluas ke sfingter ani atau rektum. Luka episiotomi dijahit berlapis pada mukosa vagina, otot perineum, dan kulit menggunakan benang absorbabel. Hemostasis baik dan pemeriksaan akhir tidak menemukan perdarahan aktif.\nPerdarahan sekitar 200 mL; transfusi tidak ada. Tidak ada komplikasi tindakan. Ibu sadar dan stabil, bayi dirawat bersama ibu; observasi nifas dilanjutkan."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -2635,7 +2635,7 @@
     ],
     "items": [
       {
-        "prompt": "Ibu mengalami ketuban pecah dini dan mulai bersalin dalam 24 jam. Kode apa yang menjadi diagnosis utama pada berkas ibu?",
+        "prompt": "Ibu mengalami ketuban pecah dini dan persalinan dimulai enam jam kemudian. Apa kode diagnosis utama pada berkas ibu?",
         "feedback": "O42.0 untuk ketuban pecah dini dengan awal persalinan dalam 24 jam.",
         "codes": [
           "O42.0"
@@ -2651,7 +2651,7 @@
         ]
       },
       {
-        "prompt": "Untuk persalinan spontan presentasi kepala, kode dan penempatan diagnosis manakah yang benar pada berkas ibu?",
+        "prompt": "Bagaimana mengode dan menempatkan persalinan spontan presentasi kepala pada berkas ibu ini?",
         "feedback": "O80.0 dicatat sebagai diagnosis sekunder untuk cara persalinan spontan presentasi kepala.",
         "correct": 3,
         "options": [
@@ -2663,7 +2663,7 @@
         ]
       },
       {
-        "prompt": "Untuk hasil satu bayi lahir hidup, kode dan penempatan diagnosis manakah yang benar pada berkas ibu?",
+        "prompt": "Bagaimana mengode dan menempatkan hasil kelahiran satu bayi hidup pada berkas ibu?",
         "feedback": "Z37.0 dicatat sebagai diagnosis sekunder untuk hasil satu bayi lahir hidup.",
         "correct": 3,
         "options": [
@@ -2675,7 +2675,7 @@
         ]
       },
       {
-        "prompt": "Persalinan spontan dan episiotomi sudah dilakukan. Pasangan kode tindakan manakah yang sesuai contoh ICS?",
+        "prompt": "Apa pasangan kode tindakan untuk persalinan spontan dan episiotomi yang telah dilakukan?",
         "feedback": "Gunakan 73.59 dan 73.6. Kode 73.6 adalah kode episiotomi.",
         "codes": [
           "73.59",
@@ -2693,10 +2693,10 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.80",
-    "pdf": "cases/2026-11-23.4/M6-02.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M6-02.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M6-03",
@@ -2705,7 +2705,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Bayi S-603, laki-laki; No. RM SIM-M6-03. Lahir tunggal di rumah sakit 16 November 2026 pukul 06.20, usia gestasi 39 minggu, berat lahir 3.000 gram. Rawat bayi sampai 19 November. DPJP: spesialis anak simulasi. Dokumen ini adalah berkas bayi, bukan berkas ibu."
+        "Bayi N., laki-laki; No. RM 26-11-0066. Lahir tunggal di rumah sakit 16 November 2026 pukul 06.20, usia gestasi 39 minggu, berat lahir 3.000 gram. Rawat bayi sampai 19 November. DPJP: spesialis anak. Dokumen ini adalah berkas bayi, bukan berkas ibu."
       ],
       [
         "Anamnesis",
@@ -2746,8 +2746,8 @@
     ],
     "items": [
       {
-        "prompt": "Dokter menetapkan hipoglikemia neonatal. Kode diagnosis utama apa yang digunakan pada berkas bayi?",
-        "feedback": "P70.4 untuk hipoglikemia neonatal pada contoh ini.",
+        "prompt": "Apa kode diagnosis utama untuk hipoglikemia neonatal yang ditetapkan dokter?",
+        "feedback": "P70.4 untuk hipoglikemia neonatal pada kasus ini.",
         "codes": [
           "P70.4"
         ],
@@ -2762,7 +2762,7 @@
         ]
       },
       {
-        "prompt": "Bayi lahir tunggal di rumah sakit. Kode dan penempatan diagnosis manakah yang benar untuk mencatat status kelahirannya?",
+        "prompt": "Apa kode dan penempatan diagnosis untuk status bayi tunggal yang lahir di rumah sakit?",
         "feedback": "Z38.0 dicatat sebagai diagnosis sekunder untuk bayi tunggal yang lahir di rumah sakit.",
         "correct": 4,
         "options": [
@@ -2774,7 +2774,7 @@
         ]
       },
       {
-        "prompt": "Dua keterangan pada catatan kelahiran mana yang mendasari pemilihan Z38.0?",
+        "prompt": "Informasi mana pada catatan kelahiran yang mendasari penggunaan Z38.0?",
         "feedback": "Bayi lahir tunggal dan tempat lahirnya di rumah sakit.",
         "correct": 3,
         "options": [
@@ -2786,7 +2786,7 @@
         ]
       },
       {
-        "prompt": "Apakah Z37.0 merupakan kode untuk mencatat status kelahiran pada berkas bayi ini?",
+        "prompt": "Apakah Z37.0 digunakan untuk mencatat status kelahiran pada berkas bayi ini?",
         "feedback": "Z37.0 mencatat hasil persalinan pada episode ibu. Pada episode bayi, status kelahiran dicatat dengan kode yang sesuai dari kategori Z38.",
         "correct": 2,
         "options": [
@@ -2799,10 +2799,10 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.89",
-    "pdf": "cases/2026-11-23.4/M6-03.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M6-03.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M6-04",
@@ -2811,7 +2811,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Ny. S-604, perempuan, 46 tahun; No. RM SIM-M6-04. Rawat inap penyakit dalam 10–18 November 2026. DPJP: spesialis penyakit dalam simulasi. Catatan waktu membedakan alasan awal masuk dari komplikasi selama rawat."
+        "Ny. X., perempuan, 46 tahun; No. RM 26-11-0069. Rawat inap penyakit dalam 10–18 November 2026. DPJP: spesialis penyakit dalam. Catatan waktu membedakan alasan awal masuk dari komplikasi selama rawat."
       ],
       [
         "Anamnesis",
@@ -2852,7 +2852,7 @@
     ],
     "items": [
       {
-        "prompt": "Pasien masuk karena pielonefritis akut, lalu mengalami sepsis selama dirawat. Sesuai urutan kejadian pada contoh ICS ini, kode apa yang menjadi diagnosis utama?",
+        "prompt": "Pasien masuk karena pielonefritis akut, kemudian mengalami sepsis pada hari kedua. Apa kode diagnosis utama berdasarkan kronologi perawatan ini?",
         "feedback": "N10 untuk pielonefritis akut sebagai diagnosis utama pada episode ini.",
         "codes": [
           "N10"
@@ -2868,8 +2868,8 @@
         ]
       },
       {
-        "prompt": "Kode diagnosis sekunder apa yang digunakan untuk sepsis akibat E. coli sesuai contoh ICS ini?",
-        "feedback": "A41.5 untuk sepsis akibat organisme Gram-negatif lain, sebagaimana digunakan pada contoh ICS ini.",
+        "prompt": "Apa kode diagnosis sekunder untuk sepsis akibat E. coli menurut klasifikasi yang digunakan?",
+        "feedback": "A41.5 untuk sepsis akibat organisme Gram-negatif lain, sebagaimana digunakan menurut ICS.",
         "codes": [
           "A41.5"
         ],
@@ -2884,7 +2884,7 @@
         ]
       },
       {
-        "prompt": "Kode tambahan apa yang menunjukkan E. coli sebagai penyebab pielonefritis?",
+        "prompt": "Apa kode tambahan untuk E. coli sebagai penyebab pielonefritis?",
         "feedback": "B96.2 mencatat E. coli sebagai organisme penyebab.",
         "codes": [
           "B96.2"
@@ -2900,7 +2900,7 @@
         ]
       },
       {
-        "prompt": "Catatan mana yang menunjukkan bahwa dokter sudah menetapkan diagnosis sepsis, bukan hanya menemukan kultur positif?",
+        "prompt": "Catatan mana yang memastikan diagnosis sepsis sudah ditegakkan dokter, bukan hanya menunjukkan kultur positif?",
         "feedback": "DPJP secara eksplisit menetapkan “sepsis akibat E. coli”. Kultur positif membantu mengidentifikasi organisme dan harus dibaca bersama diagnosis dokter.",
         "correct": 2,
         "options": [
@@ -2913,10 +2913,10 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.102",
-    "pdf": "cases/2026-11-23.4/M6-04.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M6-04.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M6-05",
@@ -2925,7 +2925,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-605, laki-laki, 34 tahun; No. RM SIM-M6-05. Rawat inap trauma 12–20 November 2026. DPJP: tim bedah toraks dan ortopedi simulasi. Pasien adalah pengemudi mobil pada kecelakaan lalu lintas di jalan umum."
+        "Tn. Y., laki-laki, 34 tahun; No. RM 26-11-0072. Rawat inap trauma 12–20 November 2026. DPJP: tim bedah toraks dan ortopedi. Pasien adalah pengemudi mobil pada kecelakaan lalu lintas di jalan umum."
       ],
       [
         "Anamnesis",
@@ -2953,7 +2953,7 @@
       ],
       [
         "Laporan tindakan",
-        "WSD dipasang pada hemitoraks kiri; udara dan cairan darah terdrainase, diikuti perbaikan pengembangan paru. Pada operasi terpisah dalam episode yang sama dilakukan penanganan luka serta reduksi terbuka dan fiksasi internal pada humerus kiri. Laporan menegaskan ORIF telah terlaksana. Drain dada dilepas setelah evaluasi klinis dan radiologi memenuhi syarat."
+        "Laporan 1 — Pemasangan drain dada\nTanggal: 12 November 2026; pukul 15.00–15.25. Operator: dokter tim bedah toraks. Anestesi lokal. Diagnosis pra- dan pascatindakan: hemopneumotoraks kiri akibat trauma. Indikasi: gangguan napas dan penumpukan udara serta darah di rongga pleura.\nSetelah verifikasi sisi dan persiapan steril, dibuat insisi di ruang interkostal kiri pada lokasi yang ditentukan operator. Jaringan dibuka dengan diseksi tumpul di atas tepi iga hingga rongga pleura. Posisi intrapleura diperiksa, kemudian selang drain dada dimasukkan dan disambungkan ke sistem water seal. Keluar udara serta sekitar 350 mL cairan darah awal. Selang difiksasi dan diberi balutan; pergerakan sistem serta respons napas diperiksa. Foto toraks kontrol menunjukkan posisi drain dan pengembangan paru membaik. Tidak ada komplikasi pemasangan.\n\nLaporan 2 — Reduksi terbuka dan fiksasi internal humerus\nTanggal: 13 November 2026; pukul 09.00–11.00. Operator: spesialis ortopedi; asisten: dokter residen; anestesi umum. Diagnosis pra- dan pascaoperasi: fraktur terbuka humerus proksimal kiri. Indikasi: fraktur bergeser yang memerlukan perbaikan posisi dan stabilisasi setelah kondisi dada membaik.\nSetelah verifikasi sisi dan persiapan aseptik, luka diperiksa dan dibersihkan. Dengan pendekatan deltopektoral, daerah humerus proksimal diekspos; struktur neurovaskular dilindungi. Fragmen tulang dilihat langsung dan direduksi terbuka. Plate dan sekrup dipasang untuk mempertahankan posisi. Kedudukan fragmen, panjang sekrup, dan stabilitas diperiksa dengan pencitraan.\nLuka diirigasi, hemostasis diperiksa, lalu ditutup berlapis sesuai penilaian jaringan. Perdarahan sekitar 150 mL; transfusi tidak ada. Tidak ada komplikasi intraoperatif. Perfusi dan sensasi tangan tetap baik. Pasien dipindahkan ke ruang pulih dengan lengan disangga dan rencana rehabilitasi bertahap."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -2966,8 +2966,8 @@
     ],
     "items": [
       {
-        "prompt": "Dokter menetapkan cedera organ dalam dada sebagai kondisi utama dan fraktur terbuka humerus sebagai kondisi lain. Pasangan kode diagnosis utama dan sekunder manakah yang sesuai?",
-        "feedback": "S27.7 menjadi diagnosis utama untuk cedera multipel organ intratorakal. S42.21 menjadi diagnosis sekunder untuk fraktur terbuka humerus proksimal dalam contoh ini.",
+        "prompt": "DPJP menetapkan cedera multipel intratorakal sebagai kondisi utama dan fraktur terbuka humerus proksimal sebagai kondisi lain. Apa pasangan kode diagnosisnya?",
+        "feedback": "S27.7 menjadi diagnosis utama untuk cedera multipel organ intratorakal. S42.21 menjadi diagnosis sekunder untuk fraktur terbuka humerus proksimal pada kasus ini.",
         "codes": [
           "S27.7",
           "S42.21"
@@ -2983,8 +2983,8 @@
         ]
       },
       {
-        "prompt": "Pasien mengemudikan mobil yang menabrak pohon. Kode penyebab luar apa yang digunakan sesuai contoh ICS?",
-        "feedback": "V47.59 adalah kode penyebab luar yang digunakan pada contoh ICS ini.",
+        "prompt": "Pasien mengemudikan mobil yang menabrak pohon di jalan umum. Apa kode penyebab luarnya?",
+        "feedback": "V47.59 adalah kode penyebab luar yang digunakan menurut ICS.",
         "codes": [
           "V47.59"
         ],
@@ -2999,14 +2999,14 @@
         ]
       },
       {
-        "prompt": "WSD pada dada dan ORIF pada humerus sudah dilakukan. Pasangan kode tindakan manakah yang sesuai contoh ICS?",
-        "feedback": "WSD dikode 34.04 dan ORIF humerus dikode 79.39.",
+        "prompt": "Apa pasangan kode untuk pemasangan WSD dan ORIF humerus kiri yang sudah dilakukan?",
+        "feedback": "Pemasangan drain interkostal/WSD dikode 34.04. Reduksi terbuka fraktur humerus dengan fiksasi internal dikode 79.31. Kode 79.39 digunakan untuk tulang lain yang ditentukan, bukan humerus. Pilihan mengikuti lokasi tulang dan tindakan pada laporan operasi.",
         "codes": [
           "34.04",
-          "79.39"
+          "79.31"
         ],
         "ordered": true,
-        "correct": 3,
+        "correct": 0,
         "options": [
           "WSD 34.04 · ORIF 79.31",
           "WSD 34.04 · ORIF 79.19",
@@ -3016,7 +3016,7 @@
         ]
       },
       {
-        "prompt": "Cedera pada dada dan humerus termasuk dalam dua kelompok lokasi tubuh yang mana saat menelaah kriteria MDC 31?",
+        "prompt": "Cedera dada dan humerus termasuk dalam dua kelompok lokasi tubuh apa saat menilai kriteria MDC 31?",
         "feedback": "Lokasi cedera adalah dada dan ekstremitas atas atau anggota gerak atas. Humerus termasuk ekstremitas atas. Informasi lokasi ini digunakan untuk menelaah kriteria trauma; penetapan MDC tetap mengikuti kriteria grouper.",
         "correct": 0,
         "options": [
@@ -3029,10 +3029,10 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.124 dan kriteria MDC 31",
-    "pdf": "cases/2026-11-23.4/M6-05.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M6-05.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M6-06",
@@ -3041,7 +3041,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Ny. S-606, perempuan, 44 tahun; No. RM SIM-M6-06. Rawat jalan rehabilitasi medik 19 November 2026. Kunjungan untuk sesi terapi fisik yang sudah dijadwalkan. DPJP: spesialis kedokteran fisik dan rehabilitasi simulasi."
+        "Ny. Z., perempuan, 44 tahun; No. RM 26-11-0075. Rawat jalan rehabilitasi medik 19 November 2026. Kunjungan untuk sesi terapi fisik yang sudah dijadwalkan. DPJP: spesialis kedokteran fisik dan rehabilitasi."
       ],
       [
         "Anamnesis",
@@ -3082,8 +3082,8 @@
     ],
     "items": [
       {
-        "prompt": "Pasien datang khusus untuk menjalani terapi rehabilitasi. Kode diagnosis utama apa yang sesuai untuk kunjungan ini?",
-        "feedback": "Z50.1 untuk kunjungan terapi fisik pada contoh ini.",
+        "prompt": "Pasien datang untuk menjalani sesi terapi fisik. Apa kode diagnosis utama kunjungan ini?",
+        "feedback": "Z50.1 untuk kunjungan terapi fisik pada kasus ini.",
         "codes": [
           "Z50.1"
         ],
@@ -3098,8 +3098,8 @@
         ]
       },
       {
-        "prompt": "Rehabilitasi diberikan karena nyeri punggung bawah. Kode diagnosis sekunder apa yang digunakan sesuai contoh ICS?",
-        "feedback": "M54.5 adalah kode nyeri punggung bawah yang digunakan pada contoh ini.",
+        "prompt": "Apa kode diagnosis sekunder untuk nyeri punggung bawah menurut klasifikasi yang digunakan?",
+        "feedback": "M54.5 adalah kode nyeri punggung bawah yang digunakan pada kasus ini.",
         "codes": [
           "M54.5"
         ],
@@ -3114,8 +3114,8 @@
         ]
       },
       {
-        "prompt": "Peregangan sudah dilakukan. Kode tindakan apa yang sesuai?",
-        "feedback": "93.27 untuk peregangan pada contoh ini.",
+        "prompt": "Apa kode untuk tindakan peregangan yang telah diberikan?",
+        "feedback": "93.27 untuk peregangan pada kasus ini.",
         "codes": [
           "93.27"
         ],
@@ -3130,8 +3130,8 @@
         ]
       },
       {
-        "prompt": "Terapi inframerah sudah dilakukan. Kode tindakan apa yang sesuai?",
-        "feedback": "93.35 untuk terapi inframerah pada contoh ini.",
+        "prompt": "Apa kode untuk terapi inframerah yang telah diberikan?",
+        "feedback": "93.35 untuk terapi inframerah pada kasus ini.",
         "codes": [
           "93.35"
         ],
@@ -3147,10 +3147,10 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.135",
-    "pdf": "cases/2026-11-23.4/M6-06.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M6-06.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M6-07",
@@ -3159,7 +3159,7 @@
     "records": [
       [
         "Identitas dan episode pelayanan",
-        "Tn. S-607, laki-laki, 48 tahun; No. RM SIM-M6-07. Rawat jalan rehabilitasi medik 20 November 2026 untuk sesi terapi fisik. DPJP: spesialis kedokteran fisik dan rehabilitasi simulasi."
+        "Tn. A., laki-laki, 48 tahun; No. RM 26-11-0078. Rawat jalan rehabilitasi medik 20 November 2026 untuk sesi terapi fisik. DPJP: spesialis kedokteran fisik dan rehabilitasi."
       ],
       [
         "Anamnesis",
@@ -3187,7 +3187,7 @@
       ],
       [
         "Laporan tindakan",
-        "Laporan terapi menyatakan whirlpool telah diberikan selama 15 menit sesuai program dokter, diselesaikan pukul 10.15, dan ditandatangani terapis simulasi. Ini bukti pelaksanaan terapi, bukan daftar rencana atau ketersediaan alat."
+        "Laporan terapi menyatakan whirlpool telah diberikan selama 15 menit sesuai program dokter, diselesaikan pukul 10.15, dan ditandatangani terapis. Ini bukti pelaksanaan terapi, bukan daftar rencana atau ketersediaan alat."
       ],
       [
         "Kondisi akhir pelayanan",
@@ -3204,7 +3204,7 @@
     ],
     "items": [
       {
-        "prompt": "Terapi whirlpool sudah diberikan, tetapi aplikasi menampilkan “rehabilitasi tanpa prosedur”. Apa kesalahan pada isian aplikasi?",
+        "prompt": "Whirlpool sudah diberikan, tetapi hasil grouping menyebut rehabilitasi tanpa prosedur. Apa kesalahan pada isian aplikasi?",
         "feedback": "Catatan terapi menyatakan whirlpool sudah diberikan, tetapi kolom tindakan belum diisi. Petugas perlu memasukkan kode tindakan yang sesuai, bukan menganggap terapi tidak dilakukan hanya karena uraian hasil grouping.",
         "correct": 0,
         "options": [
@@ -3216,7 +3216,7 @@
         ]
       },
       {
-        "prompt": "Kode tindakan apa yang harus dimasukkan untuk terapi whirlpool yang sudah diberikan?",
+        "prompt": "Apa kode tindakan whirlpool yang perlu dimasukkan?",
         "feedback": "93.32 untuk terapi whirlpool.",
         "codes": [
           "93.32"
@@ -3232,7 +3232,7 @@
         ]
       },
       {
-        "prompt": "Kode whirlpool sudah ditambahkan. Apa langkah berikutnya pada aplikasi grouper?",
+        "prompt": "Setelah kode whirlpool ditambahkan, apa langkah berikutnya pada aplikasi grouper?",
         "feedback": "Periksa dan validasi kembali isian yang sudah ditambahkan, lalu jalankan grouping ulang. Hasil sebelum perbaikan tidak digunakan sebagai hasil akhir setelah isian berubah.",
         "correct": 1,
         "options": [
@@ -3244,7 +3244,7 @@
         ]
       },
       {
-        "prompt": "Setelah grouping dijalankan ulang, hasil apa yang harus diperiksa dan dicatat petugas?",
+        "prompt": "Apa yang perlu diperiksa dan dicatat setelah grouping ulang?",
         "feedback": "Baca hasil grouping yang baru, periksa apakah masalah “rehabilitasi tanpa prosedur” sudah teratasi, lalu catat kode dan uraian yang benar-benar tampil. Jangan menebak kode hasil setelah perbaikan.",
         "correct": 1,
         "options": [
@@ -3257,10 +3257,10 @@
       }
     ],
     "reference": "ICS Bab C Gambar C.26 dan C.27",
-    "pdf": "cases/2026-11-23.4/M6-07.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M6-07.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   },
   {
     "id": "M6-08",
@@ -3269,7 +3269,7 @@
     "records": [
       [
         "Episode A / Identitas dan episode pelayanan",
-        "Ny. S-608A, perempuan, 46 tahun; No. RM SIM-M6-08-A. Pelayanan radiologi rawat jalan 20 November 2026. Episode A berasal dari pasien berbeda. Pemeriksa: spesialis radiologi simulasi."
+        "Ny. A., perempuan, 46 tahun; No. RM 26-11-0082. Pelayanan radiologi rawat jalan 20 November 2026. Episode A berasal dari pasien berbeda. Pemeriksa: spesialis radiologi."
       ],
       [
         "Episode A / Anamnesis",
@@ -3309,7 +3309,7 @@
       ],
       [
         "Episode B / Identitas dan episode pelayanan",
-        "Ny. S-608B, perempuan, 39 tahun; No. RM SIM-M6-08-B. Pelayanan radiologi rawat jalan 21 November 2026. Episode B berasal dari pasien berbeda. Pemeriksa: spesialis radiologi simulasi."
+        "Ny. B., perempuan, 39 tahun; No. RM 26-11-0083. Pelayanan radiologi rawat jalan 21 November 2026. Episode B berasal dari pasien berbeda. Pemeriksa: spesialis radiologi."
       ],
       [
         "Episode B / Anamnesis",
@@ -3350,7 +3350,7 @@
     ],
     "items": [
       {
-        "prompt": "Pada laporan A, pasien sudah menjalani CT kepala. Kode pemeriksaan apa yang sesuai?",
+        "prompt": "Pasien A sudah menjalani CT kepala. Apa kode pemeriksaannya?",
         "feedback": "87.03 untuk CT kepala.",
         "codes": [
           "87.03"
@@ -3366,8 +3366,8 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, pasien sudah menjalani MRI kepala. Kode pemeriksaan apa yang sesuai?",
-        "feedback": "88.91 untuk MRI otak dan batang otak pada contoh ICS ini.",
+        "prompt": "Pasien B sudah menjalani MRI otak dan batang otak. Apa kode pemeriksaannya?",
+        "feedback": "88.91 untuk MRI otak dan batang otak menurut ICS.",
         "codes": [
           "88.91"
         ],
@@ -3382,7 +3382,7 @@
         ]
       },
       {
-        "prompt": "Bahan kontras sudah diberikan pada CT kepala dalam laporan A. Kode tambahan apa yang digunakan sesuai ICS?",
+        "prompt": "Apa kode tambahan untuk pemberian kontras pada CT kepala pasien A menurut ICS?",
         "feedback": "99.290 menunjukkan pemberian bahan kontras pada pemeriksaan CT yang tercatat.",
         "codes": [
           "99.290"
@@ -3398,7 +3398,7 @@
         ]
       },
       {
-        "prompt": "Bahan kontras sudah diberikan pada MRI kepala dalam laporan B. Kode tambahan apa yang digunakan sesuai ICS?",
+        "prompt": "Apa kode tambahan untuk pemberian kontras pada MRI kepala pasien B menurut ICS?",
         "feedback": "99.290 juga digunakan untuk pemberian bahan kontras pada pemeriksaan MRI yang tercatat.",
         "codes": [
           "99.290"
@@ -3415,9 +3415,9 @@
       }
     ],
     "reference": "ICS Bab C MDC 90 Prosedur Diagnosis",
-    "pdf": "cases/2026-11-23.4/M6-08.pdf",
-    "contentRevision": "2026-11-23.4",
+    "pdf": "cases/2026-11-24.1/M6-08.pdf",
+    "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis simulasi"
+    "documentType": "Resume medis"
   }
 ]

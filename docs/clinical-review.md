@@ -30,3 +30,11 @@ Diakses 23 November 2026. Rujukan digunakan untuk konsistensi skenario klinis; b
 - [IWGDF/IDSA 2023](https://www.idsociety.org/practice-guideline/diabetic-foot-infections/), diagnosis infeksi kaki secara klinis.
 
 Beberapa halaman NICE dan jurnal membatasi pengambilan teks penuh dengan HTTP 403; informasi diperiksa melalui hasil pencarian sumber resmi dan halaman primer lain yang tersedia. Dokumen ini mencatat penelaahan konsistensi oleh penyusun aplikasi, bukan pengesahan dokter spesialis independen.
+
+## Rincian tindakan dan penyuntingan 24 November 2026
+
+Referensi yang dibaca: Coder’s Desk Reference for ICD-9-CM Procedures, Ingenix 2009, pada berkas lokal Optum 1-100.pdf, 101-300.pdf, 301-500.pdf, 501-600.pdf, dan 601-787.pdf di direktori DATABASE LLM yang dirujuk proyek Akurat. Bagian yang ditelaah meliputi kraniotomi/reseksi, lesi telinga luar, ekstraksi batu bilier endoskopik, kateter dialisis, debridemen, dan reduksi terbuka fraktur. Nomor halaman pindai yang diperiksa antara lain 87, 91, 198, 337, 423, 597, 691, dan 692; nomor pindai tidak selalu sama dengan nomor halaman cetak.
+
+Laporan operasi diperluas dengan narasi asli penyusun berdasarkan jenis prosedur dan kebutuhan dokumentasi. Nama operator atau SIP nyata tidak dipalsukan; pelaksana disebut berdasarkan perannya. Kekurangan spesifikasi pada kasus klarifikasi dipertahankan secara eksplisit. Kasus tetap merupakan data buatan untuk asesmen meskipun penanda teknisnya tidak diulang di setiap narasi.
+
+Ditemukan ketidaksesuaian pada contoh ORIF humerus: tabel kasus ICS menulis 79.39, sedangkan bagian lain ICS menulis 79.31; tabel subklasifikasi pada halaman pindai Optum 597 juga tidak dipakai tanpa validasi silang. Klasifikasi menempatkan ORIF humerus pada 79.31. Verifikasi silang: [AHRQ, Operating Room Procedure Codes](https://qualityindicators.ahrq.gov/Downloads/Modules/PSI/V21/psi_operating_room_procedure_codes_rev3.pdf), entri 7931; [CMS, berkas judul kode ICD-9-CM](https://www.cms.gov/medicare/coding-billing/icd-10-codes/icd-9-cm-diagnosis-procedure-codes-abbreviated-and-full-code-titles). Kunci M6-05 butir 3 diperbaiki pada versi 2026-11-24.1; bank sebelumnya tetap imutabel.

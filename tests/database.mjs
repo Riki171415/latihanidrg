@@ -83,16 +83,18 @@ try{
   await db.exec('reset role;set role anon');
   await assert.rejects(db.query('select * from public.idrg_profiles'));
   await assert.rejects(rpc('idrg_start_packet',['4']));
-  await assert.rejects(rpc('idrg_start_packet_versioned',['4','2026-11-23.4']));
+  await assert.rejects(rpc('idrg_start_packet_versioned',['4','2026-11-24.1']));
   await login(uid1);
-  const current=await rpc('idrg_start_packet_versioned',['4','2026-11-23.4']);
+  const current=await rpc('idrg_start_packet_versioned',['4','2026-11-24.1']);
   const legacy=await rpc('idrg_start_packet',['4']);
-  assert.equal(current.revision,'2026-11-23.4');
+  assert.equal(current.revision,'2026-11-24.1');
+  const fullResumeVersion=await rpc('idrg_start_packet_versioned',['4','2026-11-23.4']);
+  assert.notEqual(fullResumeVersion.id,current.id);
   assert.equal(legacy.revision,'2026-11-23.3');
   assert.notEqual(current.id,legacy.id,'new content must not overwrite an older attempt');
-  assert.equal((await rpc('idrg_start_packet_versioned',['4','2026-11-23.4'])).id,current.id);
+  assert.equal((await rpc('idrg_start_packet_versioned',['4','2026-11-24.1'])).id,current.id);
   await assert.rejects(rpc('idrg_start_packet_versioned',['4','2099-01-01.1']));
-  await assert.rejects(rpc('idrg_start_packet_versioned',['unknown','2026-11-23.4']));
+  await assert.rejects(rpc('idrg_start_packet_versioned',['unknown','2026-11-24.1']));
   const latestAnswers=Object.fromEntries(bank.filter(c=>c.module===4).flatMap(c=>c.items.map((q,i)=>[c.id+'-'+i,String(q.correct)])));
   const latestResult=await rpc('idrg_submit_attempt',[current.id,latestAnswers,current.version]);
   assert.equal(latestResult.correct_count,44);
@@ -103,6 +105,10 @@ try{
   assert(legacyReview.find(q=>q.item_id==='M4-01-3').prompt.includes('belum tercantum'));
   assert.equal(legacyResult.correct_count,0);
   assert.deepEqual((await rpc('idrg_attempt_history',[attempt.id])).map(h=>h.correct_count),[6,8]);
+  const traumaBank=await rpc('idrg_start_packet_versioned',['6','2026-11-24.1']);
+  const traumaAnswers=Object.fromEntries(bank.filter(c=>c.module===6).flatMap(c=>c.items.map((q,i)=>[c.id+'-'+i,String(q.correct)])));
+  assert.equal(traumaAnswers['M6-05-2'],'0');
+  assert.equal((await rpc('idrg_submit_attempt',[traumaBank.id,traumaAnswers,traumaBank.version])).correct_count,32);
   await login(uid2);
   // uid2 is no longer an active admin after its email was made unverified above.
   await assert.rejects(rpc('idrg_review',[current.id]));

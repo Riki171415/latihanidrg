@@ -43,6 +43,9 @@ let session = null;
 let wrongOnly = false;
 const cases = () => availableCases(activeModule,session?.caseBank??bank);
 const keyFor = (c, i) => c.id + "-" + i;
+const correctionFor=(revision,itemId)=>["2026-11-23.3","2026-11-23.4"].includes(revision)&&itemId==="M6-05-2"
+  ? "Koreksi materi: kode ORIF humerus adalah 79.31, sehingga pasangan tindakan yang benar ialah WSD 34.04 dan ORIF 79.31. Nilai yang tercatat di bawah berasal dari kunci versi saat pengerjaan."
+  : null;
 const hasAnswer = value => value !== undefined && String(value).trim() !== "";
 function notify(message, retry = false) {
   $("global-message").hidden = !message;
@@ -147,7 +150,6 @@ function renderCase(focus = false) {
     $("case-selector").append(b);
   });
   $("record-body").replaceChildren();
-  if(c.simulation)$("record-body").append(make("div","RESUME MEDIS SIMULASI · Seluruh identitas dan data klinis dibuat untuk pembelajaran.","simulation-note"));
   $("case-pdf").dataset.src = c.pdf;
   if (!$("case-pdf").hidden) renderCasePdf(c.pdf);
   else {
@@ -412,6 +414,8 @@ function renderResult(focus = true) {
       panel.append(make("p", (ok ? "Benar" : answered ? "Salah" : "Kosong") + " · " + value, ok ? "correct small" : "incorrect small"));
       panel.append(make("p", "Kunci " + letter(item.correct) + ". " + item.options[item.correct], "small"));
       panel.append(make("p", item.feedback));
+      const correction=correctionFor(session.revision,keyFor(c,i));
+      if(correction)panel.append(make("p",correction,"auth-message"));
       details.append(panel);
     });
     if (c.reference) details.append(make("p", c.reference, "muted small"));
@@ -720,6 +724,8 @@ async function adminReview(attempt){
       const chosen=attempt.answers[q.item_id],answered=hasAnswer(chosen),card=make("article",undefined,"admin-review-item");
       card.append(make("h3",(i+1)+". "+q.prompt),make("p","Jawaban peserta: "+(answered?letter(Number(chosen))+". "+q.options[Number(chosen)]:"Belum dijawab")));
       if(attempt.submitted_at){card.append(make("p",String(q.correct)===chosen?"Benar":"Salah atau kosong",String(q.correct)===chosen?"correct":"incorrect"),make("p","Kunci: "+letter(q.correct)+". "+q.options[q.correct]),make("p",q.feedback));}
+      const correction=attempt.submitted_at&&correctionFor(attempt.revision,q.item_id);
+      if(correction)card.append(make("p",correction,"auth-message"));
       $("detail-review").append(card);
     }
   }catch(error){$("detail-review").replaceChildren(make("p",cloud.friendly(error)));}

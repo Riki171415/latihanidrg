@@ -82,3 +82,9 @@ PDF aktif memakai URL dengan versi. Tautan lama di /cases tetap mengarah ke doku
 Jawaban dan nilai terdahulu tidak dipindahkan atau dinilai ulang menggunakan soal baru. Rekap menampilkan hasil/draf versi sebelumnya terpisah; peserta dapat melanjutkan draf lama dengan naskah serta PDF lama. Pembatasan satu revisi berlaku per pengerjaan paket dan versi. Kunci/pembahasan historis tetap dipertahankan di Supabase.
 
 Regenerasi PDF: python scripts/generate_pdfs.py (memerlukan ReportLab, PyMuPDF, serta Arial lokal). Setiap PDF bertanda SIMULASI. Rujukan penelaahan klinis disimpan di docs/clinical-review.md.
+
+## Penyuntingan naskah 2026-11-24.1
+
+Bahasa pertanyaan disederhanakan dan diselaraskan dengan istilah pasien A/B/C pada berkas. Penanda simulasi pada tampilan kasus dan PDF dikeluarkan dari naskah peserta; asal-usul data sebagai kasus buatan tetap dicatat dalam dokumentasi penyusun. Laporan operasi/tindakan mencakup tanggal, diagnosis, indikasi, pelaksana, anestesi, akses, temuan, pelaksanaan, penutupan/hemostasis, spesimen/implan, perdarahan, komplikasi, serta kondisi akhir. Teknik yang sengaja tidak terdokumentasi pada soal klarifikasi tidak direka sebagai temuan pasti.
+
+Rujukan prosedur ditelaah dari Coder’s Desk Reference for ICD-9-CM Procedures (Ingenix/Optum, 2009) pada berkas referensi lokal. Uraian kasus disusun ulang, bukan salinan teks buku. Kunci ORIF humerus diperbaiki menjadi 79.31 berdasarkan klasifikasi prosedur; contoh 79.39 pada satu tabel sumber ICS tidak digunakan sebagai kunci baru. Nilai bank terdahulu tidak diubah. Bank lengkap 2026-11-23.4 kini juga diarsipkan agar riwayat masih dapat dibaca sesuai naskah saat dikerjakan.

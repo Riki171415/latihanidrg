@@ -1,0 +1,2970 @@
+[
+  {
+    "id": "M2-01",
+    "module": 2,
+    "title": "Membaca hasil pengelompokan iDRG",
+    "records": [
+      [
+        "Kasus",
+        "Seorang petugas memasukkan kode ICD diagnosis dan tindakan ke dalam aplikasi grouper. Setelah menjalankan proses pengelompokan (grouping), petugas mendapatkan grup iDRG 2401210."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M2-01.pdf",
+    "reference": "ICS Bab A.1 dan Gambar A.1",
+    "contentRevision": "2026-11-23.4",
+    "items": [
+      {
+        "prompt": "Seorang petugas memasukkan kode ICD diagnosis dan tindakan, lalu menjalankan grouping dan memperoleh grup iDRG 2401210. Berapakah MDC dan Base DC dari grup tersebut?",
+        "options": [
+          "MDC 24 · Base DC 2410",
+          "MDC 24 · Base DC 24012",
+          "MDC 20 · Base DC 2001",
+          "MDC 21 · Base DC 2101",
+          "MDC 24 · Base DC 2401"
+        ]
+      },
+      {
+        "prompt": "Dari grup iDRG 2401210, berapakah DC lengkap dan angka pembeda kelompok (split)-nya?",
+        "options": [
+          "DC 24012 · split 1",
+          "DC 24021 · split 1",
+          "DC 24012 · split 2",
+          "DC 2401210 · split 2",
+          "DC 24010 · split 0"
+        ]
+      },
+      {
+        "prompt": "Pada grup iDRG 2401210, digit keenam adalah 1 dan digit ketujuh adalah 0. Apa arti PTD 1 dan CL 0 tersebut?",
+        "options": [
+          "PTD 1 rawat jalan dan CL 0 Mild CC",
+          "PTD 1 rawat jalan dan CL 0 No CC",
+          "PTD 1 rawat inap dan CL 0 Mild CC",
+          "PTD 1 rawat inap dan CL 0 No CC",
+          "PTD 1 rawat inap dan CL 0 Severe CC"
+        ]
+      },
+      {
+        "prompt": "Petugas memasukkan kode ICD diagnosis dan tindakan sebelum menjalankan grouping. Dalam proses ini, kode yang dimasukkan petugas termasuk apa?",
+        "options": [
+          "Pesan kesalahan dari aplikasi.",
+          "Kode diagnosis utama yang dihasilkan aplikasi.",
+          "Kode tindakan yang dihasilkan aplikasi.",
+          "Hasil akhir pengelompokan iDRG.",
+          "Data masukan untuk pengelompokan iDRG."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M2-02",
+    "module": 2,
+    "title": "Audit pengodean persalinan",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Ny. S-02, perempuan, 26 tahun; G1P0A0, usia kehamilan 39 minggu berdasarkan USG trimester pertama. No. RM SIM-M2-02. Pelayanan ibu, rawat inap obstetri. Masuk 3 November 2026 pukul 07.00; pulang 5 November 2026 pukul 10.00. DPJP: dokter spesialis obstetri dan ginekologi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Keluar cairan jernih dari jalan lahir sejak pukul 03.00, sebelum timbul kontraksi teratur. Cairan terus merembes dan tidak dapat ditahan. Tidak ada perdarahan, demam, atau penurunan gerak janin. Saat tiba, pasien belum merasakan kontraksi teratur. Persalinan aktif kemudian mulai pukul 10.00, tujuh jam setelah ketuban pecah."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Kontrol antenatal teratur; kehamilan tunggal, tidak ada hipertensi, diabetes, atau kelainan plasenta. Skrining streptokokus grup B pada minggu ke-36 negatif. Tidak ada alergi obat. Tidak ada riwayat operasi pada rahim."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Compos mentis. TD 116/74 mmHg; nadi 86/menit; napas 18/menit; suhu 36,7 °C; SpO2 99% tanpa oksigen. Tidak ada nyeri tekan uterus. Inspekulo: cairan jernih mengalir dari ostium dan menggenang di forniks; tidak berbau busuk. DJJ 142/menit. Pada penilaian persalinan pukul 10.00 terdapat kontraksi 3 kali/10 menit dan pembukaan serviks 4 cm."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Darah masuk: Hb 11,9 g/dL; leukosit 9.600/µL; trombosit 248.000/µL. Nitrazin dan tes ferning positif. USG: janin tunggal hidup, presentasi kepala, plasenta posterior tidak menutupi ostium. KTG saat masuk: frekuensi dasar 140/menit, variabilitas sedang, tanpa deselerasi patologis."
+      ],
+      [
+        "Diagnosis dokter",
+        "Diagnosis akhir DPJP: ketuban pecah dini aterm, persalinan mulai dalam 24 jam setelah ketuban pecah; persalinan spontan presentasi kepala; satu bayi lahir hidup. Tidak ditemukan korioamnionitis atau komplikasi persalinan lainnya."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Dilakukan observasi suhu, denyut jantung janin, dan kemajuan persalinan. Pasien masuk persalinan spontan tanpa induksi. Kala II menunjukkan perineum sangat tegang saat kepala lahir; operator memutuskan episiotomi selektif setelah penjelasan. Setelah persalinan diberikan uterotonik, analgesik oral, dan dukungan menyusui. Ibu tidak mendapat antibiotik terapeutik karena tidak ditemukan infeksi."
+      ],
+      [
+        "Laporan tindakan",
+        "3 November pukul 14.20: persalinan pervaginam spontan dengan presentasi kepala. Episiotomi mediolateral dilakukan dengan anestesi lokal dan dijahit setelah plasenta lahir lengkap. Bayi tunggal laki-laki, berat 3.150 gram, Apgar 8/9. Perdarahan diperkirakan 250 mL. Tidak digunakan vakum atau forsep. Tidak ada robekan derajat III/IV."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang hari kedua pascapersalinan dalam keadaan sadar, tidak demam, TD 112/72 mmHg. Uterus berkontraksi baik, lokia sesuai masa nifas, luka episiotomi bersih. Ibu dapat berjalan dan menyusui. Data kelahiran pada dokumen ini merupakan bagian episode ibu."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol nifas dan luka dalam satu minggu; edukasi kebersihan perineum, menyusui, serta kembali segera jika demam, perdarahan banyak, atau luka membengkak."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Draf aplikasi sebelum audit: diagnosis utama O80.0; diagnosis sekunder O42.0 dan Z37.0; tindakan 73.59. Episiotomi sudah tertulis dalam laporan persalinan tetapi belum dimasukkan ke kolom tindakan. Draf ini belum divalidasi dan belum dijalankan grouping."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M2-02.pdf",
+    "reference": "ICS Tabel C.80 dan Bab A.1",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Berdasarkan resume persalinan, kode apa yang seharusnya menjadi diagnosis utama pada berkas ibu?",
+        "options": [
+          "Z37.0",
+          "O42.9",
+          "O80.0",
+          "O42.0",
+          "O42.1"
+        ]
+      },
+      {
+        "prompt": "Setelah diagnosis utama diperbaiki menjadi O42.0, pasangan kode apa yang dicatat sebagai diagnosis sekunder ibu?",
+        "options": [
+          "O80.0, Z38.0",
+          "O42.0, Z37.0",
+          "O80.0, Z37.0",
+          "O42.0, O80.0",
+          "O82.0, Z37.0"
+        ]
+      },
+      {
+        "prompt": "Kolom tindakan sudah berisi 73.59. Kode apa yang masih perlu ditambahkan untuk episiotomi?",
+        "options": [
+          "73.59",
+          "72.1",
+          "73.6",
+          "73.4",
+          "75.69"
+        ]
+      },
+      {
+        "prompt": "Semua kode sudah diperbaiki. Apa langkah berikutnya agar petugas dapat mencatat hasil grouping yang benar?",
+        "options": [
+          "Jalankan grouper, salin hasilnya, lalu koreksi isian tanpa pengelompokan ulang.",
+          "Validasi isian, selesaikan ketidaksesuaian, jalankan grouper, lalu catat kode dan uraian dari hasil yang sama.",
+          "Koreksi diagnosis, lalu gunakan kode dan uraian hasil pengelompokan sebelumnya.",
+          "Validasi isian, lalu salin kode hasil baru dan uraian dari kasus lain dengan diagnosis serupa.",
+          "Catat kode serta uraian dari draf sebelum isian divalidasi."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M2-03",
+    "module": 2,
+    "title": "Rawat inap ginekologi: urutan diagnosis",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Ny. S-03, perempuan, 47 tahun; No. RM SIM-M3-01. Rawat inap ginekologi, 1–22 Oktober 2026. DPJP: spesialis obstetri dan ginekologi simulasi. Berkas meliputi resume, hasil histopatologi, laporan operasi, dan catatan konsultasi."
+      ],
+      [
+        "Anamnesis",
+        "Pasien masuk terencana untuk penanganan kanker serviks yang telah didiagnosis dari konisasi. Sebelumnya terdapat perdarahan bercak setelah hubungan seksual selama tiga bulan. Menjelang rawat pasien juga mengeluhkan hidung tersumbat, sekret purulen, dan nyeri wajah selama 12 hari. Tidak ada sesak atau nyeri dada."
+      ],
+      [
+        "Riwayat kesehatan",
+        "G2P2, tidak merencanakan kehamilan lagi. Hipertensi esensial sejak lima tahun, rutin amlodipin. Tidak ada diabetes atau alergi obat. Konisasi sebelum masuk menunjukkan karsinoma mikroinvasif endoserviks, tanpa invasi limfovaskular; tim ginekologi telah menentukan rencana operatif."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Sadar baik; TD 154/90 mmHg; nadi 84/menit; napas 18/menit; suhu 36,8 °C; SpO2 99%. Nyeri tekan sinus maksilaris dan sekret hidung purulen. Pemeriksaan ginekologi tidak menunjukkan perdarahan aktif atau keterlibatan parametrium. Tidak ditemukan edema tungkai."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Hb 12,1 g/dL; leukosit 10.500/µL; trombosit 286.000/µL; kreatinin 0,8 mg/dL. Laporan patologi konisasi: karsinoma endoserviks mikroinvasif dengan tepi bebas. Telaah ginekologi-onkologi: penyakit terbatas pada serviks, tanpa bukti keterlibatan parametrium. Pemeriksaan anestesi menyatakan pasien dapat menjalani operasi setelah tekanan darah dikendalikan."
+      ],
+      [
+        "Diagnosis dokter",
+        "Pada resume pulang yang ditandatangani, kolom diagnosis utama berisi sinusitis akut. Kolom diagnosis sekunder berisi karsinoma endoserviks dan hipertensi esensial. Dokter mencatat ketiga kondisi sebagai penyakit yang dievaluasi atau ditangani pada episode ini. Penempatan diagnosis pada resume merupakan objek audit."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Sinusitis mendapat amoksisilin-klavulanat sesuai evaluasi dokter dan membaik. Tekanan darah dipantau serta terapi antihipertensi dilanjutkan. Fokus layanan ginekologi adalah persiapan, pelaksanaan, dan pemulihan histerektomi. Mobilisasi bertahap serta evaluasi fungsi berkemih dilakukan sebelum pulang. Tidak ditemukan infeksi luka atau perdarahan pascaoperasi."
+      ],
+      [
+        "Laporan tindakan",
+        "Histerektomi total dilaksanakan pada 7 Oktober oleh tim ginekologi sesuai rencana setelah konseling. Rahim dan serviks diangkat; spesimen dikirim untuk histopatologi. Perdarahan 200 mL, tidak memerlukan transfusi. Hasil patologi operasi konsisten dengan diagnosis endoserviks dan tepi reseksi bebas. Laporan operasi tersedia dalam episode yang sama."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Saat pulang pasien tidak demam, luka operasi kering, Hb 11,5 g/dL, tekanan darah 128/80 mmHg. Keluhan sinusitis membaik. Makan, mobilisasi, dan berkemih mandiri. Tidak ada komplikasi operasi yang ditetapkan dokter."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol ginekologi-onkologi untuk pembahasan patologi dan pemantauan; kontrol tekanan darah; edukasi tanda perdarahan, demam, dan gangguan berkemih."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Koder telah mengirim permintaan klarifikasi mengenai penempatan diagnosis utama kepada DPJP. Hingga batas waktu telaah, belum diperoleh jawaban. Gunakan aturan reseleksi ICS berdasarkan diagnosis yang telah ditetapkan dokter, tindakan histerektomi, dan layanan ginekologi; jangan menambah diagnosis baru dari hasil pemeriksaan saja."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M2-03.pdf",
+    "reference": "ICS B.2.a Contoh 1",
+    "displayId": "M3-01",
+    "displayModule": 3,
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Sinusitis akut masih ditulis sebagai diagnosis utama. Setelah klarifikasi belum berhasil diperoleh, kode apa yang dipilih kembali sebagai diagnosis utama berdasarkan berkas perawatan ini?",
+        "options": [
+          "D06.0",
+          "C54.1",
+          "C53.0",
+          "C53.9",
+          "C53.1"
+        ]
+      },
+      {
+        "prompt": "Penyakit yang menjadi fokus operasi justru ditulis sebagai diagnosis sekunder. Aturan MB manakah yang digunakan untuk memperbaiki pilihan diagnosis utama pada kasus ini?",
+        "options": [
+          "MB5",
+          "MB3",
+          "MB2",
+          "MB1",
+          "MB4"
+        ]
+      },
+      {
+        "prompt": "Catatan tindakan dan layanan apa yang mendukung pemilihan karsinoma endoserviks sebagai diagnosis utama?",
+        "options": [
+          "Hipertensi dan lama perawatan tiga minggu.",
+          "Sinusitis akut dan posisinya sebagai diagnosis utama pada draf.",
+          "Histerektomi total dan perawatan di layanan ginekologi.",
+          "Hipertensi dan urutan penulisannya pada resume.",
+          "Lama perawatan dan urutan diagnosis pada draf."
+        ]
+      },
+      {
+        "prompt": "Jika karsinoma endoserviks dipilih sebagai diagnosis utama, dua kondisi apa yang dicatat sebagai diagnosis sekunder pada kasus ini?",
+        "options": [
+          "Hipertensi saja",
+          "Karsinoma endoserviks dan hipertensi",
+          "Sinusitis akut dan karsinoma endoserviks",
+          "Sinusitis akut dan hipertensi",
+          "Sinusitis akut saja"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M2-04",
+    "module": 2,
+    "title": "Tiga diagnosis utama pada resume pulang",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-04, laki-laki, 63 tahun; No. RM SIM-M3-02. Rawat inap neurologi 1 Oktober–5 November 2026, dilanjutkan pemulihan fungsi selama episode yang sama. DPJP: spesialis neurologi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Pasien datang dengan demam, nyeri kepala hebat, muntah, dan mengantuk sejak dua hari. Keluarga juga menyampaikan penglihatan kanan semakin kabur selama setahun. Tidak terdapat trauma kepala. Riwayat penyakit jantung stabil telah diketahui sebelum episode ini."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Penyakit jantung iskemik aterosklerotik ditangani dengan obat rutin; tidak ada serangan nyeri dada akut saat masuk. Katarak mata kanan telah dinilai sebelumnya. Tidak ada alergi antibiotik. Pasien tidak menggunakan obat imunosupresif."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Saat masuk GCS 13 (E3V4M6), TD 130/80 mmHg, nadi 104/menit, napas 22/menit, suhu 39,1 °C, SpO2 97%. Kaku kuduk positif. Tidak ada defisit fokal awal atau papiledema. Lensa mata kanan tampak keruh; pemeriksaan jantung tanpa tanda gagal jantung akut."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Leukosit darah 17.800/µL. Cairan serebrospinal: leukosit 1.240/µL dominan neutrofil, protein 168 mg/dL, glukosa 24 mg/dL dengan glukosa darah 108 mg/dL. Kultur cairan serebrospinal tumbuh Staphylococcus aureus. Uji kepekaan digunakan dokter untuk penyesuaian antibiotik. EKG dan evaluasi serial tidak menunjukkan sindrom koroner akut. Konsultasi mata mengonfirmasi katarak."
+      ],
+      [
+        "Diagnosis dokter",
+        "Pada kolom diagnosis utama resume tertulis tiga penyakit: katarak, meningitis stafilokokus, dan penyakit jantung iskemik. Kolom diagnosis sekunder kosong. Ketiganya merupakan diagnosis dokter; resume belum memilih satu diagnosis utama. Tidak ada diagnosis infark miokard akut."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Antibiotik intravena dimulai segera setelah pengambilan spesimen dan disesuaikan dengan hasil kultur serta konsultasi infeksi. Kesadaran dan demam membaik bertahap. Perawatan diteruskan untuk penyelesaian terapi dan pemulihan mobilitas. Obat jantung ditelaah dan dipantau; gangguan penglihatan dievaluasi karena memengaruhi keamanan mobilisasi. Tidak dilakukan operasi katarak."
+      ],
+      [
+        "Laporan tindakan",
+        "Pungsi lumbal diagnostik dan pemeriksaan cairan serebrospinal telah dilakukan, disertai pemantauan neurologis dan latihan mobilisasi. Tidak ada operasi saraf. Catatan terapi memperlihatkan penanganan infeksi sistem saraf sebagai fokus episode neurologi."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang dengan GCS 15, suhu 36,6 °C, kaku kuduk tidak ditemukan lagi, mampu berjalan dengan pengawasan keluarga. Tidak ada nyeri dada. Gangguan penglihatan akibat katarak masih ada dan direncanakan ditangani setelah kondisi umum pulih."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol neurologi dan evaluasi pendengaran setelah meningitis, kontrol jantung, serta poliklinik mata untuk rencana terapi katarak."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Permintaan klarifikasi agar DPJP memilih satu diagnosis utama telah dikirim tetapi belum dijawab saat telaah. Beberapa diagnosis tertulis sebagai utama; gunakan aturan MB yang sesuai dengan mempertimbangkan kondisi yang menjadi fokus pemeriksaan dan pengobatan pada episode ini."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M2-04.pdf",
+    "reference": "ICS B.2.b Contoh 1",
+    "displayId": "M3-02",
+    "displayModule": 3,
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Tiga penyakit ditulis sebagai diagnosis utama dan klarifikasi belum dijawab. Berdasarkan fokus pemeriksaan serta pengobatan pada episode neurologi ini, kode mana yang dipilih sebagai diagnosis utama?",
+        "options": [
+          "G00.3",
+          "G00.1",
+          "G00.9",
+          "G00.2",
+          "G03.9"
+        ]
+      },
+      {
+        "prompt": "Dokter menulis beberapa penyakit sekaligus sebagai diagnosis utama. Aturan MB manakah yang digunakan untuk memilih satu diagnosis utama?",
+        "options": [
+          "MB4",
+          "MB2",
+          "MB3",
+          "MB1",
+          "MB5"
+        ]
+      },
+      {
+        "prompt": "Bukti mana yang paling kuat menunjukkan fokus perawatan untuk memilih satu diagnosis utama dari beberapa diagnosis yang tertulis?",
+        "options": [
+          "Katarak ditulis paling awal.",
+          "Kolom diagnosis sekunder kosong.",
+          "Jumlah diagnosis pada resume ada tiga.",
+          "Lama rawat lima minggu saja.",
+          "Pemeriksaan cairan serebrospinal, kultur, dan terapi infeksi sistem saraf."
+        ]
+      },
+      {
+        "prompt": "Jika meningitis stafilokokus dipilih sebagai diagnosis utama, dua kondisi apa yang dicatat sebagai diagnosis sekunder pada kasus ini?",
+        "options": [
+          "Meningitis stafilokokus dan penyakit jantung iskemik",
+          "Penyakit jantung iskemik saja",
+          "Katarak saja",
+          "Katarak dan penyakit jantung iskemik",
+          "Katarak dan meningitis stafilokokus"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M2-05",
+    "module": 2,
+    "title": "Diabetes melitus dengan koma",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-05, laki-laki, 52 tahun; No. RM SIM-M3-03. Rawat inap 4–10 November 2026 di layanan endokrinologi dengan perawatan awal intensif. DPJP: spesialis penyakit dalam simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Dibawa keluarga karena tidak dapat dibangunkan. Dua hari sebelumnya pasien haus berlebihan, sering berkemih, muntah, dan nyeri perut. Insulin tidak digunakan selama dua hari karena persediaan habis. Tidak ada riwayat cedera kepala, konsumsi alkohol, atau tanda stroke fokal."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Diabetes melitus tipe 1 sejak usia muda, bergantung insulin basal dan prandial. Penyakit jantung iskemik aterosklerotik stabil menggunakan terapi rutin. Tidak ada alergi obat. Tidak ada episode hipoglikemia yang tercatat menjelang masuk."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "GCS 7 (E1V2M4); TD 98/64 mmHg; nadi 118/menit; napas dalam 30/menit; suhu 36,8 °C; SpO2 98%. Mukosa kering, turgor menurun, napas berbau keton. Tidak ada tanda trauma kepala. Pemeriksaan neurologis tidak menunjukkan asimetri anggota gerak."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Glukosa darah 568 mg/dL; beta-hidroksibutirat 7,2 mmol/L; pH vena 6,96; bikarbonat 7 mmol/L; natrium 136 mmol/L; kalium awal 5,1 mmol/L. Hb 13,8 g/dL; trombosit 240.000/µL. EKG tanpa iskemia akut. Dokter menyatakan temuan ini sesuai ketoasidosis diabetik berat dengan koma."
+      ],
+      [
+        "Diagnosis dokter",
+        "Dokter menulis hubungan klinis secara eksplisit: koma akibat dekompensasi diabetes melitus tipe 1 dengan ketoasidosis. Pada kolom resume akhir, koma ditulis sebagai diagnosis utama; diabetes melitus dependen insulin dan penyakit jantung iskemik aterosklerotik ditulis sebagai diagnosis sekunder. Urutan tersebut belum diperbaiki."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Pasien mendapat stabilisasi jalan napas, cairan intravena, infus insulin, pemantauan glukosa serta elektrolit, dan koreksi kalium sesuai hasil serial. Setelah asidosis teratasi dan kesadaran pulih, insulin ditransisikan ke regimen subkutan. Tim endokrinologi menentukan ulang dosis insulin dan memberikan edukasi agar insulin tidak dihentikan saat sakit. Obat jantung ditelaah selama perawatan."
+      ],
+      [
+        "Laporan tindakan",
+        "Pemasangan akses intravena, pemantauan intensif, dan pemberian insulin tercatat pada lembar pelaksanaan. Tidak dilakukan tindakan bedah. Pada hari kedua pH 7,35, bikarbonat 21 mmol/L, keton darah menurun, dan pasien sadar penuh."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang GCS 15; TD 118/76 mmHg; tidak muntah; makan baik; glukosa sebelum makan berada pada rentang yang ditargetkan tim. Pasien dan keluarga mampu mendemonstrasikan pemberian insulin. Tidak ada infark miokard akut yang ditetapkan."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol endokrinologi dalam satu minggu, pencatatan glukosa mandiri, ketersediaan insulin, serta edukasi pemeriksaan keton dan tanda kegawatan saat sakit."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Koder telah meminta klarifikasi urutan diagnosis tetapi belum menerima jawaban. Telaah menggunakan hubungan sebab yang telah ditulis dokter dan terapi diabetes yang nyata, bukan penetapan diagnosis baru oleh koder."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M2-05.pdf",
+    "reference": "ICS B.2.c Contoh 2",
+    "displayId": "M3-03",
+    "displayModule": 3,
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Dokter menyatakan koma berkaitan dengan diabetes melitus dependen insulin. Kode apa yang mencakup diabetes beserta koma dan dipilih sebagai diagnosis utama?",
+        "options": [
+          "R40.2",
+          "E10.1",
+          "E10.0",
+          "E10.9",
+          "E11.0"
+        ]
+      },
+      {
+        "prompt": "Koma ditulis sebagai diagnosis utama, padahal diabetes penyebabnya sudah diketahui dan ditangani. Aturan MB manakah yang digunakan untuk memperbaikinya?",
+        "options": [
+          "MB3",
+          "MB4",
+          "MB5",
+          "MB1",
+          "MB2"
+        ]
+      },
+      {
+        "prompt": "Dua keterangan apa yang menunjukkan hubungan koma dengan diabetes dan bahwa diabetes ditangani selama perawatan?",
+        "options": [
+          "Dokter mencatat penyakit jantung iskemik, dan pasien dirawat oleh layanan endokrinologi.",
+          "Koma ditulis paling awal, dan diabetes ditulis pada kolom diagnosis sekunder.",
+          "Diabetes dicatat pada resume, tetapi hubungan dengan koma belum dijelaskan.",
+          "Pasien menerima insulin, tetapi penyebab koma tidak disebutkan.",
+          "Dokter mengaitkan koma dengan diabetes, dan dosis insulin disesuaikan selama perawatan."
+        ]
+      },
+      {
+        "prompt": "Kode E10.0 sudah digunakan untuk diabetes dengan koma. Apakah kode gejala koma masih perlu ditambahkan?",
+        "options": [
+          "Tidak. Koma sudah tercakup dalam E10.0.",
+          "Ya. R40.2 ditambahkan untuk setiap koma meskipun sudah tercakup dalam kode kombinasi.",
+          "Ya. E10.0 hanya menunjukkan jenis diabetes tanpa komplikasinya.",
+          "Ya. Koma tetap menjadi diagnosis utama dan E10.0 menjadi diagnosis sekunder.",
+          "Tidak. E10.0 diganti dengan R40.2 agar hanya satu kode digunakan."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M2-06",
+    "module": 2,
+    "title": "Kelainan jantung bawaan: diagnosis spesifik",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "An. S-06, perempuan, 8 tahun; No. RM SIM-M3-04. Rawat inap evaluasi kardiologi anak 5–7 November 2026. DPJP: spesialis anak konsultan kardiologi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Pasien mudah lelah dibanding teman sebaya dan berkeringat saat aktivitas selama beberapa bulan. Orang tua mengetahui adanya bising jantung sejak balita tetapi kontrol terputus. Tidak ada demam, nyeri dada, pingsan, atau kebiruan."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Lahir cukup bulan, pertumbuhan mengikuti kurva meskipun berat relatif rendah. Tidak ada operasi jantung sebelumnya. Tidak ada riwayat demam rematik atau penyakit paru kronis. Tidak ada alergi obat dan tidak ada keluarga dengan kematian mendadak."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Berat 22 kg; sadar baik; TD 102/64 mmHg; nadi 90/menit; napas 20/menit; suhu 36,6 °C; SpO2 99% tanpa oksigen. Bising holosistolik terdengar di tepi sternum kiri bawah. Tidak ada sianosis, edema, atau hepatomegali."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Ekokardiografi menunjukkan defek septum ventrikel perimembranosa berdiameter sekitar 4 mm dengan aliran kiri ke kanan. Fungsi sistolik ventrikel baik, tidak tampak defek septum atrium atau kelainan katup mayor. Foto toraks tidak memperlihatkan edema paru. Hb 12,6 g/dL; kreatinin 0,5 mg/dL."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menyatakan istilah penyakit jantung kongenital pada kolom utama merujuk pada defek septum ventrikel yang sama, bukan dua penyakit terpisah. Pada resume tertulis diagnosis utama: penyakit jantung kongenital; diagnosis sekunder: defek septum ventrikel. Tidak ada kelainan kongenital lain yang ditetapkan."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Dilakukan observasi toleransi aktivitas, pemantauan tanda gagal jantung, dan penilaian kardiologi anak. Karena tidak ada dekompensasi akut, penatalaksanaan difokuskan pada evaluasi hemodinamik dan rencana tindak lanjut. Orang tua diberi penjelasan hasil pemeriksaan serta pentingnya kontrol teratur."
+      ],
+      [
+        "Laporan tindakan",
+        "Ekokardiografi telah dilakukan. Tidak ada kateterisasi, penutupan defek, atau operasi pada episode ini. Rencana penanganan definitif akan diputuskan pada evaluasi lanjutan sesuai perkembangan klinis dan hemodinamik."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang dalam keadaan stabil, tidak sesak saat istirahat, saturasi tetap 99%, makan baik. Pasien berjalan mandiri dan tidak membutuhkan oksigen. Tidak ditemukan gagal jantung akut selama perawatan."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol kardiologi anak sesuai jadwal; pantau toleransi aktivitas, pertumbuhan, dan keluhan sesak atau pingsan. Diskusikan pilihan penanganan pada pertemuan berikutnya."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Permintaan koreksi penempatan diagnosis kepada DPJP belum dijawab pada batas waktu audit. Gunakan diagnosis spesifik yang sudah ditulis dokter untuk kelainan yang sama; jangan menambahkan kode umum sebagai penyakit kedua."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M2-06.pdf",
+    "reference": "ICS B.2.d Contoh 2",
+    "displayId": "M3-04",
+    "displayModule": 3,
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Dokter menulis penyakit jantung kongenital dan defek septum ventrikel untuk kelainan yang sama. Kode apa yang paling spesifik sebagai diagnosis utama?",
+        "options": [
+          "Q21.0",
+          "Q21.9",
+          "Q21.2",
+          "Q21.1",
+          "Q24.9"
+        ]
+      },
+      {
+        "prompt": "Diagnosis sekunder menyebut kelainan yang lebih spesifik daripada diagnosis utama, tetapi keduanya merujuk pada kondisi yang sama. Aturan MB manakah yang digunakan?",
+        "options": [
+          "MB2",
+          "MB3",
+          "MB5",
+          "MB1",
+          "MB4"
+        ]
+      },
+      {
+        "prompt": "Dari istilah pada resume, mana yang secara jelas menyebut jenis kelainan pada sekat jantung?",
+        "options": [
+          "Penyakit jantung kongenital tanpa rincian.",
+          "Diagnosis sekunder pada resume.",
+          "Defek septum ventrikel.",
+          "Kelainan jantung bawaan tanpa rincian.",
+          "Diagnosis utama pada resume."
+        ]
+      },
+      {
+        "prompt": "Defek septum ventrikel sudah diberi kode. Apakah istilah umum “penyakit jantung kongenital” untuk kelainan yang sama masih perlu diberi kode terpisah?",
+        "options": [
+          "Kedua istilah diberi kode sebagai dua kelainan yang berbeda.",
+          "Istilah umum tetap menjadi diagnosis utama; diagnosis spesifik menjadi diagnosis sekunder.",
+          "Tidak diberi kode terpisah karena kedua istilah merujuk pada kondisi yang sama.",
+          "Istilah umum ditambahkan sebagai diagnosis sekunder untuk kondisi yang sama.",
+          "Seluruh pengodean ditunda meskipun diagnosis spesifik sudah tersedia."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M2-07",
+    "module": 2,
+    "title": "Dua diagnosis alternatif pada resume",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Ny. S-07, perempuan, 42 tahun; No. RM SIM-M3-05. Rawat inap penyakit dalam 6–10 November 2026. DPJP: spesialis penyakit dalam simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Nyeri perut bagian atas sejak satu hari, disertai mual dan dua kali muntah. Nyeri kadang lebih terasa di kanan atas, kadang di ulu hati. Tidak ada hematemesis, melena, atau nyeri dada. Keluhan berkurang setelah perawatan suportif."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Tidak pernah didiagnosis batu empedu atau pankreatitis. Tidak mengonsumsi alkohol. Tidak ada operasi abdomen sebelumnya. Pasien tidak menggunakan obat yang diketahui memicu pankreatitis. Tidak ada alergi obat."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Sadar penuh; TD 124/78 mmHg; nadi 94/menit; napas 20/menit; suhu 37,8 °C; SpO2 99%. Nyeri tekan epigastrium dan kuadran kanan atas, tanpa defans umum. Sklera tidak ikterik. Tanda Murphy tidak konsisten karena pasien sudah mendapat analgesik."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Leukosit 12.300/µL; Hb 12,4 g/dL; trombosit 268.000/µL. Lipase 96 U/L dengan batas atas laboratorium 60 U/L; bilirubin total 0,9 mg/dL; ALT 42 U/L; kreatinin 0,8 mg/dL. USG kurang optimal karena gas usus; kandung empedu tidak tergambar lengkap dan pankreas sulit dievaluasi. Tidak ada temuan yang oleh dokter ditetapkan sebagai konfirmasi satu alternatif."
+      ],
+      [
+        "Diagnosis dokter",
+        "Pada akhir rawat, DPJP menulis tepat pada satu baris diagnosis utama: “kolesistitis akut atau pankreatitis akut”. Kolom diagnosis sekunder kosong. Tidak ada catatan akhir lain yang mengubahnya menjadi satu diagnosis pasti."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Diberikan cairan intravena, analgesik, antiemetik, dan pemantauan abdomen. Asupan oral dinaikkan bertahap setelah muntah berhenti. Nyeri dan leukositosis membaik. Tidak terdapat kegagalan organ atau indikasi tindakan emergensi yang ditetapkan selama rawat."
+      ],
+      [
+        "Laporan tindakan",
+        "USG abdomen telah dilakukan. Tidak dilakukan operasi kandung empedu, ERCP, atau prosedur pada pankreas pada episode ini. Dokter merencanakan evaluasi ulang jika keluhan menetap atau kambuh."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Saat pulang tidak demam, nyeri minimal, tidak muntah, dan dapat makan. TD 118/76 mmHg; nadi 80/menit. Tidak ada peritonitis atau ikterus pada pemeriksaan akhir."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol gastroenterologi/bedah digestif dalam satu minggu untuk penilaian lanjutan. Segera kembali jika nyeri memberat, demam, muntah berulang, atau kuning."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Koder telah meminta DPJP memperjelas diagnosis akhir. Jawaban belum diterima dan redaksi diagnosis belum dikoreksi. Kedua istilah dihubungkan kata “atau”, bukan daftar dua penyakit yang telah dipastikan terjadi bersama."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M2-07.pdf",
+    "reference": "ICS B.2.e Contoh 2",
+    "displayId": "M3-05",
+    "displayModule": 3,
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Dokter menulis “kolesistitis akut atau pankreatitis akut” dan klarifikasi belum berhasil diperoleh. Berdasarkan aturan MB5, kode apa yang dipilih sebagai diagnosis utama?",
+        "options": [
+          "K80.0",
+          "K81.1",
+          "K81.0",
+          "K81.9",
+          "K85.9"
+        ]
+      },
+      {
+        "prompt": "Diagnosis utama ditulis sebagai dua pilihan yang dihubungkan kata “atau”. Aturan MB manakah yang digunakan?",
+        "options": [
+          "MB5",
+          "MB3",
+          "MB2",
+          "MB4",
+          "MB1"
+        ]
+      },
+      {
+        "prompt": "Pada catatan “kolesistitis akut atau pankreatitis akut”, bagaimana diagnosis utama dipilih menurut aturan MB5 untuk kasus ini?",
+        "options": [
+          "Kata “atau” menandai alternatif; diagnosis yang ditulis pertama dipilih pada contoh ini.",
+          "Kata “atau” menandai alternatif; diagnosis yang ditulis terakhir dipilih.",
+          "Kedua alternatif dicatat sebagai dua diagnosis utama.",
+          "Kedua alternatif diperlakukan sebagai dua kondisi yang pasti ada.",
+          "Diagnosis yang namanya lebih umum dipilih tanpa mempertimbangkan urutannya."
+        ]
+      },
+      {
+        "prompt": "Pankreatitis akut hanya disebut sebagai pilihan setelah kata “atau”. Apakah kondisi itu boleh langsung dicatat sebagai diagnosis sekunder?",
+        "options": [
+          "Ya. Setiap diagnosis yang ditulis setelah kata “atau” menjadi diagnosis sekunder.",
+          "Ya. Kedua alternatif selalu dianggap sebagai dua penyakit yang terjadi bersamaan.",
+          "Tidak. Pankreatitis akut hanya ditulis sebagai alternatif, bukan kondisi sekunder yang dipastikan ada.",
+          "Ya. Semua istilah pada kolom diagnosis utama harus diberi kode terpisah.",
+          "Ya. Pankreatitis dipilih sebagai diagnosis sekunder karena ditulis terakhir."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M2-08",
+    "module": 2,
+    "title": "Perikarditis tuberkulosa",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-08, laki-laki, 38 tahun; No. RM SIM-M3-06. Rawat inap kardiologi 2–11 November 2026. DPJP: spesialis jantung dengan konsultasi penyakit dalam infeksi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Sesak bertambah saat berbaring selama dua minggu, disertai rasa berat di dada, demam ringan sore hari, keringat malam, dan penurunan berat badan sekitar 4 kg selama dua bulan. Tidak ada nyeri dada tipikal koroner atau batuk darah."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Tidak pernah menyelesaikan pengobatan TB sebelumnya. Tidak ada gagal ginjal kronik, keganasan yang diketahui, atau riwayat trauma dada. Tes HIV dilakukan dengan persetujuan dan hasilnya negatif. Tidak ada alergi obat yang dilaporkan."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Sadar baik; TD 112/72 mmHg; nadi 108/menit; napas 24/menit; suhu 37,8 °C; SpO2 96%. Bunyi jantung melemah. Tekanan vena jugularis sedikit meningkat, namun tidak ditemukan hipotensi atau tanda syok. Paru tanpa ronki basah luas."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Ekokardiografi: efusi perikardium sirkumferensial sedang-besar, tanpa kolaps ruang jantung yang menetap. Foto toraks menunjukkan pembesaran siluet jantung, tanpa lesi parenkim paru yang ditetapkan sebagai TB paru. Cairan perikardium dominan limfosit; tes molekuler cairan mendeteksi Mycobacterium tuberculosis dan tidak mendeteksi resistansi rifampisin. Sitologi tidak menunjukkan sel ganas. Kreatinin 0,9 mg/dL; ALT 26 U/L."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menetapkan perikarditis tuberkulosa sebagai diagnosis akhir utama, berdasarkan gejala, ekokardiografi, dan pemeriksaan cairan perikardium. Tidak ada lokasi TB lain atau penyakit penyerta terpisah yang ditetapkan pada resume. Kolom diagnosis sekunder tidak berisi entri tersendiri."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Setelah pengambilan spesimen, dimulai terapi antituberkulosis kombinasi sesuai penilaian tim, disertai pemantauan fungsi hati, toleransi obat, dan kepatuhan. Sesak berkurang setelah drainase dan pengobatan. Ekokardiografi ulang memperlihatkan penurunan jumlah cairan. Pasien tetap stabil tanpa vasopresor."
+      ],
+      [
+        "Laporan tindakan",
+        "Perikardiosentesis dengan panduan ekokardiografi dilakukan untuk indikasi diagnostik dan mengurangi gejala. Cairan dikirim untuk hitung sel, mikrobiologi, dan sitologi. Tidak ada komplikasi tindakan. Drain dilepas setelah produksi minimal sesuai penilaian dokter."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang tanpa sesak saat istirahat; TD 116/76 mmHg; nadi 84/menit; suhu 36,6 °C. Tidak ada tanda tamponade. Pasien memahami jadwal minum obat dan pemantauan efek samping."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol layanan TB dan kardiologi, pemantauan fungsi hati serta ekokardiografi sesuai indikasi. Segera kembali jika sesak memberat, sinkop, atau muncul ikterus. Pengobatan TB harus diteruskan sesuai program."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M2-08.pdf",
+    "reference": "ICS B.6 Contoh 1",
+    "displayId": "M3-06",
+    "displayModule": 3,
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pada perikarditis tuberkulosa, kode apa yang menunjukkan tuberkulosis sebagai penyakit penyebab?",
+        "options": [
+          "A18.0",
+          "A18.3",
+          "A19.9",
+          "I32.0",
+          "A18.8"
+        ]
+      },
+      {
+        "prompt": "Kode apa yang menunjukkan perikarditis sebagai manifestasi tuberkulosis pada kasus ini?",
+        "options": [
+          "A18.8",
+          "I32.0",
+          "I31.0",
+          "I32.1",
+          "I30.9"
+        ]
+      },
+      {
+        "prompt": "Untuk perikarditis tuberkulosa, pasangan kode dan penempatan diagnosis utama serta sekundernya manakah yang benar?",
+        "options": [
+          "Diagnosis utama A18.8 · diagnosis sekunder I32.0",
+          "Diagnosis utama I32.0 · diagnosis sekunder A18.8",
+          "Diagnosis utama A18.3 · diagnosis sekunder I32.0",
+          "Diagnosis utama A18.8 · diagnosis sekunder I32.1",
+          "Diagnosis utama A18.8 · diagnosis sekunder I30.9"
+        ]
+      },
+      {
+        "prompt": "Dokter hanya menulis “perikarditis tuberkulosa”. Mengapa pengodean diagnosis ini tetap membutuhkan dua kode?",
+        "options": [
+          "Setiap penyakit infeksi selalu harus menggunakan dua kode.",
+          "Satu diagnosis klinis tersebut harus diwakili oleh pasangan kode penyebab dan manifestasi sesuai klasifikasi.",
+          "Kolom diagnosis sekunder yang kosong harus diisi dengan satu kode tambahan.",
+          "Kode manifestasi menggantikan kode penyebab bila dokter hanya menulis satu diagnosis.",
+          "Kode penyebab hanya digunakan jika ada diagnosis tuberkulosis lain."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M2-09",
+    "module": 2,
+    "title": "Kraniotomi dan reseksi tumor otak",
+    "records": [
+      [
+        "Episode A / Identitas dan episode pelayanan",
+        "Tn. S-09A, laki-laki, 45 tahun; No. RM SIM-M3-07-A. Rawat inap bedah saraf 3–9 November 2026. Episode A berdiri sendiri dan tidak digabung dengan episode pembanding. DPJP: spesialis bedah saraf simulasi."
+      ],
+      [
+        "Episode A / Anamnesis",
+        "Nyeri kepala progresif selama dua bulan, mual pada pagi hari, dan satu kali kejang fokal sebelum masuk. Tidak ada trauma atau demam. Pasien masuk untuk penanganan massa intrakranial yang ditemukan pada pemeriksaan pencitraan."
+      ],
+      [
+        "Episode A / Riwayat kesehatan",
+        "Tidak ada riwayat operasi intrakranial. Pasien menggunakan antikejang setelah evaluasi awal. Tidak ada diabetes, penggunaan antikoagulan, atau alergi anestesi yang diketahui."
+      ],
+      [
+        "Episode A / Pemeriksaan fisik",
+        "GCS 15; TD 128/78 mmHg; nadi 82/menit; napas 18/menit; suhu 36,7 °C; SpO2 99%. Pupil isokor dan reaktif. Pemeriksaan motorik memperlihatkan kelemahan ringan anggota gerak kontralateral. Tidak ada tanda infeksi meningeal."
+      ],
+      [
+        "Episode A / Pemeriksaan penunjang",
+        "MRI otak menunjukkan massa intrakranial dengan efek desak lokal dan edema di sekitarnya. Hb 13,2 g/dL; trombosit 262.000/µL; INR 1,0; kreatinin 0,9 mg/dL. Penilaian anestesi dilakukan sebelum operasi. Pemetaan lokasi dan uraian teknik reseksi harus dibaca pada laporan operator."
+      ],
+      [
+        "Episode A / Diagnosis dokter",
+        "Diagnosis klinis DPJP: tumor otak yang memerlukan evaluasi/penanganan bedah saraf. Jenis histologi tidak ditetapkan hanya dari pencitraan."
+      ],
+      [
+        "Episode A / Terapi dan perjalanan perawatan",
+        "Diberikan terapi antiedema dan antikejang sesuai penilaian dokter. Setelah operasi pasien dipantau di ruang intensif, kemudian dirawat di bangsal. Tidak ada kejang ulang atau perdarahan pascaoperasi."
+      ],
+      [
+        "Episode A / Laporan tindakan",
+        "Operator mencatat: pembukaan tulang tengkorak dengan kraniotomi untuk mencapai tumor, kemudian reseksi tumor dilakukan dan spesimen dikirim untuk histopatologi. Kraniotomi merupakan tahap akses dari operasi yang sama. Lampiran uraian lokasi anatomi rinci dan teknik reseksi belum terlampir pada berkas yang diterima."
+      ],
+      [
+        "Episode A / Kondisi akhir pelayanan",
+        "Saat akhir rawat pasien GCS 15, tanda vital stabil, luka operasi kering, tidak ada defisit baru. Dapat makan dan berjalan dengan bantuan. Rencana kontrol dijelaskan kepada pasien dan keluarga."
+      ],
+      [
+        "Episode A / Rencana tindak lanjut",
+        "Kontrol bedah saraf untuk evaluasi luka, hasil histopatologi, dan rencana terapi lanjutan. Antikejang dilanjutkan sesuai instruksi."
+      ],
+      [
+        "Episode B / Identitas dan episode pelayanan",
+        "Tn. S-09B, laki-laki, 51 tahun; No. RM SIM-M3-07-B. Rawat inap bedah saraf 12–18 November 2026. Episode B berdiri sendiri dan tidak digabung dengan episode pembanding. DPJP: spesialis bedah saraf simulasi."
+      ],
+      [
+        "Episode B / Anamnesis",
+        "Nyeri kepala progresif selama dua bulan, mual pada pagi hari, dan satu kali kejang fokal sebelum masuk. Tidak ada trauma atau demam. Pasien masuk untuk penanganan massa intrakranial yang ditemukan pada pemeriksaan pencitraan."
+      ],
+      [
+        "Episode B / Riwayat kesehatan",
+        "Tidak ada riwayat operasi intrakranial. Pasien menggunakan antikejang setelah evaluasi awal. Tidak ada diabetes, penggunaan antikoagulan, atau alergi anestesi yang diketahui."
+      ],
+      [
+        "Episode B / Pemeriksaan fisik",
+        "GCS 15; TD 128/78 mmHg; nadi 82/menit; napas 18/menit; suhu 36,7 °C; SpO2 99%. Pupil isokor dan reaktif. Pemeriksaan motorik memperlihatkan kelemahan ringan anggota gerak kontralateral. Tidak ada tanda infeksi meningeal."
+      ],
+      [
+        "Episode B / Pemeriksaan penunjang",
+        "MRI otak menunjukkan massa intrakranial dengan efek desak lokal dan edema di sekitarnya. Hb 13,2 g/dL; trombosit 262.000/µL; INR 1,0; kreatinin 0,9 mg/dL. Penilaian anestesi dilakukan sebelum operasi. Pemetaan lokasi dan uraian teknik reseksi harus dibaca pada laporan operator."
+      ],
+      [
+        "Episode B / Diagnosis dokter",
+        "Diagnosis klinis DPJP: tumor otak yang memerlukan evaluasi/penanganan bedah saraf. Jenis histologi tidak ditetapkan hanya dari pencitraan."
+      ],
+      [
+        "Episode B / Terapi dan perjalanan perawatan",
+        "Diberikan terapi antiedema dan antikejang. Saat operasi timbul gangguan irama disertai ketidakstabilan hemodinamik sehingga tim menghentikan rencana reseksi demi keselamatan pasien. Pasien distabilkan dan dievaluasi oleh anestesi serta kardiologi sebelum rencana operasi ulang."
+      ],
+      [
+        "Episode B / Laporan tindakan",
+        "Operator mencatat: kraniotomi telah selesai sebagai akses menuju tumor. Karena ketidakstabilan hemodinamik, tindakan dihentikan sebelum reseksi atau biopsi. Tidak ada pengangkatan tumor atau tindakan definitif lain. Luka ditutup setelah hemostasis. Jangan mengode reseksi yang baru direncanakan."
+      ],
+      [
+        "Episode B / Kondisi akhir pelayanan",
+        "Saat akhir rawat pasien GCS 15, tanda vital stabil, luka operasi kering, tidak ada defisit baru. Dapat makan dan berjalan dengan bantuan. Rencana kontrol dijelaskan kepada pasien dan keluarga."
+      ],
+      [
+        "Episode B / Rencana tindak lanjut",
+        "Kontrol bedah saraf, anestesi, dan kardiologi untuk stabilisasi serta rencana operasi berikutnya. Episode ini belum menghasilkan pengangkatan tumor."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M2-09.pdf",
+    "reference": "ICS B.3.a Omit code dan contoh kraniotomi",
+    "displayId": "M3-07",
+    "displayModule": 3,
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pada laporan A, kraniotomi dilakukan untuk mencapai tumor. Tindakan mana yang kemudian dilakukan untuk menangani tumornya?",
+        "options": [
+          "Pembukaan tengkorak saja.",
+          "Biopsi tumor saja.",
+          "Pencitraan tumor.",
+          "Penutupan akses operasi.",
+          "Reseksi tumor."
+        ]
+      },
+      {
+        "prompt": "Pada laporan A, kraniotomi hanya menjadi jalan masuk untuk reseksi tumor. Apakah kraniotomi perlu diberi kode tersendiri?",
+        "options": [
+          "Kraniotomi diberi kode terpisah karena dilakukan lebih dahulu daripada reseksi.",
+          "Kraniotomi diberi kode, sedangkan reseksi tumor tidak diberi kode.",
+          "Kraniotomi dan reseksi tumor sama-sama tidak diberi kode.",
+          "Kraniotomi dicatat sebagai diagnosis sekunder.",
+          "Kraniotomi tidak diberi kode terpisah karena merupakan akses menuju reseksi tumor."
+        ]
+      },
+      {
+        "prompt": "Pada laporan B, operasi berhenti setelah kraniotomi tanpa reseksi tumor. Kode apa yang digunakan untuk kraniotomi tersebut?",
+        "options": [
+          "02.02",
+          "01.23",
+          "01.31",
+          "01.24",
+          "01.51"
+        ]
+      },
+      {
+        "prompt": "Sebelum memilih kode reseksi tumor pada laporan A, rincian apa yang perlu diperiksa pada laporan operasi lengkap?",
+        "options": [
+          "Lama rawat dan kelas perawatan.",
+          "Lokasi anatomi tumor dan teknik reseksi pada laporan operasi lengkap.",
+          "Nama operator dan nomor kamar operasi.",
+          "Waktu mulai anestesi dan lama rawat.",
+          "Letak insisi kulit saja."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-01",
+    "module": 4,
+    "title": "Durasi ventilasi pada pasien rujukan",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-401, laki-laki, 59 tahun; No. RM SIM-M4-01. Rawat inap ICU rumah sakit penerima 8–15 November 2026. Tiba dari rumah sakit pengirim pada 8 November pukul 10.00 dalam keadaan terintubasi. DPJP: spesialis anestesi/intensif simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Sesak dan demam sejak tiga hari, memberat menjadi penurunan kesadaran serta kerja napas berat di rumah sakit pengirim. Pasien diintubasi di sana pada 8 November pukul 07.30. Keluarga menyetujui rujukan untuk perawatan intensif. Tidak ada riwayat henti jantung saat transport."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Tidak menggunakan ventilator di rumah dan tidak mempunyai trakeostomi. Sebelum sakit dapat beraktivitas mandiri. Tidak ada riwayat kelainan neuromuskular atau alergi obat yang diketahui."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Saat diterima pasien tersedasi dengan pipa endotrakeal terpasang; TD 118/70 mmHg, nadi 106/menit, suhu 38,4 °C. Saturasi 95% dengan ventilator transport. Ronki bilateral. Posisi pipa, pengembangan kedua hemitoraks, dan stabilitas sirkulasi diperiksa sebelum pemindahan ke ventilator ICU."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Foto toraks memperlihatkan infiltrat bilateral. Analisis gas darah awal pada FiO2 0,50: pH 7,32; PaCO2 48 mmHg; PaO2 76 mmHg. Leukosit 16.200/µL; kreatinin 1,0 mg/dL. Dokter menetapkan pneumonia disertai gagal napas akut dan melakukan evaluasi mikrobiologi sesuai indikasi."
+      ],
+      [
+        "Diagnosis dokter",
+        "Diagnosis akhir: pneumonia dengan gagal napas akut yang memerlukan ventilasi mekanik invasif. Dokter menetapkan kedua kondisi pada episode penerima."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Ventilasi invasif berlanjut sejak masuk rumah sakit penerima, dengan pemindahan segera dari ventilator transport ke ventilator ICU tanpa jeda perawatan. Diberikan antibiotik empiris lalu dievaluasi, cairan sesuai status volume, sedasi, dan pemantauan gas darah. Kondisi membaik, sedasi dikurangi, dan pasien lolos uji napas spontan."
+      ],
+      [
+        "Laporan tindakan",
+        "Catatan waktu terverifikasi: masuk rumah sakit penerima 8 November 10.00; dukungan ventilator invasif dimulai/diteruskan saat penerimaan 10.00; ekstubasi sekaligus penghentian ventilasi invasif 11 November 10.00. Tidak ada intubasi ulang. Waktu intubasi 07.30 di rumah sakit pengirim merupakan catatan episode fasilitas lain."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Setelah ekstubasi pasien mendapat oksigen aliran rendah lalu bernapas tanpa oksigen. Pulang 15 November dalam keadaan sadar, suhu 36,7 °C, napas 18/menit, SpO2 97% udara ruangan. Mampu makan dan berjalan dengan bantuan minimal."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol penyakit dalam/paru satu minggu, latihan mobilisasi dan napas sesuai toleransi, serta kembali bila sesak memberat atau demam berulang."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Draf petugas menghitung durasi sejak 8 November pukul 07.30 di fasilitas pengirim. Periksa dan koreksi awal hitungan untuk rumah sakit penerima menggunakan catatan waktunya sendiri. Pertanyaan tentang rujuk keluar adalah situasi pembanding, bukan kejadian pada pasien ini."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-01.pdf",
+    "reference": "ICS Bab C MDC 10 Pre-MDC",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pasien sudah terintubasi sebelum tiba. Kapan durasi penggunaan ventilator mulai dihitung untuk perawatan di rumah sakit penerima?",
+        "options": [
+          "Sejak intubasi pertama di rumah sakit pengirim.",
+          "Sejak surat rujukan dibuat.",
+          "Sejak masuk rumah sakit penerima, dengan bukti penggunaan ventilator pada episode tersebut.",
+          "Sejak pasien meninggalkan rumah sakit pengirim.",
+          "Sejak pengajuan administrasi rujukan disetujui."
+        ]
+      },
+      {
+        "prompt": "Catatan waktu apa yang harus dicocokkan untuk menentukan awal penggunaan ventilator di rumah sakit penerima?",
+        "options": [
+          "Waktu intubasi di pengirim dan surat rujukan saja.",
+          "Tanggal masuk tanpa jam dan resume pulang saja.",
+          "Waktu ekstubasi dan daftar diagnosis saja.",
+          "Waktu masuk dan catatan penggunaan ventilator di rumah sakit penerima.",
+          "Lama rawat keseluruhan dan jadwal kunjungan dokter."
+        ]
+      },
+      {
+        "prompt": "Jika rumah sakit penerima kemudian merujuk pasien ke rumah sakit berikutnya, kapan penghitungan durasi ventilasi di rumah sakit penerima dihentikan?",
+        "options": [
+          "Saat pasien dipasang ventilator di rumah sakit berikutnya.",
+          "Saat pasien terdaftar di rumah sakit berikutnya.",
+          "Saat pasien diekstubasi di rumah sakit berikutnya.",
+          "Saat ventilator dilepas di rumah sakit penerima sebelum pasien dirujuk lagi.",
+          "Saat surat rujukan ke rumah sakit berikutnya diterbitkan."
+        ]
+      },
+      {
+        "prompt": "Ventilasi invasif di rumah sakit penerima berlangsung terus dari 8 November pukul 10.00 sampai 11 November pukul 10.00. Berapa durasi untuk episode rumah sakit penerima?",
+        "options": [
+          "48 jam.",
+          "74 jam 30 menit.",
+          "72 jam.",
+          "96 jam.",
+          "Tidak bisa dihitung karena intubasi dilakukan di rumah sakit lain."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-02",
+    "module": 4,
+    "title": "Pemberian agen trombolitik",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-402, laki-laki, 61 tahun; No. RM SIM-M4-02. Rawat inap unit stroke 9–14 November 2026. Berat badan terukur 70 kg. DPJP: spesialis neurologi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Pukul 08.00 mendadak lemah lengan dan tungkai kanan serta bicara pelo, disaksikan keluarga. Terakhir diketahui tanpa gejala pukul 07.55. Tiba di IGD pukul 09.05. Tidak ada kejang awal, nyeri kepala hebat mendadak, atau trauma."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Hipertensi terkontrol dengan obat. Tidak menggunakan antikoagulan. Tidak ada operasi besar, perdarahan saluran cerna, atau stroke dalam tiga bulan terakhir. Keluarga menyangkal alergi obat. Fungsi sehari-hari sebelum sakit mandiri."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "GCS 15; TD 168/92 mmHg; nadi 86/menit; napas 18/menit; suhu 36,7 °C; SpO2 98%. Hemiparesis kanan dan disartria; NIHSS awal 9. Glukosa kapiler saat masuk 124 mg/dL. Tidak ada tanda perdarahan aktif."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "CT kepala tanpa kontras pukul 09.25 tidak menunjukkan perdarahan intrakranial atau infark luas yang telah terbentuk. Trombosit 236.000/µL; INR 1,0; Hb 13,7 g/dL; kreatinin 0,9 mg/dL. Dokter menilai pasien memenuhi syarat trombolisis pada jendela waktu yang sesuai."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menetapkan stroke iskemik akut sebagai diagnosis akhir. Penetapan dilakukan setelah pemeriksaan neurologis dan pencitraan, bukan disimpulkan dari pemberian trombolitik saja. Tidak ditemukan perdarahan intrakranial pascatindakan."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Setelah penjelasan manfaat-risiko dan persetujuan, alteplase diberikan pukul 10.00. Tekanan darah, kesadaran, tanda perdarahan, dan status neurologis dipantau sesuai protokol stroke. Setelah evaluasi 24 jam dan pencitraan ulang tanpa perdarahan, pencegahan sekunder dimulai sesuai keputusan dokter. Dilakukan skrining menelan serta mobilisasi bertahap."
+      ],
+      [
+        "Laporan tindakan",
+        "Lembar pemberian obat: alteplase total 63 mg intravena; 6,3 mg bolus pukul 10.00 dan 56,7 mg infus selama 60 menit, selesai pukul 11.00. Nama pemberi dan verifikasi tercatat dalam lembar simulasi. Ini merupakan obat yang sudah diberikan, bukan pesanan farmasi atau rencana terapi."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "NIHSS membaik menjadi 3; pasien sadar penuh, kekuatan sisi kanan membaik, makan aman setelah penilaian menelan. Pulang dengan dukungan keluarga dan program rehabilitasi. Tidak ada perdarahan yang ditetapkan dokter."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol neurologi dan rehabilitasi, pengendalian tekanan darah serta faktor risiko, dan edukasi tanda stroke berulang. Pertanyaan tentang berkas yang hanya memuat instruksi adalah pembanding audit."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-02.pdf",
+    "reference": "ICS Bab C Perhatian Khusus MDC 11",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Agen trombolitik sudah diberikan melalui injeksi atau infus. Kode tindakan apa yang sesuai?",
+        "options": [
+          "99.20",
+          "99.29",
+          "99.19",
+          "99.10",
+          "99.21"
+        ]
+      },
+      {
+        "prompt": "Dokumen apa yang menjadi bukti bahwa agen trombolitik sudah diberikan pada perawatan ini?",
+        "options": [
+          "Instruksi awal dokter tanpa catatan pelaksanaan.",
+          "Resep obat tanpa konfirmasi pemberian.",
+          "Catatan pemberian obat pada episode perawatan sebelumnya.",
+          "Daftar obat yang tersedia di farmasi.",
+          "Lembar pemberian obat atau catatan pelaksanaan yang membuktikan pemberian pada episode ini."
+        ]
+      },
+      {
+        "prompt": "Pada berkas lain, hanya ada instruksi pemberian trombolitik tanpa catatan bahwa obat sudah diberikan. Apa yang seharusnya dilakukan koder?",
+        "options": [
+          "Jangan tetapkan sebagai tindakan terlaksana sebelum ada bukti pemberian.",
+          "Tetapkan kode segera berdasarkan instruksi dokter.",
+          "Tetapkan kode jika obat sudah dipesan dari farmasi.",
+          "Tetapkan kode berdasarkan jadwal pemberian yang direncanakan.",
+          "Tetapkan kode jika nama obat muncul pada daftar resep."
+        ]
+      },
+      {
+        "prompt": "Jika hanya ada catatan pemberian trombolitik tanpa diagnosis akhir dokter, apakah koder boleh menyimpulkan sendiri penyakit pasien?",
+        "options": [
+          "Tidak. Diagnosis perlu didasarkan pada penetapan dokter, bukan disimpulkan dari tindakan saja.",
+          "Ya. Pemberian trombolitik cukup untuk menetapkan diagnosis stroke tertentu.",
+          "Ya. Rute infus menentukan diagnosis penyakitnya.",
+          "Ya. Dosis trombolitik dapat digunakan menggantikan diagnosis akhir dokter.",
+          "Ya. Nama kelompok obat sudah cukup untuk menetapkan kode diagnosis spesifik."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-03",
+    "module": 4,
+    "title": "Kontrol setelah vitrektomi",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-403, laki-laki, 58 tahun; No. RM SIM-M4-03. Rawat jalan mata 10 November 2026. Vitrektomi mata kanan telah dilakukan pada episode terpisah dua minggu sebelumnya. DPJP: spesialis mata simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Datang sesuai jadwal kontrol setelah vitrektomi. Penglihatan berangsur membaik, tanpa nyeri berat, fotofobia baru, kilatan yang bertambah, atau tirai gelap. Tidak ada keluhan luka atau sekret bernanah. Tujuan kunjungan adalah perawatan dan evaluasi pascaoperasi yang masih berlangsung."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Riwayat vitrektomi mata kanan karena indikasi retina pada episode sebelumnya. Hipertensi esensial menggunakan amlodipin. Tidak ada diabetes. Pasien mematuhi petunjuk posisi dan obat tetes dari operator. Tidak ada alergi obat yang diketahui."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Keadaan umum baik; TD 142/86 mmHg, nadi 78/menit, suhu 36,6 °C. Visus kanan membaik dibanding kunjungan awal. Mata kanan tidak merah berat; kornea jernih, bilik mata depan tenang, tekanan intraokular 16 mmHg. Luka akses tertutup dan tidak memerlukan tindakan perawatan luka."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Pemeriksaan fundus dilakukan setelah dilatasi pupil dan hasilnya dinilai dokter: retina melekat serta tidak ada perdarahan baru. Pada kolom tindakan petugas hanya menulis “funduskopi”. Tidak dicantumkan alat/teknik pemeriksaan atau dokumentasi foto; kekurangan spesifikasi ini sengaja menjadi fokus klarifikasi pengodean."
+      ],
+      [
+        "Diagnosis dokter",
+        "Diagnosis utama klinis kunjungan: kontrol/perawatan pascavitrektomi. Diagnosis sekunder: hipertensi esensial, yang dinilai dan diberikan edukasi pengendalian. Tidak ada komplikasi pascaoperasi yang ditetapkan pada kunjungan ini."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Dokter menilai penyembuhan dan kondisi retina, meninjau penggunaan obat tetes serta kepatuhan posisi. Regimen tetes disesuaikan sesuai temuan mata. Tekanan darah dibahas dan pasien diarahkan melanjutkan pengobatan rutinnya."
+      ],
+      [
+        "Laporan tindakan",
+        "Pemeriksaan fundus telah terlaksana. Tidak dilakukan vitrektomi ulang, injeksi intraokular, atau tindakan perawatan luka pada kunjungan ini. Laporan pemeriksaan membutuhkan tambahan alat/teknik untuk membedakan foto fundus dari oftalmoskopi."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pasien pulang dari poliklinik dalam kondisi stabil, tidak nyeri, memahami instruksi dokter, dan tidak memerlukan rawat inap. Kondisi retina pada pemeriksaan dinilai baik oleh operator."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol mata sesuai jadwal. Kembali segera jika nyeri hebat, penglihatan menurun mendadak, muncul tirai gelap, atau mata merah bertambah. Lanjutkan kontrol tekanan darah."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Koder tidak boleh menganggap istilah funduskopi otomatis berarti foto fundus. Minta penjelasan alat dan teknik secara netral sebelum memilih kode tindakan yang spesifik."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-03.pdf",
+    "reference": "ICS Bab C MDC 12 dan Tabel C.22",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pasien datang untuk kontrol setelah vitrektomi dan tidak menjalani perawatan luka. Kode diagnosis utama apa yang digunakan sesuai kasus pada ICS?",
+        "options": [
+          "Z48.8",
+          "Z01.0",
+          "Z09.0",
+          "Z48.0",
+          "Z09.9"
+        ]
+      },
+      {
+        "prompt": "Hipertensi esensial ditulis sebagai diagnosis sekunder. Kode apa yang sesuai?",
+        "options": [
+          "I95.9",
+          "I15.9",
+          "R03.0",
+          "I11.9",
+          "I10"
+        ]
+      },
+      {
+        "prompt": "Dokter hanya menulis “funduskopi”. Pertanyaan mana yang meminta penjelasan teknik pemeriksaan tanpa menyarankan jawaban tertentu?",
+        "options": [
+          "Mohon tuliskan bahwa pemeriksaan dilakukan dengan kamera fundus.",
+          "Mohon tuliskan bahwa pemeriksaan dilakukan dengan oftalmoskop.",
+          "Mohon gunakan kode foto fundus tanpa menambahkan rincian pemeriksaan.",
+          "Mohon jelaskan alat dan teknik pemeriksaan fundus yang digunakan pada kunjungan ini.",
+          "Mohon tentukan teknik pemeriksaan dari riwayat vitrektomi saja."
+        ]
+      },
+      {
+        "prompt": "Untuk membedakan teknik pemeriksaan, pasangan kode manakah yang benar untuk foto fundus dan oftalmoskopi?",
+        "options": [
+          "Foto fundus 95.12 · oftalmoskopi 16.21",
+          "Foto fundus 95.11 · oftalmoskopi 95.12",
+          "Foto fundus 95.11 · oftalmoskopi 16.21",
+          "Foto fundus 16.21 · oftalmoskopi 95.11",
+          "Foto fundus 95.12 · oftalmoskopi 95.11"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-04",
+    "module": 4,
+    "title": "Eksisi dan biopsi telinga luar",
+    "records": [
+      [
+        "Episode A / Identitas dan episode pelayanan",
+        "Tn. S-404A, laki-laki, 35 tahun; No. RM SIM-M4-04-A. Tindakan rawat jalan THT pada 11 November 2026. Episode A terpisah dari pasien pembanding. DPJP: spesialis THT simulasi."
+      ],
+      [
+        "Episode A / Anamnesis",
+        "Benjolan kecil pada daun telinga kiri sejak enam bulan, sering tersangkut saat memakai masker dan terasa tidak nyaman. Tidak ada perdarahan spontan, penurunan pendengaran, demam, atau sekret telinga. Pasien datang untuk pengangkatan lesi."
+      ],
+      [
+        "Episode A / Riwayat kesehatan",
+        "Tidak ada penggunaan antikoagulan atau riwayat kelainan perdarahan. Tidak ada alergi anestesi lokal. Pasien belum pernah menjalani operasi pada lokasi lesi. Tidak ada penyakit akut lain yang menghalangi tindakan rawat jalan."
+      ],
+      [
+        "Episode A / Pemeriksaan fisik",
+        "Sadar baik; TD 120/76 mmHg, nadi 76/menit, suhu 36,6 °C. Lesi pedunkulata 6 mm pada daun telinga kiri, batas jelas, tanpa ulserasi atau infeksi. Liang telinga dan membran timpani tidak menunjukkan kelainan akut."
+      ],
+      [
+        "Episode A / Pemeriksaan penunjang",
+        "Penilaian praoperasi tidak menunjukkan risiko perdarahan khusus. Pada episode ini tidak ada pemeriksaan patologi anatomi yang dilakukan atau ditagihkan dalam dokumen simulasi."
+      ],
+      [
+        "Episode A / Diagnosis dokter",
+        "Diagnosis klinis DPJP: lesi telinga luar kiri yang ditangani secara eksisi terapeutik; histologi tidak ditetapkan. Tidak terdapat infeksi telinga tengah."
+      ],
+      [
+        "Episode A / Terapi dan perjalanan perawatan",
+        "Setelah persetujuan tindakan, lokasi dibersihkan dan anestesi lokal diberikan. Dilakukan hemostasis, balutan ringan, serta edukasi menjaga luka tetap bersih. Tidak ada perdarahan berlanjut atau reaksi anestesi."
+      ],
+      [
+        "Episode A / Laporan tindakan",
+        "Operator mengangkat lesi telinga luar secara eksisi hingga tidak tampak lesi tersisa, untuk menghilangkan keluhan. Dasar luka dirawat dan ditutup. Tujuannya pengangkatan terapeutik, bukan pengambilan sebagian jaringan untuk biopsi."
+      ],
+      [
+        "Episode A / Kondisi akhir pelayanan",
+        "Pasien diobservasi singkat, kondisi stabil, nyeri ringan terkontrol, balutan bersih. Tidak ada komplikasi tindakan dan tidak memerlukan rawat inap."
+      ],
+      [
+        "Episode A / Rencana tindak lanjut",
+        "Kontrol luka satu minggu. Kembali lebih cepat bila perdarahan, bengkak, atau tanda infeksi."
+      ],
+      [
+        "Episode B / Identitas dan episode pelayanan",
+        "Tn. S-404B, laki-laki, 62 tahun; No. RM SIM-M4-04-B. Tindakan rawat jalan THT pada 11 November 2026. Episode B terpisah dari pasien pembanding. DPJP: spesialis THT simulasi."
+      ],
+      [
+        "Episode B / Anamnesis",
+        "Luka/lesi pada daun telinga kanan yang tidak sembuh selama dua bulan dan mudah berdarah saat tersentuh. Tidak ada demam atau nyeri telinga dalam. Dokter merencanakan pengambilan sebagian jaringan untuk menentukan diagnosis."
+      ],
+      [
+        "Episode B / Riwayat kesehatan",
+        "Tidak ada penggunaan antikoagulan atau riwayat kelainan perdarahan. Tidak ada alergi anestesi lokal. Pasien belum pernah menjalani operasi pada lokasi lesi. Tidak ada penyakit akut lain yang menghalangi tindakan rawat jalan."
+      ],
+      [
+        "Episode B / Pemeriksaan fisik",
+        "Sadar baik; TD 132/80 mmHg, nadi 80/menit, suhu 36,7 °C. Lesi berulkus 1,2 cm pada heliks kanan, bertepi tidak teratur dan mudah berdarah. Tidak ada limfadenopati leher yang teraba."
+      ],
+      [
+        "Episode B / Pemeriksaan penunjang",
+        "Spesimen biopsi diterima laboratorium patologi anatomi dan diperiksa secara histopatologi menggunakan preparat jaringan rutin. Laporan telah diterbitkan dan ditelaah DPJP. Hasil histopatologi menunjukkan karsinoma sel skuamosa; tidak diberikan stadium hanya dari biopsi ini."
+      ],
+      [
+        "Episode B / Diagnosis dokter",
+        "Diagnosis pra-tindakan: lesi telinga luar kanan, perlu penentuan histologi. Setelah hasil histopatologi diterbitkan, DPJP mencatat karsinoma sel skuamosa telinga luar kanan dan merencanakan evaluasi untuk terapi definitif."
+      ],
+      [
+        "Episode B / Terapi dan perjalanan perawatan",
+        "Setelah persetujuan tindakan, lokasi dibersihkan dan anestesi lokal diberikan. Dilakukan hemostasis, balutan ringan, serta edukasi menjaga luka tetap bersih. Tidak ada perdarahan berlanjut atau reaksi anestesi."
+      ],
+      [
+        "Episode B / Laporan tindakan",
+        "Operator mengambil sebagian jaringan pada tepi lesi telinga luar dengan biopsi insisional. Lesi tidak diangkat seluruhnya. Spesimen diberi label dan dikirim ke patologi anatomi; pemeriksaan jaringan telah dilaksanakan."
+      ],
+      [
+        "Episode B / Kondisi akhir pelayanan",
+        "Pasien diobservasi singkat, kondisi stabil, nyeri ringan terkontrol, balutan bersih. Tidak ada komplikasi tindakan dan tidak memerlukan rawat inap."
+      ],
+      [
+        "Episode B / Rencana tindak lanjut",
+        "Kontrol THT untuk pembahasan patologi dan rencana terapi definitif. Edukasi tanda infeksi dan perdarahan pada luka biopsi."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-04.pdf",
+    "reference": "ICS Bab C Perhatian Khusus MDC 13",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pada laporan A, lesi telinga luar diangkat untuk terapi. Kode tindakan apa yang sesuai?",
+        "options": [
+          "18.31",
+          "18.21",
+          "18.39",
+          "18.12",
+          "18.29"
+        ]
+      },
+      {
+        "prompt": "Pada laporan B, dokter mengambil sampel jaringan telinga luar untuk biopsi. Kode tindakan apa yang sesuai?",
+        "options": [
+          "18.29",
+          "18.31",
+          "19.0",
+          "18.12",
+          "18.21"
+        ]
+      },
+      {
+        "prompt": "Sampel pada laporan B sudah diperiksa dengan patologi anatomi. Kelompok kode manakah yang perlu diperiksa untuk memilih kode pemeriksaan tersebut?",
+        "options": [
+          "91.81",
+          "90.89",
+          "91.86-",
+          "91.85",
+          "91.82"
+        ]
+      },
+      {
+        "prompt": "Apa perbedaan tujuan pengambilan jaringan pada laporan A dan laporan B?",
+        "options": [
+          "Laporan A: biopsi; laporan B: pengangkatan untuk terapi.",
+          "Keduanya biopsi karena lokasi tindakannya sama.",
+          "Laporan A: pengangkatan untuk terapi; laporan B: pengambilan sampel untuk biopsi.",
+          "Keduanya pengangkatan terapeutik karena sama-sama mengambil jaringan.",
+          "Laporan A: pemeriksaan tanpa pengambilan jaringan; laporan B: pengangkatan seluruh lesi."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-05",
+    "module": 4,
+    "title": "Tuberkulosis resistan obat",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-405, laki-laki, 41 tahun; No. RM SIM-M4-05. Rawat jalan layanan TB pada 12 November 2026. DPJP: spesialis paru simulasi. Seluruh identitas dan hasil pemeriksaan pada kasus ini merupakan data simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Batuk berdahak selama enam minggu, keringat malam, demam ringan, nafsu makan turun, dan berat badan turun 5 kg. Tidak ada hemoptisis masif. Pasien datang membawa hasil pemeriksaan dahak untuk penetapan diagnosis dan rencana terapi."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Belum pernah mendapat pengobatan TB sebelumnya menurut anamnesis dan telaah catatan. Tidak ada riwayat penyakit hati, gangguan ginjal, atau alergi obat yang diketahui. Kontak rumah tangga akan dinilai oleh petugas program."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Berat 54 kg; TD 116/74 mmHg; nadi 94/menit; napas 20/menit; suhu 37,7 °C; SpO2 97% udara ruangan. Tampak kurus, ronki pada lapang atas paru kanan. Tidak ada tanda distress napas atau kegawatan yang membutuhkan rawat inap."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "TCM dahak: Mycobacterium tuberculosis terdeteksi, resistansi rifampisin terdeteksi. Foto toraks menunjukkan infiltrat dan kavitas lapang atas kanan. Hb 11,8 g/dL; leukosit 9.900/µL; trombosit 310.000/µL; kreatinin 0,9 mg/dL; ALT 28 U/L. Hasil uji isoniazid dan fluorokuinolon belum tersedia; pemeriksaan lanjutan telah diminta. Tes HIV negatif setelah konseling."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menetapkan TB paru terkonfirmasi bakteriologis dengan resistansi rifampisin (RR-TB). Dokter belum menetapkan MDR-TB atau kategori resistansi lain karena data obat lainnya belum tersedia. Resistansi rifampisin tidak boleh diubah menjadi bukti resistansi terhadap seluruh obat TB."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Dilakukan konseling, penilaian risiko penularan, evaluasi pra-terapi, dan koordinasi tim TB resistan obat. Pemilihan regimen direncanakan berdasarkan pemeriksaan kelayakan serta hasil uji kepekaan yang relevan. Resume tidak mengklaim regimen tertentu sudah diminum sebelum evaluasi tersebut selesai."
+      ],
+      [
+        "Laporan tindakan",
+        "Pengambilan dahak, pemeriksaan molekuler, foto toraks, dan penilaian dokter telah dilakukan. Tidak ada tindakan bedah. Petugas memberikan edukasi masker, ventilasi rumah, kepatuhan kontrol, dan pelacakan kontak."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Akhir kunjungan pasien stabil, tidak sesak saat istirahat, memahami diagnosis dan jadwal evaluasi lanjutan. Tidak ada efek samping pengobatan yang dinilai karena terapi belum dicatat mulai pada episode ini."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol cepat ke layanan TB resistan obat untuk melengkapi uji kepekaan dan memulai terapi sesuai keputusan tim. Kembali bila sesak, batuk darah banyak, atau tidak mampu makan/minum."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Pengodean membedakan lokasi TB, cara konfirmasi, dan obat yang telah terbukti resistan. Obat yang uji resistansinya belum keluar tidak boleh dicatat sebagai resistan berdasarkan dugaan."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-05.pdf",
+    "reference": "ICS Bab C MDC 14 dan MDC 36",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Untuk TB resistan obat, informasi tambahan apa yang perlu dikodekan selain kode dasar TB sesuai petunjuk ICS?",
+        "options": [
+          "Gejala pernapasan dan riwayat penyakit.",
+          "Pemeriksaan mikrobiologi dan tindakan radiologi.",
+          "Kategori resistansi TB (TB Episode of Care) dan jenis obat terkait resistansi (Drug Types).",
+          "Penyebab luar dan cedera.",
+          "Pemeriksaan radiologi dan administrasi kunjungan."
+        ]
+      },
+      {
+        "prompt": "Data mana dalam resume yang menjadi dasar pemilihan kode dasar TB pada kasus ini?",
+        "options": [
+          "Riwayat batuk saja.",
+          "Foto toraks saja tanpa diagnosis dokter.",
+          "Nama layanan TB tanpa lokasi penyakit.",
+          "TB paru yang ditetapkan dokter dan dikonfirmasi TCM dahak.",
+          "Berat badan turun tanpa pemeriksaan lain."
+        ]
+      },
+      {
+        "prompt": "Obat mana yang sudah terbukti resistan pada hasil pemeriksaan pasien ini?",
+        "options": [
+          "Isoniazid.",
+          "Semua obat TB lini pertama.",
+          "Fluorokuinolon.",
+          "Rifampisin.",
+          "Bedaquiline."
+        ]
+      },
+      {
+        "prompt": "Apakah hasil resistansi rifampisin saja sudah cukup untuk menyimpulkan bahwa pasien pasti mengalami MDR-TB?",
+        "options": [
+          "Ya, semua RR-TB pasti resistan terhadap isoniazid.",
+          "Belum; resistansi isoniazid perlu diketahui dan kategori akhir mengikuti penetapan dokter.",
+          "Ya, penurunan berat badan membuktikan resistansi ganda.",
+          "Ya, adanya kavitas membuktikan MDR-TB.",
+          "Tidak perlu menilai isoniazid karena semua obat dianggap resistan."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-06",
+    "module": 4,
+    "title": "PTCA dan pemasangan stent koroner",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-406, laki-laki, 57 tahun; No. RM SIM-M4-06. Rawat inap kardiologi 10–13 November 2026. DPJP: spesialis jantung intervensi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Nyeri dada menekan selama 40 menit saat istirahat, menjalar ke lengan kiri, disertai keringat dingin. Nyeri membaik sebagian setelah terapi awal. Tidak ada nyeri robek ke punggung atau riwayat trauma dada."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Hipertensi, dislipidemia, dan riwayat merokok. Tidak menggunakan antikoagulan. Tidak ada perdarahan aktif, alergi bahan kontras, atau prosedur koroner sebelumnya."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Sadar baik; TD 138/84 mmHg; nadi 88/menit; napas 20/menit; suhu 36,6 °C; SpO2 98%. Perfusi perifer baik. Tidak ada ronki basah luas atau tanda syok. Nyeri dada dinilai serial oleh tim jantung."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "EKG menunjukkan depresi ST pada sadapan anterior. Troponin sensitivitas tinggi meningkat secara dinamis dari 86 menjadi 420 ng/L, batas atas laboratorium 14 ng/L. Hb 13,6 g/dL; trombosit 244.000/µL; kreatinin 0,9 mg/dL. Angiografi mengidentifikasi lesi berat pada satu pembuluh target, yaitu LAD."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menetapkan sindrom koroner akut tanpa elevasi ST dengan infark miokard. Indikasi tindakan koroner ditetapkan berdasarkan gejala, EKG, biomarker, dan angiografi. Tidak ada syok kardiogenik."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Diberikan terapi antiplatelet, antikoagulasi saat prosedur, statin intensitas tinggi, dan terapi antiiskemia sesuai evaluasi dokter. Setelah tindakan, pasien dipantau untuk nyeri dada, perdarahan akses, dan fungsi ginjal. Tidak terjadi iskemia berulang."
+      ],
+      [
+        "Laporan tindakan",
+        "11 November: angioplasti koroner perkutan dengan balon dilakukan pada satu pembuluh LAD dan dipasang satu stent pada lesi tersebut. Hasil akhir aliran koroner baik tanpa komplikasi akut. Laporan menyebut jumlah pembuluh satu dan jumlah stent satu, tetapi tidak menyebut apakah stent berlapis obat atau stent logam tanpa obat. Kartu implan belum terlampir."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang tanpa nyeri dada; TD 122/78 mmHg, nadi 74/menit. Tempat akses kering, tidak ada hematoma membesar. Kreatinin tetap 0,9 mg/dL. Pasien dapat berjalan dan memahami pentingnya kepatuhan antiplatelet."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol jantung, rehabilitasi kardiovaskular, berhenti merokok, dan melanjutkan terapi yang diresepkan."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-06.pdf",
+    "reference": "ICS Bab C MDC 15 Circulatory Disease Procedures",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Dokter sudah melakukan PTCA. Kode tindakan apa yang digunakan?",
+        "options": [
+          "36.06",
+          "00.63",
+          "36.07",
+          "00.61",
+          "00.66"
+        ]
+      },
+      {
+        "prompt": "PTCA dilakukan pada satu pembuluh koroner. Kode tambahan apa yang menunjukkan jumlah pembuluh tersebut?",
+        "options": [
+          "00.42",
+          "00.41",
+          "00.40",
+          "00.43",
+          "00.45"
+        ]
+      },
+      {
+        "prompt": "Dokter memasang satu stent. Kode tambahan apa yang menunjukkan jumlah stent tersebut?",
+        "options": [
+          "00.47",
+          "00.45",
+          "00.48",
+          "00.46",
+          "00.40"
+        ]
+      },
+      {
+        "prompt": "Jenis stent belum tercantum dalam laporan. Apa yang harus diperiksa atau ditanyakan sebelum memilih kode jenis stent?",
+        "options": [
+          "Pilih drug-eluting stent karena hanya satu stent yang dipasang.",
+          "Pilih non-drug-eluting stent jika jenisnya belum tertulis.",
+          "Tentukan jenis stent dari jumlah pembuluh yang ditangani.",
+          "Salin jenis stent dari laporan tindakan pasien lain.",
+          "Periksa catatan implan atau minta operator menjelaskan jenis stent yang dipasang."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-07",
+    "module": 4,
+    "title": "Apendisitis akut dengan peritonitis",
+    "records": [
+      [
+        "Episode A / Identitas dan episode pelayanan",
+        "Tn. S-407A, laki-laki, 32 tahun; No. RM SIM-M4-07-A. Rawat inap bedah digestif 4–10 November 2026. DPJP: spesialis bedah simulasi. Episode A adalah pasien yang berbeda."
+      ],
+      [
+        "Episode A / Anamnesis",
+        "Nyeri bermula di sekitar pusar tiga hari sebelumnya, lalu ke kanan bawah dan akhirnya menyebar ke seluruh perut. Disertai demam, mual, dan tidak dapat makan. Tidak ada riwayat operasi abdomen."
+      ],
+      [
+        "Episode A / Riwayat kesehatan",
+        "Tidak ada penyakit kronis, penggunaan steroid, atau alergi obat yang diketahui. Tidak ada diare menetap, perdarahan saluran cerna, atau episode serupa yang pernah dioperasi."
+      ],
+      [
+        "Episode A / Pemeriksaan fisik",
+        "Sadar baik; TD 110/70 mmHg, nadi 112/menit, napas 24/menit, suhu 38,8 °C. Nyeri tekan dan defans involunter di beberapa kuadran, nyeri lepas difus, bising usus menurun."
+      ],
+      [
+        "Episode A / Pemeriksaan penunjang",
+        "Leukosit 19.400/µL, Hb 14,0 g/dL, trombosit 290.000/µL, kreatinin 1,0 mg/dL. CT abdomen menunjukkan apendiks inflamasi dengan perforasi, cairan bebas, dan tanda peradangan peritoneum meluas."
+      ],
+      [
+        "Episode A / Diagnosis dokter",
+        "Diagnosis akhir DPJP: apendisitis akut dengan perforasi dan peritonitis umum. Temuan ini juga dikonfirmasi dalam laporan operasi; bukan sekadar nyeri perut difus."
+      ],
+      [
+        "Episode A / Terapi dan perjalanan perawatan",
+        "Pasien dipuasakan, diberikan cairan intravena, analgesik, dan antibiotik sesuai evaluasi bedah. Setelah operasi dilakukan pemantauan luka, suhu, fungsi gastrointestinal, dan toleransi makan. Mobilisasi serta asupan oral ditingkatkan bertahap."
+      ],
+      [
+        "Episode A / Laporan tindakan",
+        "Apendektomi dilakukan segera setelah stabilisasi. Operator menemukan perforasi apendiks dan kontaminasi purulen pada beberapa kuadran abdomen, lalu melakukan pengendalian sumber infeksi serta pembersihan rongga peritoneum."
+      ],
+      [
+        "Episode A / Kondisi akhir pelayanan",
+        "Pulang setelah nyeri berkurang, tidak demam, bising usus pulih, dan mampu makan. Luka operasi bersih; tidak ada komplikasi tambahan yang ditetapkan dokter. Tanda vital stabil."
+      ],
+      [
+        "Episode A / Rencana tindak lanjut",
+        "Kontrol bedah untuk evaluasi luka; edukasi kembali jika demam, nyeri bertambah, muntah, atau luka bernanah. Pengodean diagnosis mengikuti luas peritonitis yang ditetapkan dokter."
+      ],
+      [
+        "Episode B / Identitas dan episode pelayanan",
+        "Tn. S-407B, laki-laki, 24 tahun; No. RM SIM-M4-07-B. Rawat inap bedah digestif 12–15 November 2026. DPJP: spesialis bedah simulasi. Episode B adalah pasien yang berbeda."
+      ],
+      [
+        "Episode B / Anamnesis",
+        "Nyeri berpindah dari sekitar pusar ke kanan bawah sejak satu hari, disertai mual dan nafsu makan menurun. Nyeri tetap terlokalisasi di kanan bawah dan tidak menyebar ke seluruh abdomen."
+      ],
+      [
+        "Episode B / Riwayat kesehatan",
+        "Tidak ada penyakit kronis, penggunaan steroid, atau alergi obat yang diketahui. Tidak ada diare menetap, perdarahan saluran cerna, atau episode serupa yang pernah dioperasi."
+      ],
+      [
+        "Episode B / Pemeriksaan fisik",
+        "Sadar baik; TD 120/76 mmHg, nadi 96/menit, napas 20/menit, suhu 37,9 °C. Nyeri tekan, nyeri lepas, dan defans terbatas kuadran kanan bawah. Kuadran lain lunak tanpa tanda peritonitis umum."
+      ],
+      [
+        "Episode B / Pemeriksaan penunjang",
+        "Leukosit 14.200/µL, Hb 13,8 g/dL, trombosit 256.000/µL, kreatinin 0,8 mg/dL. USG memperlihatkan apendiks membesar tidak kompresibel dan inflamasi jaringan sekitar yang terlokalisasi, tanpa cairan bebas difus."
+      ],
+      [
+        "Episode B / Diagnosis dokter",
+        "Diagnosis akhir DPJP: apendisitis akut dengan peritonitis lokal. Dokter secara eksplisit mencatat tidak terdapat peritonitis umum pada episode ini."
+      ],
+      [
+        "Episode B / Terapi dan perjalanan perawatan",
+        "Pasien dipuasakan, diberikan cairan intravena, analgesik, dan antibiotik sesuai evaluasi bedah. Setelah operasi dilakukan pemantauan luka, suhu, fungsi gastrointestinal, dan toleransi makan. Mobilisasi serta asupan oral ditingkatkan bertahap."
+      ],
+      [
+        "Episode B / Laporan tindakan",
+        "Apendektomi dilakukan. Operator mencatat inflamasi dan eksudat terbatas di sekitar apendiks serta fosa iliaka kanan. Tidak ditemukan kontaminasi purulen difus atau peritonitis umum."
+      ],
+      [
+        "Episode B / Kondisi akhir pelayanan",
+        "Pulang setelah nyeri berkurang, tidak demam, bising usus pulih, dan mampu makan. Luka operasi bersih; tidak ada komplikasi tambahan yang ditetapkan dokter. Tanda vital stabil."
+      ],
+      [
+        "Episode B / Rencana tindak lanjut",
+        "Kontrol bedah untuk evaluasi luka; edukasi kembali jika demam, nyeri bertambah, muntah, atau luka bernanah. Pengodean diagnosis mengikuti luas peritonitis yang ditetapkan dokter."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-07.pdf",
+    "reference": "ICS Bab C MDC 16 Appendicitis",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pada resume A, dokter menulis apendisitis akut dengan perforasi dan peritonitis umum. Kode diagnosis apa yang sesuai?",
+        "options": [
+          "K35.3",
+          "K35.8",
+          "K36",
+          "K37",
+          "K35.2"
+        ]
+      },
+      {
+        "prompt": "Pada resume B, dokter menulis apendisitis akut dengan peritonitis lokal. Kode diagnosis apa yang sesuai?",
+        "options": [
+          "K35.3",
+          "K35.8",
+          "K37",
+          "K36",
+          "K35.2"
+        ]
+      },
+      {
+        "prompt": "Istilah apa pada resume A yang menunjukkan bahwa peritonitisnya lebih luas daripada pada resume B?",
+        "options": [
+          "Apendisitis akut.",
+          "Perforasi tanpa keterangan luas peritonitis.",
+          "Peritonitis umum.",
+          "Tindakan operasi.",
+          "Lokasi apendiks."
+        ]
+      },
+      {
+        "prompt": "Kode apendisitis dengan peritonitis umum sudah digunakan pada resume A. Apakah peritonitis masih perlu diberi kode terpisah?",
+        "options": [
+          "Ya. Semua peritonitis selalu memerlukan kode terpisah.",
+          "Ya. Kode apendisitis hanya menunjukkan lokasi organ.",
+          "Ya. Perforasi selalu mengharuskan satu kode peritonitis tambahan.",
+          "Tidak. Peritonitis sudah tercakup dalam kode kombinasi yang dipilih.",
+          "Tidak. Peritonitis tidak disebut dalam resume A."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-08",
+    "module": 4,
+    "title": "Pengambilan batu melalui ERCP",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Ny. S-408, perempuan, 49 tahun; No. RM SIM-M4-08. Rawat inap digestif 13–16 November 2026. DPJP: spesialis penyakit dalam konsultan gastroenterohepatologi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Nyeri perut kanan atas berulang disertai kuning dan urin gelap selama tiga hari. Tidak ada menggigil, demam tinggi, penurunan kesadaran, atau hipotensi. Pasien dirujuk untuk penanganan batu saluran empedu."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Riwayat batu kandung empedu dari USG terdahulu. Tidak pernah menjalani ERCP. Tidak ada konsumsi alkohol berat, penyakit hati kronis, atau alergi kontras. Tidak menggunakan antikoagulan."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Sadar baik; TD 126/78 mmHg; nadi 84/menit; napas 18/menit; suhu 36,8 °C; SpO2 99%. Sklera ikterik, nyeri tekan ringan kanan atas, tanpa defans. Tidak ada tanda syok atau peritonitis."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Bilirubin total 5,2 mg/dL, direk 4,1 mg/dL; ALP 286 U/L; ALT 112 U/L; lipase 42 U/L (rujukan 13–60); leukosit 8.900/µL; INR 1,0; kreatinin 0,8 mg/dL. USG dan MRCP menunjukkan batu sekitar 7 mm pada duktus koledokus dengan pelebaran saluran proksimal."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menetapkan koledokolitiasis dengan obstruksi bilier. Tidak menetapkan kolangitis akut atau pankreatitis pada episode ini. Rencana tindakan adalah pengeluaran batu secara endoskopik."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Diberikan persiapan tindakan, puasa, cairan sesuai kebutuhan, dan pemantauan klinis. Setelah ERCP nyeri serta ikterus berkurang, tidak timbul nyeri khas pankreatitis, demam, atau perdarahan. Asupan makan dilanjutkan setelah observasi."
+      ],
+      [
+        "Laporan tindakan",
+        "14 November: duodenoskop mencapai papila; saluran empedu dikannulasi dan batu duktus koledokus dikeluarkan menggunakan perangkat ekstraksi endoskopik. Operator menulis batu berhasil dikeluarkan dan pemeriksaan akhir menunjukkan pembersihan saluran. Tidak ada ERCP diagnostik terpisah pada episode ini; pencitraan saluran merupakan bagian tindakan terapeutik yang sama."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang stabil, tidak demam, tidak muntah, nyeri minimal. Bilirubin menurun pada pemeriksaan ulang. Tidak ada komplikasi tindakan yang didiagnosis dokter dan pasien mampu makan."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol digestif/bedah untuk rencana penanganan penyakit batu kandung empedu dan evaluasi fungsi hati. Kembali segera bila demam, nyeri hebat, muntah, atau kuning memburuk."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-08.pdf",
+    "reference": "ICS Bab C MDC 17 Prosedur ERCP",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Dokter berhasil mengeluarkan batu saluran empedu melalui ERCP. Kode tindakan apa yang sesuai?",
+        "options": [
+          "51.88",
+          "51.87",
+          "51.10",
+          "51.11",
+          "51.85"
+        ]
+      },
+      {
+        "prompt": "Pengambilan batu melalui ERCP sudah diberi kode. Apakah 51.10 untuk ERCP diagnostik perlu ditambahkan pada tindakan yang sama?",
+        "options": [
+          "Ya. Setiap ERCP terapeutik selalu memerlukan kode ERCP diagnostik tambahan.",
+          "Tidak. Pada kasus ini, kode pengambilan batu sudah mencakup pelaksanaan melalui ERCP.",
+          "Ya. Judul “ERCP” harus diberi kode terpisah dari uraian tindakan pada sesi yang sama.",
+          "Ya. Pengambilan batu dan ERCP pada laporan ini dianggap sebagai dua sesi berbeda.",
+          "Tidak. ERCP hanya direncanakan dan belum dilakukan."
+        ]
+      },
+      {
+        "prompt": "Bagian laporan mana yang membuktikan batu sudah dikeluarkan, bukan baru direncanakan untuk dikeluarkan?",
+        "options": [
+          "Judul laporan menyebut ERCP.",
+          "Diagnosis mencantumkan batu saluran empedu.",
+          "Instruksi mencantumkan rencana pengambilan batu.",
+          "Jadwal tindakan mencantumkan nama operator.",
+          "Uraian operator menyatakan batu berhasil dikeluarkan dari saluran empedu secara endoskopik."
+        ]
+      },
+      {
+        "prompt": "Jika laporan hanya menulis “ERCP”, informasi apa yang masih perlu diperiksa sebelum memberi kode pengambilan batu?",
+        "options": [
+          "Lama rawat dan kelas perawatan.",
+          "Riwayat pengambilan batu pada episode sebelumnya.",
+          "Identitas operator dan nomor ruangan saja.",
+          "Biaya tindakan dan jadwal pemeriksaan.",
+          "Uraian tindakan yang terlaksana, termasuk lokasi batu dan bukti bahwa batu dikeluarkan."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-09",
+    "module": 4,
+    "title": "Artroskopi lutut dan reparasi ligamen",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-409, laki-laki, 29 tahun; No. RM SIM-M4-09. Rawat inap ortopedi 14–16 November 2026. Sisi tindakan: lutut kanan. DPJP: spesialis ortopedi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Lutut kanan terasa tidak stabil setelah cedera memutar saat olahraga enam minggu sebelumnya. Pernah bengkak dan nyeri, lalu keluhan menetap saat berputar atau naik turun tangga. Tidak ada luka terbuka, demam, atau cedera lain."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Sudah menjalani terapi awal dan evaluasi ortopedi. Tidak pernah operasi lutut kanan. Tidak ada diabetes, gangguan pembekuan, atau alergi anestesi. Pasien memahami rencana rehabilitasi pascatindakan."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Sadar baik; TD 118/74 mmHg; nadi 74/menit; napas 18/menit; suhu 36,6 °C. Lutut kanan dengan efusi ringan, uji Lachman positif, rentang gerak relatif terpelihara. Perfusi serta sensasi distal baik; tidak ada tanda infeksi sendi."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "MRI lutut menunjukkan cedera ligamen krusiat anterior yang sesuai dengan keluhan instabilitas. Radiografi tidak menunjukkan fraktur. Hb 14,2 g/dL; leukosit 7.600/µL; trombosit 264.000/µL; INR 1,0."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menetapkan cedera ligamen krusiat anterior kanan dengan instabilitas. Uraian operasi menyebut reparasi ligamen krusiat kategori other repair, bukan rekonstruksi ligamen menggunakan graft."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Dilakukan persiapan anestesi, profilaksis tindakan sesuai kebijakan layanan, dan edukasi rehabilitasi. Pascaoperasi pasien mendapat analgesik, alat penyangga sesuai instruksi operator, serta latihan berjalan dengan alat bantu. Sirkulasi distal dipantau."
+      ],
+      [
+        "Laporan tindakan",
+        "15 November: artroskopi lutut kanan dilakukan melalui portal. Operator memeriksa struktur intraartikular dan melakukan reparasi primer ligamen krusiat yang masih dapat diperbaiki; tidak digunakan graft untuk rekonstruksi. Pada uraian tercatat “other repair of cruciate ligament”. Judul singkat lembar tindakan hanya bertuliskan “artroskopi lutut”, sehingga uraian lengkap harus dibaca."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang dengan nyeri terkontrol, luka portal kering, tidak demam, perfusi dan sensasi kaki baik. Pasien dapat menggunakan alat bantu berjalan dengan aman. Tidak ada komplikasi akut yang ditetapkan."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol ortopedi untuk evaluasi luka dan program rehabilitasi bertahap. Ikuti pembatasan beban sesuai instruksi operator; kembali jika nyeri/bengkak bertambah atau terjadi demam."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-09.pdf",
+    "reference": "ICS Bab C MDC 18 Knee Arthroscopy dan Perhatian Khusus",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Kode tindakan apa yang digunakan untuk artroskopi lutut?",
+        "options": [
+          "80.27",
+          "80.25",
+          "80.26",
+          "80.21",
+          "81.45"
+        ]
+      },
+      {
+        "prompt": "Selain artroskopi, dokter melakukan reparasi ligamen krusiat kategori other repair. Kode apa yang sesuai untuk reparasi tersebut?",
+        "options": [
+          "80.26",
+          "81.47",
+          "81.46",
+          "81.45",
+          "81.44"
+        ]
+      },
+      {
+        "prompt": "Menurut daftar pada ICS, apakah reparasi ligamen krusiat yang dilakukan bersama artroskopi ini termasuk prosedur kompleks?",
+        "options": [
+          "Tidak. Artroskopi dengan reparasi ligamen tetap selalu termasuk prosedur diagnostik.",
+          "Tidak. Tindakan pada sendi yang sama tidak boleh dinilai sebagai prosedur kompleks.",
+          "Ya. Reparasi tersebut termasuk dalam daftar prosedur kompleks untuk artroskopi pada ICS.",
+          "Ya. Semua artroskopi termasuk kompleks, tanpa melihat tindakan tambahannya.",
+          "Tidak. Reparasi hanya dianggap kompleks jika dilakukan pada hari yang berbeda."
+        ]
+      },
+      {
+        "prompt": "Dokumen mana yang membuktikan reparasi ligamen krusiat sudah dilakukan, meskipun judul lembar tindakan hanya menyebut artroskopi?",
+        "options": [
+          "Judul laporan yang hanya menulis artroskopi lutut.",
+          "Diagnosis yang menyebut keluhan lutut.",
+          "Jadwal operasi tanpa catatan pelaksanaan.",
+          "Uraian operasi yang menyebut ligamen krusiat dan reparasi yang telah dilakukan.",
+          "Formulir persetujuan tindakan tanpa laporan operasi."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-10",
+    "module": 4,
+    "title": "Teknik debridemen luka",
+    "records": [
+      [
+        "Episode A / Identitas dan episode pelayanan",
+        "Tn. S-410A, laki-laki, 46 tahun; No. RM SIM-M4-10-A. Layanan bedah/perawatan luka, 16 November 2026. Episode A merupakan pasien yang berbeda. DPJP: spesialis bedah simulasi."
+      ],
+      [
+        "Episode A / Anamnesis",
+        "Datang dengan luka tungkai setelah cedera gesek dua minggu sebelumnya. Luka belum menutup dan tampak jaringan mati pada permukaan. Tidak ada demam, menggigil, nyeri hebat yang cepat meluas, atau riwayat gigitan hewan."
+      ],
+      [
+        "Episode A / Riwayat kesehatan",
+        "Tidak ada diabetes, penyakit arteri perifer, atau gangguan pembekuan yang diketahui. Tetanus dievaluasi pada kunjungan awal. Tidak menggunakan antikoagulan dan tidak ada alergi anestesi lokal."
+      ],
+      [
+        "Episode A / Pemeriksaan fisik",
+        "Sadar baik; TD 122/78 mmHg, nadi 80/menit, napas 18/menit, suhu 36,6 °C. Luka tungkai 3 × 2 cm, sebagian permukaan tertutup jaringan devitalisasi, tanpa pus atau eritema meluas. Nadi kaki teraba, perfusi dan sensasi distal baik."
+      ],
+      [
+        "Episode A / Pemeriksaan penunjang",
+        "Evaluasi klinis tidak menunjukkan keterlibatan tendon atau tulang. Leukosit 8.200/µL; glukosa sewaktu 108 mg/dL; kreatinin 0,9 mg/dL. Tidak ada alasan klinis untuk menganggap sepsis atau osteomielitis dari temuan ini."
+      ],
+      [
+        "Episode A / Diagnosis dokter",
+        "Diagnosis dokter: luka tungkai dengan jaringan devitalisasi yang memerlukan debridemen. Teknik tindakan harus diambil dari laporan pelaksanaan, bukan hanya dari diagnosis luka atau ukuran luka."
+      ],
+      [
+        "Episode A / Terapi dan perjalanan perawatan",
+        "Luka dibersihkan dan dinilai dokter. Pasien mendapat analgesia/anestesi lokal sesuai tindakan, debridemen, balutan, dan edukasi perawatan luka. Tidak ada antibiotik sistemik yang dicatat karena dokter tidak menetapkan infeksi."
+      ],
+      [
+        "Episode A / Laporan tindakan",
+        "Operator menulis: dilakukan eksisi tajam jaringan devitalisasi pada kulit dan subkutis menggunakan pisau bedah hingga tepi jaringan viable. Ini debridemen eksisional kulit/subkutis; tidak mengeksisi otot, tendon, atau tulang. Hemostasis tercapai dan luka dibalut."
+      ],
+      [
+        "Episode A / Kondisi akhir pelayanan",
+        "Setelah tindakan pasien stabil, perdarahan tidak aktif, balutan bersih, dan nyeri terkontrol. Pasien tidak memerlukan rawat inap. Tidak ada komplikasi tindakan yang dicatat."
+      ],
+      [
+        "Episode A / Rencana tindak lanjut",
+        "Kontrol perawatan luka dalam 2–3 hari; ganti balutan sesuai instruksi; kembali bila demam, kemerahan meluas, nyeri bertambah, atau balutan basah darah. Teknik yang belum jelas harus diklarifikasi kepada pelaksana."
+      ],
+      [
+        "Episode B / Identitas dan episode pelayanan",
+        "Tn. S-410B, laki-laki, 47 tahun; No. RM SIM-M4-10-B. Layanan bedah/perawatan luka, 16 November 2026. Episode B merupakan pasien yang berbeda. DPJP: spesialis bedah simulasi."
+      ],
+      [
+        "Episode B / Anamnesis",
+        "Datang dengan luka tungkai setelah cedera gesek dua minggu sebelumnya. Luka belum menutup dan tampak jaringan mati pada permukaan. Tidak ada demam, menggigil, nyeri hebat yang cepat meluas, atau riwayat gigitan hewan."
+      ],
+      [
+        "Episode B / Riwayat kesehatan",
+        "Tidak ada diabetes, penyakit arteri perifer, atau gangguan pembekuan yang diketahui. Tetanus dievaluasi pada kunjungan awal. Tidak menggunakan antikoagulan dan tidak ada alergi anestesi lokal."
+      ],
+      [
+        "Episode B / Pemeriksaan fisik",
+        "Sadar baik; TD 122/78 mmHg, nadi 80/menit, napas 18/menit, suhu 36,6 °C. Luka tungkai 3 × 2 cm, sebagian permukaan tertutup jaringan devitalisasi, tanpa pus atau eritema meluas. Nadi kaki teraba, perfusi dan sensasi distal baik."
+      ],
+      [
+        "Episode B / Pemeriksaan penunjang",
+        "Evaluasi klinis tidak menunjukkan keterlibatan tendon atau tulang. Leukosit 8.200/µL; glukosa sewaktu 108 mg/dL; kreatinin 0,9 mg/dL. Tidak ada alasan klinis untuk menganggap sepsis atau osteomielitis dari temuan ini."
+      ],
+      [
+        "Episode B / Diagnosis dokter",
+        "Diagnosis dokter: luka tungkai dengan jaringan devitalisasi yang memerlukan debridemen. Teknik tindakan harus diambil dari laporan pelaksanaan, bukan hanya dari diagnosis luka atau ukuran luka."
+      ],
+      [
+        "Episode B / Terapi dan perjalanan perawatan",
+        "Luka dibersihkan dan dinilai dokter. Pasien mendapat analgesia/anestesi lokal sesuai tindakan, debridemen, balutan, dan edukasi perawatan luka. Tidak ada antibiotik sistemik yang dicatat karena dokter tidak menetapkan infeksi."
+      ],
+      [
+        "Episode B / Laporan tindakan",
+        "Operator menulis: dilakukan irigasi dan pembersihan mekanis jaringan devitalisasi yang longgar dengan kasa, tanpa memotong atau mengeksisi jaringan. Ini debridemen noneksisional kulit/subkutis, tanpa tindakan pada otot atau tulang."
+      ],
+      [
+        "Episode B / Kondisi akhir pelayanan",
+        "Setelah tindakan pasien stabil, perdarahan tidak aktif, balutan bersih, dan nyeri terkontrol. Pasien tidak memerlukan rawat inap. Tidak ada komplikasi tindakan yang dicatat."
+      ],
+      [
+        "Episode B / Rencana tindak lanjut",
+        "Kontrol perawatan luka dalam 2–3 hari; ganti balutan sesuai instruksi; kembali bila demam, kemerahan meluas, nyeri bertambah, atau balutan basah darah. Teknik yang belum jelas harus diklarifikasi kepada pelaksana."
+      ],
+      [
+        "Episode C / Identitas dan episode pelayanan",
+        "Tn. S-410C, laki-laki, 48 tahun; No. RM SIM-M4-10-C. Layanan bedah/perawatan luka, 16 November 2026. Episode C merupakan pasien yang berbeda. DPJP: spesialis bedah simulasi."
+      ],
+      [
+        "Episode C / Anamnesis",
+        "Datang dengan luka tungkai setelah cedera gesek dua minggu sebelumnya. Luka belum menutup dan tampak jaringan mati pada permukaan. Tidak ada demam, menggigil, nyeri hebat yang cepat meluas, atau riwayat gigitan hewan."
+      ],
+      [
+        "Episode C / Riwayat kesehatan",
+        "Tidak ada diabetes, penyakit arteri perifer, atau gangguan pembekuan yang diketahui. Tetanus dievaluasi pada kunjungan awal. Tidak menggunakan antikoagulan dan tidak ada alergi anestesi lokal."
+      ],
+      [
+        "Episode C / Pemeriksaan fisik",
+        "Sadar baik; TD 122/78 mmHg, nadi 80/menit, napas 18/menit, suhu 36,6 °C. Luka tungkai 3 × 2 cm, sebagian permukaan tertutup jaringan devitalisasi, tanpa pus atau eritema meluas. Nadi kaki teraba, perfusi dan sensasi distal baik."
+      ],
+      [
+        "Episode C / Pemeriksaan penunjang",
+        "Evaluasi klinis tidak menunjukkan keterlibatan tendon atau tulang. Leukosit 8.200/µL; glukosa sewaktu 108 mg/dL; kreatinin 0,9 mg/dL. Tidak ada alasan klinis untuk menganggap sepsis atau osteomielitis dari temuan ini."
+      ],
+      [
+        "Episode C / Diagnosis dokter",
+        "Diagnosis dokter: luka tungkai dengan jaringan devitalisasi yang memerlukan debridemen. Teknik tindakan harus diambil dari laporan pelaksanaan, bukan hanya dari diagnosis luka atau ukuran luka."
+      ],
+      [
+        "Episode C / Terapi dan perjalanan perawatan",
+        "Luka dibersihkan dan dinilai dokter. Pasien mendapat analgesia/anestesi lokal sesuai tindakan, debridemen, balutan, dan edukasi perawatan luka. Tidak ada antibiotik sistemik yang dicatat karena dokter tidak menetapkan infeksi."
+      ],
+      [
+        "Episode C / Laporan tindakan",
+        "Pada kolom prosedur operator hanya menulis “debridemen telah dilakukan”. Teknik, alat yang digunakan, dan jaringan terdalam yang ditangani belum dijelaskan."
+      ],
+      [
+        "Episode C / Kondisi akhir pelayanan",
+        "Setelah tindakan pasien stabil, perdarahan tidak aktif, balutan bersih, dan nyeri terkontrol. Pasien tidak memerlukan rawat inap. Tidak ada komplikasi tindakan yang dicatat."
+      ],
+      [
+        "Episode C / Rencana tindak lanjut",
+        "Kontrol perawatan luka dalam 2–3 hari; ganti balutan sesuai instruksi; kembali bila demam, kemerahan meluas, nyeri bertambah, atau balutan basah darah. Teknik yang belum jelas harus diklarifikasi kepada pelaksana."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-10.pdf",
+    "reference": "ICS Bab C Perhatian Khusus MDC 19",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pada laporan A, dokter mengeksisi jaringan luka saat debridemen. Kode tindakan apa yang sesuai?",
+        "options": [
+          "86.59",
+          "86.22",
+          "86.28",
+          "86.04",
+          "86.09"
+        ]
+      },
+      {
+        "prompt": "Pada laporan B, dokter menulis debridemen noneksisional. Kode tindakan apa yang sesuai?",
+        "options": [
+          "86.28",
+          "86.59",
+          "86.09",
+          "86.22",
+          "86.04"
+        ]
+      },
+      {
+        "prompt": "Keterangan mana dalam laporan A yang menunjukkan debridemen dilakukan dengan teknik eksisional?",
+        "options": [
+          "Operator mencatat eksisi jaringan luka.",
+          "Dokter hanya mencatat lokasi luka.",
+          "Jadwal menyebut rencana perawatan luka.",
+          "Catatan menyebut pembersihan tanpa eksisi.",
+          "Kolom prosedur hanya menulis debridemen tanpa teknik."
+        ]
+      },
+      {
+        "prompt": "Pada laporan C, dokter hanya menulis “debridemen”. Apa pertanyaan yang tepat untuk memperjelas tindakan sebelum kode dipilih?",
+        "options": [
+          "Mohon nyatakan debridemen eksisional agar kode dapat dipilih.",
+          "Mohon nyatakan kedalaman tertentu tanpa memeriksa laporan operasi.",
+          "Mohon ganti judul tindakan menjadi debridemen eksisional.",
+          "Mohon tentukan kode dari judul tindakan tanpa rincian teknik.",
+          "Mohon jelaskan teknik debridemen dan jaringan yang ditangani pada tindakan ini."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M4-11",
+    "module": 4,
+    "title": "Diabetes melitus tipe 2 dengan ulkus",
+    "records": [
+      [
+        "Episode A / Identitas dan episode pelayanan",
+        "Tn. S-411A, laki-laki, 56 tahun; No. RM SIM-M4-11-A. Layanan penyakit dalam dan perawatan luka 17–20 November 2026. Episode A adalah pasien berbeda. DPJP: spesialis penyakit dalam simulasi."
+      ],
+      [
+        "Episode A / Anamnesis",
+        "Luka pada telapak kaki sejak tiga minggu, sulit sembuh dan awalnya tidak terlalu nyeri. Tidak ada demam, menggigil, nyeri istirahat hebat, atau perubahan warna kehitaman. Pasien dapat mengingat adanya gesekan sepatu sebelum luka muncul."
+      ],
+      [
+        "Episode A / Riwayat kesehatan",
+        "Diabetes melitus tipe 2 sejak delapan tahun dengan kepatuhan obat tidak teratur. Tidak ada riwayat amputasi atau dialisis. Pasien tidak merokok dan tidak menggunakan steroid. Tidak ada alergi obat yang diketahui."
+      ],
+      [
+        "Episode A / Pemeriksaan fisik",
+        "Sadar baik; TD 128/80 mmHg; nadi 82/menit; napas 18/menit; suhu 36,7 °C. Ulkus plantar kaki kanan 2 × 1,5 cm, mengenai kulit dan jaringan subkutis dangkal, tanpa pus, eritema meluas, atau gangren. Nadi dorsalis pedis teraba; sensasi protektif berkurang. Tidak ada tanda infeksi sistemik."
+      ],
+      [
+        "Episode A / Pemeriksaan penunjang",
+        "Glukosa sewaktu 246 mg/dL; HbA1c 8,9%; leukosit 8.700/µL; kreatinin 0,9 mg/dL. Foto kaki tidak menunjukkan destruksi tulang; pemeriksaan probe-to-bone negatif. DPJP tidak menetapkan osteomielitis atau infeksi kaki pada episode ini."
+      ],
+      [
+        "Episode A / Diagnosis dokter",
+        "DPJP menulis secara eksplisit: “diabetes melitus tipe 2 dengan ulkus diabetik pada kaki kanan”. Hubungan ulkus dengan diabetes telah ditetapkan dokter. Tidak ada gangren atau osteomielitis yang ditetapkan."
+      ],
+      [
+        "Episode A / Terapi dan perjalanan perawatan",
+        "Dilakukan penataan terapi glikemik, perawatan luka, pengurangan beban pada area plantar, serta edukasi pemeriksaan kaki. Antibiotik tidak diberikan hanya karena adanya ulkus; dokter tidak menemukan tanda infeksi klinis. Luka dievaluasi serial untuk ukuran dan tanda penyembuhan."
+      ],
+      [
+        "Episode A / Laporan tindakan",
+        "Pembersihan luka dan penggantian balutan sudah dilaksanakan. Tidak ada debridemen eksisional, revaskularisasi, atau amputasi pada episode ini. Rencana tindakan yang tidak dilakukan tidak dicatat sebagai prosedur terlaksana."
+      ],
+      [
+        "Episode A / Kondisi akhir pelayanan",
+        "Kondisi stabil, tidak demam, glukosa membaik, balutan bersih, dan pasien memahami pengurangan beban. Tidak ada infeksi baru atau nekrosis progresif selama observasi."
+      ],
+      [
+        "Episode A / Rencana tindak lanjut",
+        "Kontrol klinik kaki/perawatan luka, pemantauan glukosa, kepatuhan obat, alas kaki yang sesuai, serta kembali bila luka berbau, bernanah, memerah, atau muncul demam."
+      ],
+      [
+        "Episode B / Identitas dan episode pelayanan",
+        "Tn. S-411B, laki-laki, 60 tahun; No. RM SIM-M4-11-B. Layanan penyakit dalam dan perawatan luka 18–20 November 2026. Episode B adalah pasien berbeda. DPJP: spesialis penyakit dalam simulasi."
+      ],
+      [
+        "Episode B / Anamnesis",
+        "Luka pada telapak kaki sejak tiga minggu, sulit sembuh dan awalnya tidak terlalu nyeri. Tidak ada demam, menggigil, nyeri istirahat hebat, atau perubahan warna kehitaman. Pasien dapat mengingat adanya gesekan sepatu sebelum luka muncul."
+      ],
+      [
+        "Episode B / Riwayat kesehatan",
+        "Diabetes melitus tipe 2 sejak delapan tahun dengan kepatuhan obat tidak teratur. Tidak ada riwayat amputasi atau dialisis. Pasien tidak merokok dan tidak menggunakan steroid. Tidak ada alergi obat yang diketahui."
+      ],
+      [
+        "Episode B / Pemeriksaan fisik",
+        "Sadar baik; TD 128/80 mmHg; nadi 82/menit; napas 18/menit; suhu 36,7 °C. Ulkus plantar kaki kanan 2 × 1,5 cm, mengenai kulit dan jaringan subkutis dangkal, tanpa pus, eritema meluas, atau gangren. Nadi dorsalis pedis teraba; sensasi protektif berkurang. Tidak ada tanda infeksi sistemik."
+      ],
+      [
+        "Episode B / Pemeriksaan penunjang",
+        "Glukosa sewaktu 246 mg/dL; HbA1c 8,9%; leukosit 8.700/µL; kreatinin 0,9 mg/dL. Foto kaki tidak menunjukkan destruksi tulang; pemeriksaan probe-to-bone negatif. DPJP tidak menetapkan osteomielitis atau infeksi kaki pada episode ini."
+      ],
+      [
+        "Episode B / Diagnosis dokter",
+        "Pada resume DPJP menulis dua baris terpisah: “diabetes melitus tipe 2” dan “ulkus plantar kaki kanan”. Belum ada penjelasan apakah ulkus berhubungan dengan diabetes atau etiologi lain. Kedua kondisi sudah diketahui, tetapi hubungan sebabnya belum didokumentasikan oleh DPJP."
+      ],
+      [
+        "Episode B / Terapi dan perjalanan perawatan",
+        "Dilakukan penataan terapi glikemik, perawatan luka, pengurangan beban pada area plantar, serta edukasi pemeriksaan kaki. Antibiotik tidak diberikan hanya karena adanya ulkus; dokter tidak menemukan tanda infeksi klinis. Luka dievaluasi serial untuk ukuran dan tanda penyembuhan."
+      ],
+      [
+        "Episode B / Laporan tindakan",
+        "Pembersihan luka dan penggantian balutan sudah dilaksanakan. Tidak ada debridemen eksisional, revaskularisasi, atau amputasi pada episode ini. Rencana tindakan yang tidak dilakukan tidak dicatat sebagai prosedur terlaksana."
+      ],
+      [
+        "Episode B / Kondisi akhir pelayanan",
+        "Kondisi stabil, tidak demam, glukosa membaik, balutan bersih, dan pasien memahami pengurangan beban. Tidak ada infeksi baru atau nekrosis progresif selama observasi."
+      ],
+      [
+        "Episode B / Rencana tindak lanjut",
+        "Kontrol klinik kaki/perawatan luka, pemantauan glukosa, kepatuhan obat, alas kaki yang sesuai, serta kembali bila luka berbau, bernanah, memerah, atau muncul demam."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M4-11.pdf",
+    "reference": "ICS Bab C MDC 20 Diabetes Mellitus",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Dokter menulis “diabetes melitus tipe 2 dengan ulkus diabetik” pada resume utama. Kode apa yang mencakup diagnosis tersebut sesuai contoh ICS?",
+        "options": [
+          "E10.5",
+          "E11.9",
+          "E11.6",
+          "E11.4",
+          "E11.5"
+        ]
+      },
+      {
+        "prompt": "Kata mana pada resume utama yang menunjukkan dokter mengaitkan ulkus dengan diabetes?",
+        "options": [
+          "“Diabetes melitus tipe 2” tanpa keterangan komplikasi.",
+          "“Ulkus” tanpa keterangan hubungan dengan diabetes.",
+          "“Ulkus diabetik”.",
+          "Dua diagnosis yang dicatat pada baris terpisah tanpa penjelasan.",
+          "Riwayat diabetes saja."
+        ]
+      },
+      {
+        "prompt": "Kode untuk diabetes dengan ulkus sudah digunakan. Sesuai contoh ICS ini, apakah ulkus masih perlu diberi kode terpisah?",
+        "options": [
+          "Ya. Semua ulkus harus selalu diberi kode terpisah.",
+          "Ya. Diabetes harus dikode tanpa komplikasi lalu ditambah kode ulkus.",
+          "Tidak. Pada contoh ini, ulkus sudah tercakup dalam kode kombinasi.",
+          "Ya. Hubungan diabetes dan ulkus belum dinyatakan pada resume utama.",
+          "Tidak. Ulkus hanya merupakan rencana diagnosis."
+        ]
+      },
+      {
+        "prompt": "Pada resume pembanding, dokter menulis diabetes dan ulkus tanpa menjelaskan kaitannya. Pertanyaan apa yang tepat untuk memperjelas hubungan kedua kondisi?",
+        "options": [
+          "Mohon pastikan bahwa ulkus merupakan komplikasi diabetes.",
+          "Mohon jelaskan hubungan klinis antara diabetes dan ulkus, bila ada.",
+          "Mohon ganti diagnosis ulkus menjadi ulkus diabetik.",
+          "Mohon nyatakan bahwa ulkus tidak berkaitan dengan diabetes.",
+          "Mohon pilih kode kombinasi tanpa menjelaskan hubungan klinis."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M6-01",
+    "module": 6,
+    "title": "Stadium AKI dan akses dialisis",
+    "records": [
+      [
+        "Episode A / Identitas dan episode pelayanan",
+        "Ny. S-601A, perempuan, 36 tahun; No. RM SIM-M6-01-A. Rawat inap penyakit dalam 7–11 November 2026. Episode A tidak berkaitan dengan pasien pemasangan akses dialisis pada episode B. DPJP: spesialis penyakit dalam simulasi."
+      ],
+      [
+        "Episode A / Anamnesis",
+        "Mual, muntah, dan asupan cairan berkurang selama tiga hari. Jumlah urin dirasakan menurun. Tidak ada nyeri pinggang, disuria, demam tinggi, atau sesak. Pasien dirujuk karena fungsi ginjal memburuk dibanding pemeriksaan sebelumnya."
+      ],
+      [
+        "Episode A / Riwayat kesehatan",
+        "Tidak ada diagnosis penyakit ginjal kronik. Kreatinin terdokumentasi 0,8 mg/dL dua minggu sebelum masuk. Tidak menggunakan obat nefrotoksik atau jamu. Tidak ada diabetes, hipertensi, atau alergi obat."
+      ],
+      [
+        "Episode A / Pemeriksaan fisik",
+        "Berat 60 kg; sadar baik; TD 100/66 mmHg; nadi 100/menit; napas 20/menit; suhu 36,8 °C; SpO2 99%. Mukosa kering, pengisian kapiler sekitar 2 detik, tanpa edema atau ronki. Tidak ada nyeri ketok sudut kostovertebral."
+      ],
+      [
+        "Episode A / Pemeriksaan penunjang",
+        "Kreatinin saat masuk 1,7 mg/dL dan keesokan hari 1,8 mg/dL; ureum 52 mg/dL; kalium 4,4 mmol/L; bikarbonat 22 mmol/L. Produksi urin terukur 0,7 mL/kg/jam setelah pemantauan dimulai. USG tidak menunjukkan hidronefrosis. Pemeriksaan serial digunakan dokter untuk evaluasi cedera ginjal akut."
+      ],
+      [
+        "Episode A / Diagnosis dokter",
+        "DPJP menetapkan cedera ginjal akut terkait deplesi volume. Pada diagnosis akhir dokter belum menulis stadium AKI."
+      ],
+      [
+        "Episode A / Terapi dan perjalanan perawatan",
+        "Diberikan penggantian cairan terukur, antiemetik, pemantauan masukan-keluaran, dan evaluasi fungsi ginjal serial. Setelah asupan dan volume membaik, kreatinin turun menjadi 1,0 mg/dL. Tidak ditemukan indikasi dialisis dan tidak dilakukan pemasangan kateter dialisis."
+      ],
+      [
+        "Episode A / Laporan tindakan",
+        "Akses intravena serta pemantauan produksi urin dilakukan. Tidak ada sesi dialisis. Dokumen pasien episode B tidak boleh dipakai untuk menetapkan stadium atau tindakan pada pasien ini."
+      ],
+      [
+        "Episode A / Kondisi akhir pelayanan",
+        "Pulang sadar baik, mampu makan/minum, produksi urin cukup, TD 116/74 mmHg. Kreatinin mendekati nilai dasar. Tidak ada sesak, edema, atau gangguan elektrolit yang membutuhkan terapi emergensi."
+      ],
+      [
+        "Episode A / Rencana tindak lanjut",
+        "Kontrol fungsi ginjal setelah pulang sesuai jadwal, pertahankan hidrasi, dan hindari penggunaan obat tanpa konsultasi."
+      ],
+      [
+        "Episode B / Identitas dan episode pelayanan",
+        "Tn. S-601B, laki-laki, 64 tahun; No. RM SIM-M6-01-B. Rawat inap terencana nefrologi 12–13 November 2026 untuk persiapan akses dialisis. Pasien berbeda dari episode A. DPJP: spesialis penyakit dalam konsultan ginjal simulasi."
+      ],
+      [
+        "Episode B / Anamnesis",
+        "Datang sesuai jadwal pemasangan akses dialisis jangka menengah. Pasien mempunyai penyakit ginjal kronik lanjut dan tim nefrologi merencanakan terapi pengganti ginjal. Saat masuk tidak ada sesak berat, nyeri dada, penurunan kesadaran, atau keluhan uremik emergensi."
+      ],
+      [
+        "Episode B / Riwayat kesehatan",
+        "Penyakit ginjal kronik stadium lanjut telah dinilai pada kunjungan terdahulu. Akses arteriovenosa belum dapat digunakan. Tidak ada riwayat infeksi kateter aktif. Tidak ada alergi anestesi lokal atau gangguan perdarahan."
+      ],
+      [
+        "Episode B / Pemeriksaan fisik",
+        "Sadar baik; TD 138/82 mmHg; nadi 80/menit; napas 18/menit; suhu 36,6 °C; SpO2 98%. Tidak ada tanda overload berat. Lokasi leher dan dinding dada untuk pemasangan kateter tidak menunjukkan infeksi kulit."
+      ],
+      [
+        "Episode B / Pemeriksaan penunjang",
+        "Hb 10,4 g/dL; trombosit 228.000/µL; INR 1,0; kalium 4,7 mmol/L; bikarbonat 22 mmol/L. Penilaian pra-tindakan dan pencitraan panduan pemasangan tersedia. Tidak ada kelainan yang oleh dokter dinilai membutuhkan dialisis segera pada hari pemasangan."
+      ],
+      [
+        "Episode B / Diagnosis dokter",
+        "Diagnosis dokter: penyakit ginjal kronik lanjut dengan kebutuhan persiapan akses dialisis. Tidak ada diagnosis AKI yang dihubungkan dengan pasien episode A."
+      ],
+      [
+        "Episode B / Terapi dan perjalanan perawatan",
+        "Pasien menjalani persiapan, persetujuan tindakan, pemasangan kateter, lalu observasi perdarahan dan fungsi akses. Tim menjadwalkan penggunaan akses pada pelayanan berikutnya. Tidak ada lembar sesi dialisis pada episode ini karena dialisis belum dilakukan."
+      ],
+      [
+        "Episode B / Laporan tindakan",
+        "Kateter hemodialisis bertunnel dipasang melalui vena jugularis interna kanan dengan panduan pencitraan. Dibentuk tunnel subkutan dan posisi ujung kateter diperiksa. Kedua lumen berfungsi. Tidak ada komplikasi segera. Ini bukan pemasangan kateter nontunnel dan bukan pembentukan fistula arteriovenosa."
+      ],
+      [
+        "Episode B / Kondisi akhir pelayanan",
+        "Pulang stabil, tempat keluar kateter kering, tanpa perdarahan atau sesak. Tidak ada demam. Pasien dan keluarga memahami perlindungan kateter serta jadwal layanan nefrologi berikutnya."
+      ],
+      [
+        "Episode B / Rencana tindak lanjut",
+        "Kontrol akses dan rencana awal dialisis sesuai jadwal. Jaga balutan tetap kering; kembali bila demam, perdarahan, kateter tertarik, atau nyeri/bengkak di lokasi pemasangan."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M6-01.pdf",
+    "reference": "ICS Bab C MDC 21 AKI dan Pemasangan Akses Hemodialisis",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pada berkas A, dokter belum menulis stadium AKI. Apa pertanyaan yang tepat untuk meminta penjelasan dokter?",
+        "options": [
+          "Mohon tetapkan stadium 3 karena ada pemasangan kateter pada berkas lain.",
+          "Mohon jelaskan stadium AKI pada episode ini, bila dapat ditentukan secara klinis.",
+          "Mohon tetapkan stadium tertinggi untuk mengantisipasi perburukan.",
+          "Mohon tetapkan stadium 1 karena belum ada rincian pemeriksaan.",
+          "Mohon tentukan stadium hanya dari nama tindakan pada berkas lain."
+        ]
+      },
+      {
+        "prompt": "Kreatinin pasien A meningkat, tetapi DPJP hanya menulis AKI tanpa stadium. Apa langkah yang tepat sebelum memilih kode AKI dengan stadium tertentu?",
+        "options": [
+          "Langsung menetapkan stadium tertinggi.",
+          "Mengambil stadium dari pasien B.",
+          "Meminta DPJP mendokumentasikan atau mengonfirmasi stadium berdasarkan data episode A.",
+          "Menganggap semua AKI tanpa stadium sebagai stadium 1.",
+          "Mengode berdasarkan pemasangan kateter pada episode B."
+        ]
+      },
+      {
+        "prompt": "Pada berkas B, kateter dialisis bertunnel sudah dipasang. Kode tindakan spesifik apa yang digunakan sesuai ICS?",
+        "options": [
+          "38.950",
+          "39.27",
+          "39.95",
+          "38.95",
+          "54.932"
+        ]
+      },
+      {
+        "prompt": "Pada berkas B, kateter dialisis sudah dipasang tetapi tidak ada catatan sesi dialisis. Apakah kode pelaksanaan dialisis boleh langsung ditambahkan?",
+        "options": [
+          "Tidak. Pelaksanaan dialisis memerlukan bukti tersendiri, terpisah dari pemasangan akses.",
+          "Ya. Pemasangan kateter selalu berarti sesi dialisis sudah selesai.",
+          "Ya. Nama kateter yang mengandung kata dialisis sudah cukup sebagai bukti.",
+          "Ya. Laporan pemasangan akses menggantikan catatan sesi dialisis.",
+          "Ya. Kode pemasangan akses dan kode pelaksanaan dialisis mempunyai arti yang sama."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M6-02",
+    "module": 6,
+    "title": "Persalinan ibu dengan ketuban pecah dini",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Ny. S-602, perempuan, 25 tahun; G1P0A0, hamil 38 minggu 5 hari berdasarkan USG awal. No. RM SIM-M6-02. Episode ibu, rawat inap obstetri 15–17 November 2026. DPJP: spesialis obstetri dan ginekologi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Keluar cairan jernih sejak 15 November pukul 02.00, tanpa kontraksi teratur sebelumnya. Masuk pukul 05.00. Tidak ada darah segar, demam, atau gerak janin berkurang. Kontraksi teratur dan perubahan serviks yang menunjukkan persalinan mulai pukul 08.00, enam jam setelah ketuban pecah."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Kehamilan tunggal, antenatal teratur, tidak ada diabetes atau hipertensi. Tidak ada operasi rahim. Skrining streptokokus grup B negatif pada pemeriksaan antenatal. Tidak ada alergi obat."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Sadar baik; TD 114/72 mmHg; nadi 84/menit; napas 18/menit; suhu 36,7 °C; SpO2 99%. Inspekulo menunjukkan cairan jernih keluar dari ostium dengan pooling. Uterus tidak nyeri tekan; DJJ 144/menit. Pemeriksaan saat persalinan aktif: pembukaan 4 cm dan kontraksi teratur."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Nitrazin dan ferning positif. Hb 11,8 g/dL; leukosit 9.400/µL; trombosit 242.000/µL. USG: janin tunggal hidup presentasi kepala, plasenta tidak menutupi jalan lahir. KTG tidak menunjukkan tanda gawat janin."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menetapkan ketuban pecah dini aterm, onset persalinan dalam 24 jam setelah pecah ketuban; persalinan spontan presentasi kepala; satu bayi lahir hidup. Tidak ditemukan korioamnionitis atau komplikasi lain yang ditetapkan."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Dipantau suhu, denyut jantung janin, dan kemajuan persalinan. Persalinan berlangsung spontan tanpa instrumen. Episiotomi dilakukan selektif atas penilaian operator saat kepala lahir. Setelah persalinan dilakukan pencegahan perdarahan, observasi kontraksi uterus, analgesia, dan dukungan menyusui."
+      ],
+      [
+        "Laporan tindakan",
+        "15 November pukul 13.10 lahir satu bayi perempuan hidup, presentasi kepala, berat 3.000 gram, Apgar 8/9. Episiotomi mediolateral dengan anestesi lokal telah dilakukan dan dijahit. Plasenta lengkap; perdarahan 200 mL. Tidak ada vakum, forsep, atau operasi sesar."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Ibu pulang hari kedua pascapersalinan dalam keadaan baik; tidak demam, luka perineum bersih, uterus berkontraksi baik, lokia sesuai masa nifas. Bayi menyusu baik. Catatan perawatan bayi terpisah dari berkas ibu."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol nifas satu minggu, edukasi kebersihan perineum, menyusui, tanda perdarahan dan infeksi. Catatan status kelahiran bayi sebagai pasien tersendiri berada pada berkas bayi yang terpisah."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M6-02.pdf",
+    "reference": "ICS Bab C Tabel C.80",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Ibu mengalami ketuban pecah dini dan mulai bersalin dalam 24 jam. Kode apa yang menjadi diagnosis utama pada berkas ibu?",
+        "options": [
+          "O42.0",
+          "Z37.0",
+          "O80.0",
+          "O42.9",
+          "O42.1"
+        ]
+      },
+      {
+        "prompt": "Untuk persalinan spontan presentasi kepala, kode dan penempatan diagnosis manakah yang benar pada berkas ibu?",
+        "options": [
+          "O81.0 sebagai diagnosis sekunder",
+          "O80.0 sebagai diagnosis utama",
+          "O42.0 sebagai diagnosis sekunder",
+          "O80.0 sebagai diagnosis sekunder",
+          "O82.0 sebagai diagnosis sekunder"
+        ]
+      },
+      {
+        "prompt": "Untuk hasil satu bayi lahir hidup, kode dan penempatan diagnosis manakah yang benar pada berkas ibu?",
+        "options": [
+          "Z38.0 sebagai diagnosis utama",
+          "Z38.0 sebagai diagnosis sekunder",
+          "Z37.1 sebagai diagnosis sekunder",
+          "Z37.0 sebagai diagnosis sekunder",
+          "Z37.0 sebagai diagnosis utama"
+        ]
+      },
+      {
+        "prompt": "Persalinan spontan dan episiotomi sudah dilakukan. Pasangan kode tindakan manakah yang sesuai contoh ICS?",
+        "options": [
+          "72.1, 73.6",
+          "73.59, 72.1",
+          "73.59, 73.6",
+          "73.4, 73.6",
+          "73.59, 75.69"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M6-03",
+    "module": 6,
+    "title": "Hipoglikemia pada bayi baru lahir",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Bayi S-603, laki-laki; No. RM SIM-M6-03. Lahir tunggal di rumah sakit 16 November 2026 pukul 06.20, usia gestasi 39 minggu, berat lahir 3.000 gram. Rawat bayi sampai 19 November. DPJP: spesialis anak simulasi. Dokumen ini adalah berkas bayi, bukan berkas ibu."
+      ],
+      [
+        "Anamnesis",
+        "Pada usia lima jam bayi tampak gemetar, kurang aktif, dan sulit menyusu. Suhu tetap normal. Tidak ada kejang fokal, muntah hijau, atau gangguan napas. Karena gejala tersebut, tim neonatal memeriksa glukosa dan menilai bayi segera."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Persalinan pervaginam, Apgar 8/9. Kehamilan ibu tanpa diabetes yang diketahui; tidak ada demam intrapartum atau ketuban pecah berkepanjangan. Bayi cukup bulan sesuai masa kehamilan. Tidak ada kelainan bawaan mayor yang ditemukan."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Berat 3.000 gram; suhu 36,7 °C; nadi 146/menit; napas 42/menit; SpO2 98% udara ruangan. Bayi dapat dibangunkan namun aktivitas dan refleks mengisap menurun. Terdapat jitteriness. Perfusi baik dan tidak ada retraksi atau sianosis."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Glukosa kapiler awal 28 mg/dL, dikonfirmasi glukosa plasma 30 mg/dL. Kalsium dan elektrolit dalam batas yang dinilai sesuai usia oleh dokter. Glukosa meningkat setelah terapi dan dipantau serial; gejala membaik setelah koreksi. Tidak ada bukti yang membuat dokter menetapkan sepsis neonatal pada episode ini."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menetapkan hipoglikemia neonatal. Bayi tunggal lahir hidup di rumah sakit dicatat sebagai status kelahirannya. Dokter tidak menetapkan sindrom bayi dari ibu diabetes atau gangguan metabolik herediter."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Karena hipoglikemia bergejala, diberikan koreksi glukosa intravena dan infus glukosa terukur sesuai protokol neonatal, dengan pemantauan glukosa serial. ASI diberikan dengan dukungan laktasi. Infus dikurangi bertahap setelah asupan dan glukosa stabil."
+      ],
+      [
+        "Laporan tindakan",
+        "Akses intravena, pemberian glukosa, serta pemantauan sudah dilakukan dan tercatat pada lembar pelaksanaan bayi. Tidak ada tindakan bedah atau ventilasi invasif. Setelah infus dihentikan glukosa praminum dipantau tetap memadai."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Bayi aktif, mengisap kuat, suhu stabil, tidak gemetar, dan tidak membutuhkan glukosa intravena. Glukosa praminum terakhir 72 mg/dL dengan toleransi minum baik. Pulang bersama ibu setelah penilaian dokter anak."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "ASI teratur, pemantauan kecukupan minum dan pertumbuhan, kontrol bayi sesuai jadwal. Segera kembali bila bayi sulit dibangunkan, tidak mau minum, gemetar, kejang, atau tampak kebiruan."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M6-03.pdf",
+    "reference": "ICS Bab C Tabel C.89",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Dokter menetapkan hipoglikemia neonatal. Kode diagnosis utama apa yang digunakan pada berkas bayi?",
+        "options": [
+          "P70.0",
+          "P70.4",
+          "P70.1",
+          "P70.8",
+          "P70.9"
+        ]
+      },
+      {
+        "prompt": "Bayi lahir tunggal di rumah sakit. Kode dan penempatan diagnosis manakah yang benar untuk mencatat status kelahirannya?",
+        "options": [
+          "Z37.0 sebagai diagnosis sekunder",
+          "Z38.1 sebagai diagnosis sekunder",
+          "Z38.0 sebagai diagnosis utama",
+          "Z37.0 sebagai diagnosis utama",
+          "Z38.0 sebagai diagnosis sekunder"
+        ]
+      },
+      {
+        "prompt": "Dua keterangan pada catatan kelahiran mana yang mendasari pemilihan Z38.0?",
+        "options": [
+          "Bayi tunggal dan berat lahir 3.000 gram.",
+          "Bayi cukup bulan dan berat lahir 3.000 gram.",
+          "Hipoglikemia dan hasil pemeriksaan penunjang.",
+          "Bayi tunggal dan lahir di rumah sakit.",
+          "Bayi cukup bulan dan diagnosis hipoglikemia."
+        ]
+      },
+      {
+        "prompt": "Apakah Z37.0 merupakan kode untuk mencatat status kelahiran pada berkas bayi ini?",
+        "options": [
+          "Ya. Z37.0 digunakan untuk semua bayi yang lahir di rumah sakit.",
+          "Ya. Z37.0 menjadi diagnosis utama untuk hipoglikemia neonatal.",
+          "Tidak. Z37.0 digunakan untuk hasil persalinan pada berkas ibu; status kelahiran bayi memakai kategori Z38.",
+          "Ya. Z37.0 menggantikan kode status kelahiran bayi.",
+          "Tidak. Status kelahiran bayi tidak perlu dicatat meskipun tersedia pada sumber."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M6-04",
+    "module": 6,
+    "title": "Pielonefritis akut dan sepsis",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Ny. S-604, perempuan, 46 tahun; No. RM SIM-M6-04. Rawat inap penyakit dalam 10–18 November 2026. DPJP: spesialis penyakit dalam simulasi. Catatan waktu membedakan alasan awal masuk dari komplikasi selama rawat."
+      ],
+      [
+        "Anamnesis",
+        "Masuk karena demam, disuria, sering berkemih, dan nyeri pinggang kanan sejak dua hari. Saat masuk masih sadar penuh, tekanan darah stabil, dan tidak ada disfungsi organ yang ditetapkan. Hari kedua pasien mengalami menggigil, demam lebih tinggi, dan menjadi bingung."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Tidak ada penyakit ginjal kronik, keganasan, atau imunosupresi. Tidak memakai kateter urin sebelum sakit. Tidak ada alergi antibiotik. Tidak ada riwayat batu saluran kemih atau operasi urologi."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "Awal masuk: GCS 15, TD 120/70 mmHg, nadi 100/menit, napas 26/menit, suhu 39 °C. Nyeri ketok sudut kostovertebral kanan. Pada perburukan hari kedua GCS menjadi 13 (E3V4M6), tanpa defisit fokal; tekanan darah tetap 120/70 mmHg dan tidak membutuhkan vasopresor."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Urinalisis: leukosit >50/lapang pandang, nitrit positif, bakteri positif. Kultur urin dan darah tumbuh Escherichia coli. Trombosit awal 210.000/µL turun menjadi 86.000/µL saat perburukan; kreatinin tetap sekitar 0,9 mg/dL. USG tidak menunjukkan obstruksi. DPJP menilai penurunan trombosit dan perubahan kesadaran sebagai disfungsi organ akut terkait infeksi."
+      ],
+      [
+        "Diagnosis dokter",
+        "Pielonefritis akut merupakan alasan pasien masuk. Pada hari kedua DPJP secara eksplisit menetapkan “sepsis akibat E. coli yang berkembang selama perawatan”, disertai disfungsi organ akut. Dokter tidak menetapkan syok septik. Kultur positif saja tidak menjadi satu-satunya dasar diagnosis sepsis."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Antibiotik intravena diberikan setelah pengambilan kultur, kemudian disesuaikan dengan hasil kepekaan dan respons klinis. Dilakukan pemantauan hemodinamik, kesadaran, trombosit, serta keseimbangan cairan. Demam dan kebingungan membaik; jumlah trombosit pulih bertahap."
+      ],
+      [
+        "Laporan tindakan",
+        "Pengambilan kultur darah/urin dan terapi intravena telah dilakukan. Tidak diperlukan pemasangan stent ureter, nefrostomi, atau operasi karena tidak ditemukan obstruksi. Tidak ada dialisis atau vasopresor pada episode ini."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang dengan GCS 15, suhu 36,6 °C, TD 118/74 mmHg, tanpa nyeri pinggang atau disuria. Trombosit 182.000/µL, mampu makan dan minum. Tidak ada disfungsi organ menetap yang ditetapkan pada akhir rawat."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Selesaikan antibiotik sesuai resep serta kontrol penyakit dalam. Edukasi kembali bila demam berulang, nyeri pinggang, muntah, atau kesadaran menurun. Urutan diagnosis mengikuti kronologi episode yang terdokumentasi."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M6-04.pdf",
+    "reference": "ICS Bab C Tabel C.102",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pasien masuk karena pielonefritis akut, lalu mengalami sepsis selama dirawat. Sesuai urutan kejadian pada contoh ICS ini, kode apa yang menjadi diagnosis utama?",
+        "options": [
+          "N39.0",
+          "A41.5",
+          "N11.9",
+          "N10",
+          "N12"
+        ]
+      },
+      {
+        "prompt": "Kode diagnosis sekunder apa yang digunakan untuk sepsis akibat E. coli sesuai contoh ICS ini?",
+        "options": [
+          "A41.0",
+          "A41.8",
+          "A40.9",
+          "A41.5",
+          "A41.9"
+        ]
+      },
+      {
+        "prompt": "Kode tambahan apa yang menunjukkan E. coli sebagai penyebab pielonefritis?",
+        "options": [
+          "B96.8",
+          "B96.5",
+          "B96.2",
+          "B96.1",
+          "B95.6"
+        ]
+      },
+      {
+        "prompt": "Catatan mana yang menunjukkan bahwa dokter sudah menetapkan diagnosis sepsis, bukan hanya menemukan kultur positif?",
+        "options": [
+          "Kultur darah positif tanpa diagnosis sepsis dari dokter.",
+          "Demam dan menggigil saja.",
+          "DPJP secara jelas menuliskan diagnosis “sepsis akibat E. coli”.",
+          "Tekanan darah 120/70 mmHg saja.",
+          "Kultur urin positif tanpa penetapan diagnosis sepsis."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M6-05",
+    "module": 6,
+    "title": "Cedera dada dan fraktur humerus",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-605, laki-laki, 34 tahun; No. RM SIM-M6-05. Rawat inap trauma 12–20 November 2026. DPJP: tim bedah toraks dan ortopedi simulasi. Pasien adalah pengemudi mobil pada kecelakaan lalu lintas di jalan umum."
+      ],
+      [
+        "Anamnesis",
+        "Mobil yang dikemudikan pasien menabrak pohon di tepi jalan. Pasien mengalami benturan dada dan lengan kiri, kemudian sesak serta nyeri hebat pada lengan atas. Tidak ada kehilangan kesadaran atau keluhan kelemahan tungkai. Kejadian bukan kecelakaan kerja yang melibatkan kendaraan khusus."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Sebelum kecelakaan sehat, tidak menggunakan antikoagulan, dan tidak ada riwayat operasi dada. Status tetanus ditelaah. Tidak ada alergi obat yang diketahui."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "GCS 15; TD 108/70 mmHg; nadi 112/menit; napas 30/menit; SpO2 90% udara ruangan. Suara napas kiri menurun dan terdapat memar dada. Luka terbuka pada lengan atas kiri dengan deformitas daerah humerus proksimal; perfusi serta sensasi distal masih baik."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Foto toraks dan CT setelah stabilisasi menunjukkan hemopneumotoraks kiri dan kontusio paru. Radiografi lengan menunjukkan fraktur proksimal humerus kiri dengan luka yang berhubungan dengan fraktur. Hb 11,8 g/dL; trombosit 236.000/µL; INR 1,0. Tidak ditemukan cedera kepala atau abdomen yang menjadi kondisi utama."
+      ],
+      [
+        "Diagnosis dokter",
+        "DPJP menetapkan cedera multipel organ intratorakal sebagai kondisi utama karena memerlukan stabilisasi napas dan drainase dada segera. Fraktur terbuka ujung atas humerus kiri dicatat sebagai diagnosis sekunder. Kedua kelompok cedera dinilai dalam episode trauma yang sama."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Stabilisasi dilakukan dengan oksigen, akses intravena, analgesik, dan penanganan trauma. Fraktur terbuka mendapat antibiotik serta pencegahan tetanus sesuai penilaian klinis. Setelah kondisi napas stabil dilakukan perawatan bedah tulang. Fisioterapi dan mobilisasi dimulai bertahap."
+      ],
+      [
+        "Laporan tindakan",
+        "WSD dipasang pada hemitoraks kiri; udara dan cairan darah terdrainase, diikuti perbaikan pengembangan paru. Pada operasi terpisah dalam episode yang sama dilakukan penanganan luka serta reduksi terbuka dan fiksasi internal pada humerus kiri. Laporan menegaskan ORIF telah terlaksana. Drain dada dilepas setelah evaluasi klinis dan radiologi memenuhi syarat."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Pulang sadar baik, SpO2 97% udara ruangan, luka drain bersih, luka operasi lengan tidak menunjukkan infeksi. Perfusi serta sensasi tangan baik, nyeri terkontrol, mampu berjalan. Tidak ada komplikasi baru yang ditetapkan."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Kontrol toraks dan ortopedi, perawatan luka, pembatasan beban pada lengan sesuai operator, serta rehabilitasi bertahap. Kembali bila sesak, demam, nyeri bertambah, atau tangan menjadi pucat/dingin."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M6-05.pdf",
+    "reference": "ICS Bab C Tabel C.124 dan kriteria MDC 31",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Dokter menetapkan cedera organ dalam dada sebagai kondisi utama dan fraktur terbuka humerus sebagai kondisi lain. Pasangan kode diagnosis utama dan sekunder manakah yang sesuai?",
+        "options": [
+          "Diagnosis utama S42.21 · diagnosis sekunder S27.7",
+          "Diagnosis utama S27.7 · diagnosis sekunder S42.21",
+          "Diagnosis utama S27.7 · diagnosis sekunder S42.31",
+          "Diagnosis utama S27.9 · diagnosis sekunder S42.21",
+          "Diagnosis utama S27.7 · diagnosis sekunder S42.20"
+        ]
+      },
+      {
+        "prompt": "Pasien mengemudikan mobil yang menabrak pohon. Kode penyebab luar apa yang digunakan sesuai contoh ICS?",
+        "options": [
+          "V49.9",
+          "V47.59",
+          "V89.2",
+          "V47.69",
+          "V47.09"
+        ]
+      },
+      {
+        "prompt": "WSD pada dada dan ORIF pada humerus sudah dilakukan. Pasangan kode tindakan manakah yang sesuai contoh ICS?",
+        "options": [
+          "WSD 34.04 · ORIF 79.31",
+          "WSD 34.04 · ORIF 79.19",
+          "WSD 79.39 · ORIF 34.04",
+          "WSD 34.04 · ORIF 79.39",
+          "WSD 34.91 · ORIF 79.39"
+        ]
+      },
+      {
+        "prompt": "Cedera pada dada dan humerus termasuk dalam dua kelompok lokasi tubuh yang mana saat menelaah kriteria MDC 31?",
+        "options": [
+          "Dada dan ekstremitas atas",
+          "Abdomen dan ekstremitas atas",
+          "Pelvis dan ekstremitas atas",
+          "Kepala dan dada",
+          "Dada dan ekstremitas bawah"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M6-06",
+    "module": 6,
+    "title": "Rehabilitasi nyeri punggung bawah",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Ny. S-606, perempuan, 44 tahun; No. RM SIM-M6-06. Rawat jalan rehabilitasi medik 19 November 2026. Kunjungan untuk sesi terapi fisik yang sudah dijadwalkan. DPJP: spesialis kedokteran fisik dan rehabilitasi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Nyeri punggung bawah selama enam minggu, bertambah setelah duduk lama dan membaik dengan perubahan posisi. Tidak menjalar ke tungkai. Tidak ada demam, penurunan berat badan, kelemahan progresif, anestesi sadel, atau gangguan berkemih/defekasi."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Pekerjaan banyak duduk. Tidak ada trauma berat, keganasan, tuberkulosis, osteoporosis, atau penggunaan steroid lama. Tidak ada operasi tulang belakang. Pasien telah dievaluasi dokter sebelum mengikuti program terapi."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "TD 118/76 mmHg; nadi 76/menit; suhu 36,6 °C. Nyeri tekan otot paraspinal lumbal, fleksi terbatas karena nyeri. Kekuatan, refleks, dan sensibilitas tungkai baik; straight-leg raising negatif. Kulit area terapi utuh dan sensasi panas baik. Skala nyeri sebelum terapi 5/10."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Tidak ada tanda bahaya atau defisit neurologis yang membuat dokter mengindikasikan pencitraan baru pada kunjungan ini. Penilaian fungsi menunjukkan nyeri saat duduk lama dan membungkuk. Catatan skrining kontraindikasi panas dan latihan tersedia."
+      ],
+      [
+        "Diagnosis dokter",
+        "Diagnosis klinis: nyeri punggung bawah nonspesifik. Tujuan episode adalah pelaksanaan terapi fisik, bukan penentuan penyebab anatomi baru. Dokter tidak menetapkan herniasi diskus, stenosis spinal, atau radikulopati."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Terapis menilai nyeri dan fungsi, menjelaskan latihan serta posisi ergonomis, dan melaksanakan program dokter. Pasien mengikuti latihan peregangan terarah serta terapi inframerah dengan pemantauan respons kulit dan kenyamanan. Tidak ada obat atau injeksi baru pada sesi ini."
+      ],
+      [
+        "Laporan tindakan",
+        "Peregangan otot lumbal serta kelompok otot terkait telah dilakukan dengan supervisi dan dicatat pada lembar terapi. Terapi inframerah pada area lumbal selama 15 menit telah selesai tanpa reaksi kulit. Kedua tindakan dilaksanakan pada kunjungan yang sama, bukan hanya ditulis sebagai rencana."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Setelah sesi, nyeri turun menjadi 3/10, tidak pusing, tidak ada kemerahan berlebihan atau keluhan neurologis baru. Pasien dapat mendemonstrasikan latihan rumah dengan teknik yang dinilai aman oleh terapis."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Lanjutkan latihan rumah dan aktivitas bertahap sesuai toleransi, perbaiki posisi kerja, serta kontrol evaluasi program. Segera diperiksa bila muncul kelemahan tungkai, gangguan berkemih, demam, atau nyeri malam progresif."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M6-06.pdf",
+    "reference": "ICS Bab C Tabel C.135",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pasien datang khusus untuk menjalani terapi rehabilitasi. Kode diagnosis utama apa yang sesuai untuk kunjungan ini?",
+        "options": [
+          "Z50.8",
+          "Z50.0",
+          "Z50.1",
+          "Z51.8",
+          "M54.5"
+        ]
+      },
+      {
+        "prompt": "Rehabilitasi diberikan karena nyeri punggung bawah. Kode diagnosis sekunder apa yang digunakan sesuai contoh ICS?",
+        "options": [
+          "Z50.1",
+          "M54.5",
+          "M54.4",
+          "M54.6",
+          "M54.9"
+        ]
+      },
+      {
+        "prompt": "Peregangan sudah dilakukan. Kode tindakan apa yang sesuai?",
+        "options": [
+          "93.27",
+          "93.11",
+          "93.28",
+          "93.35",
+          "93.12"
+        ]
+      },
+      {
+        "prompt": "Terapi inframerah sudah dilakukan. Kode tindakan apa yang sesuai?",
+        "options": [
+          "93.32",
+          "93.27",
+          "93.35",
+          "93.34",
+          "93.39"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M6-07",
+    "module": 6,
+    "title": "Audit prosedur rehabilitasi pada grouper",
+    "records": [
+      [
+        "Identitas dan episode pelayanan",
+        "Tn. S-607, laki-laki, 48 tahun; No. RM SIM-M6-07. Rawat jalan rehabilitasi medik 20 November 2026 untuk sesi terapi fisik. DPJP: spesialis kedokteran fisik dan rehabilitasi simulasi."
+      ],
+      [
+        "Anamnesis",
+        "Nyeri dan kaku punggung bawah menetap selama dua bulan, terutama setelah aktivitas. Tidak ada penjalaran atau gangguan saraf. Pasien mengikuti program rehabilitasi yang sudah ditetapkan dokter dan datang untuk terapi whirlpool."
+      ],
+      [
+        "Riwayat kesehatan",
+        "Tidak ada penyakit jantung tidak stabil, gangguan sensasi panas, luka terbuka, atau infeksi kulit pada area terapi. Tidak ada riwayat kanker atau trauma baru. Evaluasi awal tidak menemukan tanda bahaya nyeri punggung."
+      ],
+      [
+        "Pemeriksaan fisik",
+        "TD 124/78 mmHg; nadi 78/menit; suhu 36,5 °C. Tegang otot paraspinal lumbal, gerak membungkuk terbatas karena nyeri. Pemeriksaan neurologis tungkai normal. Kulit utuh dan sensasi baik; skala nyeri awal 5/10."
+      ],
+      [
+        "Pemeriksaan penunjang",
+        "Penilaian fungsi dan skrining kelayakan terapi air telah dicatat. Tidak dilakukan pencitraan baru karena tidak ada indikasi pada sesi ini. Tidak ada penyakit sistemik baru yang ditetapkan dokter."
+      ],
+      [
+        "Diagnosis dokter",
+        "Diagnosis klinis: nyeri punggung bawah; kunjungan khusus untuk pelaksanaan terapi fisik. Dokter menegaskan program whirlpool sebagai bagian terapi."
+      ],
+      [
+        "Terapi dan perjalanan perawatan",
+        "Setelah penilaian awal dan penjelasan, terapis melaksanakan whirlpool dengan pemantauan suhu, kulit, dan toleransi pasien. Setelah terapi pasien mendapat edukasi aktivitas dan latihan rumah. Tidak ada keluhan kardiovaskular atau reaksi kulit."
+      ],
+      [
+        "Laporan tindakan",
+        "Laporan terapi menyatakan whirlpool telah diberikan selama 15 menit sesuai program dokter, diselesaikan pukul 10.15, dan ditandatangani terapis simulasi. Ini bukti pelaksanaan terapi, bukan daftar rencana atau ketersediaan alat."
+      ],
+      [
+        "Kondisi akhir pelayanan",
+        "Akhir sesi stabil, nyeri 3/10, gerak lebih nyaman, kulit tidak mengalami luka atau kemerahan berlebihan. Pasien pulang setelah edukasi dan tidak membutuhkan rawat inap."
+      ],
+      [
+        "Rencana tindak lanjut",
+        "Lanjutkan program rehabilitasi dan evaluasi berkala."
+      ],
+      [
+        "Lembar audit pengodean",
+        "Draf aplikasi: diagnosis utama Z50.1; diagnosis sekunder M54.59; kolom tindakan kosong. Hasil draf: grup iDRG 3635129, “Rehabilitation without Procedures”. Kode grup itu adalah keluaran sebelum koreksi. Hasil setelah prosedur ditambahkan belum tersedia; jangan menebaknya atau menyamakannya otomatis dengan hasil awal."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M6-07.pdf",
+    "reference": "ICS Bab C Gambar C.26 dan C.27",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Terapi whirlpool sudah diberikan, tetapi aplikasi menampilkan “rehabilitasi tanpa prosedur”. Apa kesalahan pada isian aplikasi?",
+        "options": [
+          "Kode prosedur whirlpool belum diisi meskipun terapi sudah dilaksanakan.",
+          "Kode diagnosis utama belum diisi.",
+          "Kode diagnosis sekunder belum diisi.",
+          "Terapi whirlpool belum dilaksanakan karena hasil grouper menyebut tanpa prosedur.",
+          "Kode hasil grouper sudah menjadi pengganti kode prosedur whirlpool."
+        ]
+      },
+      {
+        "prompt": "Kode tindakan apa yang harus dimasukkan untuk terapi whirlpool yang sudah diberikan?",
+        "options": [
+          "93.35",
+          "93.31",
+          "93.33",
+          "93.39",
+          "93.32"
+        ]
+      },
+      {
+        "prompt": "Kode whirlpool sudah ditambahkan. Apa langkah berikutnya pada aplikasi grouper?",
+        "options": [
+          "Gunakan hasil lama dan cukup ubah uraiannya.",
+          "Validasi kembali isian yang diperbarui, lalu jalankan pengelompokan ulang.",
+          "Catat kode prosedur tanpa menjalankan pengelompokan ulang.",
+          "Jalankan pengelompokan ulang sebelum memasukkan kode prosedur.",
+          "Ubah diagnosis utama tanpa memeriksa catatan terapi."
+        ]
+      },
+      {
+        "prompt": "Setelah grouping dijalankan ulang, hasil apa yang harus diperiksa dan dicatat petugas?",
+        "options": [
+          "Pertahankan kode dan uraian hasil lama tanpa memeriksa hasil baru.",
+          "Periksa apakah keluaran lama sudah berubah, lalu catat kode dan uraian yang benar-benar muncul setelah pengelompokan ulang.",
+          "Catat kode hasil yang diperkirakan muncul meskipun aplikasi belum dijalankan ulang.",
+          "Catat kode prosedur saja tanpa meninjau hasil pengelompokan.",
+          "Nyatakan koreksi berhasil hanya karena kolom prosedur sudah terisi."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M6-08",
+    "module": 6,
+    "title": "CT kepala dan MRI kepala dengan kontras",
+    "records": [
+      [
+        "Episode A / Identitas dan episode pelayanan",
+        "Ny. S-608A, perempuan, 46 tahun; No. RM SIM-M6-08-A. Pelayanan radiologi rawat jalan 20 November 2026. Episode A berasal dari pasien berbeda. Pemeriksa: spesialis radiologi simulasi."
+      ],
+      [
+        "Episode A / Anamnesis",
+        "Dirujuk untuk CT kepala dengan kontras karena nyeri kepala progresif yang memerlukan evaluasi lesi intrakranial. Tidak ada sakit kepala mendadak terberat, trauma akut, atau penurunan kesadaran. Pemeriksaan dipilih dokter pengirim setelah evaluasi klinis."
+      ],
+      [
+        "Episode A / Riwayat kesehatan",
+        "Tidak ada alergi kontras sebelumnya, kehamilan, atau penyakit ginjal yang diketahui. Petugas melakukan skrining risiko dan memastikan persetujuan pemeriksaan."
+      ],
+      [
+        "Episode A / Pemeriksaan fisik",
+        "Sadar penuh; TD 118/76 mmHg; nadi 78/menit; napas 18/menit; suhu 36,6 °C; SpO2 99%. Tidak ada tanda reaksi alergi sebelum pemeriksaan. Akses intravena berfungsi baik. Pemeriksaan neurologis singkat tidak menunjukkan kegawatan baru."
+      ],
+      [
+        "Episode A / Pemeriksaan penunjang",
+        "Kreatinin 0,8 mg/dL dan eGFR >90 mL/menit/1,73 m². CT kepala dilakukan dengan fase tanpa kontras dan setelah pemberian kontras intravena. Laporan radiologi menyebut tidak ada perdarahan akut atau hidrosefalus; interpretasi lengkap diteruskan kepada dokter pengirim."
+      ],
+      [
+        "Episode A / Diagnosis dokter",
+        "Dokter pengirim menetapkan nyeri kepala progresif dalam evaluasi sebagai alasan pemeriksaan CT. Hasil radiologi tidak menunjukkan perdarahan atau massa akut. Tidak ada diagnosis neoplasma yang ditetapkan pada episode ini."
+      ],
+      [
+        "Episode A / Terapi dan perjalanan perawatan",
+        "Sebelum prosedur dilakukan verifikasi pasien, pemeriksaan skrining, dan penjelasan. Selama serta setelah injeksi petugas memantau tanda reaksi kontras dan ekstravasasi. Tidak ada obat terapeutik atau sedasi yang diberikan pada episode ini."
+      ],
+      [
+        "Episode A / Laporan tindakan",
+        "CT kepala telah selesai. Iohexol 70 mL intravena telah diberikan dan tercatat pada lembar pelaksanaan beserta waktu injeksi. Fase pascakontras diperoleh. Tidak ada ekstravasasi atau reaksi akut. Pemeriksaan bukan sekadar CT tanpa kontras yang baru direncanakan ditambah kontras."
+      ],
+      [
+        "Episode A / Kondisi akhir pelayanan",
+        "Observasi selesai dalam keadaan stabil, akses intravena dilepas, dan pasien pulang bersama pendamping. Tidak ada mual berat, sesak, urtikaria, atau keluhan baru. Hasil pemeriksaan tersedia untuk dokter pengirim."
+      ],
+      [
+        "Episode A / Rencana tindak lanjut",
+        "Kembali ke dokter pengirim untuk pembahasan hasil dan rencana klinis. Segera mencari pertolongan bila timbul reaksi tertunda yang bermakna. Pengodean mengikuti jenis pemeriksaan serta bukti pemberian kontras yang sudah dilakukan."
+      ],
+      [
+        "Episode B / Identitas dan episode pelayanan",
+        "Ny. S-608B, perempuan, 39 tahun; No. RM SIM-M6-08-B. Pelayanan radiologi rawat jalan 21 November 2026. Episode B berasal dari pasien berbeda. Pemeriksa: spesialis radiologi simulasi."
+      ],
+      [
+        "Episode B / Anamnesis",
+        "Dirujuk untuk MRI kepala dengan kontras karena episode kejang fokal yang telah dievaluasi neurologi. Saat datang sadar, tidak sedang kejang, dan tidak ada defisit progresif. Tujuan pemeriksaan adalah evaluasi struktur otak."
+      ],
+      [
+        "Episode B / Riwayat kesehatan",
+        "Tidak memiliki pacemaker, implan yang tidak kompatibel, serpihan logam, atau klaustrofobia berat. Skrining MRI dan risiko bahan kontras sudah dilakukan. Tidak ada kehamilan atau gangguan ginjal yang diketahui."
+      ],
+      [
+        "Episode B / Pemeriksaan fisik",
+        "Sadar penuh; TD 118/76 mmHg; nadi 78/menit; napas 18/menit; suhu 36,6 °C; SpO2 99%. Tidak ada tanda reaksi alergi sebelum pemeriksaan. Akses intravena berfungsi baik. Pemeriksaan neurologis singkat tidak menunjukkan kegawatan baru."
+      ],
+      [
+        "Episode B / Pemeriksaan penunjang",
+        "Kreatinin 0,7 mg/dL dan eGFR >90 mL/menit/1,73 m². MRI kepala mencakup otak dan batang otak, dengan sekuens sebelum dan sesudah kontras. Laporan tidak menunjukkan proses akut yang membutuhkan intervensi segera; evaluasi diagnosis dilanjutkan dokter pengirim."
+      ],
+      [
+        "Episode B / Diagnosis dokter",
+        "Dokter pengirim mencatat bangkitan fokal onset baru dalam evaluasi sebagai alasan pemeriksaan MRI. Tidak ada diagnosis tumor atau epilepsi kronik yang ditetapkan hanya dari surat pengantar atau pelaksanaan MRI."
+      ],
+      [
+        "Episode B / Terapi dan perjalanan perawatan",
+        "Sebelum prosedur dilakukan verifikasi pasien, pemeriksaan skrining, dan penjelasan. Selama serta setelah injeksi petugas memantau tanda reaksi kontras dan ekstravasasi. Tidak ada obat terapeutik atau sedasi yang diberikan pada episode ini."
+      ],
+      [
+        "Episode B / Laporan tindakan",
+        "MRI otak dan batang otak telah selesai. Gadobutrol 0,1 mmol/kg intravena telah diberikan sesuai verifikasi radiolog dan tercatat pada lembar pelaksanaan. Sekuens pascakontras diperoleh. Tidak ada reaksi akut atau ekstravasasi."
+      ],
+      [
+        "Episode B / Kondisi akhir pelayanan",
+        "Observasi selesai dalam keadaan stabil, akses intravena dilepas, dan pasien pulang bersama pendamping. Tidak ada mual berat, sesak, urtikaria, atau keluhan baru. Hasil pemeriksaan tersedia untuk dokter pengirim."
+      ],
+      [
+        "Episode B / Rencana tindak lanjut",
+        "Kembali ke dokter pengirim untuk pembahasan hasil dan rencana klinis. Segera mencari pertolongan bila timbul reaksi tertunda yang bermakna. Pengodean mengikuti jenis pemeriksaan serta bukti pemberian kontras yang sudah dilakukan."
+      ]
+    ],
+    "pdf": "cases/archive/2026-11-23.4/M6-08.pdf",
+    "reference": "ICS Bab C MDC 90 Prosedur Diagnosis",
+    "contentRevision": "2026-11-23.4",
+    "simulation": true,
+    "documentType": "Resume medis simulasi",
+    "items": [
+      {
+        "prompt": "Pada laporan A, pasien sudah menjalani CT kepala. Kode pemeriksaan apa yang sesuai?",
+        "options": [
+          "87.04",
+          "88.38",
+          "87.02",
+          "87.03",
+          "88.91"
+        ]
+      },
+      {
+        "prompt": "Pada laporan B, pasien sudah menjalani MRI kepala. Kode pemeriksaan apa yang sesuai?",
+        "options": [
+          "88.97",
+          "87.03",
+          "88.91",
+          "88.93",
+          "88.92"
+        ]
+      },
+      {
+        "prompt": "Bahan kontras sudah diberikan pada CT kepala dalam laporan A. Kode tambahan apa yang digunakan sesuai ICS?",
+        "options": [
+          "99.10",
+          "99.290",
+          "99.21",
+          "99.20",
+          "99.250"
+        ]
+      },
+      {
+        "prompt": "Bahan kontras sudah diberikan pada MRI kepala dalam laporan B. Kode tambahan apa yang digunakan sesuai ICS?",
+        "options": [
+          "99.290",
+          "99.10",
+          "99.21",
+          "99.250",
+          "99.20"
+        ]
+      }
+    ]
+  }
+]
