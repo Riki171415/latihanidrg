@@ -5,22 +5,14 @@
     "title": "Membaca hasil pengelompokan iDRG",
     "records": [
       [
-        "Data yang disiapkan",
-        "Tim casemix menyiapkan diagnosis, prosedur, jenis layanan, dan data satu episode untuk diproses oleh grouper. Rincian klinis pasien tidak disertakan pada contoh pembacaan kode ini."
-      ],
-      [
-        "Hasil pengolahan",
-        "Saat isian diperiksa, aplikasi memberikan pesan validasi. Setelah pengelompokan selesai, layar hasil menampilkan kode iDRG 2401210."
-      ],
-      [
-        "Catatan kerja",
-        "Catatan serah terima memuat tiga jenis informasi: jenis layanan, pesan validasi, dan kode hasil pengelompokan. Ketiganya belum dibedakan menurut fungsinya dalam proses grouper."
+        "Kasus",
+        "Seorang petugas memasukkan kode ICD diagnosis dan tindakan ke dalam aplikasi grouper. Setelah menjalankan proses pengelompokan (grouping), petugas mendapatkan grup iDRG 2401210."
       ]
     ],
     "items": [
       {
-        "prompt": "Kode hasil pengelompokan adalah 2401210. Berapakah MDC dan Base DC pada kode tersebut?",
-        "feedback": "Dua digit pertama membentuk MDC 24. Empat digit pertama membentuk Base DC 2401.",
+        "prompt": "Seorang petugas memasukkan kode ICD diagnosis dan tindakan, lalu menjalankan grouping dan memperoleh grup iDRG 2401210. Berapakah MDC dan Base DC dari grup tersebut?",
+        "feedback": "MDC adalah dua digit pertama, yaitu 24. Base DC adalah empat digit pertama, yaitu 2401. Keduanya dibaca dari grup iDRG 2401210.",
         "codes": [
           "24",
           "2401"
@@ -58,8 +50,8 @@
         ]
       },
       {
-        "prompt": "Dari kode 2401210, berapakah DC lengkap dan nilai digit split-nya?",
-        "feedback": "Lima digit pertama membentuk DC 24012. Digit kelima, yaitu 2, adalah split.",
+        "prompt": "Dari grup iDRG 2401210, berapakah DC lengkap dan angka pembeda kelompok (split)-nya?",
+        "feedback": "DC lengkap adalah lima digit pertama, yaitu 24012. Angka kelima adalah 2; angka ini merupakan split atau pembeda kelompok pada kode tersebut.",
         "codes": [
           "24012",
           "2"
@@ -97,8 +89,8 @@
         ]
       },
       {
-        "prompt": "Apa arti digit keenam (PTD) dan digit ketujuh (CL) pada kode 2401210?",
-        "feedback": "Digit keenam adalah PTD 1 untuk rawat inap. Digit ketujuh adalah CL 0, yaitu No CC pada contoh ini.",
+        "prompt": "Pada grup iDRG 2401210, digit keenam adalah 1 dan digit ketujuh adalah 0. Apa arti PTD 1 dan CL 0 tersebut?",
+        "feedback": "Pada grup ini, PTD 1 menunjukkan rawat inap. CL 0 menunjukkan No CC, yaitu tanpa komplikasi atau komorbiditas pada tingkat kelompok ini.",
         "legacyOptions": [
           "PTD 1 rawat inap dan CL 0 Mild CC",
           "PTD 1 rawat jalan dan CL 0 No CC",
@@ -114,8 +106,8 @@
         ]
       },
       {
-        "prompt": "Manakah pengelompokan yang benar untuk data jenis layanan, pesan validasi, dan kode hasil grouper?",
-        "feedback": "Jenis layanan masuk sebagai data masukan. Pesan validasi memberi umpan balik atas pemeriksaan data. Kode grup muncul sebagai hasil pengelompokan.",
+        "prompt": "Petugas memasukkan kode ICD diagnosis dan tindakan sebelum menjalankan grouping. Dalam proses ini, kode yang dimasukkan petugas termasuk apa?",
+        "feedback": "Kode ICD diagnosis dan tindakan adalah data masukan. Petugas memasukkan data tersebut lebih dahulu, kemudian aplikasi memprosesnya dan menghasilkan grup iDRG 2401210.",
         "legacyOptions": [
           "Jenis layanan dan kode grup adalah input, pesan validasi adalah keluaran akhir",
           "Jenis layanan adalah input, pesan validasi adalah umpan balik, kode grup adalah keluaran",
@@ -123,11 +115,11 @@
         ],
         "correct": 4,
         "options": [
-          "Jenis layanan: masukan; pesan validasi: masukan; kode grup: hasil pengelompokan.",
-          "Jenis layanan: hasil pengelompokan; pesan validasi: umpan balik; kode grup: masukan.",
-          "Jenis layanan: masukan; pesan validasi: hasil pengelompokan; kode grup: umpan balik.",
-          "Jenis layanan: umpan balik; pesan validasi: masukan; kode grup: hasil pengelompokan.",
-          "Jenis layanan: masukan; pesan validasi: umpan balik; kode grup: hasil pengelompokan."
+          "Pesan kesalahan dari aplikasi.",
+          "Kode diagnosis utama yang dihasilkan aplikasi.",
+          "Kode tindakan yang dihasilkan aplikasi.",
+          "Hasil akhir pengelompokan iDRG.",
+          "Data masukan untuk pengelompokan iDRG."
         ],
         "previousOptions": [
           "Jenis layanan dan kode grup adalah input, pesan validasi adalah keluaran akhir",
@@ -135,12 +127,20 @@
           "Jenis layanan adalah keluaran, pesan validasi adalah input, kode grup adalah umpan balik",
           "Jenis layanan dan pesan validasi adalah keluaran akhir, kode grup adalah input",
           "Jenis layanan adalah input, pesan validasi adalah umpan balik, kode grup adalah keluaran"
+        ],
+        "previousRevisionOptions": [
+          "Jenis layanan: masukan; pesan validasi: masukan; kode grup: hasil pengelompokan.",
+          "Jenis layanan: hasil pengelompokan; pesan validasi: umpan balik; kode grup: masukan.",
+          "Jenis layanan: masukan; pesan validasi: hasil pengelompokan; kode grup: umpan balik.",
+          "Jenis layanan: umpan balik; pesan validasi: masukan; kode grup: hasil pengelompokan.",
+          "Jenis layanan: masukan; pesan validasi: umpan balik; kode grup: hasil pengelompokan."
         ]
       }
     ],
     "reference": "ICS Bab A.1 dan Gambar A.1",
     "pdf": "cases/M2-01.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3",
+    "groupCode": "2401210"
   },
   {
     "id": "M2-02",
@@ -149,25 +149,21 @@
     "records": [
       [
         "Alasan masuk",
-        "Seorang ibu yang hamil anak pertama pada usia kehamilan cukup bulan datang karena ketuban telah pecah. Pada episode ini, persalinan mulai dalam 24 jam sejak ketuban pecah."
+        "Ibu hamil anak pertama dengan kehamilan cukup bulan datang ke rumah sakit karena ketuban sudah pecah. Persalinan dimulai dalam 24 jam sejak ketuban pecah."
       ],
       [
-        "Perjalanan persalinan",
-        "Bayi tunggal dengan presentasi kepala lahir hidup secara spontan. Catatan persalinan juga mencatat bahwa episiotomi dilakukan. Informasi ini berasal dari episode pelayanan ibu."
+        "Persalinan dan tindakan",
+        "Ibu melahirkan satu bayi hidup secara spontan dengan presentasi kepala. Episiotomi telah dilakukan dan dicatat dalam laporan persalinan."
       ],
       [
-        "Ringkasan klinis akhir",
-        "Ketuban pecah dini, diikuti persalinan spontan presentasi kepala, dengan hasil satu bayi lahir hidup. Resume dan catatan persalinan tersedia untuk ditelaah bersama."
-      ],
-      [
-        "Draf pengodean",
-        "Diagnosis utama masih terisi O80.0. Diagnosis sekunder terisi O42.0 dan Z37.0. Kolom prosedur hanya memuat 73.59. Draf belum divalidasi dan grouper belum dijalankan."
+        "Isian aplikasi sebelum diperbaiki",
+        "Petugas memasukkan O80.0 sebagai diagnosis utama serta O42.0 dan Z37.0 sebagai diagnosis sekunder. Kolom tindakan hanya berisi 73.59. Isian belum diperiksa dan proses grouping belum dijalankan."
       ]
     ],
     "items": [
       {
-        "prompt": "Setelah draf diperbaiki sesuai resume persalinan, kode apa yang harus menjadi diagnosis utama ibu?",
-        "feedback": "O42.0 adalah kode ketuban pecah dini dengan awal persalinan dalam 24 jam. Ketuban pecah dini adalah kondisi yang mendasari episode ini.",
+        "prompt": "Berdasarkan resume persalinan, kode apa yang seharusnya menjadi diagnosis utama pada berkas ibu?",
+        "feedback": "Ketuban pecah dini menjadi alasan ibu datang dan dirawat. Karena persalinan dimulai dalam 24 jam, diagnosis utama pada contoh ini adalah O42.0.",
         "codes": [
           "O42.0"
         ],
@@ -182,7 +178,7 @@
         ]
       },
       {
-        "prompt": "Setelah O42.0 ditetapkan sebagai diagnosis utama, pasangan kode apa yang harus dicatat sebagai diagnosis sekunder?",
+        "prompt": "Setelah diagnosis utama diperbaiki menjadi O42.0, pasangan kode apa yang dicatat sebagai diagnosis sekunder ibu?",
         "feedback": "Gunakan O80.0 untuk cara persalinan spontan presentasi kepala dan Z37.0 untuk hasil kelahiran satu bayi hidup.",
         "codes": [
           "O80.0",
@@ -199,7 +195,7 @@
         ]
       },
       {
-        "prompt": "Draf sudah memuat 73.59. Kode apa yang perlu ditambahkan untuk episiotomi yang telah dilakukan?",
+        "prompt": "Kolom tindakan sudah berisi 73.59. Kode apa yang masih perlu ditambahkan untuk episiotomi?",
         "feedback": "Tambahkan 73.6 karena catatan persalinan menyebut episiotomi sudah dilakukan.",
         "codes": [
           "73.6"
@@ -215,8 +211,8 @@
         ]
       },
       {
-        "prompt": "Setelah seluruh kode dikoreksi, langkah apa yang harus dilakukan sebelum hasil pengelompokan dicatat?",
-        "feedback": "Validasi isian yang diperbarui dan selesaikan ketidaksesuaian. Jalankan grouper, lalu catat kode grup dan deskripsinya dari keluaran yang sama.",
+        "prompt": "Semua kode sudah diperbaiki. Apa langkah berikutnya agar petugas dapat mencatat hasil grouping yang benar?",
+        "feedback": "Periksa kembali isian yang sudah diperbaiki dan selesaikan pesan ketidaksesuaian. Jalankan grouping, lalu catat kode grup beserta uraiannya dari hasil yang sama.",
         "legacyOptions": [
           "Catat kode dari draf dan salin deskripsi sebelum pengelompokan",
           "Jalankan grouper sebelum validasi, lalu ambil deskripsi dari kasus serupa",
@@ -241,7 +237,7 @@
     ],
     "reference": "ICS Tabel C.80 dan Bab A.1",
     "pdf": "cases/M2-02.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M2-03",
@@ -249,26 +245,22 @@
     "title": "Rawat inap ginekologi: urutan diagnosis",
     "records": [
       [
-        "Ringkasan perawatan",
-        "Pasien menjalani rawat inap selama tiga minggu di bawah layanan ginekologi. Resume memuat tiga kondisi, yaitu sinusitis akut, karsinoma endoserviks, dan hipertensi. Keluhan awal serta waktu masing-masing kondisi ditegakkan tidak dirinci dalam contoh."
-      ],
-      [
-        "Tindakan selama dirawat",
-        "Pasien menjalani histerektomi total pada episode ini. Tindakan tersebut tercatat dalam bagian prosedur pada dokumentasi ginekologi."
+        "Perawatan dan tindakan",
+        "Pasien dirawat selama tiga minggu di layanan ginekologi. Selama dirawat, pasien menjalani histerektomi total. Resume mencatat sinusitis akut, karsinoma endoserviks, dan hipertensi."
       ],
       [
         "Diagnosis pada resume pulang",
-        "Dokter mengisi kolom diagnosis utama dengan sinusitis akut. Karsinoma endoserviks dan hipertensi dicatat pada kolom diagnosis sekunder."
+        "Dokter menulis sinusitis akut sebagai diagnosis utama. Karsinoma endoserviks dan hipertensi ditulis sebagai diagnosis sekunder."
       ],
       [
-        "Jejak klarifikasi",
-        "Koder telah meminta keterangan DPJP mengenai kondisi yang mendasari perawatan. Klarifikasi belum berhasil. Berkas yang tersedia untuk telaah ulang adalah resume, informasi layanan, dan catatan prosedur."
+        "Klarifikasi kepada dokter",
+        "Koder telah meminta dokter penanggung jawab pelayanan (DPJP) menjelaskan kondisi yang menjadi alasan utama perawatan. Klarifikasi belum berhasil diperoleh. Koder menelaah kembali resume, layanan yang merawat pasien, dan laporan operasi."
       ]
     ],
     "items": [
       {
-        "prompt": "Klarifikasi DPJP belum berhasil. Berdasarkan perawatan ginekologi dan histerektomi total, kode apa yang dipilih sebagai diagnosis utama melalui reseleksi?",
-        "feedback": "C53.0 untuk karsinoma endoserviks. Tindakan dan layanan selama rawat mendukung kondisi ini sebagai diagnosis utama.",
+        "prompt": "Sinusitis akut masih ditulis sebagai diagnosis utama. Setelah klarifikasi belum berhasil diperoleh, kode apa yang dipilih kembali sebagai diagnosis utama berdasarkan berkas perawatan ini?",
+        "feedback": "Pilih C53.0 untuk karsinoma endoserviks. Pasien menjalani histerektomi total dan dirawat di layanan ginekologi. Pada contoh ini, setelah klarifikasi tidak berhasil, kedua catatan tersebut mendukung pemilihan kembali diagnosis utama dengan MB1.",
         "codes": [
           "C53.0"
         ],
@@ -283,8 +275,8 @@
         ]
       },
       {
-        "prompt": "Aturan morbiditas apa yang digunakan untuk memperbaiki urutan diagnosis pada kasus ini?",
-        "feedback": "MB1 berlaku ketika diagnosis yang lebih bermakna tercatat sebagai diagnosis sekunder, sedangkan kondisi yang kurang bermakna ditempatkan sebagai diagnosis utama.",
+        "prompt": "Penyakit yang menjadi fokus operasi justru ditulis sebagai diagnosis sekunder. Aturan MB manakah yang digunakan untuk memperbaiki pilihan diagnosis utama pada kasus ini?",
+        "feedback": "Gunakan MB1. Pada kasus ini, kondisi yang lebih berperan dalam perawatan ditulis sebagai diagnosis sekunder, sedangkan sinusitis akut ditulis sebagai diagnosis utama. Klarifikasi dokter sudah diupayakan tetapi belum berhasil.",
         "codes": [
           "MB1"
         ],
@@ -299,7 +291,7 @@
         ]
       },
       {
-        "prompt": "Dua informasi apa yang mendukung pemilihan karsinoma endoserviks sebagai diagnosis utama?",
+        "prompt": "Catatan tindakan dan layanan apa yang mendukung pemilihan karsinoma endoserviks sebagai diagnosis utama?",
         "feedback": "Histerektomi total dan perawatan di layanan ginekologi mendukung bahwa perawatan berfokus pada kondisi ginekologi.",
         "legacyOptions": [
           "Histerektomi total dan perawatan ginekologi",
@@ -323,7 +315,7 @@
         ]
       },
       {
-        "prompt": "Setelah karsinoma endoserviks menjadi diagnosis utama, kondisi apa yang tetap dicatat sebagai diagnosis sekunder pada contoh ini?",
+        "prompt": "Jika karsinoma endoserviks dipilih sebagai diagnosis utama, dua kondisi apa yang dicatat sebagai diagnosis sekunder pada kasus ini?",
         "feedback": "Sinusitis akut dan hipertensi menempati diagnosis sekunder dalam contoh ini.",
         "legacyOptions": [
           "Sinusitis akut dan hipertensi",
@@ -342,7 +334,7 @@
     ],
     "reference": "ICS B.2.a Contoh 1",
     "pdf": "cases/M2-03.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M2-04",
@@ -350,22 +342,22 @@
     "title": "Tiga diagnosis utama pada resume pulang",
     "records": [
       [
-        "Ringkasan perawatan",
-        "Pasien menjalani rawat inap selama lima minggu di layanan neurologi. Dalam episode ini, resume mencatat meningitis stafilokokus, katarak, dan penyakit jantung iskemik. Ringkasan yang tersedia tidak merinci keluhan masuk atau tindakan yang membedakan fokus penanganan ketiga kondisi."
+        "Perawatan pasien",
+        "Pasien dirawat selama lima minggu di layanan neurologi. Resume mencatat katarak, meningitis stafilokokus, dan penyakit jantung iskemik."
       ],
       [
         "Diagnosis pada resume pulang",
-        "Dokter menempatkan ketiga kondisi pada kolom diagnosis utama. Pada dokumen yang sama, kolom diagnosis sekunder kosong. Belum terdapat keterangan dokter yang memilih salah satu dari tiga kondisi sebagai alasan utama pasien menerima perawatan."
+        "Dokter menulis ketiga kondisi tersebut pada kolom diagnosis utama. Kolom diagnosis sekunder kosong. Dokter belum menjelaskan kondisi mana yang paling banyak ditangani selama perawatan."
       ],
       [
-        "Jejak klarifikasi",
-        "Koder sudah menghubungi DPJP untuk memastikan urutan diagnosis. Klarifikasi belum berhasil. Telaah dapat menggunakan spesialisasi yang menangani episode sebagaimana tercatat pada resume."
+        "Klarifikasi kepada dokter",
+        "Koder telah meminta dokter penanggung jawab pelayanan (DPJP) memilih satu diagnosis utama, tetapi klarifikasi belum berhasil diperoleh. Rincian klinis yang tersedia belum dapat membedakan fokus penanganan ketiga kondisi. Informasi layanan neurologi yang merawat pasien tercatat dalam berkas."
       ]
     ],
     "items": [
       {
-        "prompt": "Tiga kondisi ditulis sebagai diagnosis utama dan klarifikasi belum berhasil. Kode apa yang dipilih dengan mempertimbangkan layanan neurologi yang merawat pasien?",
-        "feedback": "G00.3 untuk meningitis stafilokokus. Pada contoh ini, bidang layanan yang menangani pasien mendukung pemilihan diagnosis neurologis.",
+        "prompt": "Ketiga penyakit ditulis sebagai diagnosis utama. Klarifikasi belum berhasil diperoleh. Dengan mempertimbangkan layanan neurologi yang merawat pasien, kode apa yang dipilih sebagai diagnosis utama?",
+        "feedback": "Pilih G00.3 untuk meningitis stafilokokus. Ketiga kondisi ditulis sebagai diagnosis utama, dan klarifikasi belum berhasil. Karena rincian penanganan belum membedakan fokus perawatan, layanan neurologi menjadi petunjuk pada contoh MB2 ini.",
         "codes": [
           "G00.3"
         ],
@@ -380,7 +372,7 @@
         ]
       },
       {
-        "prompt": "Aturan morbiditas apa yang berlaku ketika beberapa kondisi sekaligus ditulis pada kolom diagnosis utama?",
+        "prompt": "Dokter menulis beberapa penyakit sekaligus sebagai diagnosis utama. Aturan MB manakah yang digunakan untuk memilih satu diagnosis utama?",
         "feedback": "MB2 digunakan untuk memilih satu diagnosis utama ketika beberapa kondisi ditulis sebagai diagnosis utama.",
         "codes": [
           "MB2"
@@ -396,8 +388,8 @@
         ]
       },
       {
-        "prompt": "Alasan utama perawatan belum dapat dibedakan dari rincian klinis. Petunjuk apa yang digunakan dalam contoh ini untuk memilih satu diagnosis utama?",
-        "feedback": "Spesialisasi layanan neurologi menjadi petunjuk yang relevan pada kasus ini.",
+        "prompt": "Rincian klinis belum menunjukkan penyakit mana yang paling banyak ditangani. Informasi apa dalam berkas yang membantu menentukan pilihan diagnosis utama pada contoh ini?",
+        "feedback": "Informasi yang digunakan pada contoh ini adalah layanan neurologi yang merawat pasien. Petunjuk tersebut dibaca setelah klarifikasi gagal dan rincian penanganan belum cukup membedakan kondisi utama.",
         "legacyOptions": [
           "Durasi perawatan lima minggu",
           "Urutan diagnosis yang tertulis pada kolom DU",
@@ -420,7 +412,7 @@
         ]
       },
       {
-        "prompt": "Setelah meningitis stafilokokus dipilih sebagai diagnosis utama, kondisi apa yang dicatat sebagai diagnosis sekunder pada contoh ini?",
+        "prompt": "Jika meningitis stafilokokus dipilih sebagai diagnosis utama, dua kondisi apa yang dicatat sebagai diagnosis sekunder pada kasus ini?",
         "feedback": "Katarak dan penyakit jantung iskemik menjadi diagnosis sekunder dalam contoh ini.",
         "legacyOptions": [
           "Katarak dan meningitis stafilokokus",
@@ -439,7 +431,7 @@
     ],
     "reference": "ICS B.2.b Contoh 1",
     "pdf": "cases/M2-04.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M2-05",
@@ -447,26 +439,26 @@
     "title": "Diabetes melitus dengan koma",
     "records": [
       [
-        "Kondisi klinis selama perawatan",
-        "Pasien dirawat oleh layanan endokrinologi dengan kondisi koma. Dalam catatan klinis, keadaan koma tersebut dikaitkan dengan diabetes melitus dependen insulin. Penyakit jantung iskemik aterosklerotik juga tercatat dalam episode ini."
+        "Kondisi pasien",
+        "Pasien dirawat dalam keadaan koma di layanan endokrinologi. Dokter menyatakan bahwa koma berkaitan dengan diabetes melitus dependen insulin. Penyakit jantung iskemik aterosklerotik juga dicatat pada perawatan ini."
       ],
       [
-        "Tata laksana",
-        "Selama dirawat, tim menentukan dosis insulin yang tepat. Ringkasan kasus tidak merinci nilai glukosa atau dosis yang diberikan."
+        "Penanganan selama dirawat",
+        "Tim menentukan dosis insulin yang tepat selama perawatan. Nilai glukosa dan dosis insulin tidak dirinci dalam berkas latihan."
       ],
       [
         "Diagnosis pada resume pulang",
-        "Kolom DU berisi koma. Pada kolom diagnosis sekunder terdapat diabetes melitus dependen insulin dan penyakit jantung iskemik aterosklerotik."
+        "Dokter menulis koma sebagai diagnosis utama. Diabetes melitus dependen insulin dan penyakit jantung iskemik aterosklerotik ditulis sebagai diagnosis sekunder."
       ],
       [
-        "Jejak klarifikasi",
-        "Koder sudah mengupayakan klarifikasi urutan diagnosis kepada DPJP dan belum memperoleh hasil."
+        "Klarifikasi kepada dokter",
+        "Koder telah meminta penjelasan mengenai urutan diagnosis kepada dokter penanggung jawab pelayanan (DPJP), tetapi klarifikasi belum berhasil diperoleh."
       ]
     ],
     "items": [
       {
-        "prompt": "Dokter mengaitkan koma dengan diabetes melitus dependen insulin. Kode kombinasi apa yang menjadi diagnosis utama setelah reseleksi?",
-        "feedback": "E10.0 mewakili diabetes melitus dependen insulin dengan koma.",
+        "prompt": "Dokter menyatakan koma berkaitan dengan diabetes melitus dependen insulin. Kode apa yang mencakup diabetes beserta koma dan dipilih sebagai diagnosis utama?",
+        "feedback": "E10.0 mencakup diabetes melitus dependen insulin dengan koma dalam satu kode. Dokter sudah mengaitkan koma dengan diabetes, dan diabetes mendapat penanganan selama perawatan.",
         "codes": [
           "E10.0"
         ],
@@ -481,8 +473,8 @@
         ]
       },
       {
-        "prompt": "Aturan morbiditas apa yang digunakan ketika gejala ditulis sebagai diagnosis utama, sedangkan penyakit penyebabnya sudah diketahui dan ditangani?",
-        "feedback": "MB3 berlaku karena koma merupakan manifestasi diabetes yang telah diketahui dan ditangani.",
+        "prompt": "Koma ditulis sebagai diagnosis utama, padahal diabetes penyebabnya sudah diketahui dan ditangani. Aturan MB manakah yang digunakan untuk memperbaikinya?",
+        "feedback": "Gunakan MB3. Koma adalah gejala atau manifestasi dari diabetes yang sudah diketahui dan ditangani. Karena itu, penyakit penyebab dipilih kembali sebagai diagnosis utama pada contoh ini.",
         "codes": [
           "MB3"
         ],
@@ -497,7 +489,7 @@
         ]
       },
       {
-        "prompt": "Catatan apa yang menunjukkan bahwa diabetes merupakan penyebab koma sekaligus mendapat penanganan?",
+        "prompt": "Dua keterangan apa yang menunjukkan hubungan koma dengan diabetes dan bahwa diabetes ditangani selama perawatan?",
         "feedback": "Catatan mengaitkan koma dengan diabetes dan mencatat penentuan dosis insulin selama rawat.",
         "legacyOptions": [
           "Koma ditulis pertama dan pasien dirawat oleh spesialis",
@@ -521,7 +513,7 @@
         ]
       },
       {
-        "prompt": "Setelah E10.0 digunakan, apakah kode gejala koma perlu ditambahkan secara terpisah?",
+        "prompt": "Kode E10.0 sudah digunakan untuk diabetes dengan koma. Apakah kode gejala koma masih perlu ditambahkan?",
         "feedback": "Koma sudah tercakup dalam E10.0, sehingga tidak perlu diberi kode gejala terpisah.",
         "legacyOptions": [
           "Ya, koma harus selalu menjadi diagnosis sekunder tersendiri",
@@ -547,7 +539,7 @@
     ],
     "reference": "ICS B.2.c Contoh 2",
     "pdf": "cases/M2-05.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M2-06",
@@ -555,21 +547,21 @@
     "title": "Kelainan jantung bawaan: diagnosis spesifik",
     "records": [
       [
-        "Diagnosis pada resume akhir",
-        "Dokter menulis “penyakit jantung kongenital” pada kolom diagnosis utama dan “defek septum ventrikel” pada kolom diagnosis sekunder. Kedua istilah merujuk pada kelainan jantung yang sama."
+        "Diagnosis pada resume",
+        "Dokter menulis “penyakit jantung kongenital” sebagai diagnosis utama dan “defek septum ventrikel” sebagai diagnosis sekunder. Kedua istilah tersebut merujuk pada kelainan jantung yang sama."
       ],
       [
-        "Rincian yang tersedia",
-        "Tidak ada kelainan jantung kongenital lain yang ditetapkan sebagai kondisi terpisah. Ukuran defek, hasil pemeriksaan penunjang, dan tindakan tidak dirinci pada sumber."
+        "Kondisi lain",
+        "Tidak ada kelainan jantung bawaan lain yang ditetapkan sebagai kondisi terpisah. Ukuran defek, hasil pemeriksaan penunjang, dan tindakan tidak dirinci dalam berkas latihan."
       ],
       [
-        "Klarifikasi DPJP",
-        "Koder telah meminta penjelasan mengenai posisi diagnosis. Sampai berkas ditelaah, belum ada jawaban atau koreksi resume."
+        "Klarifikasi kepada dokter",
+        "Koder telah meminta dokter penanggung jawab pelayanan (DPJP) memeriksa penempatan diagnosis. Klarifikasi belum berhasil diperoleh dan resume belum dikoreksi."
       ]
     ],
     "items": [
       {
-        "prompt": "Kedua istilah pada resume merujuk pada kelainan yang sama. Kode apa yang paling spesifik untuk diagnosis utama?",
+        "prompt": "Dokter menulis penyakit jantung kongenital dan defek septum ventrikel untuk kelainan yang sama. Kode apa yang paling spesifik sebagai diagnosis utama?",
         "feedback": "Q21.0 untuk defek septum ventrikel.",
         "codes": [
           "Q21.0"
@@ -585,8 +577,8 @@
         ]
       },
       {
-        "prompt": "Aturan morbiditas apa yang digunakan ketika diagnosis sekunder memberi rincian lebih spesifik atas kondisi yang ditulis sebagai diagnosis utama?",
-        "feedback": "MB4 digunakan jika diagnosis lain dalam berkas memberikan rincian yang lebih spesifik atas kondisi yang sama.",
+        "prompt": "Diagnosis sekunder menyebut kelainan yang lebih spesifik daripada diagnosis utama, tetapi keduanya merujuk pada kondisi yang sama. Aturan MB manakah yang digunakan?",
+        "feedback": "Gunakan MB4. Istilah defek septum ventrikel menjelaskan kelainan yang sama secara lebih spesifik daripada istilah umum penyakit jantung kongenital.",
         "codes": [
           "MB4"
         ],
@@ -601,7 +593,7 @@
         ]
       },
       {
-        "prompt": "Istilah mana pada resume yang menyebutkan kelainan anatomi secara spesifik?",
+        "prompt": "Dari istilah pada resume, mana yang secara jelas menyebut jenis kelainan pada sekat jantung?",
         "feedback": "“Defek septum ventrikel” menyebut lokasi defek secara spesifik.",
         "legacyOptions": [
           "Ukuran defek yang tidak tercatat",
@@ -625,7 +617,7 @@
         ]
       },
       {
-        "prompt": "Setelah defek septum ventrikel dipilih, bagaimana pengodean istilah umum “penyakit jantung kongenital” yang merujuk pada kelainan yang sama?",
+        "prompt": "Defek septum ventrikel sudah diberi kode. Apakah istilah umum “penyakit jantung kongenital” untuk kelainan yang sama masih perlu diberi kode terpisah?",
         "feedback": "Tidak ada kode tambahan untuk sebutan umum karena kedua istilah merujuk pada kondisi yang sama.",
         "legacyOptions": [
           "Tidak dikode terpisah karena merujuk pada kondisi yang sama",
@@ -651,7 +643,7 @@
     ],
     "reference": "ICS B.2.d Contoh 2",
     "pdf": "cases/M2-06.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M2-07",
@@ -659,22 +651,22 @@
     "title": "Dua diagnosis alternatif pada resume",
     "records": [
       [
-        "Ringkasan akhir episode",
-        "Saat berkas ditelaah untuk pengodean, pada kolom diagnosis utama hanya terdapat satu entri bertuliskan “kolesistitis akut atau pankreatitis akut”. Kedua istilah berada pada baris diagnosis akhir yang sama. Kolom DS kosong."
+        "Diagnosis pada resume pulang",
+        "Dokter menulis “kolesistitis akut atau pankreatitis akut” pada satu baris di kolom diagnosis utama. Kolom diagnosis sekunder kosong."
       ],
       [
-        "Dokumentasi klinis yang tersedia",
-        "Ringkasan sumber tidak memuat hasil penunjang atau catatan tambahan yang menegaskan salah satu alternatif sebagai diagnosis pasti. Tidak ada perubahan pada urutan kata dalam catatan akhir dokter."
+        "Keterangan diagnosis",
+        "Belum ada hasil pemeriksaan atau catatan tambahan yang menetapkan salah satu dari kedua diagnosis tersebut sebagai diagnosis pasti."
       ],
       [
-        "Jejak klarifikasi",
-        "Koder telah meminta klarifikasi kepada DPJP mengenai diagnosis pada akhir episode. Klarifikasi belum berhasil. Penilaian dilakukan dari redaksi diagnosis yang masih tercantum pada resume."
+        "Klarifikasi kepada dokter",
+        "Koder telah meminta dokter penanggung jawab pelayanan (DPJP) memperjelas diagnosis akhir, tetapi klarifikasi belum berhasil diperoleh. Tulisan pada resume tetap “kolesistitis akut atau pankreatitis akut”."
       ]
     ],
     "items": [
       {
-        "prompt": "Klarifikasi belum berhasil. Menurut aturan diagnosis alternatif pada contoh ini, kode apa yang dipilih dari catatan “kolesistitis akut atau pankreatitis akut”?",
-        "feedback": "K81.0 untuk kolesistitis akut, diagnosis yang ditulis pertama pada contoh ini.",
+        "prompt": "Dokter menulis “kolesistitis akut atau pankreatitis akut” dan klarifikasi belum berhasil diperoleh. Berdasarkan aturan MB5, kode apa yang dipilih sebagai diagnosis utama?",
+        "feedback": "Pilih K81.0 untuk kolesistitis akut. Pada contoh MB5 ini, kedua penyakit ditulis sebagai alternatif dan klarifikasi belum berhasil; diagnosis yang ditulis pertama dipilih sebagai diagnosis utama.",
         "codes": [
           "K81.0"
         ],
@@ -689,7 +681,7 @@
         ]
       },
       {
-        "prompt": "Aturan morbiditas apa yang digunakan untuk dua diagnosis alternatif pada baris diagnosis utama tersebut?",
+        "prompt": "Diagnosis utama ditulis sebagai dua pilihan yang dihubungkan kata “atau”. Aturan MB manakah yang digunakan?",
         "feedback": "MB5 mengatur pemilihan diagnosis utama saat dokter menuliskan diagnosis alternatif.",
         "codes": [
           "MB5"
@@ -705,8 +697,8 @@
         ]
       },
       {
-        "prompt": "Bagaimana kata “atau” pada rumusan diagnosis memengaruhi pemilihan diagnosis utama dalam contoh ini?",
-        "feedback": "Kata “atau” menandai alternatif. Dalam cabang MB5 yang berlaku untuk contoh ini, diagnosis yang ditulis pertama dipilih sebagai diagnosis utama.",
+        "prompt": "Pada catatan “kolesistitis akut atau pankreatitis akut”, bagaimana diagnosis utama dipilih menurut aturan MB5 untuk kasus ini?",
+        "feedback": "Kata “atau” menunjukkan dua pilihan diagnosis, bukan dua penyakit yang dipastikan terjadi bersama. Sesuai aturan MB5 pada contoh ini, pilih diagnosis yang ditulis pertama, yaitu kolesistitis akut.",
         "legacyOptions": [
           "Kata “atau” mengharuskan penggunaan diagnosis yang ditulis terakhir",
           "Kata “akut” membuat kedua diagnosis dapat diurutkan menurut tingkat keparahan",
@@ -729,7 +721,7 @@
         ]
       },
       {
-        "prompt": "Apakah pankreatitis akut boleh ditambahkan sebagai diagnosis sekunder hanya berdasarkan rumusan diagnosis alternatif tersebut?",
+        "prompt": "Pankreatitis akut hanya disebut sebagai pilihan setelah kata “atau”. Apakah kondisi itu boleh langsung dicatat sebagai diagnosis sekunder?",
         "feedback": "Tidak. Dalam pernyataan dokter, pankreatitis akut merupakan alternatif, sehingga belum ditetapkan sebagai diagnosis sekunder.",
         "legacyOptions": [
           "Tidak, diagnosis tersebut hanya salah satu alternatif",
@@ -755,7 +747,7 @@
     ],
     "reference": "ICS B.2.e Contoh 2",
     "pdf": "cases/M2-07.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M2-08",
@@ -763,21 +755,17 @@
     "title": "Perikarditis tuberkulosa",
     "records": [
       [
-        "Diagnosis akhir pada resume",
-        "Dokter menulis “perikarditis tuberkulosa” pada kolom diagnosis utama untuk episode yang sedang dikode. Redaksi dokter mencantumkan etiologi tuberkulosis dan keterlibatan perikardium dalam satu diagnosis."
+        "Diagnosis pada resume",
+        "Dokter menetapkan perikarditis tuberkulosa sebagai diagnosis utama. Kolom diagnosis sekunder kosong."
       ],
       [
-        "Kolom diagnosis lain",
-        "Kolom DS pada resume tidak berisi entri terpisah. Contoh sumber tidak memuat bukti untuk menambahkan lokasi tuberkulosis lain atau penyakit penyerta."
-      ],
-      [
-        "Dokumentasi penunjang",
-        "Hasil pemeriksaan, regimen terapi, dan prosedur tidak dirinci pada kasus sumber. Untuk pengodean ini, gunakan istilah diagnosis akhir dokter dan telusuri ketentuan pasangan kode pada klasifikasi."
+        "Keterangan lain",
+        "Tidak ada lokasi tuberkulosis lain atau penyakit penyerta yang dicatat. Hasil pemeriksaan, pengobatan, dan tindakan tidak dirinci dalam berkas latihan."
       ]
     ],
     "items": [
       {
-        "prompt": "Pada pasangan kode untuk perikarditis tuberkulosa, kode apa yang menunjukkan penyakit penyebabnya?",
+        "prompt": "Pada perikarditis tuberkulosa, kode apa yang menunjukkan tuberkulosis sebagai penyakit penyebab?",
         "feedback": "A18.8 mewakili tuberkulosis sebagai penyakit penyebab dalam pasangan ini.",
         "codes": [
           "A18.8"
@@ -793,7 +781,7 @@
         ]
       },
       {
-        "prompt": "Pada pasangan kode yang sama, kode apa yang menunjukkan manifestasi pada perikardium?",
+        "prompt": "Kode apa yang menunjukkan perikarditis sebagai manifestasi tuberkulosis pada kasus ini?",
         "feedback": "I32.0 mewakili perikarditis sebagai manifestasi penyakit penyebab.",
         "codes": [
           "I32.0"
@@ -809,7 +797,7 @@
         ]
       },
       {
-        "prompt": "Bagaimana penempatan kode penyebab dan kode manifestasi sebagai diagnosis utama dan diagnosis sekunder?",
+        "prompt": "Untuk perikarditis tuberkulosa, pasangan kode dan penempatan diagnosis utama serta sekundernya manakah yang benar?",
         "feedback": "A18.8 ditempatkan sebagai diagnosis utama dan I32.0 sebagai diagnosis sekunder.",
         "codes": [
           "A18.8",
@@ -840,6 +828,13 @@
           ]
         ],
         "options": [
+          "Diagnosis utama A18.8 · diagnosis sekunder I32.0",
+          "Diagnosis utama I32.0 · diagnosis sekunder A18.8",
+          "Diagnosis utama A18.3 · diagnosis sekunder I32.0",
+          "Diagnosis utama A18.8 · diagnosis sekunder I32.1",
+          "Diagnosis utama A18.8 · diagnosis sekunder I30.9"
+        ],
+        "previousRevisionOptions": [
           "DU A18.8 · DS I32.0",
           "DU I32.0 · DS A18.8",
           "DU A18.3 · DS I32.0",
@@ -848,8 +843,8 @@
         ]
       },
       {
-        "prompt": "Mengapa kode manifestasi tetap dicatat meskipun dokter hanya menulis satu diagnosis klinis dan kolom diagnosis sekunder kosong?",
-        "feedback": "Satu diagnosis klinis ini direpresentasikan oleh pasangan kode etiologi dan manifestasi sesuai konvensi pengodean.",
+        "prompt": "Dokter hanya menulis “perikarditis tuberkulosa”. Mengapa pengodean diagnosis ini tetap membutuhkan dua kode?",
+        "feedback": "Perikarditis tuberkulosa diwakili oleh dua kode sesuai klasifikasi: A18.8 untuk penyakit penyebab dan I32.0 untuk manifestasinya pada perikardium. Dua kode ini berasal dari satu diagnosis dokter, bukan dari dua penyakit baru yang ditambahkan koder.",
         "legacyOptions": [
           "Klasifikasi merepresentasikan satu istilah klinis melalui pasangan etiologi dan manifestasi",
           "Setiap penyakit infeksi secara otomatis wajib diberi dua kode",
@@ -874,7 +869,7 @@
     ],
     "reference": "ICS B.6 Contoh 1",
     "pdf": "cases/M2-08.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M2-09",
@@ -882,22 +877,22 @@
     "title": "Kraniotomi dan reseksi tumor otak",
     "records": [
       [
-        "Dokumen A · Laporan operasi",
-        "Operator melakukan kraniotomi untuk mengakses tumor otak, kemudian melanjutkan dengan reseksi tumor. Lokasi anatomi tumor yang lebih rinci dan teknik reseksi tidak dijelaskan dalam cuplikan laporan."
+        "Laporan A · Laporan operasi",
+        "Dokter melakukan kraniotomi untuk mencapai tumor otak, kemudian melanjutkan dengan reseksi tumor. Lokasi tumor yang lebih rinci dan teknik reseksi belum dijelaskan dalam cuplikan laporan."
       ],
       [
-        "Dokumen B · Laporan operasi",
-        "Pada episode yang berbeda, operator melakukan kraniotomi untuk mengakses tumor otak. Operasi tidak dilanjutkan dengan reseksi tumor atau tindakan definitif lain."
+        "Laporan B · Laporan operasi",
+        "Pada perawatan yang berbeda, dokter melakukan kraniotomi untuk mencapai tumor otak. Operasi berhenti tanpa reseksi tumor dan tanpa tindakan lanjutan lain."
       ],
       [
-        "Status dokumen",
-        "Dokumen A dan dokumen B berasal dari dua episode yang terpisah. Rincian pada satu laporan tidak berlaku untuk laporan lainnya."
+        "Keterangan laporan",
+        "Laporan A dan laporan B berasal dari dua perawatan yang berbeda. Kode untuk masing-masing laporan dipilih berdasarkan tindakan yang telah dilakukan pada laporan tersebut."
       ]
     ],
     "items": [
       {
-        "prompt": "Pada laporan A, tindakan apa yang merupakan penanganan definitif tumor?",
-        "feedback": "Reseksi tumor adalah tindakan definitif pada laporan A.",
+        "prompt": "Pada laporan A, kraniotomi dilakukan untuk mencapai tumor. Tindakan mana yang kemudian dilakukan untuk menangani tumornya?",
+        "feedback": "Tindakan untuk menangani tumor pada laporan A adalah reseksi tumor. Kraniotomi dilakukan lebih dahulu untuk mencapai lokasi tumor.",
         "legacyOptions": [
           "Kraniotomi saja",
           "Reseksi tumor",
@@ -920,8 +915,8 @@
         ]
       },
       {
-        "prompt": "Pada laporan A, bagaimana pengodean kraniotomi yang hanya menjadi akses untuk reseksi tumor sesuai petunjuk omit code?",
-        "feedback": "Kraniotomi pada laporan A hanya merupakan akses menuju reseksi tumor, sehingga tidak diberi kode terpisah.",
+        "prompt": "Pada laporan A, kraniotomi hanya menjadi jalan masuk untuk reseksi tumor. Apakah kraniotomi perlu diberi kode tersendiri?",
+        "feedback": "Kraniotomi pada laporan A hanya menjadi jalan masuk untuk reseksi tumor. Sesuai petunjuk omit code pada contoh ini, kraniotomi tersebut tidak diberi kode terpisah.",
         "legacyOptions": [
           "Jangan beri kode terpisah pada akses kraniotomi, sesuai petunjuk omit code",
           "Kodekan kraniotomi terpisah karena tindakan tersebut mendahului reseksi",
@@ -944,8 +939,8 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, kraniotomi tidak dilanjutkan dengan reseksi atau tindakan definitif lain. Kode apa yang digunakan?",
-        "feedback": "01.24 digunakan karena kraniotomi merupakan tindakan yang dikerjakan tanpa dilanjutkan dengan prosedur definitif.",
+        "prompt": "Pada laporan B, operasi berhenti setelah kraniotomi tanpa reseksi tumor. Kode apa yang digunakan untuk kraniotomi tersebut?",
+        "feedback": "Gunakan 01.24. Pada laporan B, tindakan berhenti pada kraniotomi; tidak ada reseksi tumor atau tindakan lanjutan lain.",
         "codes": [
           "01.24"
         ],
@@ -960,7 +955,7 @@
         ]
       },
       {
-        "prompt": "Informasi apa yang masih perlu diperiksa untuk memilih kode reseksi tumor yang spesifik pada laporan A?",
+        "prompt": "Sebelum memilih kode reseksi tumor pada laporan A, rincian apa yang perlu diperiksa pada laporan operasi lengkap?",
         "feedback": "Telusuri lokasi anatomi tumor dan bagaimana reseksi dilakukan pada laporan operasi yang lengkap.",
         "legacyOptions": [
           "Nomor kamar operasi dan waktu penutupan berkas",
@@ -986,7 +981,7 @@
     ],
     "reference": "ICS B.3.a Omit code dan contoh kraniotomi",
     "pdf": "cases/M2-09.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-01",
@@ -994,22 +989,22 @@
     "title": "Durasi ventilasi pada pasien rujukan",
     "records": [
       [
-        "Catatan penerimaan rujukan",
-        "Pasien tiba sebagai rujukan dari rumah sakit lain dalam keadaan sudah terintubasi. Intubasi dilakukan di rumah sakit pengirim."
+        "Saat pasien dirujuk",
+        "Pasien dirujuk dari rumah sakit lain ke rumah sakit penerima. Pasien sudah terintubasi sebelum tiba."
       ],
       [
-        "Dokumentasi di rumah sakit penerima",
-        "Waktu masuk, catatan pemasangan atau penggunaan ventilator, serta waktu penghentian atau pelepasan ventilator belum tersedia dalam cuplikan berkas."
+        "Penghitungan yang sedang diperiksa",
+        "Petugas di rumah sakit penerima membuat draf durasi ventilasi. Petugas memakai waktu intubasi di rumah sakit pengirim sebagai awal penghitungan."
       ],
       [
-        "Temuan audit",
-        "Draf penghitungan rumah sakit penerima memakai waktu intubasi di rumah sakit pengirim sebagai awal durasi ventilasi. Total jam ventilasi belum ditetapkan."
+        "Catatan waktu yang tersedia",
+        "Cuplikan berkas belum mencantumkan waktu masuk pasien, waktu penggunaan ventilator di rumah sakit penerima, serta waktu penghentian atau pelepasan ventilator. Total jam ventilasi belum dapat ditentukan dari catatan waktu yang tersedia."
       ]
     ],
     "items": [
       {
-        "prompt": "Pasien sudah terintubasi sebelum dirujuk. Kapan penghitungan durasi ventilasi di rumah sakit penerima dimulai?",
-        "feedback": "Gunakan waktu masuk rumah sakit penerima dengan bukti bahwa ventilator dipasang pada episode tersebut.",
+        "prompt": "Pasien sudah terintubasi sebelum tiba. Kapan durasi penggunaan ventilator mulai dihitung untuk perawatan di rumah sakit penerima?",
+        "feedback": "Durasi untuk rumah sakit penerima dimulai sejak pasien masuk dengan bukti penggunaan ventilator pada perawatan tersebut. Waktu intubasi di rumah sakit pengirim tidak dipakai sebagai awal durasi rumah sakit penerima.",
         "legacyOptions": [
           "Waktu masuk fasilitas penerima, disertai bukti pemasangan ventilator",
           "Waktu terbitnya surat rujukan",
@@ -1032,8 +1027,8 @@
         ]
       },
       {
-        "prompt": "Catatan apa yang harus dicocokkan untuk memastikan awal durasi ventilasi di rumah sakit penerima?",
-        "feedback": "Padankan waktu masuk dengan catatan pemasangan atau penggunaan ventilator di rumah sakit penerima.",
+        "prompt": "Catatan waktu apa yang harus dicocokkan untuk menentukan awal penggunaan ventilator di rumah sakit penerima?",
+        "feedback": "Cocokkan waktu masuk pasien dengan catatan pemasangan atau penggunaan ventilator di rumah sakit penerima. Kedua catatan diperlukan untuk menentukan awal durasi yang sesuai.",
         "legacyOptions": [
           "Kode diagnosis dan tarif ventilasi",
           "Surat rujukan dan waktu intubasi awal saja",
@@ -1056,8 +1051,8 @@
         ]
       },
       {
-        "prompt": "Jika pasien dirujuk lagi dalam keadaan masih terintubasi, kapan penghitungan durasi ventilasi di rumah sakit yang merujuk berakhir?",
-        "feedback": "Hitungan di rumah sakit yang merujuk berakhir saat ventilator dilepas di fasilitas tersebut.",
+        "prompt": "Jika rumah sakit penerima kemudian merujuk pasien ke rumah sakit berikutnya, kapan penghitungan durasi ventilasi di rumah sakit penerima dihentikan?",
+        "feedback": "Jika rumah sakit penerima merujuk pasien lagi, penghitungan untuk rumah sakit penerima berakhir saat ventilator dilepas di rumah sakit tersebut. Jangan meneruskan durasinya sampai penggunaan alat di rumah sakit berikutnya.",
         "legacyOptions": [
           "Waktu intubasi ulang di fasilitas penerima",
           "Ekstubasi di fasilitas berikutnya",
@@ -1065,11 +1060,11 @@
         ],
         "correct": 3,
         "options": [
+          "Saat pasien dipasang ventilator di rumah sakit berikutnya.",
           "Saat pasien terdaftar di rumah sakit berikutnya.",
           "Saat pasien diekstubasi di rumah sakit berikutnya.",
-          "Saat surat rujukan berikutnya diterbitkan.",
-          "Saat ventilator dilepas di rumah sakit yang merujuk.",
-          "Saat pasien dipasang ventilator di rumah sakit berikutnya."
+          "Saat ventilator dilepas di rumah sakit penerima sebelum pasien dirujuk lagi.",
+          "Saat surat rujukan ke rumah sakit berikutnya diterbitkan."
         ],
         "previousOptions": [
           "Waktu intubasi ulang di fasilitas penerima",
@@ -1077,10 +1072,17 @@
           "Waktu penerimaan administratif di fasilitas berikutnya",
           "Pelepasan ventilator di fasilitas yang merujuk",
           "Waktu pasien meninggalkan bangsal tanpa memeriksa alat"
+        ],
+        "previousRevisionOptions": [
+          "Saat pasien terdaftar di rumah sakit berikutnya.",
+          "Saat pasien diekstubasi di rumah sakit berikutnya.",
+          "Saat surat rujukan berikutnya diterbitkan.",
+          "Saat ventilator dilepas di rumah sakit yang merujuk.",
+          "Saat pasien dipasang ventilator di rumah sakit berikutnya."
         ]
       },
       {
-        "prompt": "Apakah total jam ventilasi di rumah sakit penerima sudah dapat dihitung dari berkas yang tersedia?",
+        "prompt": "Waktu masuk serta waktu awal dan akhir penggunaan ventilator belum tercantum. Apakah total jam ventilasi di rumah sakit penerima sudah dapat dihitung?",
         "feedback": "Belum. Jam awal dan akhir penggunaan ventilator yang relevan belum tersedia.",
         "legacyOptions": [
           "Belum, jam awal dan akhir di rumah sakit penerima tidak tersedia",
@@ -1106,7 +1108,7 @@
     ],
     "reference": "ICS Bab C MDC 10 Pre-MDC",
     "pdf": "cases/M4-01.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-02",
@@ -1114,21 +1116,21 @@
     "title": "Pemberian agen trombolitik",
     "records": [
       [
-        "Ringkasan pelayanan",
-        "Berkas berasal dari episode pelayanan sistem saraf. Diagnosis akhir dokter tidak tercantum dalam cuplikan resume yang tersedia."
+        "Pelayanan pasien",
+        "Berkas berasal dari pelayanan sistem saraf. Diagnosis akhir dokter tidak tercantum dalam cuplikan resume."
       ],
       [
-        "Catatan pelaksanaan",
-        "Agen trombolitik tercatat sudah diberikan melalui injeksi atau infus. Nama agen, dosis, dan jam pemberian tidak dirinci pada sumber."
+        "Tindakan yang sudah dilakukan",
+        "Catatan tindakan menyebut agen trombolitik sudah diberikan melalui injeksi atau infus. Nama obat, dosis, dan jam pemberian tidak dirinci dalam berkas latihan."
       ],
       [
-        "Permintaan verifikasi",
-        "Verifikator meminta lembar pemberian obat atau catatan pelaksanaan dari episode yang sama untuk memastikan bahwa tindakan benar-benar telah dilakukan."
+        "Dokumen yang diminta",
+        "Verifikator meminta lembar pemberian obat atau catatan pelaksanaan dari perawatan yang sama untuk memastikan pemberian obat tersebut."
       ]
     ],
     "items": [
       {
-        "prompt": "Agen trombolitik sudah diberikan melalui injeksi atau infus. Kode prosedur apa yang sesuai?",
+        "prompt": "Agen trombolitik sudah diberikan melalui injeksi atau infus. Kode tindakan apa yang sesuai?",
         "feedback": "99.10 untuk injeksi atau infus agen trombolitik.",
         "codes": [
           "99.10"
@@ -1144,7 +1146,7 @@
         ]
       },
       {
-        "prompt": "Dokumen apa yang diperlukan untuk membuktikan bahwa agen trombolitik benar-benar telah diberikan pada episode ini?",
+        "prompt": "Dokumen apa yang menjadi bukti bahwa agen trombolitik sudah diberikan pada perawatan ini?",
         "feedback": "Gunakan catatan pelaksanaan atau lembar pemberian obat yang menunjukkan tindakan sudah dikerjakan.",
         "legacyOptions": [
           "Daftar obat yang ada di gudang farmasi",
@@ -1168,7 +1170,7 @@
         ]
       },
       {
-        "prompt": "Jika yang tersedia hanya instruksi pemberian tanpa catatan pelaksanaan, bagaimana penetapan kode prosedurnya?",
+        "prompt": "Pada berkas lain, hanya ada instruksi pemberian trombolitik tanpa catatan bahwa obat sudah diberikan. Apa yang seharusnya dilakukan koder?",
         "feedback": "Tunda pengodean sampai tersedia bukti bahwa pemberian telah dilakukan.",
         "legacyOptions": [
           "Tunda kode hingga pemberian terbukti",
@@ -1192,7 +1194,7 @@
         ]
       },
       {
-        "prompt": "Apakah diagnosis penyakit tertentu dapat disimpulkan hanya dari catatan pemberian agen trombolitik?",
+        "prompt": "Jika hanya ada catatan pemberian trombolitik tanpa diagnosis akhir dokter, apakah koder boleh menyimpulkan sendiri penyakit pasien?",
         "feedback": "Tidak. Diagnosis spesifik mengikuti diagnosis yang ditetapkan dokter, sementara catatan pemberian mendukung kode tindakan.",
         "legacyOptions": [
           "Ya, jenis tindakan selalu menetapkan kode diagnosis spesifik",
@@ -1218,7 +1220,7 @@
     ],
     "reference": "ICS Bab C Perhatian Khusus MDC 11",
     "pdf": "cases/M4-02.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-03",
@@ -1227,24 +1229,20 @@
     "records": [
       [
         "Alasan kunjungan",
-        "Pasien datang untuk kontrol mata setelah vitrektomi. Operasi vitrektomi tercatat pada episode sebelumnya. Kunjungan saat ini merupakan evaluasi pascaoperasi tanpa tindakan perawatan luka."
+        "Pasien datang untuk kontrol setelah menjalani vitrektomi pada perawatan sebelumnya. Pada kunjungan kontrol ini tidak dilakukan perawatan luka."
       ],
       [
-        "Riwayat dan diagnosis kunjungan",
-        "Resume kunjungan mencatat status pascavitrektomi sebagai alasan kontrol. Dokter juga mencantumkan hipertensi esensial pada bagian diagnosis sekunder, sebagaimana pada kasus rujukan dalam ICS."
+        "Diagnosis lain",
+        "Dokter mencatat hipertensi esensial sebagai diagnosis sekunder."
       ],
       [
-        "Pemeriksaan yang dilakukan",
-        "Pada episode kontrol dilakukan pemeriksaan fundus. Kolom tindakan hanya mencantumkan kata “funduskopi”. Tidak ada informasi pada catatan yang diberikan apakah pemeriksaan menggunakan kamera fundus atau oftalmoskop."
-      ],
-      [
-        "Catatan kelengkapan",
-        "Laporan pemeriksaan mata yang menjelaskan alat atau cara pemeriksaan belum disertakan."
+        "Pemeriksaan mata",
+        "Pasien menjalani pemeriksaan fundus. Dokter hanya menulis “funduskopi” pada kolom tindakan. Belum ada keterangan apakah pemeriksaan menggunakan kamera fundus atau oftalmoskop. Laporan yang menjelaskan alat dan teknik pemeriksaan belum disertakan."
       ]
     ],
     "items": [
       {
-        "prompt": "Untuk kunjungan kontrol pascavitrektomi tanpa perawatan luka pada contoh ICS ini, kode diagnosis utama apa yang digunakan?",
+        "prompt": "Pasien datang untuk kontrol setelah vitrektomi dan tidak menjalani perawatan luka. Kode diagnosis utama apa yang digunakan sesuai kasus pada ICS?",
         "feedback": "Z48.8 digunakan untuk kontrol pascaoperasi mata pada contoh ini.",
         "codes": [
           "Z48.8"
@@ -1260,7 +1258,7 @@
         ]
       },
       {
-        "prompt": "Kode apa yang digunakan untuk hipertensi esensial yang dicatat sebagai diagnosis sekunder?",
+        "prompt": "Hipertensi esensial ditulis sebagai diagnosis sekunder. Kode apa yang sesuai?",
         "feedback": "I10 untuk hipertensi esensial.",
         "codes": [
           "I10"
@@ -1276,8 +1274,8 @@
         ]
       },
       {
-        "prompt": "Catatan hanya menyebut “funduskopi”. Pertanyaan apa yang tepat untuk memperjelas teknik pemeriksaan tanpa mengarahkan jawaban?",
-        "feedback": "Tanyakan alat atau teknik yang digunakan. Pertanyaan terbuka memberi dokter ruang untuk menjelaskan pemeriksaan yang benar-benar dilakukan.",
+        "prompt": "Dokter hanya menulis “funduskopi”. Pertanyaan mana yang meminta penjelasan teknik pemeriksaan tanpa menyarankan jawaban tertentu?",
+        "feedback": "Minta dokter menjelaskan alat dan teknik yang digunakan. Jangan langsung meminta dokter menyebut kamera fundus atau oftalmoskop, karena tekniknya belum diketahui dari catatan.",
         "legacyOptions": [
           "Mohon jelaskan alat atau teknik pemeriksaan fundus yang digunakan pada kunjungan ini.",
           "Mohon konfirmasi bahwa pasien menjalani foto fundus.",
@@ -1300,7 +1298,7 @@
         ]
       },
       {
-        "prompt": "Jika tekniknya sudah dikonfirmasi, pasangan kode mana yang benar untuk foto fundus dan oftalmoskopi?",
+        "prompt": "Untuk membedakan teknik pemeriksaan, pasangan kode manakah yang benar untuk foto fundus dan oftalmoskopi?",
         "feedback": "Foto fundus dikode 95.11. Oftalmoskopi dikode 16.21.",
         "codes": [
           "95.11",
@@ -1341,7 +1339,7 @@
     ],
     "reference": "ICS Bab C MDC 12 dan Tabel C.22",
     "pdf": "cases/M4-03.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-04",
@@ -1349,21 +1347,21 @@
     "title": "Eksisi dan biopsi telinga luar",
     "records": [
       [
-        "Dokumen A · Laporan tindakan",
-        "Lesi pada telinga luar diangkat melalui eksisi untuk tujuan terapi. Laporan tidak menyebut adanya pemeriksaan patologi anatomi pada episode ini."
+        "Laporan A · Laporan tindakan",
+        "Dokter mengangkat lesi pada telinga luar dengan eksisi untuk tujuan terapi. Laporan tidak menyebut pemeriksaan patologi anatomi."
       ],
       [
-        "Dokumen B · Laporan tindakan",
-        "Pada episode yang berbeda, dokter mengambil sampel jaringan telinga luar untuk biopsi. Pemeriksaan patologi anatomi atas sampel tersebut tercatat telah dilakukan."
+        "Laporan B · Laporan tindakan",
+        "Pada perawatan yang berbeda, dokter mengambil sampel jaringan telinga luar untuk biopsi. Pemeriksaan patologi anatomi atas sampel tersebut sudah dilakukan."
       ],
       [
-        "Status dokumen",
-        "Kedua laporan berasal dari episode terpisah. Lokasi tindakan sama, tetapi tujuan pengambilan jaringan berbeda."
+        "Keterangan laporan",
+        "Laporan A dan laporan B berasal dari dua perawatan yang berbeda. Lokasi tindakan sama, tetapi tujuan pengambilan jaringan berbeda."
       ]
     ],
     "items": [
       {
-        "prompt": "Pada laporan A, lesi telinga luar diangkat untuk tujuan terapi. Kode prosedur apa yang digunakan?",
+        "prompt": "Pada laporan A, lesi telinga luar diangkat untuk terapi. Kode tindakan apa yang sesuai?",
         "feedback": "18.29 untuk eksisi lesi telinga luar pada laporan A.",
         "codes": [
           "18.29"
@@ -1379,7 +1377,7 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, jaringan telinga luar diambil sebagai sampel biopsi. Kode pengambilan sampel apa yang digunakan?",
+        "prompt": "Pada laporan B, dokter mengambil sampel jaringan telinga luar untuk biopsi. Kode tindakan apa yang sesuai?",
         "feedback": "18.12 untuk biopsi telinga luar pada laporan B.",
         "codes": [
           "18.12"
@@ -1395,8 +1393,8 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, pemeriksaan patologi anatomi juga sudah dilakukan. Kelompok kode mana yang perlu ditelusuri untuk pemeriksaan tersebut?",
-        "feedback": "Menurut ICS, pemeriksaan tersebut termasuk keluarga kode 91.86-. Pemilihan subkode mengikuti rincian pemeriksaan.",
+        "prompt": "Sampel pada laporan B sudah diperiksa dengan patologi anatomi. Kelompok kode manakah yang perlu diperiksa untuk memilih kode pemeriksaan tersebut?",
+        "feedback": "Periksa kelompok 91.86- untuk pemeriksaan patologi anatomi sesuai petunjuk ICS. Tanda hubung berarti kode perlu dilengkapi sesuai rincian pemeriksaan; 91.86- bukan kode akhir untuk langsung dimasukkan.",
         "codes": [
           "91.86"
         ],
@@ -1411,7 +1409,7 @@
         ]
       },
       {
-        "prompt": "Apa perbedaan tujuan tindakan pada laporan A dan laporan B yang menentukan pemilihan kode?",
+        "prompt": "Apa perbedaan tujuan pengambilan jaringan pada laporan A dan laporan B?",
         "feedback": "Pada laporan A, lesi diangkat untuk terapi. Pada laporan B, jaringan diambil untuk diperiksa sebagai biopsi.",
         "legacyOptions": [
           "A adalah pengangkatan terapeutik, B adalah pengambilan jaringan untuk biopsi",
@@ -1437,7 +1435,7 @@
     ],
     "reference": "ICS Bab C Perhatian Khusus MDC 13",
     "pdf": "cases/M4-04.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-05",
@@ -1445,22 +1443,18 @@
     "title": "Tuberkulosis resistan obat",
     "records": [
       [
-        "Diagnosis pada resume akhir",
-        "Dokter menetapkan tuberkulosis resistan obat (TB RO). Organ yang terkena, dasar konfirmasi diagnosis, dan kategori resistansi belum dijelaskan."
+        "Diagnosis pada resume",
+        "Dokter menulis tuberkulosis resistan obat (TB RO). Lokasi penyakit, dasar konfirmasi diagnosis, dan kategori resistansinya belum dijelaskan."
       ],
       [
-        "Pemeriksaan penunjang",
-        "Hasil lengkap uji kepekaan atau resistansi belum tersedia dalam berkas yang ditelaah. Nama obat antituberkulosis yang terbukti resistan juga belum dicantumkan."
-      ],
-      [
-        "Kelengkapan berkas",
-        "Rincian pengobatan belum tersedia. Tidak ada informasi tambahan yang memastikan lokasi TB atau jenis resistansi di luar diagnosis pada resume."
+        "Hasil pemeriksaan dan pengobatan",
+        "Hasil lengkap uji kepekaan atau resistansi belum disertakan. Resume belum mencantumkan obat antituberkulosis yang terbukti resistan. Rincian pengobatan juga belum tersedia."
       ]
     ],
     "items": [
       {
-        "prompt": "Selain kode dasar TB, dua kelompok kode tambahan apa yang perlu ditelusuri untuk TB resistan obat menurut ICS?",
-        "feedback": "Telusuri kelompok TB Episode of Care dan Drug Types dalam ICS. Keduanya membutuhkan rincian dokumentasi kasus.",
+        "prompt": "Untuk TB resistan obat, informasi tambahan apa yang perlu dikodekan selain kode dasar TB sesuai petunjuk ICS?",
+        "feedback": "ICS meminta penelusuran dua kelompok tambahan: TB Episode of Care untuk kategori resistansi TB, dan Drug Types untuk jenis obat terkait resistansi. Kategori resistansi dan obat yang terlibat harus diperjelas sebelum kode spesifik dipilih.",
         "legacyOptions": [
           "TB Episode of Care dan Drug Types",
           "Kode pemeriksaan mikrobiologi dan kode terapi obat",
@@ -1468,11 +1462,11 @@
         ],
         "correct": 2,
         "options": [
-          "Kode gejala pernapasan dan kode riwayat penyakit.",
-          "Kode mikrobiologi dan kode tindakan radiologi.",
-          "TB Episode of Care dan Drug Types.",
-          "Kode penyebab luar dan kode cedera.",
-          "Kode pemeriksaan radiologi dan kode administrasi kunjungan."
+          "Gejala pernapasan dan riwayat penyakit.",
+          "Pemeriksaan mikrobiologi dan tindakan radiologi.",
+          "Kategori resistansi TB (TB Episode of Care) dan jenis obat terkait resistansi (Drug Types).",
+          "Penyebab luar dan cedera.",
+          "Pemeriksaan radiologi dan administrasi kunjungan."
         ],
         "previousOptions": [
           "Kode status pengobatan dan kode gejala pernapasan",
@@ -1480,11 +1474,18 @@
           "TB Episode of Care dan Drug Types",
           "Kode penyebab luar dan kode efek samping obat",
           "Kode pemeriksaan radiologi dan kode riwayat TB"
+        ],
+        "previousRevisionOptions": [
+          "Kode gejala pernapasan dan kode riwayat penyakit.",
+          "Kode mikrobiologi dan kode tindakan radiologi.",
+          "TB Episode of Care dan Drug Types.",
+          "Kode penyebab luar dan kode cedera.",
+          "Kode pemeriksaan radiologi dan kode administrasi kunjungan."
         ]
       },
       {
-        "prompt": "Informasi apa yang masih dibutuhkan untuk menetapkan kode dasar TB pada resume ini?",
-        "feedback": "Koder memerlukan lokasi TB dan dasar konfirmasi diagnosis.",
+        "prompt": "Resume hanya menulis “TB RO”. Dua informasi apa yang masih dibutuhkan untuk memilih kode dasar TB?",
+        "feedback": "Lokasi TB dan dasar konfirmasi diagnosis masih perlu diketahui untuk memilih kode dasar yang sesuai. Istilah “TB RO” saja belum menjelaskan kedua informasi tersebut.",
         "legacyOptions": [
           "Usia pasien dan lama perawatan",
           "Lokasi TB dan dasar konfirmasi diagnosis",
@@ -1507,7 +1508,7 @@
         ]
       },
       {
-        "prompt": "Dokumen apa yang paling tepat untuk memastikan kategori resistansi dan obat yang terbukti resistan?",
+        "prompt": "Dokumen apa yang perlu diperiksa untuk mengetahui kategori resistansi dan obat yang terbukti resistan?",
         "feedback": "Gunakan hasil uji kepekaan atau resistansi, bersama catatan klinis yang mengaitkan hasil tersebut dengan obat yang disebut.",
         "legacyOptions": [
           "Daftar stok OAT dan tanggal pasien masuk",
@@ -1531,7 +1532,7 @@
         ]
       },
       {
-        "prompt": "Pertanyaan klarifikasi apa yang tepat untuk melengkapi keterangan resistansi tanpa menyarankan diagnosis tertentu?",
+        "prompt": "Kategori resistansi dan obat yang resistan belum tertulis. Pertanyaan mana yang tepat untuk meminta penjelasan dokter?",
         "feedback": "Tanyakan kategori resistansi dan obat yang terbukti resistan bila dapat ditentukan. Jangan mengarahkan DPJP ke kategori atau obat tertentu.",
         "legacyOptions": [
           "Mohon konfirmasi pasien TB MDR agar kode selesai.",
@@ -1557,7 +1558,7 @@
     ],
     "reference": "ICS Bab C MDC 14 dan MDC 36",
     "pdf": "cases/M4-05.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-06",
@@ -1565,21 +1566,17 @@
     "title": "PTCA dan pemasangan stent koroner",
     "records": [
       [
-        "Ringkasan episode",
-        "Berkas pelayanan memuat laporan intervensi koroner. Diagnosis yang mendasari tindakan tidak dirinci dalam ringkasan latihan. Penilaian berfokus pada prosedur yang tercatat telah dilakukan."
+        "Laporan tindakan koroner",
+        "Dokter melakukan angioplasti koroner perkutan (PTCA) pada satu pembuluh koroner. Pada tindakan yang sama, dokter memasang satu stent. Kedua tindakan sudah dilaksanakan."
       ],
       [
-        "Laporan kateterisasi",
-        "Operator melakukan PTCA pada satu pembuluh koroner. Dalam sesi yang sama, satu stent koroner dipasang. Jumlah pembuluh yang ditangani dan jumlah stent berasal dari uraian tindakan, bukan dari rencana awal."
-      ],
-      [
-        "Catatan implan",
-        "Jenis stent tidak tercantum pada laporan yang tersedia. Data implan yang dapat mengonfirmasi tipe stent belum disertakan."
+        "Informasi stent",
+        "Jenis stent belum tertulis pada laporan. Catatan implan yang menjelaskan jenis stent belum disertakan. Diagnosis yang mendasari tindakan tidak dirinci dalam berkas latihan."
       ]
     ],
     "items": [
       {
-        "prompt": "Kode prosedur apa yang digunakan untuk PTCA yang telah dilakukan?",
+        "prompt": "Dokter sudah melakukan PTCA. Kode tindakan apa yang digunakan?",
         "feedback": "00.66 untuk tindakan PTCA.",
         "codes": [
           "00.66"
@@ -1595,7 +1592,7 @@
         ]
       },
       {
-        "prompt": "Laporan menyebut satu pembuluh koroner ditangani. Kode tambahan apa yang menunjukkan jumlah pembuluh tersebut?",
+        "prompt": "PTCA dilakukan pada satu pembuluh koroner. Kode tambahan apa yang menunjukkan jumlah pembuluh tersebut?",
         "feedback": "00.40 menunjukkan tindakan pada satu pembuluh.",
         "codes": [
           "00.40"
@@ -1611,7 +1608,7 @@
         ]
       },
       {
-        "prompt": "Laporan menyebut satu stent dipasang. Kode tambahan apa yang menunjukkan jumlah stent tersebut?",
+        "prompt": "Dokter memasang satu stent. Kode tambahan apa yang menunjukkan jumlah stent tersebut?",
         "feedback": "00.45 menunjukkan jumlah stent yang dipasang, yaitu satu.",
         "codes": [
           "00.45"
@@ -1627,7 +1624,7 @@
         ]
       },
       {
-        "prompt": "Jenis stent belum tertulis. Langkah apa yang tepat sebelum memilih kode berdasarkan jenis stent?",
+        "prompt": "Jenis stent belum tercantum dalam laporan. Apa yang harus diperiksa atau ditanyakan sebelum memilih kode jenis stent?",
         "feedback": "Periksa kartu atau catatan implan, atau minta operator menjelaskan jenis stent yang dipasang pada episode ini.",
         "legacyOptions": [
           "Gunakan drug-eluting karena hanya satu stent yang dipasang.",
@@ -1653,7 +1650,7 @@
     ],
     "reference": "ICS Bab C MDC 15 Circulatory Disease Procedures",
     "pdf": "cases/M4-06.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-07",
@@ -1661,21 +1658,21 @@
     "title": "Apendisitis akut dengan peritonitis",
     "records": [
       [
-        "Dokumen A · Diagnosis akhir",
-        "Dokter menetapkan apendisitis akut dengan perforasi apendiks dan peritonitis umum. Luas peritonitis secara jelas disebut sebagai umum. Catatan tindakan tidak disertakan."
+        "Laporan A · Diagnosis akhir",
+        "Dokter menetapkan apendisitis akut dengan perforasi apendiks dan peritonitis umum."
       ],
       [
-        "Dokumen B · Diagnosis akhir",
-        "Pada episode yang berbeda, dokter menetapkan apendisitis akut dengan peritonitis lokal. Tidak ada diagnosis peritonitis umum pada dokumen B."
+        "Laporan B · Diagnosis akhir",
+        "Pada perawatan yang berbeda, dokter menetapkan apendisitis akut dengan peritonitis lokal. Dokter tidak menuliskan peritonitis umum pada laporan B."
       ],
       [
-        "Status dokumen",
-        "Diagnosis pada dokumen A dan dokumen B berasal dari dua episode yang terpisah."
+        "Keterangan laporan",
+        "Resume A dan resume B berasal dari dua perawatan yang berbeda. Catatan tindakan tidak disertakan."
       ]
     ],
     "items": [
       {
-        "prompt": "Pada resume A, dokter menetapkan apendisitis akut dengan perforasi dan peritonitis umum. Kode diagnosis apa yang sesuai?",
+        "prompt": "Pada resume A, dokter menulis apendisitis akut dengan perforasi dan peritonitis umum. Kode diagnosis apa yang sesuai?",
         "feedback": "K35.2 untuk apendisitis akut dengan peritonitis umum.",
         "codes": [
           "K35.2"
@@ -1691,7 +1688,7 @@
         ]
       },
       {
-        "prompt": "Pada resume B, dokter menetapkan apendisitis akut dengan peritonitis lokal. Kode diagnosis apa yang sesuai?",
+        "prompt": "Pada resume B, dokter menulis apendisitis akut dengan peritonitis lokal. Kode diagnosis apa yang sesuai?",
         "feedback": "K35.3 untuk apendisitis akut dengan peritonitis lokal.",
         "codes": [
           "K35.3"
@@ -1707,7 +1704,7 @@
         ]
       },
       {
-        "prompt": "Keterangan apa yang secara langsung membedakan luas peritonitis pada resume A dari resume B?",
+        "prompt": "Istilah apa pada resume A yang menunjukkan bahwa peritonitisnya lebih luas daripada pada resume B?",
         "feedback": "Frasa “peritonitis umum” menunjukkan luas peritonitis pada episode A.",
         "legacyOptions": [
           "Peritonitis umum",
@@ -1731,7 +1728,7 @@
         ]
       },
       {
-        "prompt": "Setelah kode kombinasi apendisitis pada resume A dipilih, apakah peritonitis perlu diberi kode terpisah?",
+        "prompt": "Kode apendisitis dengan peritonitis umum sudah digunakan pada resume A. Apakah peritonitis masih perlu diberi kode terpisah?",
         "feedback": "Peritonitis umum sudah tercakup dalam kode kombinasi apendisitis akut pada episode A.",
         "legacyOptions": [
           "Ya, karena semua perforasi harus dikode sebagai dua diagnosis",
@@ -1757,7 +1754,7 @@
     ],
     "reference": "ICS Bab C MDC 16 Appendicitis",
     "pdf": "cases/M4-07.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-08",
@@ -1765,21 +1762,17 @@
     "title": "Pengambilan batu melalui ERCP",
     "records": [
       [
-        "Indikasi dan judul tindakan",
-        "Pasien menjalani penanganan batu pada saluran empedu. Judul laporan mencantumkan endoscopic retrograde cholangiopancreatography (ERCP)."
+        "Alasan dan nama tindakan",
+        "Pasien menjalani tindakan untuk mengeluarkan batu dari saluran empedu. Judul laporan menyebut endoscopic retrograde cholangiopancreatography (ERCP)."
       ],
       [
-        "Uraian operator",
-        "Batu dari saluran empedu berhasil dikeluarkan melalui endoskopi pada sesi tersebut. Tindakan tercatat telah selesai dilakukan."
-      ],
-      [
-        "Rincian sesi",
-        "Dokumen merujuk pada satu sesi tindakan. Tidak tercantum pemeriksaan ERCP diagnostik yang dilakukan secara terpisah."
+        "Pelaksanaan tindakan",
+        "Dokter menyatakan bahwa batu berhasil dikeluarkan dari saluran empedu melalui endoskopi. Laporan mencatat satu kali tindakan; tidak ada ERCP diagnostik yang dilakukan secara terpisah."
       ]
     ],
     "items": [
       {
-        "prompt": "Operator menyatakan batu saluran empedu berhasil dikeluarkan melalui ERCP. Kode tindakan apa yang sesuai?",
+        "prompt": "Dokter berhasil mengeluarkan batu saluran empedu melalui ERCP. Kode tindakan apa yang sesuai?",
         "feedback": "51.88 untuk pengangkatan batu dari saluran empedu secara endoskopik pada contoh ini.",
         "codes": [
           "51.88"
@@ -1795,7 +1788,7 @@
         ]
       },
       {
-        "prompt": "Dalam satu sesi ini, apakah kode ERCP diagnostik 51.10 perlu ditambahkan pada kode pengambilan batu?",
+        "prompt": "Pengambilan batu melalui ERCP sudah diberi kode. Apakah 51.10 untuk ERCP diagnostik perlu ditambahkan pada tindakan yang sama?",
         "feedback": "Untuk contoh ini, gunakan kode tindakan yang spesifik. Kode ERCP diagnostik 51.10 tidak ditambahkan pada sesi yang sama.",
         "legacyOptions": [
           "Ya, karena semua tindakan endoskopi membutuhkan kode diagnostik tambahan",
@@ -1819,7 +1812,7 @@
         ]
       },
       {
-        "prompt": "Pernyataan apa pada laporan yang membuktikan bahwa pengambilan batu sudah terlaksana?",
+        "prompt": "Bagian laporan mana yang membuktikan batu sudah dikeluarkan, bukan baru direncanakan untuk dikeluarkan?",
         "feedback": "Uraian operator menyatakan bahwa batu telah dikeluarkan dari saluran empedu melalui endoskop.",
         "legacyOptions": [
           "Batu saluran empedu disebut sebagai alasan tindakan saja",
@@ -1843,7 +1836,7 @@
         ]
       },
       {
-        "prompt": "Jika laporan hanya berjudul “ERCP”, informasi apa yang harus diperiksa sebelum menetapkan kode pengambilan batu?",
+        "prompt": "Jika laporan hanya menulis “ERCP”, informasi apa yang masih perlu diperiksa sebelum memberi kode pengambilan batu?",
         "feedback": "Periksa uraian prosedur untuk memastikan bahwa pengambilan batu terlaksana dan bahwa batunya berasal dari saluran empedu.",
         "legacyOptions": [
           "Uraian tindakan yang benar-benar dikerjakan, termasuk bukti ekstraksi dan lokasi batu",
@@ -1869,7 +1862,7 @@
     ],
     "reference": "ICS Bab C MDC 17 Prosedur ERCP",
     "pdf": "cases/M4-08.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-09",
@@ -1877,21 +1870,17 @@
     "title": "Artroskopi lutut dan reparasi ligamen",
     "records": [
       [
-        "Ringkasan tindakan",
-        "Pasien menjalani operasi pada sendi lutut. Judul laporan mencantumkan artroskopi lutut. Diagnosis dan sisi tubuh tidak dirinci pada cuplikan sumber."
+        "Laporan operasi lutut",
+        "Dokter melakukan artroskopi lutut. Dalam operasi yang sama, dokter juga melakukan reparasi ligamen krusiat yang dicatat sebagai other repair."
       ],
       [
-        "Uraian operasi",
-        "Operator melakukan artroskopi lutut. Dalam sesi yang sama, operator juga mencatat reparasi ligamen krusiat kategori other repair sebagai tindakan yang telah dilaksanakan."
-      ],
-      [
-        "Kelengkapan laporan",
-        "Judul pada lembar tindakan hanya menyebut artroskopi. Rincian ligamen dan reparasinya tercantum pada uraian operasi."
+        "Isi dokumen",
+        "Judul pada lembar tindakan hanya menyebut artroskopi lutut. Reparasi ligamen krusiat tertulis pada uraian operasi. Diagnosis dan sisi tubuh tidak dirinci dalam cuplikan laporan."
       ]
     ],
     "items": [
       {
-        "prompt": "Kode prosedur apa yang digunakan untuk artroskopi sendi lutut?",
+        "prompt": "Kode tindakan apa yang digunakan untuk artroskopi lutut?",
         "feedback": "80.26 untuk artroskopi lutut.",
         "codes": [
           "80.26"
@@ -1907,8 +1896,8 @@
         ]
       },
       {
-        "prompt": "Operator mencatat reparasi ligamen krusiat kategori other repair. Kode prosedur apa yang sesuai?",
-        "feedback": "81.45 untuk other repair of the cruciate ligaments.",
+        "prompt": "Selain artroskopi, dokter melakukan reparasi ligamen krusiat kategori other repair. Kode apa yang sesuai untuk reparasi tersebut?",
+        "feedback": "Gunakan 81.45 untuk other repair of the cruciate ligaments, yaitu kategori reparasi lain ligamen krusiat sebagaimana dicatat pada laporan.",
         "codes": [
           "81.45"
         ],
@@ -1923,7 +1912,7 @@
         ]
       },
       {
-        "prompt": "Menurut daftar ICS, apakah reparasi ligamen yang dilakukan pada sesi artroskopi ini termasuk prosedur kompleks?",
+        "prompt": "Menurut daftar pada ICS, apakah reparasi ligamen krusiat yang dilakukan bersama artroskopi ini termasuk prosedur kompleks?",
         "feedback": "Ya. Reparasi yang didokumentasikan termasuk dalam daftar prosedur kompleks untuk artroskopi pada ICS.",
         "legacyOptions": [
           "Ya, reparasi tersebut tercantum dalam daftar prosedur kompleks untuk artroskopi",
@@ -1947,7 +1936,7 @@
         ]
       },
       {
-        "prompt": "Bagian dokumen apa yang membuktikan bahwa reparasi ligamen krusiat benar-benar sudah dilakukan?",
+        "prompt": "Dokumen mana yang membuktikan reparasi ligamen krusiat sudah dilakukan, meskipun judul lembar tindakan hanya menyebut artroskopi?",
         "feedback": "Uraian operasi menyebut ligamen yang ditangani dan menyatakan bahwa reparasi dilakukan.",
         "legacyOptions": [
           "Uraian operasi yang menyebut ligamen krusiat dan pelaksanaan reparasi",
@@ -1973,7 +1962,7 @@
     ],
     "reference": "ICS Bab C MDC 18 Knee Arthroscopy dan Perhatian Khusus",
     "pdf": "cases/M4-09.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-10",
@@ -1981,21 +1970,21 @@
     "title": "Teknik debridemen luka",
     "records": [
       [
-        "Dokumen A · Laporan debridemen",
-        "Operator menangani luka dengan debridemen eksisional. Uraian tindakan secara jelas menyebut eksisi jaringan luka. Kedalaman jaringan tidak dirinci pada sumber."
+        "Laporan A · Debridemen",
+        "Dokter melakukan debridemen dengan mengeksisi jaringan luka. Kedalaman jaringan yang ditangani tidak dirinci."
       ],
       [
-        "Dokumen B · Laporan debridemen",
-        "Pada episode yang berbeda, dokter membersihkan jaringan mati dengan debridemen noneksisional. Metode noneksisional tercantum dalam catatan tindakan."
+        "Laporan B · Debridemen",
+        "Pada perawatan yang berbeda, dokter membersihkan jaringan mati dengan debridemen noneksisional. Metode noneksisional disebutkan dalam laporan tindakan."
       ],
       [
-        "Dokumen C · Laporan singkat",
-        "Pada berkas lain, kolom prosedur hanya berisi “debridemen”. Teknik dan jaringan yang ditangani belum dijelaskan. Ketiga dokumen berasal dari episode yang terpisah."
+        "Laporan C · Debridemen",
+        "Pada berkas lain, dokter hanya menulis “debridemen”. Teknik dan jaringan yang ditangani belum dijelaskan. Laporan A, B, dan C berasal dari perawatan yang berbeda."
       ]
     ],
     "items": [
       {
-        "prompt": "Pada laporan A, debridemen dilakukan dengan eksisi jaringan luka. Kode prosedur apa yang sesuai?",
+        "prompt": "Pada laporan A, dokter mengeksisi jaringan luka saat debridemen. Kode tindakan apa yang sesuai?",
         "feedback": "86.22 untuk debridemen eksisional pada contoh ini.",
         "codes": [
           "86.22"
@@ -2011,7 +2000,7 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, dokter menyebut debridemen noneksisional. Kode prosedur apa yang sesuai?",
+        "prompt": "Pada laporan B, dokter menulis debridemen noneksisional. Kode tindakan apa yang sesuai?",
         "feedback": "86.28 untuk debridemen noneksisional.",
         "codes": [
           "86.28"
@@ -2027,7 +2016,7 @@
         ]
       },
       {
-        "prompt": "Keterangan apa pada laporan A yang menjadi dasar pemilihan kode debridemen eksisional?",
+        "prompt": "Keterangan mana dalam laporan A yang menunjukkan debridemen dilakukan dengan teknik eksisional?",
         "feedback": "Frasa “mengeksisi jaringan luka” menunjukkan teknik eksisional.",
         "legacyOptions": [
           "Eksisi jaringan luka",
@@ -2051,7 +2040,7 @@
         ]
       },
       {
-        "prompt": "Jika laporan hanya menulis “debridemen”, pertanyaan klarifikasi apa yang tepat sebelum memilih kode?",
+        "prompt": "Pada laporan C, dokter hanya menulis “debridemen”. Apa pertanyaan yang tepat untuk memperjelas tindakan sebelum kode dipilih?",
         "feedback": "Tanyakan teknik debridemen serta jaringan yang ditangani tanpa menyarankan teknik tertentu.",
         "legacyOptions": [
           "Mohon jelaskan teknik debridemen dan jaringan yang ditangani.",
@@ -2077,7 +2066,7 @@
     ],
     "reference": "ICS Bab C Perhatian Khusus MDC 19",
     "pdf": "cases/M4-10.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M4-11",
@@ -2085,21 +2074,17 @@
     "title": "Diabetes melitus tipe 2 dengan ulkus",
     "records": [
       [
-        "Dokumen utama · Diagnosis akhir",
-        "Dokter menulis “diabetes melitus tipe 2 dengan ulkus diabetik”. Rumusan diagnosis ini menyatakan hubungan ulkus dengan diabetes."
+        "Resume utama",
+        "Dokter menulis diagnosis “diabetes melitus tipe 2 dengan ulkus diabetik”. Lokasi dan kedalaman ulkus serta tindakan perawatan luka tidak dirinci."
       ],
       [
-        "Catatan luka",
-        "Lokasi rinci, kedalaman ulkus, dan tindakan perawatan luka tidak disertakan dalam sumber."
-      ],
-      [
-        "Dokumen pembanding · Diagnosis akhir",
-        "Pada episode lain, dokter menulis “diabetes melitus tipe 2” dan “ulkus” pada dua baris terpisah. Tidak ada keterangan yang menjelaskan hubungan klinis antara kedua kondisi."
+        "Resume pembanding",
+        "Pada perawatan lain, dokter menulis “diabetes melitus tipe 2” dan “ulkus” pada dua baris terpisah. Dokter belum menjelaskan apakah ulkus berkaitan dengan diabetes."
       ]
     ],
     "items": [
       {
-        "prompt": "Pada resume utama, dokter menulis “diabetes melitus tipe 2 dengan ulkus diabetik”. Kode kombinasi apa yang digunakan pada contoh ICS ini?",
+        "prompt": "Dokter menulis “diabetes melitus tipe 2 dengan ulkus diabetik” pada resume utama. Kode apa yang mencakup diagnosis tersebut sesuai contoh ICS?",
         "feedback": "E11.5 adalah kode kombinasi yang digunakan untuk diagnosis pada contoh ICS ini.",
         "codes": [
           "E11.5"
@@ -2115,7 +2100,7 @@
         ]
       },
       {
-        "prompt": "Istilah apa pada resume utama yang secara langsung menunjukkan hubungan ulkus dengan diabetes?",
+        "prompt": "Kata mana pada resume utama yang menunjukkan dokter mengaitkan ulkus dengan diabetes?",
         "feedback": "“Ulkus diabetik” menyatakan bahwa dokter mengaitkan ulkus dengan diabetes.",
         "legacyOptions": [
           "Ulkus diabetik",
@@ -2139,7 +2124,7 @@
         ]
       },
       {
-        "prompt": "Pada contoh ICS ini, apakah ulkus perlu diberi kode diagnosis sekunder terpisah setelah kode kombinasi digunakan?",
+        "prompt": "Kode untuk diabetes dengan ulkus sudah digunakan. Sesuai contoh ICS ini, apakah ulkus masih perlu diberi kode terpisah?",
         "feedback": "Pada contoh ini, ulkus sudah tercakup dalam kode kombinasi sehingga tidak dicatat lagi sebagai diagnosis sekunder.",
         "legacyOptions": [
           "Ya, karena hubungan klinis dengan diabetes tidak tertulis",
@@ -2163,8 +2148,8 @@
         ]
       },
       {
-        "prompt": "Pada resume pembanding, diabetes dan ulkus ditulis terpisah tanpa hubungan yang dijelaskan. Pertanyaan klarifikasi apa yang tepat?",
-        "feedback": "Tanyakan apakah ada hubungan klinis antara kedua kondisi tanpa mengasumsikan bahwa ulkus merupakan komplikasi diabetes.",
+        "prompt": "Pada resume pembanding, dokter menulis diabetes dan ulkus tanpa menjelaskan kaitannya. Pertanyaan apa yang tepat untuk memperjelas hubungan kedua kondisi?",
+        "feedback": "Tanyakan apakah ulkus memiliki hubungan klinis dengan diabetes. Pertanyaan ini meminta penjelasan, tanpa mengarahkan dokter untuk menyatakan bahwa ulkus pasti merupakan komplikasi diabetes.",
         "legacyOptions": [
           "Mohon ganti diagnosis luka menjadi ulkus diabetik.",
           "Mohon jelaskan hubungan klinis antara diabetes dan ulkus, bila ada.",
@@ -2189,7 +2174,7 @@
     ],
     "reference": "ICS Bab C MDC 20 Diabetes Mellitus",
     "pdf": "cases/M4-11.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M6-01",
@@ -2197,21 +2182,21 @@
     "title": "Stadium AKI dan akses dialisis",
     "records": [
       [
-        "Berkas A · Diagnosis akhir",
-        "Dokter menetapkan cedera ginjal akut atau acute kidney injury (AKI). Stadium tidak dicantumkan. Sumber tidak menyertakan data klinis untuk memeriksa penetapan stadium oleh dokter."
+        "Berkas A · Diagnosis ginjal",
+        "Dokter menetapkan cedera ginjal akut atau acute kidney injury (AKI), tetapi tidak menuliskan stadiumnya. Data klinis untuk memeriksa penetapan stadium juga belum disertakan."
       ],
       [
-        "Berkas B · Laporan pemasangan akses",
-        "Pada episode yang berbeda, operator telah memasang kateter dialisis bertunnel atau tunneled dialysis catheter. Jenis kateter dinyatakan pada uraian tindakan."
+        "Berkas B · Pemasangan kateter",
+        "Pada perawatan yang berbeda, dokter telah memasang kateter dialisis bertunnel (tunneled dialysis catheter). Berkas tidak memuat catatan bahwa sesi dialisis sudah dilakukan."
       ],
       [
-        "Berkas B · Dokumentasi dialisis",
-        "Tidak ada catatan bahwa sesi dialisis telah dilakukan. Berkas A dan berkas B berasal dari dua episode yang terpisah."
+        "Keterangan berkas",
+        "Berkas A dan berkas B berasal dari dua perawatan yang berbeda. Informasi pemasangan kateter pada berkas B tidak digunakan untuk menentukan stadium AKI pada berkas A."
       ]
     ],
     "items": [
       {
-        "prompt": "Pada berkas A, diagnosis AKI belum disertai stadium. Pertanyaan klarifikasi apa yang tepat untuk DPJP?",
+        "prompt": "Pada berkas A, dokter belum menulis stadium AKI. Apa pertanyaan yang tepat untuk meminta penjelasan dokter?",
         "feedback": "Minta DPJP menjelaskan stadium AKI bila dapat ditentukan, tanpa mengusulkan salah satu stadium.",
         "legacyOptions": [
           "Mohon tulis stadium 3 karena ada pemasangan akses pada berkas lain.",
@@ -2235,7 +2220,7 @@
         ]
       },
       {
-        "prompt": "Apakah kode AKI dengan stadium tertentu sudah dapat ditetapkan dari berkas A?",
+        "prompt": "Apakah koder sudah dapat memilih kode AKI untuk stadium tertentu dari informasi dalam berkas A?",
         "feedback": "Belum. Stadium perlu didokumentasikan atau dikonfirmasi oleh dokter.",
         "legacyOptions": [
           "Belum, stadium perlu dokumentasi atau konfirmasi dokter",
@@ -2259,7 +2244,7 @@
         ]
       },
       {
-        "prompt": "Pada berkas B, tunneled dialysis catheter sudah dipasang. Kode prosedur spesifik apa yang digunakan menurut ICS?",
+        "prompt": "Pada berkas B, kateter dialisis bertunnel sudah dipasang. Kode tindakan spesifik apa yang digunakan sesuai ICS?",
         "feedback": "38.950 sesuai untuk pemasangan tunneled dialysis catheter pada contoh ICS ini.",
         "codes": [
           "38.950"
@@ -2275,8 +2260,8 @@
         ]
       },
       {
-        "prompt": "Pada berkas B, apakah pemasangan kateter saja cukup untuk menambahkan kode pelaksanaan sesi dialisis?",
-        "feedback": "Tidak. Pemasangan akses dan pelaksanaan dialisis adalah tindakan yang berbeda. Kode sesi memerlukan bukti bahwa dialisis benar-benar dilakukan.",
+        "prompt": "Pada berkas B, kateter dialisis sudah dipasang tetapi tidak ada catatan sesi dialisis. Apakah kode pelaksanaan dialisis boleh langsung ditambahkan?",
+        "feedback": "Pemasangan kateter menyediakan akses dialisis. Hal itu belum membuktikan sesi dialisis sudah dilakukan. Kode pelaksanaan dialisis memerlukan catatan pelaksanaan tersendiri.",
         "legacyOptions": [
           "Tidak, pelaksanaan dialisis memerlukan bukti tersendiri",
           "Ya, pemasangan akses selalu merupakan bukti dialisis terlaksana",
@@ -2301,7 +2286,7 @@
     ],
     "reference": "ICS Bab C MDC 21 AKI dan Pemasangan Akses Hemodialisis",
     "pdf": "cases/M6-01.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M6-02",
@@ -2310,24 +2295,20 @@
     "records": [
       [
         "Alasan masuk",
-        "Ibu hamil anak pertama dengan kehamilan cukup bulan datang karena ketuban telah pecah. Pada catatan obstetri, awal persalinan terjadi dalam 24 jam sejak pecahnya selaput ketuban."
+        "Ibu hamil anak pertama dengan kehamilan cukup bulan datang karena ketuban pecah. Persalinan dimulai dalam 24 jam setelah ketuban pecah."
       ],
       [
-        "Perjalanan persalinan",
-        "Persalinan berlangsung spontan dengan presentasi kepala. Pada episode persalinan yang sama, episiotomi dilakukan dan tercatat dalam laporan tindakan."
+        "Persalinan dan tindakan",
+        "Ibu melahirkan secara spontan dengan presentasi kepala. Episiotomi sudah dilakukan dan dicatat pada laporan persalinan."
       ],
       [
         "Hasil persalinan",
-        "Ibu melahirkan satu bayi hidup. Informasi ini berasal dari catatan persalinan ibu pada episode tersebut."
-      ],
-      [
-        "Ringkasan diagnosis akhir",
-        "Episode persalinan ibu mencakup ketuban pecah dini, cara persalinan spontan presentasi kepala, serta hasil lahir hidup tunggal."
+        "Lahir satu bayi hidup. Seluruh informasi pada kasus ini berasal dari berkas perawatan ibu, bukan dari berkas bayi."
       ]
     ],
     "items": [
       {
-        "prompt": "Ketuban pecah dini diikuti awal persalinan dalam 24 jam. Kode apa yang menjadi diagnosis utama pada berkas ibu?",
+        "prompt": "Ibu mengalami ketuban pecah dini dan mulai bersalin dalam 24 jam. Kode apa yang menjadi diagnosis utama pada berkas ibu?",
         "feedback": "O42.0 untuk ketuban pecah dini dengan awal persalinan dalam 24 jam.",
         "codes": [
           "O42.0"
@@ -2343,7 +2324,7 @@
         ]
       },
       {
-        "prompt": "Bagaimana kode dan posisi diagnosis untuk persalinan spontan presentasi kepala pada contoh ini?",
+        "prompt": "Untuk persalinan spontan presentasi kepala, kode dan penempatan diagnosis manakah yang benar pada berkas ibu?",
         "feedback": "O80.0 dicatat sebagai diagnosis sekunder untuk cara persalinan spontan presentasi kepala.",
         "legacyOptions": [
           "O82.0 sebagai DS",
@@ -2352,6 +2333,13 @@
         ],
         "correct": 3,
         "options": [
+          "O81.0 sebagai diagnosis sekunder",
+          "O80.0 sebagai diagnosis utama",
+          "O42.0 sebagai diagnosis sekunder",
+          "O80.0 sebagai diagnosis sekunder",
+          "O82.0 sebagai diagnosis sekunder"
+        ],
+        "previousRevisionOptions": [
           "O81.0 sebagai DS",
           "O80.0 sebagai DU",
           "O42.0 sebagai DS",
@@ -2360,7 +2348,7 @@
         ]
       },
       {
-        "prompt": "Bagaimana kode dan posisi diagnosis untuk hasil satu bayi lahir hidup pada berkas ibu?",
+        "prompt": "Untuk hasil satu bayi lahir hidup, kode dan penempatan diagnosis manakah yang benar pada berkas ibu?",
         "feedback": "Z37.0 dicatat sebagai diagnosis sekunder untuk hasil satu bayi lahir hidup.",
         "legacyOptions": [
           "Z37.0 sebagai DS",
@@ -2369,6 +2357,13 @@
         ],
         "correct": 3,
         "options": [
+          "Z38.0 sebagai diagnosis utama",
+          "Z38.0 sebagai diagnosis sekunder",
+          "Z37.1 sebagai diagnosis sekunder",
+          "Z37.0 sebagai diagnosis sekunder",
+          "Z37.0 sebagai diagnosis utama"
+        ],
+        "previousRevisionOptions": [
           "Z38.0 sebagai DU",
           "Z38.0 sebagai DS",
           "Z37.1 sebagai DS",
@@ -2377,7 +2372,7 @@
         ]
       },
       {
-        "prompt": "Pasangan kode prosedur apa yang digunakan untuk persalinan spontan dan episiotomi pada contoh ICS ini?",
+        "prompt": "Persalinan spontan dan episiotomi sudah dilakukan. Pasangan kode tindakan manakah yang sesuai contoh ICS?",
         "feedback": "Gunakan 73.59 dan 73.6. Kode 73.6 adalah kode episiotomi.",
         "codes": [
           "73.59",
@@ -2396,7 +2391,7 @@
     ],
     "reference": "ICS Bab C Tabel C.80",
     "pdf": "cases/M6-02.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M6-03",
@@ -2404,21 +2399,17 @@
     "title": "Hipoglikemia pada bayi baru lahir",
     "records": [
       [
-        "Catatan kelahiran",
-        "Bayi tunggal lahir cukup bulan di rumah sakit. Berat lahir tercatat 3.000 gram. Seluruh keterangan kelahiran yang digunakan berasal dari dokumen episode bayi."
-      ],
-      [
-        "Evaluasi klinis bayi",
-        "Dokter menilai kondisi bayi berdasarkan evaluasi klinis, pemeriksaan fisik, dan pemeriksaan penunjang. Nilai hasil pemeriksaan penunjang yang mendasari evaluasi tersebut tidak dirinci dalam contoh."
+        "Catatan kelahiran bayi",
+        "Bayi tunggal lahir cukup bulan di rumah sakit dengan berat lahir 3.000 gram. Catatan ini berasal dari berkas bayi."
       ],
       [
         "Diagnosis akhir bayi",
-        "Dokter menetapkan hipoglikemia neonatal. Catatan sumber tidak merinci tindakan atau terapi pada episode tersebut.  Catatan hasil persalinan pada berkas ibu merupakan bagian dari episode yang berbeda."
+        "Setelah evaluasi klinis dan pemeriksaan penunjang, dokter menetapkan hipoglikemia neonatal. Nilai pemeriksaan penunjang dan rincian terapi tidak disertakan."
       ]
     ],
     "items": [
       {
-        "prompt": "Dokter menetapkan hipoglikemia neonatal. Kode apa yang menjadi diagnosis utama pada berkas bayi?",
+        "prompt": "Dokter menetapkan hipoglikemia neonatal. Kode diagnosis utama apa yang digunakan pada berkas bayi?",
         "feedback": "P70.4 untuk hipoglikemia neonatal pada contoh ini.",
         "codes": [
           "P70.4"
@@ -2434,7 +2425,7 @@
         ]
       },
       {
-        "prompt": "Bayi lahir tunggal di rumah sakit. Bagaimana kode dan posisi diagnosis untuk status kelahirannya?",
+        "prompt": "Bayi lahir tunggal di rumah sakit. Kode dan penempatan diagnosis manakah yang benar untuk mencatat status kelahirannya?",
         "feedback": "Z38.0 dicatat sebagai diagnosis sekunder untuk bayi tunggal yang lahir di rumah sakit.",
         "legacyOptions": [
           "Z38.0 sebagai DS",
@@ -2443,6 +2434,13 @@
         ],
         "correct": 4,
         "options": [
+          "Z37.0 sebagai diagnosis sekunder",
+          "Z38.1 sebagai diagnosis sekunder",
+          "Z38.0 sebagai diagnosis utama",
+          "Z37.0 sebagai diagnosis utama",
+          "Z38.0 sebagai diagnosis sekunder"
+        ],
+        "previousRevisionOptions": [
           "Z37.0 sebagai DS",
           "Z38.1 sebagai DS",
           "Z38.0 sebagai DU",
@@ -2451,7 +2449,7 @@
         ]
       },
       {
-        "prompt": "Dua fakta apa yang menjadi dasar pemilihan kode Z38.0 pada berkas bayi ini?",
+        "prompt": "Dua keterangan pada catatan kelahiran mana yang mendasari pemilihan Z38.0?",
         "feedback": "Bayi lahir tunggal dan tempat lahirnya di rumah sakit.",
         "legacyOptions": [
           "Hipoglikemia dan pemeriksaan penunjang",
@@ -2475,7 +2473,7 @@
         ]
       },
       {
-        "prompt": "Apakah Z37.0 digunakan untuk mencatat status kelahiran pada berkas bayi ini?",
+        "prompt": "Apakah Z37.0 merupakan kode untuk mencatat status kelahiran pada berkas bayi ini?",
         "feedback": "Z37.0 mencatat hasil persalinan pada episode ibu. Pada episode bayi, status kelahiran dicatat dengan kode yang sesuai dari kategori Z38.",
         "legacyOptions": [
           "Tidak, Z37.0 untuk hasil persalinan pada episode ibu",
@@ -2501,7 +2499,7 @@
     ],
     "reference": "ICS Bab C Tabel C.89",
     "pdf": "cases/M6-03.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M6-04",
@@ -2509,25 +2507,25 @@
     "title": "Pielonefritis akut dan sepsis",
     "records": [
       [
-        "Awal perawatan",
-        "Pasien masuk dan dirawat karena pielonefritis akut. Dalam perjalanan perawatan, pasien mengalami demam tinggi dan menggigil; dokter kemudian menetapkan sepsis akibat E. coli."
+        "Awal dan perjalanan perawatan",
+        "Pasien masuk karena pielonefritis akut. Selama dirawat, pasien mengalami demam tinggi dan menggigil. Dokter kemudian menetapkan sepsis akibat E. coli."
       ],
       [
-        "Pemeriksaan saat kondisi berkembang",
-        "Suhu tubuh tercatat 39 °C, frekuensi napas 26 kali per menit, denyut jantung 100 kali per menit, dan tekanan darah 120/70 mmHg."
+        "Pemeriksaan pasien",
+        "Suhu 39 °C, frekuensi napas 26 kali per menit, denyut jantung 100 kali per menit, dan tekanan darah 120/70 mmHg."
       ],
       [
-        "Pemeriksaan mikrobiologi",
-        "Kultur dari dua jenis spesimen, yaitu urin dan darah, sama-sama positif untuk Escherichia coli. Hasil laboratorium ini tersedia bersama catatan perjalanan perawatan."
+        "Hasil kultur",
+        "Kultur urin dan darah sama-sama positif Escherichia coli."
       ],
       [
-        "Diagnosis akhir dokter",
-        "DPJP mencantumkan pielonefritis akut dan sepsis akibat E. coli pada episode ini."
+        "Diagnosis pada resume pulang",
+        "Dokter penanggung jawab pelayanan (DPJP) mencatat pielonefritis akut dan sepsis akibat E. coli."
       ]
     ],
     "items": [
       {
-        "prompt": "Pasien masuk karena pielonefritis akut, kemudian mengalami sepsis selama perawatan. Menurut contoh ICS ini, kode apa yang menjadi diagnosis utama?",
+        "prompt": "Pasien masuk karena pielonefritis akut, lalu mengalami sepsis selama dirawat. Sesuai urutan kejadian pada contoh ICS ini, kode apa yang menjadi diagnosis utama?",
         "feedback": "N10 untuk pielonefritis akut sebagai diagnosis utama pada episode ini.",
         "codes": [
           "N10"
@@ -2543,7 +2541,7 @@
         ]
       },
       {
-        "prompt": "Kode diagnosis sekunder apa yang digunakan untuk sepsis akibat E. coli pada contoh ini?",
+        "prompt": "Kode diagnosis sekunder apa yang digunakan untuk sepsis akibat E. coli sesuai contoh ICS ini?",
         "feedback": "A41.5 untuk sepsis akibat organisme Gram-negatif lain, sebagaimana digunakan pada contoh ICS ini.",
         "codes": [
           "A41.5"
@@ -2559,7 +2557,7 @@
         ]
       },
       {
-        "prompt": "Kode tambahan apa yang menunjukkan E. coli sebagai organisme penyebab pielonefritis?",
+        "prompt": "Kode tambahan apa yang menunjukkan E. coli sebagai penyebab pielonefritis?",
         "feedback": "B96.2 mencatat E. coli sebagai organisme penyebab.",
         "codes": [
           "B96.2"
@@ -2575,7 +2573,7 @@
         ]
       },
       {
-        "prompt": "Catatan apa yang menjadi dasar bahwa sepsis sudah ditetapkan sebagai diagnosis klinis?",
+        "prompt": "Catatan mana yang menunjukkan bahwa dokter sudah menetapkan diagnosis sepsis, bukan hanya menemukan kultur positif?",
         "feedback": "DPJP secara eksplisit menetapkan “sepsis akibat E. coli”. Kultur positif membantu mengidentifikasi organisme dan harus dibaca bersama diagnosis dokter.",
         "legacyOptions": [
           "Demam tinggi dan menggigil saja",
@@ -2601,7 +2599,7 @@
     ],
     "reference": "ICS Bab C Tabel C.102",
     "pdf": "cases/M6-04.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M6-05",
@@ -2609,21 +2607,21 @@
     "title": "Cedera dada dan fraktur humerus",
     "records": [
       [
-        "Anamnesis kejadian",
-        "Pasien datang dengan cedera setelah mobil yang dikemudikannya menabrak pohon. Mekanisme cedera tercatat dalam riwayat kejadian."
+        "Kejadian cedera",
+        "Pasien mengemudikan mobil yang kemudian menabrak pohon. Pasien datang dengan cedera akibat kejadian tersebut."
       ],
       [
-        "Penilaian trauma",
-        "Dokter menetapkan cedera multipel pada organ intratorakal sebagai kondisi utama. Pada episode yang sama, ditemukan fraktur terbuka di bagian atas humerus. Kedua diagnosis berada pada regio anatomi yang berbeda."
+        "Diagnosis dokter",
+        "Dokter menetapkan cedera multipel pada organ di dalam rongga dada (intratorakal) sebagai kondisi utama. Dokter juga menemukan fraktur terbuka di bagian atas humerus atau tulang lengan atas."
       ],
       [
-        "Tindakan selama dirawat",
-        "Tim memasang water-sealed drainage (WSD) pada dada. Pada humerus dilakukan reduksi terbuka dan fiksasi internal (ORIF). Laporan tindakan memuat kedua prosedur tersebut pada episode ini."
+        "Tindakan yang sudah dilakukan",
+        "Tim memasang drainase dada dengan water-sealed drainage (WSD). Fraktur humerus ditangani dengan reduksi terbuka dan fiksasi internal (ORIF). Kedua tindakan tercatat dalam laporan perawatan yang sama."
       ]
     ],
     "items": [
       {
-        "prompt": "Cedera multipel organ intratorakal ditetapkan sebagai kondisi utama, disertai fraktur terbuka humerus proksimal. Pasangan diagnosis utama dan sekunder mana yang benar?",
+        "prompt": "Dokter menetapkan cedera organ dalam dada sebagai kondisi utama dan fraktur terbuka humerus sebagai kondisi lain. Pasangan kode diagnosis utama dan sekunder manakah yang sesuai?",
         "feedback": "S27.7 menjadi diagnosis utama untuk cedera multipel organ intratorakal. S42.21 menjadi diagnosis sekunder untuk fraktur terbuka humerus proksimal dalam contoh ini.",
         "codes": [
           "S27.7",
@@ -2654,6 +2652,13 @@
           ]
         ],
         "options": [
+          "Diagnosis utama S42.21 · diagnosis sekunder S27.7",
+          "Diagnosis utama S27.7 · diagnosis sekunder S42.21",
+          "Diagnosis utama S27.7 · diagnosis sekunder S42.31",
+          "Diagnosis utama S27.9 · diagnosis sekunder S42.21",
+          "Diagnosis utama S27.7 · diagnosis sekunder S42.20"
+        ],
+        "previousRevisionOptions": [
           "DU S42.21 · DS S27.7",
           "DU S27.7 · DS S42.21",
           "DU S27.7 · DS S42.31",
@@ -2662,7 +2667,7 @@
         ]
       },
       {
-        "prompt": "Pasien adalah pengemudi mobil yang menabrak pohon. Kode penyebab luar apa yang digunakan pada contoh ICS ini?",
+        "prompt": "Pasien mengemudikan mobil yang menabrak pohon. Kode penyebab luar apa yang digunakan sesuai contoh ICS?",
         "feedback": "V47.59 adalah kode penyebab luar yang digunakan pada contoh ICS ini.",
         "codes": [
           "V47.59"
@@ -2678,7 +2683,7 @@
         ]
       },
       {
-        "prompt": "Menurut contoh ICS ini, pasangan kode mana yang benar untuk WSD pada dada dan ORIF pada humerus?",
+        "prompt": "WSD pada dada dan ORIF pada humerus sudah dilakukan. Pasangan kode tindakan manakah yang sesuai contoh ICS?",
         "feedback": "WSD dikode 34.04 dan ORIF humerus dikode 79.39.",
         "codes": [
           "34.04",
@@ -2717,8 +2722,8 @@
         ]
       },
       {
-        "prompt": "Untuk menelaah kriteria trauma multipel pada MDC 31, dua kelompok lokasi cedera apa yang tercatat dalam berkas ini?",
-        "feedback": "Kategori lokasinya adalah dada dan ekstremitas atas. Penetapan MDC tetap mengikuti kriteria grouper.",
+        "prompt": "Cedera pada dada dan humerus termasuk dalam dua kelompok lokasi tubuh yang mana saat menelaah kriteria MDC 31?",
+        "feedback": "Lokasi cedera adalah dada dan ekstremitas atas atau anggota gerak atas. Humerus termasuk ekstremitas atas. Informasi lokasi ini digunakan untuk menelaah kriteria trauma; penetapan MDC tetap mengikuti kriteria grouper.",
         "legacyOptions": [
           "Dada dan ekstremitas atas",
           "Abdomen dan ekstremitas atas",
@@ -2736,7 +2741,7 @@
     ],
     "reference": "ICS Bab C Tabel C.124 dan kriteria MDC 31",
     "pdf": "cases/M6-05.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M6-06",
@@ -2745,20 +2750,20 @@
     "records": [
       [
         "Alasan kunjungan",
-        "Pasien datang untuk menjalani sesi rehabilitasi medik karena nyeri punggung bawah. Tujuan kunjungan pada episode ini tercatat sebagai terapi rehabilitasi."
+        "Pasien datang untuk menjalani terapi rehabilitasi medik karena nyeri punggung bawah."
       ],
       [
-        "Asesmen dokter",
-        "Asesmen mencantumkan nyeri punggung bawah sebagai kondisi yang mendasari pemberian terapi. Pada ringkasan sumber ini, penyebab anatomis dan tingkat nyeri tidak dijelaskan lebih lanjut."
+        "Penilaian dokter",
+        "Dokter mencatat nyeri punggung bawah sebagai kondisi yang mendasari terapi. Penyebab anatomis dan tingkat nyeri tidak dirinci."
       ],
       [
-        "Catatan pelaksanaan terapi",
-        "Pada sesi yang ditelaah, tenaga kesehatan memberikan peregangan serta terapi inframerah. Keduanya dicatat sebagai tindakan yang dikerjakan pada kunjungan yang sama."
+        "Terapi yang sudah dilakukan",
+        "Pada kunjungan ini, petugas memberikan peregangan dan terapi inframerah. Kedua tindakan tercatat telah dilakukan."
       ]
     ],
     "items": [
       {
-        "prompt": "Tujuan kunjungan adalah menjalani terapi rehabilitasi. Kode apa yang menjadi diagnosis utama pada contoh ini?",
+        "prompt": "Pasien datang khusus untuk menjalani terapi rehabilitasi. Kode diagnosis utama apa yang sesuai untuk kunjungan ini?",
         "feedback": "Z50.1 untuk kunjungan terapi fisik pada contoh ini.",
         "codes": [
           "Z50.1"
@@ -2774,7 +2779,7 @@
         ]
       },
       {
-        "prompt": "Kondisi yang mendasari terapi adalah nyeri punggung bawah. Kode diagnosis sekunder apa yang digunakan pada contoh ICS ini?",
+        "prompt": "Rehabilitasi diberikan karena nyeri punggung bawah. Kode diagnosis sekunder apa yang digunakan sesuai contoh ICS?",
         "feedback": "M54.5 adalah kode nyeri punggung bawah yang digunakan pada contoh ini.",
         "codes": [
           "M54.5"
@@ -2790,7 +2795,7 @@
         ]
       },
       {
-        "prompt": "Kode prosedur apa yang digunakan untuk peregangan yang sudah dilakukan pada sesi ini?",
+        "prompt": "Peregangan sudah dilakukan. Kode tindakan apa yang sesuai?",
         "feedback": "93.27 untuk peregangan pada contoh ini.",
         "codes": [
           "93.27"
@@ -2806,7 +2811,7 @@
         ]
       },
       {
-        "prompt": "Kode prosedur apa yang digunakan untuk terapi inframerah yang sudah dilakukan pada sesi ini?",
+        "prompt": "Terapi inframerah sudah dilakukan. Kode tindakan apa yang sesuai?",
         "feedback": "93.35 untuk terapi inframerah pada contoh ini.",
         "codes": [
           "93.35"
@@ -2824,7 +2829,7 @@
     ],
     "reference": "ICS Bab C Tabel C.135",
     "pdf": "cases/M6-06.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M6-07",
@@ -2832,26 +2837,22 @@
     "title": "Audit prosedur rehabilitasi pada grouper",
     "records": [
       [
-        "Ringkasan kunjungan rehabilitasi",
-        "Pasien datang untuk terapi fisik dengan kondisi nyeri punggung bawah yang lokasinya tidak dirinci lebih lanjut dalam contoh. Pada episode ini, catatan pelaksanaan terapi mencantumkan whirlpool telah diberikan."
+        "Catatan terapi",
+        "Pasien datang untuk terapi fisik karena nyeri punggung bawah. Terapi whirlpool sudah diberikan dan dicatat dalam laporan terapi."
       ],
       [
-        "Lembar pengodean",
-        "Kode Z50.1 telah dimasukkan sebagai diagnosis utama dan M54.59 sebagai diagnosis sekunder. Kolom prosedur masih kosong meskipun catatan sesi terapi sudah tersedia."
+        "Isian aplikasi",
+        "Petugas memasukkan Z50.1 sebagai diagnosis utama dan M54.59 sebagai diagnosis sekunder. Kolom tindakan belum diisi."
       ],
       [
-        "Keluaran awal aplikasi",
-        "Pengelompokan menampilkan 3635129 dengan uraian “Rehabilitation without Procedures”. Koder memeriksa kembali kecocokan input dengan tindakan yang benar-benar tercatat pada episode."
-      ],
-      [
-        "Tindak lanjut audit",
-        "Setelah koreksi disiapkan, hasil dari aplikasi perlu dicatat kembali. Keluaran setelah koreksi belum tersedia pada tahap soal ini."
+        "Hasil grouping",
+        "Aplikasi menampilkan grup 3635129 dengan uraian “Rehabilitation without Procedures” atau rehabilitasi tanpa prosedur. Hasil grouping setelah isian diperbaiki belum tersedia."
       ]
     ],
     "items": [
       {
-        "prompt": "Catatan menyebut whirlpool sudah diberikan, tetapi hasil grouper menyatakan Rehabilitation without Procedures. Isian apa yang belum sesuai dengan catatan terapi?",
-        "feedback": "Terapi whirlpool sudah dilakukan, tetapi kode prosedurnya belum masuk ke kolom prosedur.",
+        "prompt": "Terapi whirlpool sudah diberikan, tetapi aplikasi menampilkan “rehabilitasi tanpa prosedur”. Apa kesalahan pada isian aplikasi?",
+        "feedback": "Catatan terapi menyatakan whirlpool sudah diberikan, tetapi kolom tindakan belum diisi. Petugas perlu memasukkan kode tindakan yang sesuai, bukan menganggap terapi tidak dilakukan hanya karena uraian hasil grouping.",
         "legacyOptions": [
           "Keluaran aplikasi membuktikan terapi tidak pernah diberikan",
           "Kode prosedur belum diinput meski whirlpool telah dilakukan",
@@ -2874,7 +2875,7 @@
         ]
       },
       {
-        "prompt": "Kode prosedur apa yang perlu ditambahkan untuk terapi whirlpool yang sudah dilakukan?",
+        "prompt": "Kode tindakan apa yang harus dimasukkan untuk terapi whirlpool yang sudah diberikan?",
         "feedback": "93.32 untuk terapi whirlpool.",
         "codes": [
           "93.32"
@@ -2890,8 +2891,8 @@
         ]
       },
       {
-        "prompt": "Setelah kode whirlpool ditambahkan, langkah apa yang harus dilakukan pada aplikasi grouper?",
-        "feedback": "Validasi kembali isian yang diperbarui, lalu jalankan grouper ulang.",
+        "prompt": "Kode whirlpool sudah ditambahkan. Apa langkah berikutnya pada aplikasi grouper?",
+        "feedback": "Periksa dan validasi kembali isian yang sudah ditambahkan, lalu jalankan grouping ulang. Hasil sebelum perbaikan tidak digunakan sebagai hasil akhir setelah isian berubah.",
         "legacyOptions": [
           "Validasi ulang input dan lakukan grouping ulang",
           "Ubah diagnosis utama sebelum memeriksa tindakan",
@@ -2914,8 +2915,8 @@
         ]
       },
       {
-        "prompt": "Setelah pengelompokan ulang, informasi apa yang harus diperiksa dan dicatat untuk memastikan hasil koreksi?",
-        "feedback": "Periksa apakah pesan lama hilang dan catat keluaran baru yang benar-benar muncul setelah grouper dijalankan kembali.",
+        "prompt": "Setelah grouping dijalankan ulang, hasil apa yang harus diperiksa dan dicatat petugas?",
+        "feedback": "Baca hasil grouping yang baru, periksa apakah masalah “rehabilitasi tanpa prosedur” sudah teratasi, lalu catat kode dan uraian yang benar-benar tampil. Jangan menebak kode hasil setelah perbaikan.",
         "legacyOptions": [
           "Simpan hasil lama tanpa mencatat pengelompokan ulang",
           "Catat hanya kode grup yang diperkirakan akan muncul",
@@ -2940,7 +2941,7 @@
     ],
     "reference": "ICS Bab C Gambar C.26 dan C.27",
     "pdf": "cases/M6-07.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   },
   {
     "id": "M6-08",
@@ -2948,21 +2949,21 @@
     "title": "CT kepala dan MRI kepala dengan kontras",
     "records": [
       [
-        "Dokumen A · Laporan CT kepala",
-        "CT kepala sudah dilakukan dan laporan mencatat bahwa bahan kontras telah diberikan. Diagnosis akhir, temuan radiologi, dan jenis bahan kontras tidak dirinci pada sumber."
+        "Laporan A · CT kepala",
+        "Pasien telah menjalani CT kepala. Laporan pemeriksaan menyebut bahan kontras sudah diberikan."
       ],
       [
-        "Dokumen B · Laporan MRI kepala",
-        "Pada episode yang berbeda, MRI kepala sudah dilakukan dengan pemberian bahan kontras. Hasil interpretasi dan diagnosis yang mendasari pemeriksaan tidak disertakan."
+        "Laporan B · MRI kepala",
+        "Pada perawatan yang berbeda, pasien telah menjalani MRI kepala. Laporan pemeriksaan juga menyebut bahan kontras sudah diberikan."
       ],
       [
-        "Status dokumen",
-        "Dokumen A dan dokumen B berasal dari dua episode yang terpisah. Setiap prosedur dinilai berdasarkan laporan pelaksanaan pada episode masing-masing."
+        "Keterangan laporan",
+        "Laporan A dan laporan B berasal dari dua perawatan yang berbeda. Diagnosis, hasil interpretasi radiologi, dan jenis bahan kontras tidak dirinci dalam berkas latihan."
       ]
     ],
     "items": [
       {
-        "prompt": "Pada laporan A, pemeriksaan yang dilakukan adalah CT kepala. Kode pemeriksaan apa yang sesuai?",
+        "prompt": "Pada laporan A, pasien sudah menjalani CT kepala. Kode pemeriksaan apa yang sesuai?",
         "feedback": "87.03 untuk CT kepala.",
         "codes": [
           "87.03"
@@ -2978,7 +2979,7 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, pemeriksaan yang dilakukan adalah MRI kepala. Kode pemeriksaan apa yang sesuai?",
+        "prompt": "Pada laporan B, pasien sudah menjalani MRI kepala. Kode pemeriksaan apa yang sesuai?",
         "feedback": "88.91 untuk MRI otak dan batang otak pada contoh ICS ini.",
         "codes": [
           "88.91"
@@ -2994,7 +2995,7 @@
         ]
       },
       {
-        "prompt": "Pada laporan A, bahan kontras sudah diberikan. Kode tambahan apa yang digunakan menurut ICS?",
+        "prompt": "Bahan kontras sudah diberikan pada CT kepala dalam laporan A. Kode tambahan apa yang digunakan sesuai ICS?",
         "feedback": "99.290 menunjukkan pemberian bahan kontras pada pemeriksaan CT yang tercatat.",
         "codes": [
           "99.290"
@@ -3010,7 +3011,7 @@
         ]
       },
       {
-        "prompt": "Pada laporan B, bahan kontras juga sudah diberikan. Kode tambahan apa yang digunakan menurut ICS?",
+        "prompt": "Bahan kontras sudah diberikan pada MRI kepala dalam laporan B. Kode tambahan apa yang digunakan sesuai ICS?",
         "feedback": "99.290 juga digunakan untuk pemberian bahan kontras pada pemeriksaan MRI yang tercatat.",
         "codes": [
           "99.290"
@@ -3028,6 +3029,6 @@
     ],
     "reference": "ICS Bab C MDC 90 Prosedur Diagnosis",
     "pdf": "cases/M6-08.pdf",
-    "contentRevision": "2026-11-23.2"
+    "contentRevision": "2026-11-23.3"
   }
 ]

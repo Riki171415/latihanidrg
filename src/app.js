@@ -1,7 +1,7 @@
 "use strict";
 const bank = JSON.parse(document.getElementById("case-data").textContent);
 const $ = id => document.getElementById(id);
-const contentRevision = "2026-11-23.2";
+const contentRevision = "2026-11-23.3";
 const storageKey = "latihan-koding-idrg-ics-2026-v1";
 const modules = [
   {id:"2-casemix", name:"Casemix · Materi 2", title:"Grouper, validasi, dan isian episode"},
@@ -282,10 +282,13 @@ function openModule(id) {
   session = profile.materials[id] ??= {index:0, question:0, answers:{}, answerLabels:{}, finished:false, contentRevision};
   // Preserve the text of existing answers when the editorial revision changes choices.
   if (session.contentRevision !== contentRevision) {
+    const priorRevision = session.contentRevision;
     session.answerLabels ??= {};
     availableCases(id).forEach(c => c.items.forEach((q, i) => {
       const key = keyFor(c,i), response = session.answers[key];
-      if (hasAnswer(response) && !response.startsWith("lama:")) session.answerLabels[key] ??= (q.previousOptions ?? q.options)[Number(response)];
+      const previousOptions = priorRevision === "2026-11-23.2"
+        ? q.previousRevisionOptions ?? q.options : q.previousOptions ?? q.options;
+      if (hasAnswer(response) && !response.startsWith("lama:")) session.answerLabels[key] ??= previousOptions[Number(response)];
     }));
     session.contentRevision = contentRevision;
   }

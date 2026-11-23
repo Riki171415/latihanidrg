@@ -40,6 +40,7 @@ small = ParagraphStyle('Small', parent=body, fontSize=7.8, leading=11.8, textCol
 subtitle = ParagraphStyle('Subtitle', parent=body, fontSize=11, leading=16, textColor=blue)
 title = ParagraphStyle('Title', parent=body, fontName='ClinicalBold', fontSize=21, leading=27)
 tag = ParagraphStyle('Tag', parent=small, fontName='ClinicalBold', fontSize=7, leading=11, textColor=blue)
+section_title = ParagraphStyle('SectionTitle', parent=body, fontName='ClinicalBold', fontSize=9.3, leading=14, textColor=navy)
 meta = ParagraphStyle('Meta', parent=body, fontSize=8.5, leading=13)
 
 
@@ -93,7 +94,7 @@ def metadata(case):
 
 def record_row(index, label, text):
     label = label.replace(' · ', '<br/>')
-    heading = Paragraph(f'<font size="7" color="#8c9bb0">BAGIAN {index:02}</font><br/>'+escape(label).replace('&lt;br/&gt;', '<br/>'), label_style)
+    heading = Paragraph(escape(label).replace('&lt;br/&gt;', '<br/>'), label_style)
     row = Table([[heading, p(text)]], colWidths=[W*.255, W*.745], hAlign='LEFT')
     row.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(0,0),light),
@@ -104,6 +105,26 @@ def record_row(index, label, text):
         ('TOPPADDING',(0,0),(-1,-1),12),('BOTTOMPADDING',(0,0),(-1,-1),12),
     ]))
     return KeepTogether(row)
+
+
+def identity(case):
+    text='Nama dan usia pasien: tidak dicantumkan dalam sumber. Tanggal masuk dan keluar: tidak dicantumkan dalam sumber.'
+    return p(text,small)
+
+
+def roman(number):
+    return ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'][number]
+
+
+def group_result(case):
+    value=Paragraph(escape(case['groupCode']),ParagraphStyle('GroupCode',parent=title,fontSize=28,leading=35))
+    result=Table([[p('HASIL GROUPING',label_style),value]],colWidths=[W*.39,W*.61])
+    result.setStyle(TableStyle([
+        ('BACKGROUND',(0,0),(-1,-1),light),('BOX',(0,0),(-1,-1),.6,line),
+        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),('LEFTPADDING',(0,0),(-1,-1),15),
+        ('TOPPADDING',(0,0),(-1,-1),14),('BOTTOMPADDING',(0,0),(-1,-1),14),
+    ]))
+    return result
 
 
 cases = json.loads((ROOT/'src/cases.json').read_text(encoding='utf-8'))
@@ -118,9 +139,15 @@ for case in cases:
     story = [p('BERKAS LATIHAN / '+('AUDIT CASEMIX' if audit else 'DOKUMENTASI KLINIS'),tag),
         Spacer(1,2*mm),p('LEMBAR KERJA CASEMIX' if audit else 'RESUME MEDIS',title),
         Spacer(1,1.5*mm),p(case['title'],subtitle),Spacer(1,6*mm),metadata(case),Spacer(1,6*mm)]
-    for index,(label,text) in enumerate(case['records'],1):
-        story.extend([record_row(index,label,text),Spacer(1,2.5*mm)])
-    note = ('Rincian klinis pasien tidak disertakan pada contoh pembacaan hasil pengelompokan ini.' if audit else
+    if audit:
+        for label,text in case['records']:
+            story.extend([p(text),Spacer(1,6*mm)])
+        story.extend([group_result(case),Spacer(1,6*mm)])
+    else:
+        story.extend([p('I. IDENTITAS BERKAS',section_title),Spacer(1,2*mm),identity(case),Spacer(1,5*mm)])
+        for index,(label,text) in enumerate(case['records'],2):
+            story.extend([KeepTogether([p(roman(index)+'. '+label.upper(),section_title),Spacer(1,2*mm),p(text),Spacer(1,4*mm)])])
+    note = ('Baca kasus dan hasil grouping di atas, lalu jawab pertanyaan pada aplikasi latihan.' if audit else
         'Identitas pasien dan tanggal pelayanan tidak dicantumkan pada sumber. Hanya informasi klinis yang tersedia dalam materi yang ditampilkan.')
     story.extend([Spacer(1,3*mm),p('KELENGKAPAN DOKUMEN',tag),Spacer(1,1*mm),p(note,small),Spacer(1,2*mm),
         p('Berkas ini merupakan rekonstruksi untuk latihan, bukan salinan rekam medis pasien. Tidak ada rincian identitas, hasil pemeriksaan, atau tindakan yang ditambahkan di luar sumber.',small)])
