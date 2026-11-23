@@ -138,7 +138,11 @@ function renderCase(focus = false) {
   });
   $("record-body").replaceChildren();
   $("case-pdf").dataset.src = c.pdf;
-  renderCasePdf(c.pdf);
+  if (!$("case-pdf").hidden) renderCasePdf(c.pdf);
+  else {
+    pdfRequest++;
+    $("case-pdf").replaceChildren();
+  }
   $("pdf-filename").textContent = c.id + ".pdf";
   $("pdf-open").href = c.pdf;
   $("pdf-download").href = c.pdf;
@@ -384,6 +388,7 @@ $("switch-participant").addEventListener("click", () => {
   startPage();
   $("participant").focus();
 });
+$("mobile-participant").addEventListener("click",() => $("switch-participant").click());
 $("prev").addEventListener("click", () => go(position() - 1));
 $("next").addEventListener("click", () => go(position() + 1));
 $("submit-answers").addEventListener("click", () => {
