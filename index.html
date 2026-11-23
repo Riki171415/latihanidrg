@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#122b3b">
+  <meta name="description" content="Praktik koding iDRG berbasis berkas kasus rekam medis elektronik dan ICS 2026.">
+  <title>iDRG Learning — Praktik Koding Klinis</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar" aria-label="Navigasi aplikasi">
+    <a class="logo" href="#" id="brand-home"><span class="logo-symbol">iD<span>+</span></span><span>iDRG<span class="logo-sub">LEARNING</span></span></a>
+    <p class="sidebar-label">RUANG BELAJAR</p>
+    <nav>
+      <button type="button" id="nav-packages" class="nav-item" data-screen="recap"><span aria-hidden="true">▦</span>Paket latihan</button>
+      <button type="button" id="nav-results" class="nav-item" data-screen="all-results"><span aria-hidden="true">◷</span>Rekap nilai</button>
+      <button type="button" id="nav-guide" class="nav-item" data-screen="guide"><span aria-hidden="true">≡</span>Panduan</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="source-label"><span class="live-dot"></span>ICS 2026</div>
+      <p>Pengodean klinis berbasis<br>dokumentasi medis.</p>
+      <div class="profile-mini"><span id="avatar" class="avatar">P</span><span id="sidebar-name">Peserta pelatihan</span></div>
+      <button id="switch-participant" type="button" class="text-button">Ganti peserta ↗</button>
+    </div>
+  </aside>
+  <div class="main-shell">
+    <header class="topbar"><div><span class="topbar-small">PELATIHAN KODING KLINIS</span><span class="topbar-title">Pusat latihan iDRG</span></div><div class="topbar-right"><span class="save-state" id="save-state" role="status">Tersimpan di perangkat ini</span><span class="standard-pill">ICS 2026</span></div></header>
+    <main>
+      <section id="start" class="welcome">
+        <div class="welcome-story"><p class="eyebrow">BELAJAR DARI BERKAS KLINIS</p><h1>Ketelitian dimulai<br>dari rekam medis.</h1><p class="welcome-copy">Baca resume dan laporan tindakan. Tetapkan kode yang tepat. Pahami alasan di balik setiap keputusan.</p><div class="welcome-points"><div><b>28</b><span>berkas kasus</span></div><div><b>112</b><span>soal A–E</span></div><div><b>4</b><span>paket praktik</span></div></div><div class="record-preview" aria-hidden="true"><div class="preview-head"><span class="document-icon">▤</span><div><b>Resume medis</b><span>Episode pelayanan pasien</span></div><span class="preview-pill">PDF</span></div><div class="preview-row"><i></i><i></i><i></i></div><p>Diagnosis akhir</p><div class="preview-line"></div><div class="preview-line shorter"></div><p>Tindakan dan prosedur</p><div class="preview-line"></div></div></div>
+        <form id="setup" class="card entry-card"><p class="eyebrow">SELAMAT DATANG</p><h2>Ruang praktik Anda</h2><p class="muted">Masukkan nama untuk mengerjakan paket dan melihat rekap nilai Anda.</p><div class="group"><label class="field" for="participant">Nama peserta</label><input type="text" id="participant" name="participant" autocomplete="name" maxlength="100" placeholder="Nama lengkap" required></div><button type="submit" class="primary wide">Masuk ke ruang latihan <span aria-hidden="true">→</span></button><div class="entry-note"><span aria-hidden="true">◈</span><p>Jawaban tersimpan di browser ini. Gunakan nama yang sama untuk melanjutkan latihan.</p></div></form>
+      </section>
+
+      <section id="recap" hidden>
+        <div class="page-heading"><div><p class="eyebrow">RUANG PRAKTIK</p><h1 id="recap-title" tabindex="-1">Paket latihan</h1><p class="muted">Selamat belajar, <strong id="recap-student"></strong>. Pilih satu paket untuk memulai.</p></div><button class="secondary" id="open-recap" type="button">Lihat rekap nilai ↗</button></div>
+        <div class="learning-banner"><div><span class="banner-tag">PRAKTIK BERBASIS DOKUMENTASI</span><h2>Dari berkas klinis<br>ke keputusan koding.</h2><p>Telaah PDF rekam medis di samping soal.<br>Kirim tiap paket untuk mendapatkan nilai dan pembahasan.</p></div><div class="banner-mark" aria-hidden="true"><span>RME</span><span>↓</span><span>ICD</span></div></div>
+        <div class="section-heading"><h2>Praktik Casemix</h2><span>Membaca pengelompokan kasus</span></div>
+        <div id="recap-casemix" class="recap-grid casemix-grid"></div>
+        <div class="section-heading"><h2>Praktik Pengodean iDRG</h2><span>Diagnosis, prosedur, dan kelengkapan dokumen</span></div>
+        <div id="recap-modules" class="recap-grid"></div>
+      </section>
+
+      <section id="all-results" hidden>
+        <div class="page-heading"><div><p class="eyebrow">HASIL BELAJAR</p><h1 tabindex="-1" id="recap-table-title">Rekap nilai</h1><p id="recap-name" class="muted"></p></div><div class="actions"><button type="button" class="secondary" id="download-csv">Unduh CSV</button><button id="print-recap" type="button">Cetak rekap</button></div></div>
+        <div class="summary-banner"><div><p>Nilai gabungan</p><strong id="recap-total">—</strong><span> / 100</span></div><div><h3 id="completion-summary"></h3><p id="recap-detail"></p><p class="small muted">Dihitung dari seluruh butir pada paket yang sudah dikirim.</p></div></div>
+        <div class="card table-wrap"><table><thead><tr><th>Paket praktik</th><th>Status</th><th>Benar</th><th>Nilai</th><th><span class="sr-only">Tindakan</span></th></tr></thead><tbody id="score-table"></tbody></table></div>
+        <p class="small muted space">Rekap ini memuat hasil peserta pada browser dan perangkat ini.</p>
+      </section>
+
+      <section id="practice" hidden>
+        <div class="practice-top"><button type="button" class="back-button" id="pause">← Simpan & kembali</button><span class="practice-name" id="student-label"></span></div>
+        <div class="practice-heading"><div><p id="case-module" class="eyebrow"></p><h1 id="case-title" tabindex="-1"></h1></div><div class="progress-box"><span id="progress-text" aria-live="polite"></span><div class="progress-track"><span id="progress-fill"></span></div></div></div>
+        <div class="practice-grid">
+          <article class="document-panel">
+            <div class="document-toolbar"><div class="document-title"><span class="document-icon">▤</span><div><b>Berkas kasus</b><span id="pdf-filename"></span></div></div><div class="actions"><a id="pdf-open" class="icon-link" target="_blank" rel="noopener" title="Buka PDF di tab baru">Buka ↗</a><a id="pdf-download" class="icon-link" download>Unduh ↓</a></div></div>
+            <div class="viewer-tabs" role="group" aria-label="Tampilan berkas"><button id="view-pdf" type="button" aria-pressed="true">Dokumen PDF</button><button id="view-text" type="button" aria-pressed="false">Teks berkas</button></div>
+            <div id="case-pdf" class="pdf-viewer" role="region" aria-label="Berkas rekam medis kasus latihan"></div>
+            <div id="record-body" class="record-body" hidden></div>
+            <p class="document-footnote">Berkas latihan direkonstruksi dari materi ICS 2026. Gunakan Buka atau Unduh untuk membaca PDF dalam ukuran penuh.</p>
+          </article>
+          <article class="card question-card"><div class="question-top"><h2>Soal praktik</h2><span class="small muted">Pilih satu jawaban A–E</span></div><nav id="case-selector" class="case-selector" aria-label="Pilih kasus"></nav><div id="questions"></div><div class="actions question-navigation"><button class="secondary" id="prev" type="button">← Sebelumnya</button><button class="secondary" id="next" type="button">Berikutnya →</button></div><button id="submit-answers" type="button" class="wide">Kirim paket dan lihat nilai</button></article>
+        </div>
+      </section>
+
+      <section id="result" hidden>
+        <p class="eyebrow">HASIL PAKET LATIHAN</p>
+        <div class="result-head"><div><h1 id="result-title" tabindex="-1"></h1><p id="result-student"></p></div><div id="score" class="score"></div></div>
+        <div id="result-key" class="result-key"></div>
+        <div class="actions result-controls"><button type="button" id="restart">Lihat rekap nilai</button><button class="secondary" type="button" id="print-result">Cetak hasil</button><button class="secondary" type="button" id="filter-review" aria-pressed="false">Tampilkan yang perlu ditinjau</button><button class="text-button" id="back-packages" type="button">Kembali ke paket latihan</button></div>
+        <div class="section-heading"><h2>Pembahasan jawaban</h2><span>Buka kasus untuk meninjau keputusan Anda</span></div><div id="review" class="review-list"></div>
+      </section>
+
+      <section id="guide" hidden>
+        <div class="page-heading"><div><p class="eyebrow">PANDUAN PESERTA</p><h1>Cara mengerjakan</h1><p class="muted">Gunakan dokumen klinis untuk menjawab setiap pertanyaan.</p></div></div>
+        <div class="guide-grid"><article class="card"><h2>Baca berkas</h2><p>Setiap kasus memiliki PDF berkas medis atau lembar audit Casemix. Baca tujuan pelayanan, perjalanan perawatan, diagnosis akhir, dan laporan tindakan yang tersedia. Gunakan tab teks jika lebih mudah dibaca di perangkat Anda.</p></article><article class="card"><h2>Tentukan jawaban</h2><p>Pilih satu dari lima jawaban A–E. Gunakan ICS 2026 dan klasifikasi yang dipakai dalam pelatihan. Jika dokumentasi belum lengkap, pilih langkah klarifikasi yang sesuai dengan informasi kasus.</p></article><article class="card"><h2>Kirim per paket</h2><p>Paket Casemix dan Pengodean iDRG dinilai terpisah. Anda dapat berpindah kasus, menyimpan draf, dan melanjutkan sebelum mengirim paket. Setiap jawaban benar bernilai satu poin, jawaban salah atau kosong bernilai nol.</p></article><article class="card"><h2>Tinjau hasil</h2><p>Nilai dan pembahasan muncul setelah pengiriman. Rekap memuat hasil setiap paket. Nilai gabungan adalah jumlah jawaban benar dibagi seluruh butir pada paket yang telah dikirim, dikali 100. Unduh rekap CSV atau cetak sebagai PDF.</p></article></div>
+        <p class="guide-note">Resume kasus merupakan rekonstruksi untuk pembelajaran dari materi ICS. Rincian identitas dan temuan klinis yang tidak tersedia pada sumber ditandai dalam dokumen.</p>
+      </section>
+    </main>
+    <footer class="app-footer"><span>iDRG Learning</span><span>Praktik pengodean klinis · ICS 2026</span></footer>
+  </div>
+  <dialog id="confirm-submit" aria-labelledby="submit-title"><div class="dialog-icon" aria-hidden="true">✓</div><h2 id="submit-title">Kirim paket latihan?</h2><p id="submit-message"></p><div class="actions"><button class="secondary" type="button" id="check-again">Periksa lagi</button><button type="button" id="finish">Kirim dan nilai</button></div></dialog>
+  <script type="application/json" id="case-data">__CASE_DATA__</script>
+  <script src="app.js" defer></script>
+</body>
+</html>
