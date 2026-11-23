@@ -20,9 +20,9 @@ Gunakan Node.js 22 atau lebih baru. Jalankan `npm ci`, lalu `npm run dev` dan bu
 
 ## Deploy GitHub ke Netlify
 
-[Deploy to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/kekey135/Soal-latihan-iDRG)
+[Deploy to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/Riki171415/Soal-latihan-iDRG)
 
-Impor repositori kekey135/Soal-latihan-iDRG melalui Netlify. Pengaturan tersedia di netlify.toml.
+Impor repositori Riki171415/Soal-latihan-iDRG melalui Netlify. Pengaturan tersedia di netlify.toml.
 
 | Pengaturan | Nilai |
 | --- | --- |
