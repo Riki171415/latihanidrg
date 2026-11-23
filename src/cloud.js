@@ -1,6 +1,17 @@
 import {createClient} from '@supabase/supabase-js';
 const config=JSON.parse(document.getElementById('app-config').textContent);
 export const client=createClient(config.supabaseUrl,config.supabasePublishableKey);
+export async function requireDirectSignup(){
+  let response;
+  try{
+    response=await fetch(config.supabaseUrl+'/auth/v1/settings',{
+      headers:{apikey:config.supabasePublishableKey},signal:AbortSignal.timeout(12000)
+    });
+  }catch{throw new Error('Koneksi ke layanan pendaftaran terputus. Coba lagi beberapa saat.');}
+  if(!response.ok)throw new Error('Layanan pendaftaran belum tersedia. Coba lagi beberapa saat.');
+  const settings=await response.json();
+  if(settings.mailer_autoconfirm!==true)throw new Error('Pendaftaran langsung belum diaktifkan. Hubungi pengelola pelatihan.');
+}
 export async function rpc(name,args={}){
   const {data,error}=await client.rpc(name,args);
   if(error)throw error;
@@ -23,7 +34,8 @@ export function attemptFromRow(row){
 export function friendly(error){
   const message=error?.message??String(error);
   if(/Invalid login credentials/i.test(message))return 'Email atau password tidak sesuai.';
-  if(/Email not confirmed/i.test(message))return 'Verifikasi email Anda terlebih dahulu melalui tautan pendaftaran.';
+  if(/Email not confirmed/i.test(message))return 'Akun belum aktif untuk masuk langsung. Hubungi pengelola pelatihan.';
+  if(/User already registered|already been registered/i.test(message))return 'Email sudah terdaftar. Silakan masuk menggunakan akun tersebut.';
   if(/Database error saving new user|duplicate key/i.test(message))return 'Pendaftaran belum berhasil. Periksa isian; username mungkin sudah digunakan.';
   if(/rate limit|too many/i.test(message))return 'Terlalu banyak permintaan. Coba lagi beberapa saat.';
   if(/schema cache|does not exist|could not find.*function/i.test(message))return 'Layanan akun belum selesai disiapkan. Hubungi pengelola pelatihan.';

@@ -582,11 +582,17 @@ $("setup").addEventListener("submit",event=>{
 $("register-form").addEventListener("submit",event=>{
   event.preventDefault();withForm(event.currentTarget,async()=>{
     const metadata=identityFields("register");
-    const {data,error}=await cloud.client.auth.signUp({email:$("register-email").value.trim(),password:$("register-password").value,
-      options:{data:metadata,emailRedirectTo:location.origin+location.pathname}});
-    $("register-password").value="";
-    if(error)throw error;
-    if(data.session)await restoreAccount();else{authMode("login");authMessage("Pendaftaran diterima. Periksa email untuk verifikasi akun sebelum masuk.");}
+    const email=$("register-email").value.trim(),password=$("register-password").value;
+    try{
+      await cloud.requireDirectSignup();
+      const {data,error}=await cloud.client.auth.signUp({email,password,options:{data:metadata}});
+      if(error)throw error;
+      if(!data.session){
+        const signed=await cloud.client.auth.signInWithPassword({email,password});
+        if(signed.error)throw signed.error;
+      }
+      await restoreAccount();
+    }finally{$("register-password").value="";}
   });
 });
 $("reset-form").addEventListener("submit",event=>{

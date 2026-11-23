@@ -16,13 +16,13 @@ Paket Materi 3 mempertahankan ID penyimpanan `2-coding` dan kunci kasus lama unt
 
 ## Akun dan hasil
 
-Pendaftaran meminta nama lengkap, email, username, password, nomor telepon, dan asal instansi. Login menggunakan email dan password. Username merupakan identitas peserta pada rekap. Password dikelola Supabase Auth dan tidak dimasukkan ke tabel profil atau draf aplikasi.
+Pendaftaran meminta nama lengkap, email, username, password, nomor telepon, dan asal instansi. Setelah berhasil mendaftar, peserta langsung masuk tanpa konfirmasi email. Login menggunakan email dan password. Username merupakan identitas peserta pada rekap. Password dikelola Supabase Auth dan tidak dimasukkan ke tabel profil atau draf aplikasi.
 
 Draf disimpan otomatis, dengan antrean penyimpanan dan pemeriksaan versi agar perubahan dari dua perangkat tidak saling menimpa tanpa pemberitahuan. Saat jaringan gagal, jawaban yang belum terkirim ditahan di cache perangkat menurut ID akun dan dapat disimpan ulang. Nilai resmi dihitung di database dari bank soal versi terkait, bukan dari skor yang dikirim browser.
 
 Sebelum pengiriman, peserta bebas mengubah jawaban. Setelah paket dikirim, peserta dapat membuka **satu kali tahap revisi**, mengubah jawaban, lalu mengirim ulang. Setelah pengiriman revisi, paket dikunci. Riwayat menyimpan jawaban dan nilai awal serta revisi secara terpisah. Pembatasan ini diperiksa oleh server; admin tidak dapat memakai fungsi peserta untuk mengganti jawaban orang lain.
 
-Peserta hanya dapat membaca data sendiri. Admin ditentukan oleh daftar email yang dikelola pemilik proyek dalam `idrg_private.admin_allowlist` atau peran internal yang dilindungi. Email akun harus terverifikasi. Data `user_metadata` tidak memberikan hak admin. Dashboard memiliki pencarian, filter instansi, nilai per materi, progres draf, dan detail jawaban serta riwayat nilai.
+Peserta hanya dapat membaca data sendiri. Admin ditentukan oleh daftar email yang dikelola pemilik proyek dalam `idrg_private.admin_allowlist` atau peran internal yang dilindungi. Akun harus aktif pada Supabase Auth. Data `user_metadata` tidak memberikan hak admin. Dashboard memiliki pencarian, filter instansi, nilai per materi, progres draf, dan detail jawaban serta riwayat nilai.
 
 Hasil versi lama tanpa login tidak diimpor sebagai nilai resmi akun. Cache lama tetap tidak diubah.
 
@@ -46,14 +46,14 @@ Konfigurasi publik berada di `src/config.json`. Build dapat menggantinya melalui
 
 Migrasi produksi sudah dipasang pada proyek yang dikonfigurasi. Untuk membuat ulang pada proyek kosong, jalankan migrasi di `supabase/migrations` menurut urutan versi, lalu `supabase/seed.sql`; `supabase/setup.sql` merupakan gabungan yang dihasilkan `npm run seed` untuk pemasangan pertama. Jangan menjalankan ulang pembuatan tabel pada proyek yang sudah dipasang.
 
-Tambahkan email admin melalui SQL pemilik proyek menggunakan pola di `supabase/grant-admin.sql`. Berkas `admin.local.sql` tidak masuk Git. Setelah email disetujui, pemilik email mendaftarkan akun lengkap dan memverifikasi emailnya; akses admin muncul saat login. Jangan membagikan password antarpengguna.
+Tambahkan email admin melalui SQL pemilik proyek menggunakan pola di `supabase/grant-admin.sql`. Berkas `admin.local.sql` tidak masuk Git. Setelah email disetujui, pemilik email mendaftarkan akun lengkap; akses admin muncul saat login. Jangan membagikan password antarpengguna.
 
 Pada Supabase **Authentication → URL Configuration**, gunakan:
 
 - Site URL: `https://latihanidrg.netlify.app`
 - Redirect URL: `https://latihanidrg.netlify.app/`
 
-Konfigurasi ini diperlukan agar tautan konfirmasi dan pemulihan password kembali ke situs latihan. Aktifkan konfirmasi email untuk akun baru. Pengaturan email/SMTP dan batas pengiriman mengikuti konfigurasi proyek Supabase.
+Konfigurasi URL ini diperlukan untuk tautan pemulihan password. Pada Authentication → Sign In / Providers → Email, nonaktifkan **Confirm email**. Pendaftaran langsung memperoleh sesi dan masuk ke ruang latihan tanpa konfirmasi email. Aplikasi memeriksa pengaturan ini sebelum memanggil signup agar tidak mengirim email konfirmasi ketika proyek belum disesuaikan. Pengaturan email/SMTP dan batas pengiriman mengikuti konfigurasi proyek Supabase.
 
 Tabel publik `idrg_profiles` dan `idrg_attempts` memakai RLS. Tabel jawaban benar, peran, daftar email admin, versi soal, dan riwayat berada dalam schema privat dengan akses langsung ditolak. RPC publik menggunakan security invoker; fungsi privat memeriksa pemilik akun atau admin sebelum mengakses data. RLS privat tanpa kebijakan akses langsung merupakan penolakan akses yang disengaja, bukan izin baca untuk peserta.
 
