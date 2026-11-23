@@ -6,9 +6,9 @@ let task = null;
 let resizeTimer = null;
 let current = null;
 
-export async function renderPdf(url, container) {
+export async function renderPdf(url, container, zoom = 1) {
   const id = ++request;
-  current = {url,container};
+  current = {url,container,zoom};
   const previous = task;
   task = null;
   if (previous) await previous.destroy().catch(() => {});
@@ -28,13 +28,14 @@ export async function renderPdf(url, container) {
       const page = await document.getPage(number);
       if (id !== request) return;
       const base = page.getViewport({scale:1});
-      const width = Math.max(240,container.clientWidth - 22);
+      const padding = parseFloat(getComputedStyle(container).paddingLeft) + parseFloat(getComputedStyle(container).paddingRight);
+      const width = Math.max(240,container.clientWidth - padding) * zoom;
       const viewport = page.getViewport({scale:width / base.width});
       const ratio = Math.min(window.devicePixelRatio || 1,2);
       const canvas = globalThis.document.createElement("canvas");
       canvas.width = Math.ceil(viewport.width * ratio);
       canvas.height = Math.ceil(viewport.height * ratio);
-      canvas.style.width = "100%";
+      canvas.style.width = width + "px";
       canvas.style.height = "auto";
       canvas.setAttribute("role","img");
       canvas.setAttribute("aria-label","Halaman " + number + ". Versi teks tersedia di tab Teks berkas.");
@@ -54,7 +55,7 @@ window.addEventListener("resize",() => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => {
     if (current && !current.container.hidden && current.container.offsetParent) {
-      renderPdf(current.url,current.container).catch(() => {});
+      renderPdf(current.url,current.container,current.zoom).catch(() => {});
     }
   },180);
 });

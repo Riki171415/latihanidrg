@@ -48,3 +48,9 @@ Nama, draf, dan hasil disimpan dalam browser pada perangkat peserta. Rekap dapat
 - scripts/build.mjs memvalidasi dan membangun aplikasi.
 - scripts/dev.mjs menjalankan server lokal.
 - netlify.toml mengatur build dan publish.
+
+## Perbaikan ruang praktik
+
+Soal disajikan satu per satu dengan tombol empat soal dalam setiap kasus. PDF dan soal ditampilkan berdampingan pada desktop; berkas PDF mendukung pembesaran hingga 200%. Narasi, 112 pertanyaan, dan pilihan A–E ditelaah kembali tanpa mengubah kode atau posisi kunci dari bank ICS. Teks jawaban yang tersimpan sebelum revisi dipertahankan saat hasil ditinjau.
+
+PDF memakai formulir A4, huruf tertanam, bagian dokumentasi bernomor, dan identitas berkas yang konsisten. Nama pasien, tanggal, dan hasil klinis di luar sumber tidak ditambahkan. Untuk menyusun ulang PDF dari `src/cases.json`, instal Python dengan `reportlab` dan `PyMuPDF`, lalu jalankan `python scripts/generate_pdfs.py --font-dir C:/Windows/Fonts` (font Arial reguler dan tebal diperlukan). Netlify memakai PDF yang sudah tersedia di repositori.

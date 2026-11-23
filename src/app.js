@@ -1,6 +1,7 @@
 "use strict";
 const bank = JSON.parse(document.getElementById("case-data").textContent);
 const $ = id => document.getElementById(id);
+const contentRevision = "2026-11-23.2";
 const storageKey = "latihan-koding-idrg-ics-2026-v1";
 const modules = [
   {id:"2-casemix", name:"Casemix · Materi 2", title:"Grouper, validasi, dan isian episode"},
@@ -76,7 +77,7 @@ const hasAnswer = value => value !== undefined && String(value).trim() !== "";
 function save() {
   try {
     localStorage.setItem(storageKey, JSON.stringify({format:4,profiles}));
-    $("save-state").textContent = "Tersimpan di perangkat ini";
+    $("save-state").textContent = "Progres tersimpan di browser ini";
   } catch {
     $("save-state").textContent = "Penyimpanan tidak tersedia. Cetak hasil sebelum menutup.";
   }
@@ -90,6 +91,7 @@ function screen(which) {
   });
   $("sidebar-name").textContent = profile?.name ?? "Peserta pelatihan";
   $("avatar").textContent = profile?.name.trim().split(/\s+/).map(word => word[0]).slice(0,2).join("").toUpperCase() ?? "P";
+  document.body.dataset.screen = which;
   window.scrollTo(0, 0);
 }
 function startPage() {
@@ -114,8 +116,9 @@ function updateProgress() {
   $("progress-fill").style.width = (100 * count / total) + "%";
   return total - count;
 }
-function go(index) {
+function go(index, question = 0) {
   session.index = index;
+  session.question = question;
   save();
   renderCase(true);
   window.scrollTo(0, 0);
@@ -153,43 +156,72 @@ function renderCase(focus = false) {
     p.append(make("span", label, "part"), document.createTextNode(body));
     $("record-body").append(p);
   });
+  renderQuestion(focus);
+  updateProgress();
+}
+function renderQuestion(focus = false) {
+  const c = cases()[position()];
+  const i = session.question = Math.min(Math.max(0, Number(session.question) || 0), c.items.length - 1);
+  const item = c.items[i];
+  const id = keyFor(c, i);
+  $("question-position").textContent = "SOAL " + (i + 1) + " DARI " + c.items.length;
   $("questions").replaceChildren();
-  c.items.forEach((item, i) => {
-    const id = keyFor(c, i);
-    const fieldset = make("fieldset");
-    const legend = make("legend", (i + 1) + ". " + item.prompt);
-    legend.id = "label-" + id;
-    fieldset.append(legend);
-    const group = make("div", undefined, "answers");
-    const onAnswer = value => {
-      session.answers[id] = value;
+  $("question-selector").replaceChildren();
+  const updateState = () => {
+    const answered = hasAnswer(session.answers[id]);
+    $("answer-state").textContent = answered ? "Jawaban tersimpan" : "Belum dijawab";
+    $("answer-state").classList.toggle("answered", answered);
+    $("question-selector").querySelectorAll("button").forEach((b, n) => b.classList.toggle("done", hasAnswer(session.answers[keyFor(c,n)])));
+  };
+  c.items.forEach((_, n) => {
+    const b = make("button", "Soal " + (n + 1));
+    b.type = "button";
+    b.setAttribute("aria-current", n === i ? "step" : "false");
+    b.addEventListener("click", () => {session.question = n; save(); renderQuestion(true);});
+    $("question-selector").append(b);
+  });
+  const fieldset = make("fieldset");
+  const legend = make("legend", item.prompt);
+  legend.id = "label-" + id;
+  legend.tabIndex = -1;
+  fieldset.append(legend);
+  const group = make("div", undefined, "answers");
+  item.options.forEach((option, j) => {
+    const label = make("label", undefined, "option");
+    const input = make("input");
+    input.type = "radio";
+    input.name = id;
+    input.value = String(j);
+    input.checked = session.answers[id] === String(j);
+    input.addEventListener("change", () => {
+      session.answers[id] = input.value;
+      session.answerLabels ??= {};
+      session.answerLabels[id] = option;
       save();
       updateProgress();
-    };
-    item.options.forEach((option, j) => {
-      const label = make("label", undefined, "option");
-      const input = make("input");
-      input.type = "radio";
-      input.name = id;
-      input.value = String(j);
-      input.checked = session.answers[id] === String(j);
-      input.addEventListener("change", () => {
-        onAnswer(input.value);
-        group.querySelector(".hint")?.remove();
-      });
-      label.append(input, make("span", letter(j) + ".", "option-letter"), make("span", option));
-      group.append(label);
+      updateState();
+      group.querySelector(".hint")?.remove();
     });
-    if (session.answers[id]?.startsWith("lama:")) {
-      group.append(make("p", "Jawaban dari versi sebelumnya: " + session.answers[id].slice(5), "hint"));
-    }
-    fieldset.append(group);
-    $("questions").append(fieldset);
+    label.append(input, make("span", letter(j), "option-letter"), make("span", option));
+    group.append(label);
   });
-  $("prev").disabled = pos === 0;
-  $("next").disabled = pos === all.length - 1;
-  updateProgress();
-  if (focus) $("case-title").focus({preventScroll:true});
+  if (session.answers[id]?.startsWith("lama:")) group.append(make("p", "Jawaban versi sebelumnya: " + session.answers[id].slice(5), "hint"));
+  fieldset.append(group);
+  $("questions").append(fieldset);
+  $("prev").disabled = position() === 0 && i === 0;
+  $("next").disabled = position() === cases().length - 1 && i === c.items.length - 1;
+  $("next").textContent = i === c.items.length - 1 ? "Kasus berikutnya →" : "Soal berikutnya →";
+  updateState();
+  if (focus) legend.focus({preventScroll:true});
+}
+function moveQuestion(delta) {
+  const next = (Number(session.question) || 0) + delta;
+  if (next < 0) return go(position() - 1, 3);
+  if (next > 3) return go(position() + 1, 0);
+  session.question = next;
+  save();
+  renderQuestion(true);
+
 }
 function normalizeCode(value) {
   return value.toUpperCase().replace(/[.\-†*]/g, "");
@@ -243,7 +275,16 @@ function summarize(review) {
 }
 function openModule(id) {
   activeModule = id;
-  session = profile.materials[id] ??= {index:0, answers:{}, finished:false};
+  session = profile.materials[id] ??= {index:0, question:0, answers:{}, answerLabels:{}, finished:false, contentRevision};
+  // Preserve the text of existing answers when the editorial revision changes choices.
+  if (session.contentRevision !== contentRevision) {
+    session.answerLabels ??= {};
+    availableCases(id).forEach(c => c.items.forEach((q, i) => {
+      const key = keyFor(c,i), response = session.answers[key];
+      if (hasAnswer(response) && !response.startsWith("lama:")) session.answerLabels[key] ??= (q.previousOptions ?? q.options)[Number(response)];
+    }));
+    session.contentRevision = contentRevision;
+  }
   save();
   if (session.finished) {
     wrongOnly = false;
@@ -272,6 +313,7 @@ function renderRecap() {
       totalGraded += stats.total;
     }
     const card = make("article", undefined, "card");
+    card.append(make("span", id === "2-casemix" ? "CASEMIX / 01" : "PENGODEAN / " + (modules.findIndex(m => m.id === id) + 1).toString().padStart(2,"0"), "packet-label"));
     card.dataset.material = id;
     const status = attempt?.finished
       ? "Dikirim · " + stats.right + "/" + stats.total + " benar"
@@ -284,7 +326,7 @@ function renderRecap() {
       make("h3", name),
       make("p", title, "small muted"),
       make("p", status, "module-summary small"),
-      make("p", attempt?.finished ? grade(stats.right, stats.total) + " / 100" : "—", "module-score"),
+      make("p", attempt?.finished ? grade(stats.right, stats.total) + " / 100" : entries.length + " kasus · " + stats.total + " soal", attempt?.finished ? "module-score graded" : "module-score"),
       action
     );
     (id === "2-casemix" ? $("recap-casemix") : list).append(card);
@@ -356,8 +398,9 @@ function renderResult(focus = true) {
     items.forEach(({item, response, answered, correct: ok}, i) => {
       if (wrongOnly && ok) return;
       const panel = make("div", undefined, "check-item");
+      const selectedLabel = session.answerLabels?.[keyFor(c,i)] ?? item.options[Number(response)];
       const value = !answered ? "Belum dijawab" : response.startsWith("lama:")
-        ? response.slice(5) : letter(Number(response)) + ". " + item.options[Number(response)];
+        ? response.slice(5) : letter(Number(response)) + ". " + selectedLabel;
       panel.append(make("h3", (i+1) + ". " + item.prompt));
       panel.append(make("p", (ok ? "Benar" : answered ? "Salah" : "Kosong") + " · " + value, ok ? "correct small" : "incorrect small"));
       panel.append(make("p", "Kunci " + letter(item.correct) + ". " + item.options[item.correct], "small"));
@@ -389,8 +432,8 @@ $("switch-participant").addEventListener("click", () => {
   $("participant").focus();
 });
 $("mobile-participant").addEventListener("click",() => $("switch-participant").click());
-$("prev").addEventListener("click", () => go(position() - 1));
-$("next").addEventListener("click", () => go(position() + 1));
+$("prev").addEventListener("click", () => moveQuestion(-1));
+$("next").addEventListener("click", () => moveQuestion(1));
 $("submit-answers").addEventListener("click", () => {
   const missing = updateProgress();
   $("submit-message").textContent = missing
@@ -428,26 +471,40 @@ function showDocument(mode) {
   const pdf = mode === "pdf";
   $("case-pdf").hidden = !pdf;
   $("record-body").hidden = pdf;
+  $("pdf-zoom").hidden = !pdf;
   $("view-pdf").setAttribute("aria-pressed",pdf);
   $("view-text").setAttribute("aria-pressed",!pdf);
   if (pdf && !$("case-pdf").querySelector("canvas")) renderCasePdf(cases()[position()].pdf);
 }
 let pdfViewer = null;
 let pdfRequest = 0;
+let pdfZoom = 1;
 async function renderCasePdf(url) {
   const request = ++pdfRequest;
+  $("case-pdf").setAttribute("aria-busy", "true");
   try {
     pdfViewer ??= import("./pdf-viewer.js");
     const viewer = await pdfViewer;
     if (request !== pdfRequest) return;
-    await viewer.renderPdf(url,$("case-pdf"));
+    await viewer.renderPdf(url,$("case-pdf"),pdfZoom);
   } catch {
     if (request !== pdfRequest) return;
     $("case-pdf").replaceChildren(make("p","PDF belum dapat dimuat. Gunakan Buka atau Unduh pada bilah berkas.","pdf-status"));
+    $("case-pdf").setAttribute("aria-busy", "false");
   }
 }
 $("view-pdf").addEventListener("click",() => showDocument("pdf"));
 $("view-text").addEventListener("click",() => showDocument("text"));
+function changeZoom(delta) {
+  pdfZoom = Math.round(Math.min(2, Math.max(1, pdfZoom + delta)) * 100) / 100;
+  $("zoom-value").textContent = Math.round(pdfZoom * 100) + "%";
+  $("zoom-out").disabled = pdfZoom === 1;
+  $("zoom-in").disabled = pdfZoom === 2;
+  renderCasePdf(cases()[position()].pdf);
+}
+$("zoom-out").disabled = true;
+$("zoom-out").addEventListener("click", () => changeZoom(-.25));
+$("zoom-in").addEventListener("click", () => changeZoom(.25));
 $("download-csv").addEventListener("click",() => {
   const escape = value => '"' + String(value).replace(/^[=+@-]/,"'$&").replaceAll('"','""') + '"';
   const rows = [["Nama peserta","Paket","Status","Benar","Jumlah butir","Nilai","Dikirim pada"]];
