@@ -20,7 +20,7 @@ export async function renderPdf(url, container) {
   container.append(status);
   container.setAttribute("aria-busy","true");
   try {
-    task = pdfjs.getDocument({url, isEvalSupported:false});
+    task = pdfjs.getDocument({url, isEvalSupported:false,standardFontDataUrl:"./vendor/standard_fonts/"});
     const document = await task.promise;
     if (id !== request) return;
     status.remove();

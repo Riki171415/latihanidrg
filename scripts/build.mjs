@@ -33,4 +33,5 @@ for (const file of ["pdf.mjs","pdf.worker.mjs"]) {
   await fs.copyFile(path.join(root,"node_modules/pdfjs-dist/build",file),path.join(dist,"vendor",file));
 }
 await fs.copyFile(path.join(root,"node_modules/pdfjs-dist/LICENSE"),path.join(dist,"vendor","pdfjs-LICENSE.txt"));
+await fs.cp(path.join(root,"node_modules/pdfjs-dist/standard_fonts"),path.join(dist,"vendor/standard_fonts"),{recursive:true});
 console.log("Build selesai — 28 PDF, 4 paket praktik, 112 soal A–E.");
