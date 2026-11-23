@@ -156,8 +156,9 @@ function renderCase(focus = false) {
     p.append(make("span", label, "part"), document.createTextNode(body));
     $("record-body").append(p);
   });
-  renderQuestion(focus);
+  renderQuestion(false);
   updateProgress();
+  if (focus) $("case-title").focus({preventScroll:true});
 }
 function renderQuestion(focus = false) {
   const c = cases()[position()];
@@ -212,7 +213,10 @@ function renderQuestion(focus = false) {
   $("next").disabled = position() === cases().length - 1 && i === c.items.length - 1;
   $("next").textContent = i === c.items.length - 1 ? "Kasus berikutnya →" : "Soal berikutnya →";
   updateState();
-  if (focus) legend.focus({preventScroll:true});
+  if (focus) {
+    legend.focus({preventScroll:true});
+    if (window.matchMedia("(max-width:740px)").matches) $("question-position").scrollIntoView({block:"start"});
+  }
 }
 function moveQuestion(delta) {
   const next = (Number(session.question) || 0) + delta;
