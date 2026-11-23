@@ -13,6 +13,7 @@ from xml.sax.saxutils import escape
 
 import pymupdf
 from reportlab.lib import colors
+from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
@@ -35,14 +36,20 @@ line = colors.HexColor('#d8e0ea')
 light = colors.HexColor('#f4f7fb')
 white = colors.white
 W = 176*mm
-body = ParagraphStyle('Body', fontName='Clinical', fontSize=10.3, leading=15.8, textColor=navy, spaceAfter=3*mm)
-label_style = ParagraphStyle('Label', parent=body, fontName='ClinicalBold', fontSize=8.2, leading=12, textColor=blue)
-small = ParagraphStyle('Small', parent=body, fontSize=7.8, leading=11.8, textColor=muted)
-subtitle = ParagraphStyle('Subtitle', parent=body, fontSize=11, leading=16, textColor=blue)
-title = ParagraphStyle('Title', parent=body, fontName='ClinicalBold', fontSize=21, leading=27)
-tag = ParagraphStyle('Tag', parent=small, fontName='ClinicalBold', fontSize=7, leading=11, textColor=blue)
-section_title = ParagraphStyle('SectionTitle', parent=body, fontName='ClinicalBold', fontSize=9.3, leading=14, textColor=navy, keepWithNext=True, spaceBefore=3*mm, spaceAfter=2*mm)
-meta = ParagraphStyle('Meta', parent=body, fontSize=8.5, leading=13)
+body = ParagraphStyle('Body', fontName='Clinical', fontSize=10, leading=14.6,
+    textColor=colors.HexColor('#24303c'), alignment=TA_JUSTIFY,
+    spaceAfter=1.8*mm, allowWidows=0, allowOrphans=0)
+label_style = ParagraphStyle('Label', parent=body, fontName='ClinicalBold', fontSize=8.5, leading=12,
+    textColor=blue, alignment=TA_LEFT)
+small = ParagraphStyle('Small', parent=body, fontSize=8.2, leading=12.2, textColor=muted, alignment=TA_LEFT)
+subtitle = ParagraphStyle('Subtitle', parent=body, fontSize=11, leading=16, textColor=blue, alignment=TA_LEFT)
+title = ParagraphStyle('Title', parent=body, fontName='ClinicalBold', fontSize=22, leading=28, alignment=TA_LEFT)
+tag = ParagraphStyle('Tag', parent=small, fontName='ClinicalBold', fontSize=7.5, leading=11, textColor=blue)
+section_title = ParagraphStyle('SectionTitle', parent=body, fontName='ClinicalBold', fontSize=9.5, leading=14,
+    textColor=navy, alignment=TA_LEFT, keepWithNext=True, spaceBefore=2.6*mm, spaceAfter=1.7*mm)
+meta = ParagraphStyle('Meta', parent=body, fontSize=8.5, leading=13, alignment=TA_LEFT)
+cell_body = ParagraphStyle('CellBody', parent=body, fontSize=10, leading=14.5, alignment=TA_LEFT, spaceAfter=0)
+cell_header = ParagraphStyle('CellHeader', parent=label_style, fontSize=8.8, leading=13, spaceAfter=0, textColor=white)
 
 
 def p(text, style=body):
@@ -93,24 +100,42 @@ def metadata(case):
     return t
 
 
-def record_row(index, label, text):
-    label = label.replace(' · ', '<br/>')
-    heading = Paragraph(escape(label).replace('&lt;br/&gt;', '<br/>'), label_style)
-    row = Table([[heading, p(text)]], colWidths=[W*.255, W*.745], hAlign='LEFT')
-    row.setStyle(TableStyle([
-        ('BACKGROUND',(0,0),(0,0),light),
+def entries(value):
+    if not value: return p('Tidak tercantum.',small)
+    values=value if isinstance(value,list) else [value]
+    return [p((str(i)+'. ' if len(values)>1 else '')+text,cell_body) for i,text in enumerate(values,1)]
+
+
+def paired_fields(left_heading,right_heading,left_value,right_value):
+    table=Table([
+        [p(left_heading,cell_header),p(right_heading,cell_header)],
+        [entries(left_value),entries(right_value)]],
+        colWidths=[W*.5,W*.5],repeatRows=1,hAlign='LEFT')
+    table.setStyle(TableStyle([
+        ('BACKGROUND',(0,0),(-1,0),navy),
+        ('BACKGROUND',(0,1),(-1,1),colors.HexColor('#fbfcfe')),
         ('BOX',(0,0),(-1,-1),.5,line),
-        ('LINEAFTER',(0,0),(0,0),.5,line),
+        ('LINEAFTER',(0,0),(0,-1),.5,line),
         ('VALIGN',(0,0),(-1,-1),'TOP'),
         ('LEFTPADDING',(0,0),(-1,-1),11),('RIGHTPADDING',(0,0),(-1,-1),11),
-        ('TOPPADDING',(0,0),(-1,-1),12),('BOTTOMPADDING',(0,0),(-1,-1),12),
+        ('TOPPADDING',(0,0),(-1,0),7),('BOTTOMPADDING',(0,0),(-1,0),7),
+        ('TOPPADDING',(0,1),(-1,-1),11),('BOTTOMPADDING',(0,1),(-1,-1),13),
     ]))
-    return KeepTogether(row)
+    return table
 
 
-def identity(case):
-    text='Nama dan usia pasien: tidak dicantumkan dalam sumber. Tanggal masuk dan keluar: tidak dicantumkan dalam sumber.'
-    return p(text,small)
+def narrative(text):
+    blocks=[]
+    for value in text.split('\n'):
+        value=value.strip()
+        if not value:continue
+        # Start a separate paragraph for each field instead of forced line
+        # breaks within one justified paragraph; this prevents wide word gaps.
+        label,separator,rest=value.partition(':')
+        if separator and len(label)<48:
+            blocks.append(Paragraph('<b>'+escape(label)+':</b> '+escape(rest.strip()),body))
+        else:blocks.append(p(value))
+    return blocks
 
 
 def roman(number):
@@ -152,17 +177,31 @@ for case in cases:
         story.extend([group_result(case),Spacer(1,6*mm)])
     else:
         current_episode=None
+        episode_key=''
         index=0
         for label,text in case['records']:
             if ' / ' in label and label.startswith('Episode '):
                 episode,label=label.split(' / ',1)
+                episode_key=episode.split()[-1]
                 if episode!=current_episode:
                     if current_episode is not None: story.append(PageBreak())
-                    story.extend([p(episode.upper()+' · PASIEN TERPISAH',subtitle)])
+                    story.extend([p('PASIEN '+episode_key,subtitle)])
                     index=0
                     current_episode=episode
             index+=1
-            story.extend([p(roman(index)+'. '+label.upper(),section_title),p(text)])
+            fields=case['chartFields'][episode_key]
+            story.append(p(roman(index)+'. '+label.upper(),section_title))
+            if label=='Diagnosis dokter':
+                diagnosis_block=[paired_fields('DIAGNOSIS UTAMA','DIAGNOSIS SEKUNDER',
+                    fields['diagnosisPrimary'],fields['diagnosisSecondary']),Spacer(1,2.5*mm)]
+                if fields.get('diagnosisNote'): diagnosis_block.extend(narrative(fields['diagnosisNote']))
+                story.append(KeepTogether(diagnosis_block))
+            elif label=='Laporan tindakan':
+                story.extend([paired_fields('PROSEDUR UTAMA','PROSEDUR SEKUNDER',
+                    fields['procedurePrimary'],fields['procedureSecondary']),Spacer(1,2.5*mm)])
+                if fields.get('procedureNote'):story.append(p(fields['procedureNote'],small))
+                story.extend(narrative(text))
+            else:story.extend(narrative(text))
     document.build(story,onFirstPage=frame,onLaterPages=frame)
     # Older bookmarks continue to resolve to the latest clinical document.
     alias=ROOT/'public/cases'/(case['id']+'.pdf')
@@ -172,6 +211,9 @@ for case in cases:
         assert 'simulasi' not in text.lower()
         assert len(pdf)<=12, (case['id'],len(pdf))
         assert case.get('displayId',case['id']) in text and ('RESUME MEDIS' in text or 'LEMBAR KERJA CASEMIX' in text)
+        if not audit:
+            for heading in ['DIAGNOSIS UTAMA','DIAGNOSIS SEKUNDER','PROSEDUR UTAMA','PROSEDUR SEKUNDER']:
+                assert text.count(heading)>=len(case['chartFields']),(case['id'],heading)
         for page in pdf:
             for block in page.get_text('blocks'):
                 assert block[0]>=40 and block[2]<560 and block[1]>20 and block[3]<820, (case['id'],block)

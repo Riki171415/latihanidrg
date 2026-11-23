@@ -70,7 +70,7 @@
       }
     ],
     "reference": "ICS Bab A.1 dan Gambar A.1",
-    "pdf": "cases/2026-11-24.1/M2-01.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M2-01.pdf",
     "contentRevision": "2026-11-24.1",
     "groupCode": "2401210"
   },
@@ -188,10 +188,24 @@
       }
     ],
     "reference": "ICS Tabel C.80 dan Bab A.1",
-    "pdf": "cases/2026-11-24.1/M2-02.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M2-02.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Ketuban pecah dini aterm; persalinan mulai dalam 24 jam",
+        "diagnosisSecondary": [
+          "Persalinan spontan presentasi kepala",
+          "Satu bayi lahir hidup"
+        ],
+        "procedurePrimary": "Persalinan pervaginam spontan",
+        "procedureSecondary": [
+          "Episiotomi mediolateral"
+        ],
+        "diagnosisNote": "Tidak ditemukan korioamnionitis atau komplikasi persalinan lain."
+      }
+    }
   },
   {
     "id": "M2-03",
@@ -302,12 +316,24 @@
       }
     ],
     "reference": "ICS B.2.a Contoh 1",
-    "pdf": "cases/2026-11-24.1/M2-03.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M2-03.pdf",
     "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-01",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Sinusitis akut",
+        "diagnosisSecondary": [
+          "Karsinoma endoserviks",
+          "Hipertensi esensial"
+        ],
+        "procedurePrimary": "Histerektomi total abdominal",
+        "procedureSecondary": [],
+        "diagnosisNote": "Ketiga kondisi dievaluasi atau ditangani selama perawatan. Urutan pada tabel mengikuti isian resume pulang yang ditandatangani DPJP."
+      }
+    }
   },
   {
     "id": "M2-04",
@@ -414,12 +440,25 @@
       }
     ],
     "reference": "ICS B.2.b Contoh 1",
-    "pdf": "cases/2026-11-24.1/M2-04.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M2-04.pdf",
     "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-02",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": [
+          "Katarak",
+          "Meningitis stafilokokus",
+          "Penyakit jantung iskemik"
+        ],
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Pungsi lumbal diagnostik",
+        "procedureSecondary": [],
+        "diagnosisNote": "Ketiga penyakit tertulis pada kolom diagnosis utama. DPJP belum memilih satu diagnosis utama. Tidak ada diagnosis infark miokard akut."
+      }
+    }
   },
   {
     "id": "M2-05",
@@ -530,12 +569,25 @@
       }
     ],
     "reference": "ICS B.2.c Contoh 2",
-    "pdf": "cases/2026-11-24.1/M2-05.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M2-05.pdf",
     "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-03",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Koma",
+        "diagnosisSecondary": [
+          "Diabetes melitus dependen insulin dengan ketoasidosis",
+          "Penyakit jantung iskemik aterosklerotik"
+        ],
+        "procedurePrimary": null,
+        "procedureSecondary": [],
+        "procedureNote": "Tidak terdapat penetapan prosedur utama atau sekunder tersendiri pada resume. Terapi yang diberikan tercantum dalam catatan perawatan.",
+        "diagnosisNote": "DPJP menyatakan koma disebabkan oleh dekompensasi diabetes melitus tipe 1 dengan ketoasidosis. Urutan diagnosis pada resume belum diperbaiki."
+      }
+    }
   },
   {
     "id": "M2-06",
@@ -646,12 +698,23 @@
       }
     ],
     "reference": "ICS B.2.d Contoh 2",
-    "pdf": "cases/2026-11-24.1/M2-06.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M2-06.pdf",
     "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-04",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Penyakit jantung kongenital",
+        "diagnosisSecondary": [
+          "Defek septum ventrikel"
+        ],
+        "procedurePrimary": "Ekokardiografi",
+        "procedureSecondary": [],
+        "diagnosisNote": "Penyakit jantung kongenital dan defek septum ventrikel merujuk pada kelainan yang sama. Tidak ada kelainan jantung bawaan lain yang ditetapkan."
+      }
+    }
   },
   {
     "id": "M2-07",
@@ -762,12 +825,21 @@
       }
     ],
     "reference": "ICS B.2.e Contoh 2",
-    "pdf": "cases/2026-11-24.1/M2-07.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M2-07.pdf",
     "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-05",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Kolesistitis akut atau pankreatitis akut",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Ultrasonografi abdomen",
+        "procedureSecondary": [],
+        "diagnosisNote": "Kedua penyakit ditulis sebagai alternatif pada satu baris. Belum ada diagnosis akhir lain yang memastikan salah satunya."
+      }
+    }
   },
   {
     "id": "M2-08",
@@ -879,12 +951,23 @@
       }
     ],
     "reference": "ICS B.6 Contoh 1",
-    "pdf": "cases/2026-11-24.1/M2-08.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M2-08.pdf",
     "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-06",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Perikarditis tuberkulosa",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Perikardiosentesis dengan pemasangan drain",
+        "procedureSecondary": [
+          "Ekokardiografi"
+        ],
+        "diagnosisNote": "Diagnosis didasarkan pada gejala, ekokardiografi, dan pemeriksaan cairan perikardium. Tidak ada lokasi TB lain atau penyakit penyerta terpisah yang ditetapkan."
+      }
+    }
   },
   {
     "id": "M2-09",
@@ -1027,12 +1110,29 @@
       }
     ],
     "reference": "ICS B.3.a Omit code dan contoh kraniotomi",
-    "pdf": "cases/2026-11-24.1/M2-09.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M2-09.pdf",
     "contentRevision": "2026-11-24.1",
     "displayModule": 3,
     "displayId": "M3-07",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "A": {
+        "diagnosisPrimary": "Tumor otak frontal kiri",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Reseksi tumor otak",
+        "procedureSecondary": [],
+        "procedureNote": "Kraniotomi dicatat sebagai tahap akses menuju reseksi tumor, bukan tindakan definitif lain.",
+        "diagnosisNote": "Jenis histologi tumor belum ditetapkan dari pencitraan saja."
+      },
+      "B": {
+        "diagnosisPrimary": "Massa intrakranial frontal kiri",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Kraniotomi",
+        "procedureSecondary": [],
+        "diagnosisNote": "Jenis histologi tumor belum ditetapkan dari pencitraan saja."
+      }
+    }
   },
   {
     "id": "M4-01",
@@ -1135,10 +1235,21 @@
       }
     ],
     "reference": "ICS Bab C MDC 10 Pre-MDC",
-    "pdf": "cases/2026-11-24.1/M4-01.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-01.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Pneumonia dengan gagal napas akut",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Ventilasi mekanik invasif",
+        "procedureSecondary": [
+          "Foto toraks"
+        ],
+        "diagnosisNote": "Kedua kondisi telah ditetapkan dokter pada perawatan di rumah sakit penerima."
+      }
+    }
   },
   {
     "id": "M4-02",
@@ -1241,10 +1352,21 @@
       }
     ],
     "reference": "ICS Bab C Perhatian Khusus MDC 11",
-    "pdf": "cases/2026-11-24.1/M4-02.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-02.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Stroke iskemik akut",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Pemberian alteplase intravena",
+        "procedureSecondary": [
+          "CT kepala"
+        ],
+        "diagnosisNote": "Diagnosis ditetapkan setelah pemeriksaan neurologis dan pencitraan. Tidak ditemukan perdarahan intrakranial pascatindakan."
+      }
+    }
   },
   {
     "id": "M4-03",
@@ -1360,10 +1482,21 @@
       }
     ],
     "reference": "ICS Bab C MDC 12 dan Tabel C.22",
-    "pdf": "cases/2026-11-24.1/M4-03.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-03.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Perawatan pascavitrektomi",
+        "diagnosisSecondary": [
+          "Hipertensi esensial"
+        ],
+        "procedurePrimary": "Pemeriksaan fundus; alat dan teknik belum ditulis",
+        "procedureSecondary": [],
+        "diagnosisNote": "Hipertensi dievaluasi dan diberikan edukasi pengendalian. Tidak ada komplikasi pascaoperasi yang ditetapkan."
+      }
+    }
   },
   {
     "id": "M4-04",
@@ -1514,10 +1647,28 @@
       }
     ],
     "reference": "ICS Bab C Perhatian Khusus MDC 13",
-    "pdf": "cases/2026-11-24.1/M4-04.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-04.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "A": {
+        "diagnosisPrimary": "Lesi telinga luar kiri",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Eksisi lokal lesi telinga luar",
+        "procedureSecondary": [],
+        "diagnosisNote": "Diagnosis histologis belum ditetapkan; tidak terdapat infeksi telinga tengah."
+      },
+      "B": {
+        "diagnosisPrimary": "Karsinoma sel skuamosa telinga luar kanan",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Biopsi insisional telinga luar",
+        "procedureSecondary": [
+          "Pemeriksaan histopatologi jaringan"
+        ],
+        "diagnosisNote": "Sebelum biopsi, diagnosis masih berupa lesi telinga luar. Setelah hasil histopatologi diterima, DPJP mencatat karsinoma sel skuamosa dan merencanakan terapi definitif."
+      }
+    }
   },
   {
     "id": "M4-05",
@@ -1620,10 +1771,21 @@
       }
     ],
     "reference": "ICS Bab C MDC 14 dan MDC 36",
-    "pdf": "cases/2026-11-24.1/M4-05.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-05.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "TB paru terkonfirmasi bakteriologis, resistan rifampisin",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Pemeriksaan molekuler dahak",
+        "procedureSecondary": [
+          "Foto toraks"
+        ],
+        "diagnosisNote": "Hasil resistansi isoniazid dan obat lain belum tersedia. DPJP belum menetapkan MDR-TB atau kategori resistansi lain."
+      }
+    }
   },
   {
     "id": "M4-06",
@@ -1734,10 +1896,21 @@
       }
     ],
     "reference": "ICS Bab C MDC 15 Circulatory Disease Procedures",
-    "pdf": "cases/2026-11-24.1/M4-06.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-06.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Infark miokard tanpa elevasi ST",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Angioplasti koroner perkutan pada LAD",
+        "procedureSecondary": [
+          "Pemasangan satu stent koroner"
+        ],
+        "diagnosisNote": "Diagnosis didasarkan pada gejala, EKG, biomarker, dan angiografi. Tidak ada syok kardiogenik."
+      }
+    }
   },
   {
     "id": "M4-07",
@@ -1884,10 +2057,26 @@
       }
     ],
     "reference": "ICS Bab C MDC 16 Appendicitis",
-    "pdf": "cases/2026-11-24.1/M4-07.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-07.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "A": {
+        "diagnosisPrimary": "Apendisitis akut dengan perforasi dan peritonitis umum",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Apendektomi terbuka",
+        "procedureSecondary": [],
+        "diagnosisNote": "Luas peritonitis dikonfirmasi melalui pemeriksaan dan temuan operasi."
+      },
+      "B": {
+        "diagnosisPrimary": "Apendisitis akut dengan peritonitis lokal",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Apendektomi laparoskopik",
+        "procedureSecondary": [],
+        "diagnosisNote": "Luas peritonitis dikonfirmasi melalui pemeriksaan dan temuan operasi."
+      }
+    }
   },
   {
     "id": "M4-08",
@@ -1990,10 +2179,21 @@
       }
     ],
     "reference": "ICS Bab C MDC 17 Prosedur ERCP",
-    "pdf": "cases/2026-11-24.1/M4-08.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-08.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Koledokolitiasis dengan obstruksi bilier",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Pengeluaran batu saluran empedu melalui ERCP",
+        "procedureSecondary": [
+          "Sfingterotomi endoskopik"
+        ],
+        "diagnosisNote": "Tidak ada kolangitis akut atau pankreatitis yang ditetapkan pada perawatan ini."
+      }
+    }
   },
   {
     "id": "M4-09",
@@ -2100,10 +2300,21 @@
       }
     ],
     "reference": "ICS Bab C MDC 18 Knee Arthroscopy dan Perhatian Khusus",
-    "pdf": "cases/2026-11-24.1/M4-09.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-09.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Robekan ligamen krusiat anterior kanan dengan instabilitas",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Reparasi primer ligamen krusiat anterior",
+        "procedureSecondary": [
+          "Artroskopi lutut kanan"
+        ],
+        "diagnosisNote": "Laporan operasi mencatat reparasi primer ligamen, bukan rekonstruksi menggunakan graft."
+      }
+    }
   },
   {
     "id": "M4-10",
@@ -2290,10 +2501,33 @@
       }
     ],
     "reference": "ICS Bab C Perhatian Khusus MDC 19",
-    "pdf": "cases/2026-11-24.1/M4-10.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-10.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "A": {
+        "diagnosisPrimary": "Luka tungkai dengan jaringan devitalisasi",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Debridemen eksisional kulit dan subkutis",
+        "procedureSecondary": [],
+        "diagnosisNote": "Teknik dan kedalaman debridemen mengikuti uraian tindakan pada masing-masing pasien."
+      },
+      "B": {
+        "diagnosisPrimary": "Luka tungkai dengan jaringan devitalisasi",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Debridemen noneksisional",
+        "procedureSecondary": [],
+        "diagnosisNote": "Teknik dan kedalaman debridemen mengikuti uraian tindakan pada masing-masing pasien."
+      },
+      "C": {
+        "diagnosisPrimary": "Luka tungkai dengan jaringan devitalisasi",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Debridemen; teknik dan kedalaman belum ditulis",
+        "procedureSecondary": [],
+        "diagnosisNote": "Teknik dan kedalaman debridemen mengikuti uraian tindakan pada masing-masing pasien."
+      }
+    }
   },
   {
     "id": "M4-11",
@@ -2436,10 +2670,26 @@
       }
     ],
     "reference": "ICS Bab C MDC 20 Diabetes Mellitus",
-    "pdf": "cases/2026-11-24.1/M4-11.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M4-11.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "A": {
+        "diagnosisPrimary": "Diabetes melitus tipe 2 dengan ulkus diabetik kaki kanan",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Perawatan luka",
+        "procedureSecondary": [],
+        "diagnosisNote": "DPJP secara eksplisit menulis ulkus diabetik. Tidak ada gangren atau osteomielitis yang ditetapkan."
+      },
+      "B": {
+        "diagnosisPrimary": null,
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Perawatan luka",
+        "procedureSecondary": [],
+        "diagnosisNote": "Pada resume tertulis diabetes melitus tipe 2 dan ulkus plantar kaki kanan pada dua baris terpisah. Urutan utama/sekunder serta hubungan klinis keduanya belum dijelaskan."
+      }
+    }
   },
   {
     "id": "M6-01",
@@ -2582,10 +2832,27 @@
       }
     ],
     "reference": "ICS Bab C MDC 21 AKI dan Pemasangan Akses Hemodialisis",
-    "pdf": "cases/2026-11-24.1/M6-01.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M6-01.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "A": {
+        "diagnosisPrimary": "Cedera ginjal akut; stadium belum ditulis",
+        "diagnosisSecondary": [],
+        "procedurePrimary": null,
+        "procedureSecondary": [],
+        "procedureNote": "Tidak terdapat penetapan prosedur utama atau sekunder tersendiri pada resume. Terapi yang diberikan tercantum dalam catatan perawatan.",
+        "diagnosisNote": "AKI dikaitkan dengan deplesi volume; stadium belum dicantumkan DPJP."
+      },
+      "B": {
+        "diagnosisPrimary": "Penyakit ginjal kronik lanjut",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "Pemasangan kateter hemodialisis bertunnel",
+        "procedureSecondary": [],
+        "diagnosisNote": "Pasien menjalani persiapan akses dialisis. Berkas ini terpisah dari pasien A dan tidak menyatakan pelaksanaan dialisis pada perawatan pemasangan akses."
+      }
+    }
   },
   {
     "id": "M6-02",
@@ -2693,10 +2960,24 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.80",
-    "pdf": "cases/2026-11-24.1/M6-02.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M6-02.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Ketuban pecah dini aterm; persalinan mulai dalam 24 jam",
+        "diagnosisSecondary": [
+          "Persalinan spontan presentasi kepala",
+          "Satu bayi lahir hidup"
+        ],
+        "procedurePrimary": "Persalinan pervaginam spontan",
+        "procedureSecondary": [
+          "Episiotomi mediolateral"
+        ],
+        "diagnosisNote": "Tidak ditemukan korioamnionitis atau komplikasi persalinan lainnya."
+      }
+    }
   },
   {
     "id": "M6-03",
@@ -2799,10 +3080,22 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.89",
-    "pdf": "cases/2026-11-24.1/M6-03.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M6-03.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Hipoglikemia neonatal",
+        "diagnosisSecondary": [
+          "Bayi tunggal lahir hidup di rumah sakit"
+        ],
+        "procedurePrimary": null,
+        "procedureSecondary": [],
+        "procedureNote": "Tidak terdapat penetapan prosedur utama atau sekunder tersendiri pada resume. Terapi yang diberikan tercantum dalam catatan perawatan.",
+        "diagnosisNote": "Tidak ada sindrom bayi dari ibu diabetes atau kelainan metabolik herediter yang ditetapkan."
+      }
+    }
   },
   {
     "id": "M6-04",
@@ -2913,10 +3206,22 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.102",
-    "pdf": "cases/2026-11-24.1/M6-04.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M6-04.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Pielonefritis akut",
+        "diagnosisSecondary": [
+          "Sepsis akibat Escherichia coli, berkembang pada hari kedua rawat"
+        ],
+        "procedurePrimary": null,
+        "procedureSecondary": [],
+        "procedureNote": "Tidak terdapat penetapan prosedur utama atau sekunder tersendiri pada resume. Terapi yang diberikan tercantum dalam catatan perawatan.",
+        "diagnosisNote": "Sepsis ditetapkan DPJP pada hari kedua dengan disfungsi organ akut. Tidak ada syok septik."
+      }
+    }
   },
   {
     "id": "M6-05",
@@ -3029,10 +3334,23 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.124 dan kriteria MDC 31",
-    "pdf": "cases/2026-11-24.1/M6-05.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M6-05.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Cedera multipel organ intratorakal",
+        "diagnosisSecondary": [
+          "Fraktur terbuka humerus proksimal kiri"
+        ],
+        "procedurePrimary": "Pemasangan drain interkostal dengan WSD",
+        "procedureSecondary": [
+          "Reduksi terbuka dan fiksasi internal humerus kiri"
+        ],
+        "diagnosisNote": "Cedera dada memerlukan stabilisasi napas dan drainase segera; fraktur humerus ditangani pada perawatan yang sama."
+      }
+    }
   },
   {
     "id": "M6-06",
@@ -3147,10 +3465,23 @@
       }
     ],
     "reference": "ICS Bab C Tabel C.135",
-    "pdf": "cases/2026-11-24.1/M6-06.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M6-06.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Pelayanan terapi fisik",
+        "diagnosisSecondary": [
+          "Nyeri punggung bawah"
+        ],
+        "procedurePrimary": "Peregangan",
+        "procedureSecondary": [
+          "Terapi inframerah"
+        ],
+        "diagnosisNote": "Kunjungan khusus untuk pelaksanaan terapi. Tidak ada herniasi diskus, stenosis spinal, atau radikulopati yang ditetapkan."
+      }
+    }
   },
   {
     "id": "M6-07",
@@ -3257,10 +3588,21 @@
       }
     ],
     "reference": "ICS Bab C Gambar C.26 dan C.27",
-    "pdf": "cases/2026-11-24.1/M6-07.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M6-07.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "": {
+        "diagnosisPrimary": "Pelayanan terapi fisik",
+        "diagnosisSecondary": [
+          "Nyeri punggung bawah"
+        ],
+        "procedurePrimary": "Terapi whirlpool",
+        "procedureSecondary": [],
+        "diagnosisNote": "Kunjungan khusus untuk pelaksanaan program terapi whirlpool yang ditetapkan dokter."
+      }
+    }
   },
   {
     "id": "M6-08",
@@ -3415,9 +3757,29 @@
       }
     ],
     "reference": "ICS Bab C MDC 90 Prosedur Diagnosis",
-    "pdf": "cases/2026-11-24.1/M6-08.pdf",
+    "pdf": "cases/2026-11-24.1/layout-2/M6-08.pdf",
     "contentRevision": "2026-11-24.1",
     "simulation": true,
-    "documentType": "Resume medis"
+    "documentType": "Resume medis",
+    "chartFields": {
+      "A": {
+        "diagnosisPrimary": "Nyeri kepala progresif dalam evaluasi",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "CT kepala",
+        "procedureSecondary": [
+          "Pemberian kontras intravena"
+        ],
+        "diagnosisNote": "Diagnosis mengikuti penilaian dokter pengirim. Pemeriksaan radiologi tidak otomatis menetapkan penyakit baru."
+      },
+      "B": {
+        "diagnosisPrimary": "Bangkitan fokal onset baru dalam evaluasi",
+        "diagnosisSecondary": [],
+        "procedurePrimary": "MRI otak dan batang otak",
+        "procedureSecondary": [
+          "Pemberian kontras intravena"
+        ],
+        "diagnosisNote": "Diagnosis mengikuti penilaian dokter pengirim. Pemeriksaan radiologi tidak otomatis menetapkan penyakit baru."
+      }
+    }
   }
 ]
