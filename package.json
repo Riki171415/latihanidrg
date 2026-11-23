@@ -6,12 +6,20 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "dev": "node scripts/dev.mjs"
+    "dev": "node scripts/dev.mjs",
+    "seed": "node scripts/seed.mjs",
+    "test": "node tests/database.mjs",
+    "pretest": "node scripts/seed.mjs"
   },
   "engines": {
     "node": ">=22"
   },
   "dependencies": {
+    "@supabase/supabase-js": "2.119.2",
     "pdfjs-dist": "5.4.624"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.6.0",
+    "esbuild": "0.28.2"
   }
 }

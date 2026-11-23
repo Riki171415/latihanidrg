@@ -334,7 +334,9 @@
     ],
     "reference": "ICS B.2.a Contoh 1",
     "pdf": "cases/M2-03.pdf",
-    "contentRevision": "2026-11-23.3"
+    "contentRevision": "2026-11-23.3",
+    "displayModule": 3,
+    "displayId": "M3-01"
   },
   {
     "id": "M2-04",
@@ -431,7 +433,9 @@
     ],
     "reference": "ICS B.2.b Contoh 1",
     "pdf": "cases/M2-04.pdf",
-    "contentRevision": "2026-11-23.3"
+    "contentRevision": "2026-11-23.3",
+    "displayModule": 3,
+    "displayId": "M3-02"
   },
   {
     "id": "M2-05",
@@ -539,7 +543,9 @@
     ],
     "reference": "ICS B.2.c Contoh 2",
     "pdf": "cases/M2-05.pdf",
-    "contentRevision": "2026-11-23.3"
+    "contentRevision": "2026-11-23.3",
+    "displayModule": 3,
+    "displayId": "M3-03"
   },
   {
     "id": "M2-06",
@@ -643,7 +649,9 @@
     ],
     "reference": "ICS B.2.d Contoh 2",
     "pdf": "cases/M2-06.pdf",
-    "contentRevision": "2026-11-23.3"
+    "contentRevision": "2026-11-23.3",
+    "displayModule": 3,
+    "displayId": "M3-04"
   },
   {
     "id": "M2-07",
@@ -747,7 +755,9 @@
     ],
     "reference": "ICS B.2.e Contoh 2",
     "pdf": "cases/M2-07.pdf",
-    "contentRevision": "2026-11-23.3"
+    "contentRevision": "2026-11-23.3",
+    "displayModule": 3,
+    "displayId": "M3-05"
   },
   {
     "id": "M2-08",
@@ -869,7 +879,9 @@
     ],
     "reference": "ICS B.6 Contoh 1",
     "pdf": "cases/M2-08.pdf",
-    "contentRevision": "2026-11-23.3"
+    "contentRevision": "2026-11-23.3",
+    "displayModule": 3,
+    "displayId": "M3-06"
   },
   {
     "id": "M2-09",
@@ -981,7 +993,9 @@
     ],
     "reference": "ICS B.3.a Omit code dan contoh kraniotomi",
     "pdf": "cases/M2-09.pdf",
-    "contentRevision": "2026-11-23.3"
+    "contentRevision": "2026-11-23.3",
+    "displayModule": 3,
+    "displayId": "M3-07"
   },
   {
     "id": "M4-01",

@@ -1,11 +1,9 @@
 "use strict";
 const bank = JSON.parse(document.getElementById("case-data").textContent);
 const $ = id => document.getElementById(id);
-const contentRevision = "2026-11-23.3";
-const storageKey = "latihan-koding-idrg-ics-2026-v1";
 const modules = [
   {id:"2-casemix", name:"Casemix · Materi 2", title:"Grouper, validasi, dan isian episode"},
-  {id:"2-coding", name:"Pengodean iDRG · Materi 2", title:"Aturan morbiditas dan konvensi pengodean"},
+  {id:"2-coding", name:"Pengodean iDRG · Materi 3", title:"Aturan morbiditas dan konvensi pengodean"},
   {id:"4", name:"Materi 4", title:"Pre-MDC dan MDC 10–20"},
   {id:"6", name:"Materi 6", title:"MDC 21–90"}
 ];
@@ -24,49 +22,10 @@ const make = (tag, content, className) => {
   if (className) element.className = className;
   return element;
 };
-const loadProfiles = () => {
-  try {
-    const saved = JSON.parse(localStorage.getItem(storageKey));
-    if (saved?.format === 4 && Array.isArray(saved.profiles)) return saved.profiles;
-    if (saved?.format === 3 && Array.isArray(saved.profiles)) {
-      saved.profiles.forEach(splitMaterialTwo);
-      return saved.profiles;
-    }
-    if (saved && typeof saved.name === "string" && ["all", "2", "4", "6"].includes(saved.selection) && saved.answers) {
-      const entries = saved.selection === "all" ? bank : moduleCases(saved.selection);
-      if (saved.format !== 2) migrateAnswers(saved, entries);
-      const profile = {name:saved.name, materials:{}};
-      for (const id of ["2","4","6"]) {
-        if (saved.selection !== "all" && saved.selection !== id) continue;
-        const byModule = moduleCases(id);
-        const prefix = "M" + id + "-";
-        const answers = Object.fromEntries(Object.entries(saved.answers).filter(([key]) => key.startsWith(prefix)));
-        const index = Math.max(0, byModule.indexOf(entries[saved.index]));
-        if (saved.finished || Object.keys(answers).length || index > 0 || saved.selection === id) {
-          profile.materials[id] = {index, answers, finished:!!saved.finished};
-        }
-      }
-      splitMaterialTwo(profile);
-      return [profile];
-    }
-  } catch {}
-  return [];
-};
-function splitMaterialTwo(profile) {
-  const legacy = profile.materials["2"];
-  if (!legacy) return;
-  const originalCase = moduleCases("2")[legacy.index];
-  for (const id of ["2-casemix","2-coding"]) {
-    const entries = availableCases(id);
-    const ids = new Set(entries.map(entry => entry.id));
-    const answers = Object.fromEntries(Object.entries(legacy.answers).filter(([key]) => ids.has(key.slice(0,-2))));
-    if (legacy.finished || Object.keys(answers).length || entries.includes(originalCase)) {
-      profile.materials[id] = {answers, finished:legacy.finished, index:Math.max(0,entries.indexOf(originalCase))};
-    }
-  }
-  delete profile.materials["2"];
-}
-const profiles = loadProfiles();
+const cloud = IDRGCloud;
+let identity = null, isAdmin = false, saveTimer = null, restoring = null, recovering = false;
+let saveQueue = Promise.resolve();
+let authEpoch=0,moduleRequest=0;
 let profile = null;
 let activeModule = null;
 let session = null;
@@ -74,16 +33,53 @@ let wrongOnly = false;
 const cases = () => availableCases(activeModule);
 const keyFor = (c, i) => c.id + "-" + i;
 const hasAnswer = value => value !== undefined && String(value).trim() !== "";
+function notify(message, retry = false) {
+  $("global-message").hidden = !message;
+  $("global-message").querySelector("span").textContent = message;
+  $("retry-save").hidden = !retry;
+}
+function draftKey(attempt) { return "idrg-account-draft:" + identity.id + ":" + attempt.id; }
+function cacheDraft(attempt) {
+  try { localStorage.setItem(draftKey(attempt),JSON.stringify({answers:attempt.answers,index:attempt.index,question:attempt.question,version:attempt.version})); } catch {}
+}
 function save() {
-  try {
-    localStorage.setItem(storageKey, JSON.stringify({format:4,profiles}));
-    $("save-state").textContent = "Progres tersimpan di browser ini";
-  } catch {
-    $("save-state").textContent = "Penyimpanan tidak tersedia. Cetak hasil sebelum menutup.";
-  }
+  if (!identity || !session?.id || session.finished) return;
+  session.dirty = true;
+  cacheDraft(session);
+  $("save-state").textContent = "Menyimpan jawaban…";
+  clearTimeout(saveTimer);
+  const attempt = session;
+  saveTimer = setTimeout(() => queueSave(attempt).catch(error => notify(cloud.friendly(error),true)),450);
+}
+function queueSave(attempt) {
+  const task = saveQueue.catch(() => {}).then(async () => {
+    if (!attempt?.dirty || attempt.finished) return;
+    const snapshot = {answers:{...attempt.answers},index:attempt.index,question:attempt.question};
+    try {
+      const row = await cloud.rpc("idrg_save_attempt",{p_id:attempt.id,p_answers:snapshot.answers,p_case_index:snapshot.index||0,p_question_index:snapshot.question||0,p_version:attempt.version});
+      attempt.version = row.version;
+      attempt.dirty = JSON.stringify(snapshot.answers)!==JSON.stringify(attempt.answers)||snapshot.index!==attempt.index||snapshot.question!==attempt.question;
+      if (attempt.dirty) cacheDraft(attempt);
+      else {try {localStorage.removeItem(draftKey(attempt));} catch {}}
+      $("save-state").textContent = attempt.dirty ? "Menyimpan perubahan…" : "Tersimpan di akun Anda";
+      notify("");
+    } catch (error) {
+      $("save-state").textContent = "Belum tersimpan ke server";
+      throw error;
+    }
+  });
+  saveQueue = task;
+  return task;
+}
+async function flushSave() {
+  clearTimeout(saveTimer);
+  await queueSave(session);
 }
 function screen(which) {
-  for (const id of ["start", "recap", "practice", "result", "all-results", "guide"]) $(id).hidden = id !== which;
+  if (!profile && !["start","guide"].includes(which)) which="start";
+  if (["admin","admin-detail"].includes(which) && !isAdmin) which=profile?"recap":"start";
+  if (profile && !profile.complete && !["start","account","guide"].includes(which)) which="account";
+  for (const id of ["start", "recap", "practice", "result", "all-results", "guide", "account", "admin", "admin-detail"]) $(id).hidden = id !== which;
   document.querySelectorAll(".nav-item").forEach(button => {
     button.classList.toggle("active", button.dataset.screen === which ||
       (button.dataset.screen === "recap" && which === "practice") ||
@@ -128,7 +124,7 @@ function renderCase(focus = false) {
   const all = cases();
   const c = all[pos];
   $("student-label").textContent = profile.name + " · " + moduleInfo(activeModule).name;
-  $("case-module").textContent = c.id + " · Kasus " + (pos + 1) + " dari " + all.length;
+  $("case-module").textContent = (c.displayId??c.id) + " · Kasus " + (pos + 1) + " dari " + all.length;
   $("case-title").textContent = c.title;
   $("case-selector").replaceChildren();
   all.forEach((entry, i) => {
@@ -146,11 +142,11 @@ function renderCase(focus = false) {
     pdfRequest++;
     $("case-pdf").replaceChildren();
   }
-  $("pdf-filename").textContent = c.id + ".pdf";
+  $("pdf-filename").textContent = (c.displayId??c.id) + ".pdf";
   $("pdf-open").href = c.pdf;
   $("pdf-download").href = c.pdf;
-  $("pdf-download").download = c.id + "_Berkas_Latihan.pdf";
-  $("case-pdf").setAttribute("aria-label","Berkas kasus " + c.id + " — " + c.title);
+  $("pdf-download").download = (c.displayId??c.id) + "_Berkas_Latihan.pdf";
+  $("case-pdf").setAttribute("aria-label","Berkas kasus " + (c.displayId??c.id) + " — " + c.title);
   c.records.forEach(([label, body]) => {
     const p = make("p");
     p.append(make("span", label, "part"), document.createTextNode(body));
@@ -170,7 +166,7 @@ function renderQuestion(focus = false) {
   $("question-selector").replaceChildren();
   const updateState = () => {
     const answered = hasAnswer(session.answers[id]);
-    $("answer-state").textContent = answered ? "Jawaban tersimpan" : "Belum dijawab";
+    $("answer-state").textContent = answered ? "Jawaban dipilih" : "Belum dijawab";
     $("answer-state").classList.toggle("answered", answered);
     $("question-selector").querySelectorAll("button").forEach((b, n) => b.classList.toggle("done", hasAnswer(session.answers[keyFor(c,n)])));
   };
@@ -227,42 +223,11 @@ function moveQuestion(delta) {
   renderQuestion(true);
 
 }
-function normalizeCode(value) {
-  return value.toUpperCase().replace(/[.\-†*]/g, "");
-}
-function codeParts(value) {
-  const clean = String(value).toUpperCase().trim().replace(/\s*\.\s*/g, ".");
-  return clean.split(/[,;\/|\s]+/).filter(Boolean).map(normalizeCode);
-}
-function sameCodes(response, codes, ordered) {
-  const given = codeParts(response);
-  const expected = codes.map(normalizeCode);
-  if (!ordered) { given.sort(); expected.sort(); }
-  return given.length === expected.length && given.every((value, i) => value === expected[i]);
-}
-function migrateAnswers(saved, entries) {
-  for (const c of entries) {
-    c.items.forEach((item, i) => {
-      const key = c.id + "-" + i;
-      const old = saved.answers[key];
-      if (old === undefined || String(old).trim() === "") return;
-      let match;
-      if (item.legacyOptions) {
-        match = item.options.indexOf(item.legacyOptions[Number(old)]);
-      } else {
-        match = item.options.findIndex((option, index) => sameCodes(
-          old, item.choiceCodes?.[index] ?? codeParts(option), item.ordered
-        ));
-      }
-      saved.answers[key] = match < 0 ? "lama:" + old : String(match);
-    });
-  }
-  saved.format = 2;
-}
-function reviewFor(activeCases, responses) {
+function reviewFor(activeCases, responses, reviewItems = {}) {
   return activeCases.map(c => ({
     case: c,
-    items: c.items.map((item, i) => {
+    items: c.items.map((original, i) => {
+      const item=reviewItems[keyFor(c,i)] ?? original;
       const response = responses[keyFor(c, i)];
       const answered = hasAnswer(response);
       return { item, response, answered, correct: String(item.correct) === response };
@@ -277,29 +242,39 @@ function summarize(review) {
   const answered = all.filter(i => i.answered).length;
   return {right, answered, total:all.length, wrong:answered - right, missing:all.length - answered};
 }
-function openModule(id) {
-  activeModule = id;
-  session = profile.materials[id] ??= {index:0, question:0, answers:{}, answerLabels:{}, finished:false, contentRevision};
-  // Preserve the text of existing answers when the editorial revision changes choices.
-  if (session.contentRevision !== contentRevision) {
-    const priorRevision = session.contentRevision;
-    session.answerLabels ??= {};
-    availableCases(id).forEach(c => c.items.forEach((q, i) => {
-      const key = keyFor(c,i), response = session.answers[key];
-      const previousOptions = priorRevision === "2026-11-23.2"
-        ? q.previousRevisionOptions ?? q.options : q.previousOptions ?? q.options;
-      if (hasAnswer(response) && !response.startsWith("lama:")) session.answerLabels[key] ??= previousOptions[Number(response)];
-    }));
-    session.contentRevision = contentRevision;
-  }
-  save();
-  if (session.finished) {
-    wrongOnly = false;
-    renderResult();
-  } else {
-    screen("practice");
-    renderCase(true);
-  }
+async function openModule(id) {
+  const request=++moduleRequest, owner=identity?.id;
+  if (!profile?.complete) return openAccount();
+  try {
+    await flushSave();
+    const row = await cloud.rpc("idrg_start_packet",{p_packet_id:id});
+    if(request!==moduleRequest||identity?.id!==owner)return;
+    activeModule = id;
+    session = cloud.attemptFromRow(row);
+    try {
+      const cached = JSON.parse(localStorage.getItem(draftKey(session)));
+      if (!session.finished && cached && cached.version===session.version) {
+        session.answers=cached.answers;session.index=cached.index;session.question=cached.question;session.dirty=true;
+        notify("Jawaban yang belum terkirim dipulihkan. Menyimpan kembali…",true);
+      } else if(cached && cached.version!==session.version) notify("Ada perubahan dari perangkat lain. Data terbaru dari server digunakan.");
+    } catch {}
+    profile.materials[id] = session;
+    if (session.finished) {
+      await loadReview(session);
+      if(request!==moduleRequest||identity?.id!==owner)return;
+      wrongOnly = false;
+      renderResult();
+    } else {screen("practice");renderCase(true);if(session.dirty)save();}
+  } catch(error) {notify(cloud.friendly(error),!!session?.dirty);}
+}
+async function loadReview(attempt) {
+  const [questions,history]=await Promise.all([cloud.rpc("idrg_review",{p_id:attempt.id}),cloud.rpc("idrg_attempt_history",{p_id:attempt.id})]);
+  attempt.review=Object.fromEntries(questions.map(q=>[q.item_id,q]));attempt.history=history;
+}
+function attemptStats(attempt,entries) {
+  const stats=summarize(reviewFor(entries,attempt?.answers??{}));
+  if(attempt?.finished){stats.right=attempt.correctCount;stats.total=attempt.totalCount;stats.wrong=stats.answered-stats.right;}
+  return stats;
 }
 function renderRecap() {
   screen("recap");
@@ -313,7 +288,7 @@ function renderRecap() {
   for (const {id, name, title} of modules) {
     const attempt = profile.materials[id];
     const entries = availableCases(id);
-    const stats = summarize(reviewFor(entries, attempt?.answers ?? {}));
+    const stats = attemptStats(attempt,entries);
     if (attempt?.finished) {
       submitted++;
       totalRight += stats.right;
@@ -324,7 +299,7 @@ function renderRecap() {
     card.dataset.material = id;
     const status = attempt?.finished
       ? "Dikirim · " + stats.right + "/" + stats.total + " benar"
-      : attempt ? "Draf · " + stats.answered + "/" + stats.total + " terisi" : "Belum dimulai · " + stats.total + " butir";
+      : attempt ? (attempt.editCount?"Draf revisi · ":"Draf · ") + stats.answered + "/" + stats.total + " terisi" : "Belum dimulai · " + stats.total + " butir";
     const action = make("button", attempt?.finished ? "Lihat nilai" : attempt ? "Lanjutkan" : "Mulai", attempt?.finished ? "secondary" : "");
     action.type = "button";
     action.setAttribute("aria-label", action.textContent + " " + name);
@@ -353,12 +328,12 @@ function renderScores() {
   let total = 0;
   for (const packet of modules) {
     const attempt = profile.materials[packet.id];
-    const stats = summarize(reviewFor(availableCases(packet.id), attempt?.answers ?? {}));
+    const stats = attemptStats(attempt,availableCases(packet.id));
     if (attempt?.finished) { submitted++; right += stats.right; total += stats.total; }
     const row = make("tr");
     row.append(make("td",packet.name));
     const status = make("td");
-    status.append(make("span",attempt?.finished ? "Selesai" : attempt ? "Draf" : "Belum dikerjakan",
+    status.append(make("span",attempt?.finished ? (attempt.editCount?"Revisi selesai":"Selesai") : attempt ? (attempt.editCount?"Draf revisi":"Draf") : "Belum dikerjakan",
       attempt?.finished ? "status-tag done" : "status-tag"));
     row.append(status,make("td",attempt?.finished ? stats.right + " / " + stats.total : "—"));
     const score = make("td");
@@ -381,7 +356,7 @@ function showAllResults() {
 }
 function renderResult(focus = true) {
   screen("result");
-  const review = reviewFor(cases(), session.answers);
+  const review = reviewFor(cases(), session.answers, session.review);
   const {right, total, wrong, missing} = summarize(review);
   $("result-title").textContent = "Nilai " + moduleInfo(activeModule).name;
   $("result-student").textContent = profile.name + " · " + moduleInfo(activeModule).title;
@@ -392,6 +367,9 @@ function renderResult(focus = true) {
     box.append(make("strong", value), make("span", name, "small muted"));
     $("result-key").append(box);
   });
+  $("revise-answers").disabled=session.editCount>=1;
+  $("revise-answers").textContent=session.editCount>=1?"Kesempatan revisi sudah digunakan":"Revisi jawaban (1×)";
+  $("revision-summary").textContent=(session.history??[]).map(h=>(h.round===0?"Nilai awal":"Nilai revisi")+": "+grade(h.correct_count,h.total_count)+" / 100").join(" · ");
   $("filter-review").setAttribute("aria-pressed", wrongOnly);
   $("filter-review").textContent = wrongOnly ? "Tampilkan semua pembahasan" : "Tampilkan yang perlu ditinjau";
   $("review").replaceChildren();
@@ -399,7 +377,7 @@ function renderResult(focus = true) {
     const correct = items.filter(i => i.correct).length;
     if (wrongOnly && correct === items.length) return;
     const details = make("details", undefined, "review-case");
-    const summary = make("summary", c.id + " · " + c.title);
+    const summary = make("summary", (c.displayId??c.id) + " · " + c.title);
     summary.append(make("span", correct + " / 4"));
     details.append(summary);
     items.forEach(({item, response, answered, correct: ok}, i) => {
@@ -420,24 +398,8 @@ function renderResult(focus = true) {
   if (!$("review").childElementCount) $("review").append(make("p", "Semua jawaban benar."));
   if (focus) $("result-title").focus({preventScroll:true});
 }
-$("setup").addEventListener("submit", event => {
-  event.preventDefault();
-  const name = $("participant").value.trim().replace(/\s+/g, " ");
-  if (!name) { $("participant").focus(); return; }
-  profile = profiles.find(entry => entry.name.toLowerCase().replace(/\s+/g, " ").trim() === name.toLowerCase());
-  if (!profile) {
-    profile = {name, materials:{}};
-    profiles.push(profile);
-  }
-  save();
-  renderRecap();
-});
-$("pause").addEventListener("click", renderRecap);
-$("switch-participant").addEventListener("click", () => {
-  $("participant").value = "";
-  startPage();
-  $("participant").focus();
-});
+$("pause").addEventListener("click", async () => {try {await flushSave();renderRecap();}catch(error){notify(cloud.friendly(error),true);}});
+$("switch-participant").addEventListener("click", logout);
 $("mobile-participant").addEventListener("click",() => $("switch-participant").click());
 $("prev").addEventListener("click", () => moveQuestion(-1));
 $("next").addEventListener("click", () => moveQuestion(1));
@@ -449,13 +411,33 @@ $("submit-answers").addEventListener("click", () => {
   $("confirm-submit").showModal();
 });
 $("check-again").addEventListener("click", () => $("confirm-submit").close());
-$("finish").addEventListener("click", () => {
-  $("confirm-submit").close();
-  session.finished = true;
-  session.submittedAt = new Date().toISOString();
-  wrongOnly = false;
-  save();
-  renderResult();
+$("finish").addEventListener("click", async () => {
+  $("finish").disabled=true;
+  const attempt=session,owner=identity?.id;
+  try {
+    await flushSave();
+    const row=await cloud.rpc("idrg_submit_attempt",{p_id:attempt.id,p_answers:attempt.answers,p_version:attempt.version});
+    if(identity?.id!==owner||session?.id!==attempt.id)return;
+    Object.assign(session,cloud.attemptFromRow(row),{dirty:false});
+    await loadReview(session);
+    if(identity?.id!==owner||session?.id!==attempt.id)return;
+    $("confirm-submit").close();
+    wrongOnly=false;renderResult();notify("");
+    try {localStorage.removeItem(draftKey(session));}catch{}
+  } catch(error) {notify(cloud.friendly(error),!session?.finished);}
+  finally {$("finish").disabled=false;}
+});
+$("revise-answers").addEventListener("click",()=>{if(session?.finished&&session.editCount<1)$("confirm-revision").showModal();});
+$("cancel-revision").addEventListener("click",()=>$("confirm-revision").close());
+$("start-revision").addEventListener("click",async()=>{
+  const attempt=session,owner=identity?.id;$("start-revision").disabled=true;
+  try{
+    const row=await cloud.rpc("idrg_reopen_attempt",{p_id:attempt.id,p_version:attempt.version});
+    if(identity?.id!==owner||session?.id!==attempt.id)return;
+    Object.assign(attempt,cloud.attemptFromRow(row),{dirty:false});
+    $("confirm-revision").close();screen("practice");renderCase(true);
+    notify("Revisi dibuka. Periksa jawaban lalu kirim kembali; kesempatan ini hanya tersedia satu kali.");
+  }catch(error){notify(cloud.friendly(error));}finally{$("start-revision").disabled=false;}
 });
 $("restart").addEventListener("click", showAllResults);
 $("filter-review").addEventListener("click", () => { wrongOnly = !wrongOnly; renderResult(false); });
@@ -470,6 +452,8 @@ $("brand-home").addEventListener("click",event => {
 document.querySelectorAll(".nav-item").forEach(button => {
   button.addEventListener("click",() => {
     if (button.dataset.screen === "guide") return screen("guide");
+    if (button.dataset.screen === "admin") return openAdmin();
+    if (button.dataset.screen === "account") return openAccount();
     if (!profile) return startPage();
     button.dataset.screen === "all-results" ? showAllResults() : renderRecap();
   });
@@ -517,8 +501,8 @@ $("download-csv").addEventListener("click",() => {
   const rows = [["Nama peserta","Paket","Status","Benar","Jumlah butir","Nilai","Dikirim pada"]];
   for (const packet of modules) {
     const attempt = profile.materials[packet.id];
-    const stats = summarize(reviewFor(availableCases(packet.id), attempt?.answers ?? {}));
-    rows.push([profile.name,packet.name,attempt?.finished ? "Selesai" : attempt ? "Draf" : "Belum dikerjakan",
+    const stats = attemptStats(attempt,availableCases(packet.id));
+    rows.push([profile.name,packet.name,attempt?.finished ? (attempt.editCount?"Revisi selesai":"Selesai") : attempt ? (attempt.editCount?"Draf revisi":"Draf") : "Belum dikerjakan",
       attempt?.finished ? stats.right : "",stats.total,attempt?.finished ? grade(stats.right,stats.total) : "",
       attempt?.submittedAt ? new Date(attempt.submittedAt).toLocaleString("id-ID") : ""]);
   }
@@ -529,4 +513,197 @@ $("download-csv").addEventListener("click",() => {
   link.click();
   setTimeout(() => URL.revokeObjectURL(url),1000);
 });
-startPage();
+
+function authMessage(message,error=false){
+  $("auth-message").hidden=!message;
+  $("auth-message").textContent=message;
+  $("auth-message").classList.toggle("error",error);
+}
+function authMode(mode){
+  for(const [key,id] of Object.entries({login:"setup",register:"register-form",reset:"reset-form",update:"update-password-form"}))$(id).hidden=key!==mode;
+  $("auth-login").setAttribute("aria-pressed",mode==="login");
+  $("auth-register").setAttribute("aria-pressed",mode==="register");
+  authMessage("");
+}
+async function withForm(form,work){
+  const button=form.querySelector('button[type="submit"]');button.disabled=true;
+  try{await work();}catch(error){authMessage(cloud.friendly(error),true);}finally{button.disabled=false;}
+}
+function identityFields(prefix){
+  const values={full_name:$(prefix+"-name").value.trim(),username:$(prefix+"-username").value.trim().toLowerCase(),phone:$(prefix+"-phone").value.trim(),institution:$(prefix+"-institution").value.trim()};
+  if(!/^\+?[0-9 ()-]{8,25}$/.test(values.phone)||values.phone.replace(/[^0-9]/g,"").length<8||values.phone.replace(/[^0-9]/g,"").length>15)throw new Error("Nomor telepon harus berisi 8–15 digit. Tanda +, spasi, tanda hubung, dan kurung diperbolehkan.");
+  return values;
+}
+function clearIdentity(){
+  authEpoch++;moduleRequest++;clearTimeout(saveTimer);identity=null;profile=null;session=null;activeModule=null;isAdmin=false;adminData=null;
+  for(const id of ["detail-name","detail-contact","recap-student","recap-name","result-student"])$(id).textContent="";
+  $("nav-admin").hidden=true;$("nav-account").hidden=true;
+  for(const id of ["admin-rows","detail-packets","detail-review","review","score-table","recap-modules","recap-casemix"])$(id).replaceChildren();
+  for(const form of ["setup","register-form","reset-form","update-password-form","profile-form"])$(form).reset();
+  $("save-state").textContent="Belum masuk";
+  authMode("login");startPage();
+}
+async function restoreAccount(){
+  if(restoring)return restoring;
+  const epoch=authEpoch;
+  restoring=(async()=>{
+    try{
+      const account=await cloud.loadAccount();
+      if(epoch!==authEpoch)return;
+      if(!account){clearIdentity();return;}
+      identity=account.user;isAdmin=account.admin;
+      profile={name:account.person?.full_name??account.user.email,person:account.person,complete:!!account.person,materials:{}};
+      for(const row of account.attempts)profile.materials[row.packet_id]=cloud.attemptFromRow(row);
+      $("nav-admin").hidden=!isAdmin;$("nav-account").hidden=false;
+      $("save-state").textContent="Terhubung ke akun Anda";
+      if(!profile.complete)openAccount();else if(isAdmin)await openAdmin();else renderRecap();
+    }catch(error){startPage();authMessage(cloud.friendly(error),true);}
+  })();
+  try{await restoring;}finally{restoring=null;}
+}
+async function logout(){
+  try{await flushSave();}catch{} // Unsynced answers remain in the account-specific recovery cache.
+  const {error}=await cloud.client.auth.signOut({scope:"local"});
+  if(error){notify(cloud.friendly(error));return;}
+  recovering=false;notify("");
+}
+$("auth-login").addEventListener("click",()=>authMode("login"));
+$("auth-register").addEventListener("click",()=>authMode("register"));
+$("auth-forgot").addEventListener("click",()=>{authMode("reset");$("reset-email").value=$("login-email").value;});
+$("setup").addEventListener("submit",event=>{
+  event.preventDefault();withForm(event.currentTarget,async()=>{
+    authMessage("");
+    const {error}=await cloud.client.auth.signInWithPassword({email:$("login-email").value.trim(),password:$("login-password").value});
+    $("login-password").value="";
+    if(error)throw error;
+    await restoreAccount();
+  });
+});
+$("register-form").addEventListener("submit",event=>{
+  event.preventDefault();withForm(event.currentTarget,async()=>{
+    const metadata=identityFields("register");
+    const {data,error}=await cloud.client.auth.signUp({email:$("register-email").value.trim(),password:$("register-password").value,
+      options:{data:metadata,emailRedirectTo:location.origin+location.pathname}});
+    $("register-password").value="";
+    if(error)throw error;
+    if(data.session)await restoreAccount();else{authMode("login");authMessage("Pendaftaran diterima. Periksa email untuk verifikasi akun sebelum masuk.");}
+  });
+});
+$("reset-form").addEventListener("submit",event=>{
+  event.preventDefault();withForm(event.currentTarget,async()=>{
+    const {error}=await cloud.client.auth.resetPasswordForEmail($("reset-email").value.trim(),{redirectTo:location.origin+location.pathname});
+    if(error)throw error;authMessage("Jika email terdaftar, tautan pemulihan akan dikirim. Periksa kotak masuk dan folder spam.");
+  });
+});
+$("update-password-form").addEventListener("submit",event=>{
+  event.preventDefault();withForm(event.currentTarget,async()=>{
+    const {error}=await cloud.client.auth.updateUser({password:$("new-password").value});
+    $("new-password").value="";if(error)throw error;
+    recovering=false;await restoreAccount();notify("Password berhasil diperbarui.");
+  });
+});
+$("dismiss-message").addEventListener("click",()=>notify(""));
+$("retry-save").addEventListener("click",()=>flushSave().catch(error=>notify(cloud.friendly(error),true)));
+window.addEventListener("online",()=>{if(session?.dirty)flushSave().catch(error=>notify(cloud.friendly(error),true));});
+window.addEventListener("beforeunload",event=>{if(session?.dirty){event.preventDefault();event.returnValue="";}});
+function openAccount(){
+  if(!profile)return startPage();
+  const person=profile.person??{};
+  for(const [id,key]of [["name","full_name"],["username","username"],["phone","phone"],["institution","institution"]])$("profile-"+id).value=person[key]??"";
+  $("profile-email").value=identity.email??"";
+  $("profile-message").textContent=profile.complete?"":"Lengkapi identitas sebelum mulai mengerjakan latihan.";
+  screen("account");
+}
+$("profile-form").addEventListener("submit",async event=>{
+  event.preventDefault();const button=event.currentTarget.querySelector('button[type="submit"]');button.disabled=true;
+  try{
+    const values=identityFields("profile");
+    const person=await cloud.rpc("idrg_complete_profile",{p_full_name:values.full_name,p_username:values.username,p_phone:values.phone,p_institution:values.institution});
+    profile.person=person;profile.name=person.full_name;profile.complete=true;
+    $("profile-message").textContent="Identitas berhasil disimpan.";renderRecap();notify("Identitas berhasil disimpan.");
+  }catch(error){$("profile-message").textContent=cloud.friendly(error);}finally{button.disabled=false;}
+});
+let adminPage=0,adminData=null;
+async function openAdmin(reset=true){
+  if(!isAdmin)return;
+  if(reset)adminPage=0;
+  const owner=identity?.id;
+  screen("admin");$("admin-status").textContent="Memuat data peserta…";
+  try{
+    const selected=$("admin-institution").value;
+    const response=await cloud.rpc("idrg_admin_dashboard",{p_search:$("admin-search").value.trim(),p_institution:selected,p_page:adminPage,p_page_size:25});
+    if(!isAdmin||identity?.id!==owner)return;
+    adminData=response;
+    $("admin-participants").textContent=adminData.participants;
+    $("admin-submitted").textContent=adminData.submitted;
+    $("admin-average").textContent=adminData.average===null?"—":scoreNumber.format(Number(adminData.average));
+    $("admin-institution").replaceChildren(make("option","Semua instansi"));$("admin-institution").firstChild.value="";
+    for(const name of adminData.institutions){const option=make("option",name);option.value=name;$("admin-institution").append(option);}
+    $("admin-institution").value=selected;
+    $("admin-rows").replaceChildren();
+    for(const person of adminData.rows){
+      const row=make("tr"),name=make("td");name.append(make("b",person.full_name),make("small",person.email),make("small","@"+person.username));row.append(name,make("td",person.institution));
+      let right=0,total=0;
+      for(const packet of modules){
+        const attempt=person.attempts.find(a=>a.packet_id===packet.id);
+        let value="Belum mulai";
+        if(attempt?.submitted_at){value=grade(attempt.correct_count,attempt.total_count)+(attempt.edit_count?" · revisi":"");right+=attempt.correct_count;total+=attempt.total_count;}
+        else if(attempt)value=(attempt.edit_count?"Draf revisi · ":"Draf · ")+Object.keys(attempt.answers).length+"/"+attempt.total_count;
+        row.append(make("td",value));
+      }
+      row.append(make("td",total?grade(right,total):"—"));const cell=make("td"),button=make("button","Detail","secondary");
+      button.type="button";button.addEventListener("click",()=>openAdminDetail(person));cell.append(button);row.append(cell);$("admin-rows").append(row);
+    }
+    if(!adminData.rows.length){const row=make("tr"),cell=make("td","Belum ada peserta yang sesuai filter.");cell.colSpan=8;row.append(cell);$("admin-rows").append(row);}
+    $("admin-status").textContent="Data diperbarui · "+new Date().toLocaleString("id-ID");
+    $("admin-page").textContent="Halaman "+(adminPage+1)+" dari "+Math.max(1,Math.ceil(adminData.participants/25));
+    $("admin-prev").disabled=adminPage===0;$("admin-next").disabled=(adminPage+1)*25>=adminData.participants;
+  }catch(error){$("admin-status").textContent=cloud.friendly(error);}
+}
+function openAdminDetail(person){
+  if(!isAdmin)return;screen("admin-detail");$("detail-name").textContent=person.full_name;
+  $("detail-contact").textContent=[person.email,"@"+person.username,person.phone,person.institution].join(" · ");
+  $("detail-packets").replaceChildren();$("detail-review").replaceChildren();
+  for(const packet of modules){
+    const attempt=person.attempts.find(a=>a.packet_id===packet.id);
+    const card=make("article",undefined,"card"),body=make("div");
+    body.append(make("h3",packet.name),make("p",attempt?.submitted_at?"Nilai "+grade(attempt.correct_count,attempt.total_count)+" / 100 · "+new Date(attempt.submitted_at).toLocaleString("id-ID"):attempt?Object.keys(attempt.answers).length+" dari "+attempt.total_count+" soal terisi":"Belum mulai","small muted"));
+    card.append(body);
+    if(attempt){const button=make("button","Lihat jawaban","secondary");button.type="button";button.addEventListener("click",()=>adminReview(attempt));card.append(button);}
+    $("detail-packets").append(card);
+  }
+}
+async function adminReview(attempt){
+  if(!isAdmin)return;const owner=identity?.id;
+  $("detail-review").replaceChildren(make("p","Memuat jawaban…"));
+  try{
+    const [questions,history]=await Promise.all([
+      attempt.submitted_at?cloud.rpc("idrg_review",{p_id:attempt.id}):Promise.resolve(availableCases(attempt.packet_id).flatMap(c=>c.items.map((q,i)=>({...q,item_id:keyFor(c,i)})))),
+      cloud.rpc("idrg_attempt_history",{p_id:attempt.id})]);
+    if(!isAdmin||identity?.id!==owner)return;
+    $("detail-review").replaceChildren();
+    if(history.length){const summary=make("article",undefined,"card");summary.append(make("h3","Riwayat nilai"),make("p",history.map(h=>(h.round===0?"Nilai awal":"Nilai revisi")+": "+grade(h.correct_count,h.total_count)+" / 100").join(" · ")));$("detail-review").append(summary);}
+    for(const [i,q]of questions.entries()){
+      const chosen=attempt.answers[q.item_id],answered=hasAnswer(chosen),card=make("article",undefined,"admin-review-item");
+      card.append(make("h3",(i+1)+". "+q.prompt),make("p","Jawaban peserta: "+(answered?letter(Number(chosen))+". "+q.options[Number(chosen)]:"Belum dijawab")));
+      if(attempt.submitted_at){card.append(make("p",String(q.correct)===chosen?"Benar":"Salah atau kosong",String(q.correct)===chosen?"correct":"incorrect"),make("p","Kunci: "+letter(q.correct)+". "+q.options[q.correct]),make("p",q.feedback));}
+      $("detail-review").append(card);
+    }
+  }catch(error){$("detail-review").replaceChildren(make("p",cloud.friendly(error)));}
+}
+$("admin-refresh").addEventListener("click",()=>openAdmin(false));
+$("admin-filter").addEventListener("submit",event=>{event.preventDefault();openAdmin();});
+$("admin-prev").addEventListener("click",()=>{adminPage--;openAdmin(false);});
+$("admin-next").addEventListener("click",()=>{adminPage++;openAdmin(false);});
+$("admin-back").addEventListener("click",()=>openAdmin(false));
+async function initializeAccount(){
+  startPage();authMode("login");
+  cloud.client.auth.onAuthStateChange((event)=>{
+    if(event==="PASSWORD_RECOVERY"){recovering=true;startPage();authMode("update");}
+    else if(event==="SIGNED_OUT"){clearIdentity();}
+    else if(event==="SIGNED_IN"&&!identity&&!recovering)setTimeout(()=>restoreAccount(),0);
+  });
+  const {data:{session:authSession}}=await cloud.client.auth.getSession();
+  if(authSession&&!recovering)await restoreAccount();
+}
+initializeAccount().catch(error=>authMessage(cloud.friendly(error),true));

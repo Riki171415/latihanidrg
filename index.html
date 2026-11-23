@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="global-message" class="global-message" role="status" hidden><span></span><button id="retry-save" type="button">Simpan ulang</button><button id="dismiss-message" type="button" aria-label="Tutup pesan">×</button></div>
   <aside class="sidebar" aria-label="Navigasi aplikasi">
     <a class="logo" href="#" id="brand-home"><span class="logo-symbol">iD<span>+</span></span><span>iDRG<span class="logo-sub">LEARNING</span></span></a>
     <p class="sidebar-label">PELATIHAN PROFESIONAL</p>
@@ -17,16 +18,18 @@
       <button type="button" id="nav-packages" class="nav-item" data-screen="recap"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Paket latihan</button>
       <button type="button" id="nav-results" class="nav-item" data-screen="all-results"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 3v17h17M8 16v-5m5 5V7m5 9V4"/></svg></span>Rekap nilai</button>
       <button type="button" id="nav-guide" class="nav-item" data-screen="guide"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 6c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v15"/></svg></span>Panduan</button>
+      <button type="button" id="nav-admin" class="nav-item" data-screen="admin" hidden>Dashboard pengelola</button>
+      <button type="button" id="nav-account" class="nav-item" data-screen="account" hidden>Akun saya</button>
     </nav>
     <div class="sidebar-bottom">
       <div class="source-label"><span class="live-dot"></span>ICS 2026</div>
       <p>Pengodean klinis berbasis<br>dokumentasi medis.</p>
       <div class="profile-mini"><span id="avatar" class="avatar">P</span><span id="sidebar-name">Peserta pelatihan</span></div>
-      <button id="switch-participant" type="button" class="text-button">Ganti peserta</button>
+      <button id="switch-participant" type="button" class="text-button">Keluar akun</button>
     </div>
   </aside>
   <div class="main-shell">
-    <header class="topbar"><div><span class="topbar-small">iDRG LEARNING / RUANG PESERTA</span><span class="topbar-title">Clinical Coding Workspace</span></div><div class="topbar-right"><span class="save-state" id="save-state" role="status">Tersimpan di perangkat ini</span><button id="mobile-participant" class="text-button" type="button">Ganti peserta</button><span class="standard-pill"><i></i> Indonesian Coding Standard 2026</span></div></header>
+    <header class="topbar"><div><span class="topbar-small">iDRG LEARNING / RUANG PESERTA</span><span class="topbar-title">Clinical Coding Workspace</span></div><div class="topbar-right"><span class="save-state" id="save-state" role="status">Belum masuk</span><button id="mobile-participant" class="text-button" type="button">Keluar akun</button><span class="standard-pill"><i></i> Indonesian Coding Standard 2026</span></div></header>
     <main>
       <section id="start" class="welcome">
         <div class="welcome-story">
@@ -36,14 +39,22 @@
           <div class="welcome-points"><div><b>28</b><span>berkas kasus</span></div><div><b>112</b><span>soal pilihan A–E</span></div><div><b>4</b><span>paket penilaian</span></div></div>
           <div class="welcome-bottom"><span class="welcome-line"></span><span>Casemix &amp; Pengodean iDRG</span></div>
         </div>
-        <div class="entry-wrap"><form id="setup" class="entry-card">
-          <span class="entry-number">01 / MULAI BELAJAR</span>
-          <h2>Selamat datang<br>di ruang praktik.</h2>
-          <p class="muted">Masukkan nama Anda. Pilih materi, kerjakan soal, lalu tinjau hasilnya.</p>
-          <div class="group"><label class="field" for="participant">Nama lengkap peserta</label><input type="text" id="participant" name="participant" autocomplete="name" maxlength="100" placeholder="Ketik nama lengkap Anda" required></div>
-          <button type="submit" class="primary wide">Mulai latihan <span aria-hidden="true">→</span></button>
-          <div class="entry-note"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg><p>Progres tersimpan di browser ini. Gunakan nama yang sama untuk melanjutkan latihan.</p></div>
-        </form><div class="entry-foot">Nilai per materi <span>·</span> Pembahasan otomatis <span>·</span> Rekap hasil</div></div>
+        <div class="entry-wrap auth-wrap">
+          <div class="auth-tabs" role="group" aria-label="Akses akun"><button type="button" id="auth-login" aria-pressed="true">Masuk</button><button type="button" id="auth-register" aria-pressed="false">Daftar peserta</button></div>
+          <div id="auth-message" class="auth-message" role="status" hidden></div>
+          <form id="setup" class="entry-card"><span class="entry-number">AKUN PESERTA</span><h2>Lanjutkan belajar Anda.</h2><p class="muted">Masuk untuk menyimpan jawaban dan melihat nilai dari perangkat lain.</p><div class="group"><label class="field" for="login-email">Email</label><input id="login-email" type="email" autocomplete="username" maxlength="254" required></div><div class="group"><label class="field" for="login-password">Password</label><input id="login-password" type="password" autocomplete="current-password" required></div><button type="submit" class="primary wide">Masuk ke ruang latihan →</button><button id="auth-forgot" type="button" class="text-button">Lupa password?</button></form>
+          <form id="register-form" class="entry-card" hidden><span class="entry-number">PENDAFTARAN PESERTA</span><h2>Buat akun latihan.</h2><p class="muted">Lengkapi identitas untuk rekap pelatihan.</p><div class="auth-grid">
+            <div class="group"><label class="field" for="register-name">Nama lengkap</label><input id="register-name" type="text" autocomplete="name" minlength="2" maxlength="120" required></div>
+            <div class="group"><label class="field" for="register-username">Username</label><input id="register-username" type="text" autocomplete="username" minlength="3" maxlength="30" pattern="[a-z0-9_.]{3,30}" title="3–30 karakter: huruf kecil, angka, titik, atau garis bawah" required></div>
+            <div class="group auth-full"><label class="field" for="register-email">Email</label><input id="register-email" type="email" autocomplete="email" maxlength="254" required></div>
+            <div class="group"><label class="field" for="register-phone">Nomor telepon</label><input id="register-phone" type="tel" autocomplete="tel" minlength="8" maxlength="25" required></div>
+            <div class="group"><label class="field" for="register-institution">Asal instansi</label><input id="register-institution" type="text" autocomplete="organization" minlength="2" maxlength="160" required></div>
+            <div class="group auth-full"><label class="field" for="register-password">Password</label><input id="register-password" type="password" autocomplete="new-password" minlength="8" required><span class="field-note">Minimal 8 karakter.</span></div>
+          </div><button type="submit" class="primary wide">Daftar akun →</button></form>
+          <form id="reset-form" class="entry-card" hidden><h2>Atur ulang password.</h2><p class="muted">Masukkan email akun untuk menerima tautan pemulihan.</p><div class="group"><label class="field" for="reset-email">Email</label><input id="reset-email" type="email" autocomplete="email" required></div><button type="submit" class="primary wide">Kirim tautan pemulihan</button></form>
+          <form id="update-password-form" class="entry-card" hidden><h2>Password baru.</h2><div class="group"><label class="field" for="new-password">Password baru</label><input id="new-password" type="password" autocomplete="new-password" minlength="8" required></div><button type="submit" class="primary wide">Simpan password baru</button></form>
+          <div class="entry-foot">Nilai per materi · Pembahasan otomatis · Rekap hasil</div>
+        </div>
       </section>
 
       <section id="recap" hidden>
@@ -59,7 +70,7 @@
         <div class="page-heading"><div><p class="eyebrow">HASIL BELAJAR</p><h1 tabindex="-1" id="recap-table-title">Rekap nilai</h1><p id="recap-name" class="muted"></p></div><div class="actions"><button type="button" class="secondary" id="download-csv">Unduh CSV</button><button id="print-recap" type="button">Cetak rekap</button></div></div>
         <div class="summary-banner"><div><p>Nilai gabungan</p><strong id="recap-total">—</strong><span> / 100</span></div><div><h3 id="completion-summary"></h3><p id="recap-detail"></p><p class="small muted">Dihitung dari seluruh butir pada paket yang sudah dikirim.</p></div></div>
         <div class="card table-wrap"><table><thead><tr><th>Paket praktik</th><th>Status</th><th>Benar</th><th>Nilai</th><th><span class="sr-only">Tindakan</span></th></tr></thead><tbody id="score-table"></tbody></table></div>
-        <p class="small muted space">Rekap ini memuat hasil peserta pada browser dan perangkat ini.</p>
+        <p class="small muted space">Rekap ini memuat hasil latihan yang tersimpan pada akun Anda.</p>
       </section>
 
       <section id="practice" hidden>
@@ -88,20 +99,28 @@
       <section id="result" hidden>
         <p class="eyebrow">HASIL PAKET LATIHAN</p>
         <div class="result-head"><div><h1 id="result-title" tabindex="-1"></h1><p id="result-student"></p></div><div id="score" class="score"></div></div>
-        <div id="result-key" class="result-key"></div>
-        <div class="actions result-controls"><button type="button" id="restart">Lihat rekap nilai</button><button class="secondary" type="button" id="print-result">Cetak hasil</button><button class="secondary" type="button" id="filter-review" aria-pressed="false">Tampilkan yang perlu ditinjau</button><button class="text-button" id="back-packages" type="button">Kembali ke paket latihan</button></div>
+        <div id="result-key" class="result-key"></div><p id="revision-summary" class="small muted"></p>
+        <div class="actions result-controls"><button class="secondary" id="revise-answers" type="button">Revisi jawaban (1×)</button><button type="button" id="restart">Lihat rekap nilai</button><button class="secondary" type="button" id="print-result">Cetak hasil</button><button class="secondary" type="button" id="filter-review" aria-pressed="false">Tampilkan yang perlu ditinjau</button><button class="text-button" id="back-packages" type="button">Kembali ke paket latihan</button></div>
         <div class="section-heading"><h2>Pembahasan jawaban</h2><span>Buka kasus untuk meninjau keputusan Anda</span></div><div id="review" class="review-list"></div>
       </section>
 
+      <section id="account" hidden><div class="page-heading"><div><p class="eyebrow">IDENTITAS PESERTA</p><h1>Akun saya</h1><p class="muted">Identitas ini digunakan pada dashboard pelatihan.</p></div></div><form id="profile-form" class="card profile-form"><div class="auth-grid">
+        <div class="group"><label class="field" for="profile-name">Nama lengkap</label><input id="profile-name" type="text" minlength="2" maxlength="120" required></div><div class="group"><label class="field" for="profile-username">Username</label><input id="profile-username" type="text" pattern="[a-z0-9_.]{3,30}" minlength="3" maxlength="30" required></div><div class="group auth-full"><label class="field" for="profile-email">Email akun</label><input id="profile-email" type="email" readonly></div><div class="group"><label class="field" for="profile-phone">Nomor telepon</label><input id="profile-phone" type="tel" minlength="8" maxlength="25" required></div><div class="group"><label class="field" for="profile-institution">Asal instansi</label><input id="profile-institution" type="text" minlength="2" maxlength="160" required></div></div><button type="submit">Simpan identitas</button><p id="profile-message" role="status" class="small space"></p></form></section>
+      <section id="admin" hidden><div class="page-heading"><div><p class="eyebrow">MONITORING PELATIHAN</p><h1 id="admin-title" tabindex="-1">Dashboard pengelola</h1><p class="muted">Progres dan nilai peserta per materi.</p></div><button type="button" id="admin-refresh" class="secondary">Perbarui data</button></div><div class="result-key"><div class="card"><strong id="admin-participants">—</strong><span>Peserta terdaftar</span></div><div class="card"><strong id="admin-submitted">—</strong><span>Paket dikirim</span></div><div class="card"><strong id="admin-average">—</strong><span>Nilai gabungan peserta</span></div></div>
+        <form id="admin-filter" class="admin-filter card"><div><label class="field" for="admin-search">Cari peserta</label><input id="admin-search" type="search" placeholder="Nama, email, atau username"></div><div><label class="field" for="admin-institution">Asal instansi</label><select id="admin-institution"><option value="">Semua instansi</option></select></div><button type="submit">Tampilkan</button></form><p id="admin-status" role="status" class="small muted"></p><div class="card table-wrap"><table><thead><tr><th>Peserta</th><th>Instansi</th><th>Casemix M2</th><th>Koding M3</th><th>Materi 4</th><th>Materi 6</th><th>Gabungan</th><th></th></tr></thead><tbody id="admin-rows"></tbody></table></div><div class="admin-pagination"><button id="admin-prev" class="secondary" type="button">← Sebelumnya</button><span id="admin-page" class="small muted"></span><button id="admin-next" class="secondary" type="button">Berikutnya →</button></div></section>
+      <section id="admin-detail" hidden><button class="back-button" type="button" id="admin-back">← Dashboard peserta</button><div class="page-heading"><div><p class="eyebrow">DETAIL PESERTA</p><h1 id="detail-name"></h1><p id="detail-contact" class="muted"></p></div></div><div id="detail-packets" class="guide-grid"></div><div id="detail-review" class="review-list space"></div></section>
       <section id="guide" hidden>
         <div class="page-heading"><div><p class="eyebrow">PANDUAN PESERTA</p><h1>Cara mengerjakan</h1><p class="muted">Gunakan dokumen klinis untuk menjawab setiap pertanyaan.</p></div></div>
-        <div class="guide-grid"><article class="card"><h2>Baca berkas</h2><p>Setiap kasus memiliki PDF berkas medis atau lembar audit Casemix. Baca tujuan pelayanan, perjalanan perawatan, diagnosis akhir, dan laporan tindakan yang tersedia. Gunakan tab teks jika lebih mudah dibaca di perangkat Anda.</p></article><article class="card"><h2>Tentukan jawaban</h2><p>Pilih satu dari lima jawaban A–E. Gunakan ICS 2026, ICD-10-IM 2010, dan ICD-9-CM 2010 dengan Indonesian Modification sesuai materi pelatihan. Jika dokumentasi belum lengkap, pilih langkah klarifikasi yang sesuai dengan informasi kasus.</p></article><article class="card"><h2>Kirim per paket</h2><p>Paket Casemix dan Pengodean iDRG dinilai terpisah. Anda dapat berpindah kasus, menyimpan draf, dan melanjutkan sebelum mengirim paket. Setiap jawaban benar bernilai satu poin, jawaban salah atau kosong bernilai nol.</p></article><article class="card"><h2>Tinjau hasil</h2><p>Nilai dan pembahasan muncul setelah pengiriman. Rekap memuat hasil setiap paket. Nilai gabungan adalah jumlah jawaban benar dibagi seluruh butir pada paket yang telah dikirim, dikali 100. Unduh rekap CSV atau cetak sebagai PDF.</p></article></div>
+        <div class="guide-grid"><article class="card"><h2>Baca berkas</h2><p>Setiap kasus memiliki PDF berkas medis atau lembar audit Casemix. Baca tujuan pelayanan, perjalanan perawatan, diagnosis akhir, dan laporan tindakan yang tersedia. Gunakan tab teks jika lebih mudah dibaca di perangkat Anda.</p></article><article class="card"><h2>Tentukan jawaban</h2><p>Pilih satu dari lima jawaban A–E. Gunakan ICS 2026, ICD-10-IM 2010, dan ICD-9-CM 2010 dengan Indonesian Modification sesuai materi pelatihan. Jika dokumentasi belum lengkap, pilih langkah klarifikasi yang sesuai dengan informasi kasus.</p></article><article class="card"><h2>Kirim per paket</h2><p>Paket Casemix dan Pengodean iDRG dinilai terpisah. Anda dapat berpindah kasus, menyimpan draf, dan melanjutkan sebelum mengirim paket. Setiap jawaban benar bernilai satu poin, jawaban salah atau kosong bernilai nol. Setelah paket dikirim, Anda dapat membuka satu kali tahap revisi dan mengirim ulang jawaban. Nilai awal tetap tersimpan.</p></article><article class="card"><h2>Tinjau hasil</h2><p>Nilai dan pembahasan muncul setelah pengiriman. Rekap memuat hasil setiap paket. Nilai gabungan adalah jumlah jawaban benar dibagi seluruh butir pada paket yang telah dikirim, dikali 100. Nilai awal dan nilai revisi ditampilkan pada hasil paket. Unduh rekap CSV atau cetak sebagai PDF.</p></article></div>
         <p class="guide-note">Resume kasus merupakan rekonstruksi untuk pembelajaran dari materi ICS. Rincian identitas dan temuan klinis yang tidak tersedia pada sumber ditandai dalam dokumen.</p>
       </section>
     </main>
     <footer class="app-footer"><span>iDRG Learning</span><span>Praktik pengodean klinis · ICS 2026</span></footer>
   </div>
+  <dialog id="confirm-revision" aria-labelledby="revision-title"><h2 id="revision-title">Revisi jawaban satu kali?</h2><p>Anda dapat memeriksa dan mengubah jawaban pada paket ini, lalu mengirimnya kembali. Nilai awal tetap tercatat. Setelah dikirim ulang, revisi tidak tersedia lagi.</p><div class="actions"><button id="cancel-revision" class="secondary" type="button">Batal</button><button id="start-revision" type="button">Mulai revisi</button></div></dialog>
   <dialog id="confirm-submit" aria-labelledby="submit-title"><div class="dialog-icon" aria-hidden="true">✓</div><h2 id="submit-title">Kirim paket latihan?</h2><p id="submit-message"></p><div class="actions"><button class="secondary" type="button" id="check-again">Periksa lagi</button><button type="button" id="finish">Kirim dan nilai</button></div></dialog>
+  <script type="application/json" id="app-config">__APP_CONFIG__</script>
+  <script src="cloud.js" defer></script>
   <script type="application/json" id="case-data">__CASE_DATA__</script>
   <script src="app.js" defer></script>
 </body>

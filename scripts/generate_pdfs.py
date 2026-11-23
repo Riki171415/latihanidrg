@@ -74,9 +74,9 @@ def frame(canvas, document):
 
 
 def metadata(case):
-    material = str(case['module'])
+    material = str(case.get('displayModule',case['module']))
     rows = [[
-        Paragraph('<font color="#7c899b" size="7">ID DOKUMEN</font><br/><b>'+case['id']+'</b>', meta),
+        Paragraph('<font color="#7c899b" size="7">ID DOKUMEN</font><br/><b>'+case.get('displayId',case['id'])+'</b>', meta),
         Paragraph('<font color="#7c899b" size="7">MATERI PELATIHAN</font><br/><b>Materi '+material+'</b>', meta),
         Paragraph('<font color="#7c899b" size="7">SUMBER DOKUMENTASI</font><br/><b>ICS 2026</b>', meta),
     ]]
@@ -133,9 +133,9 @@ for case in cases:
     path = ROOT/'public'/case['pdf']
     document = SimpleDocTemplate(str(path), pagesize=(210*mm,297*mm),
         leftMargin=17*mm,rightMargin=17*mm,topMargin=33*mm,bottomMargin=24*mm,
-        title=case['id']+' | '+case['title'], author='iDRG Learning',
+        title=case.get('displayId',case['id'])+' | '+case['title'], author='iDRG Learning',
         subject='Rekonstruksi berkas kasus dari materi ICS 2026')
-    document.case_id = case['id']
+    document.case_id = case.get('displayId',case['id'])
     story = [p('BERKAS LATIHAN / '+('AUDIT CASEMIX' if audit else 'DOKUMENTASI KLINIS'),tag),
         Spacer(1,2*mm),p('LEMBAR KERJA CASEMIX' if audit else 'RESUME MEDIS',title),
         Spacer(1,1.5*mm),p(case['title'],subtitle),Spacer(1,6*mm),metadata(case),Spacer(1,6*mm)]
@@ -155,7 +155,7 @@ for case in cases:
     with pymupdf.open(path) as pdf:
         text=''.join(page.get_text() for page in pdf)
         assert len(pdf)<=2, (case['id'],len(pdf))
-        assert case['id'] in text and 'KELENGKAPAN DOKUMEN' in text
+        assert case.get('displayId',case['id']) in text and 'KELENGKAPAN DOKUMEN' in text
         for page in pdf:
             for block in page.get_text('blocks'):
                 assert block[0]>=40 and block[2]<560 and block[1]>20 and block[3]<820, (case['id'],block)

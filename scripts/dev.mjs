@@ -17,4 +17,5 @@ const server = http.createServer(async (req,res) => {
     res.end(bytes);
   } catch {res.writeHead(404);res.end("Tidak ditemukan");}
 });
-server.listen(4173,"127.0.0.1",() => console.log("http://127.0.0.1:4173"));
+const port=Number(process.env.IDRG_DEV_PORT||4173);
+server.listen(port,"127.0.0.1",() => console.log("http://127.0.0.1:"+port));

@@ -1,0 +1,2 @@
+-- Project owner only. The account becomes admin after registering and verifying email.
+insert into idrg_private.admin_allowlist(email) values (lower('GANTI_DENGAN_EMAIL_ADMIN')) on conflict(email) do nothing;

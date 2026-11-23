@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {build} from "esbuild";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
@@ -25,8 +26,15 @@ for (const item of data) {
 await fs.mkdir(dist,{recursive:true});
 await fs.cp(path.join(root,"public"),dist,{recursive:true});
 const template = await fs.readFile(path.join(root,"index.html"),"utf8");
-const payload = JSON.stringify(data).replaceAll("<","\u003c");
-await fs.writeFile(path.join(dist,"index.html"),template.replace("__CASE_DATA__",payload));
+const publicBank=data.map(c=>({id:c.id,module:c.module,title:c.title,records:c.records,pdf:c.pdf,
+  reference:c.reference,displayId:c.displayId,displayModule:c.displayModule,contentRevision:c.contentRevision,items:c.items.map(q=>({prompt:q.prompt,options:q.options}))}));
+const payload = JSON.stringify(publicBank).replaceAll("<",String.fromCharCode(92)+"u003c");
+const config=JSON.parse(await fs.readFile(path.join(root,'src/config.json'),'utf8'));
+config.supabaseUrl=process.env.SUPABASE_URL||config.supabaseUrl;
+config.supabasePublishableKey=process.env.SUPABASE_PUBLISHABLE_KEY||config.supabasePublishableKey;
+const endpoint=new URL(config.supabaseUrl); if(endpoint.protocol!=="https:"||!endpoint.hostname.endsWith(".supabase.co")||!config.supabasePublishableKey.startsWith("sb_publishable_"))throw new Error("Invalid public Supabase configuration.");
+await fs.writeFile(path.join(dist,"index.html"),template.replace("__CASE_DATA__",payload).replace("__APP_CONFIG__",JSON.stringify(config).replaceAll("<",String.fromCharCode(92)+"u003c")));
+await build({entryPoints:[path.join(root,'src/cloud.js')],bundle:true,format:'iife',globalName:'IDRGCloud',outfile:path.join(dist,'cloud.js'),minify:true,target:'es2022',legalComments:'eof'});
 for (const file of ["app.js","styles.css","pdf-viewer.js"]) await fs.copyFile(path.join(root,"src",file),path.join(dist,file));
 await fs.mkdir(path.join(dist,"vendor"),{recursive:true});
 for (const file of ["pdf.mjs","pdf.worker.mjs"]) {
