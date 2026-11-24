@@ -4,6 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  BACKEND_PROVIDER = "neon"
+  NEON_AUTH_BASE_URL = "https://ep-spring-water-bcufhjhz.neonauth.c-16.us-east-1.aws.neon.tech/neondb/auth"
+  NEON_DATA_API_URL = "https://ep-spring-water-bcufhjhz.apirest.c-16.us-east-1.aws.neon.tech/neondb/rest/v1"
 
 [[headers]]
   for = "/*"

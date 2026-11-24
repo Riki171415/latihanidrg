@@ -1,4 +1,7 @@
 {
+  "provider": "neon",
   "supabaseUrl": "https://zbjjncaujiteoppddtxt.supabase.co",
-  "supabasePublishableKey": "sb_publishable_bHL_W-8VX2DapEb1rmhM3w_h9ZFQIwL"
+  "supabasePublishableKey": "sb_publishable_bHL_W-8VX2DapEb1rmhM3w_h9ZFQIwL",
+  "neonAuthUrl": "https://ep-spring-water-bcufhjhz.neonauth.c-16.us-east-1.aws.neon.tech/neondb/auth",
+  "neonDataApiUrl": "https://ep-spring-water-bcufhjhz.apirest.c-16.us-east-1.aws.neon.tech/neondb/rest/v1"
 }

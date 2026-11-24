@@ -138,7 +138,44 @@ try {
   await login(uid1);
   assert.equal(await rpc('idrg_is_admin'), true);
 
-  console.log('PASS: Neon PostgreSQL schema, JWT claims, RLS isolation, server grading, revision history, and admin dashboard.');
+  // Migrated Supabase user relinks automatically by email on first Neon login.
+  await db.exec('reset role');
+  const oldUid = '44444444-4444-4444-8444-444444444444';
+  const newUid = '55555555-5555-4555-8555-555555555555';
+  const migratedAttemptId = '66666666-6666-4666-8666-666666666666';
+  await db.query(
+    "insert into public.idrg_profiles(user_id, full_name, email, username, phone, institution) values ($1, 'Migrated Admin', 'Migrated@Example.Test', 'migrated_admin', '08123456700', 'RS Migrasi')",
+    [oldUid]
+  );
+  await db.query(
+    "insert into public.idrg_attempts(id, user_id, packet_id, revision, answers, case_index, question_index, version, correct_count, total_count, submitted_at) values ($1, $2, '4', '2026-11-24.1', '{}'::jsonb, 0, 0, 1, 40, 44, now())",
+    [migratedAttemptId, oldUid]
+  );
+  await db.query(
+    "insert into idrg_private.attempt_history(attempt_id, round, answers, correct_count, total_count, submitted_at) values ($1, 0, '{}'::jsonb, 40, 44, now())",
+    [migratedAttemptId]
+  );
+  await db.query("insert into idrg_private.staff_roles(user_id, role) values ($1, 'admin')", [oldUid]);
+  await db.query('insert into neon_auth."user" values ($1, $2, $3, true)', [newUid, 'migrated@example.test', 'Migrated Admin']);
+
+  await login(newUid);
+  const relinked = await rpc('idrg_load_account');
+  assert.equal(relinked.person.user_id, newUid);
+  assert.equal(relinked.person.username, 'migrated_admin');
+  assert.equal(relinked.attempts.length, 1);
+  assert.equal(relinked.attempts[0].id, migratedAttemptId);
+  assert.equal(relinked.attempts[0].correct_count, 40);
+  assert.equal(relinked.admin, true);
+
+  // Verify export-from-supabase.sql produces valid executable SQL.
+  await db.exec('reset role');
+  const exportQuery = await fs.readFile(new URL('../neon/export-from-supabase.sql', import.meta.url), 'utf8');
+  const exportSql = (await db.query(exportQuery)).rows[0].migration_sql;
+  assert(exportSql.includes('insert into public.idrg_profiles'));
+  assert(exportSql.includes('insert into public.idrg_attempts'));
+  await db.exec(exportSql);
+
+  console.log('PASS: Neon PostgreSQL schema, JWT claims, RLS isolation, server grading, revision history, admin dashboard, and Supabase migration relinking.');
 } finally {
   await db.close();
 }

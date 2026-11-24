@@ -80,6 +80,7 @@ create index if not exists idrg_attempts_latest_v2 on public.idrg_attempts(user_
 create index if not exists idrg_attempts_owner_created on public.idrg_attempts(user_id, created_at, id);
 create index if not exists idrg_profiles_institution on public.idrg_profiles(institution);
 create index if not exists idrg_profiles_created_user on public.idrg_profiles(created_at desc, user_id);
+create index if not exists idrg_profiles_email_lower on public.idrg_profiles(lower(email));
 create index if not exists idrg_questions_revision_packet on idrg_private.questions(revision, packet_id, item_id) include (case_id);
 
 create or replace function idrg_private.current_user_id() returns uuid
@@ -157,8 +158,35 @@ drop policy if exists own_attempt_read on public.idrg_attempts;
 create policy own_attempt_read on public.idrg_attempts for select to authenticated
   using (user_id = (select idrg_private.current_user_id()) or (select public.idrg_is_admin()));
 
+create or replace function idrg_private.relink_migrated_user(p_owner_id uuid) returns void
+language plpgsql volatile security definer set search_path = '' as $$
+declare
+  owner_email text;
+  old_uid uuid;
+begin
+  if exists(select 1 from public.idrg_profiles where user_id = p_owner_id) then
+    return;
+  end if;
+  owner_email := lower(nullif(trim(idrg_private.current_user_email()), ''));
+  if owner_email is null then
+    return;
+  end if;
+  select user_id into old_uid
+  from public.idrg_profiles
+  where lower(email) = owner_email and user_id <> p_owner_id
+  order by created_at asc
+  limit 1
+  for update;
+  if old_uid is not null then
+    update public.idrg_profiles set user_id = p_owner_id where user_id = old_uid;
+    update public.idrg_attempts set user_id = p_owner_id where user_id = old_uid;
+    update idrg_private.staff_roles set user_id = p_owner_id where user_id = old_uid;
+  end if;
+end;
+$$;
+
 create or replace function idrg_private.idrg_load_account() returns jsonb
-language plpgsql stable security definer set search_path = '' as $$
+language plpgsql volatile security definer set search_path = '' as $$
 declare
   owner_id uuid := idrg_private.current_user_id();
   result jsonb;
@@ -166,6 +194,7 @@ begin
   if owner_id is null then
     raise exception 'Silakan masuk terlebih dahulu.' using errcode = '42501';
   end if;
+  perform idrg_private.relink_migrated_user(owner_id);
   select jsonb_build_object(
     'person', (select to_jsonb(p) from public.idrg_profiles p where p.user_id = owner_id),
     'attempts', coalesce((
@@ -180,7 +209,7 @@ end;
 $$;
 
 create or replace function public.idrg_load_account() returns jsonb
-language sql stable security invoker set search_path = '' as $$
+language sql volatile security invoker set search_path = '' as $$
   select idrg_private.idrg_load_account();
 $$;
 
@@ -199,6 +228,7 @@ begin
   if uid is null then
     raise exception 'Silakan masuk terlebih dahulu.' using errcode = '42501';
   end if;
+  perform idrg_private.relink_migrated_user(uid);
   address := coalesce(idrg_private.current_user_email(), '');
   insert into public.idrg_profiles(user_id, email, full_name, username, phone, institution)
   values (uid, address, trim(p_full_name), lower(trim(p_username)), trim(p_phone), trim(p_institution))
@@ -575,6 +605,7 @@ grant usage on schema idrg_private to authenticated;
 revoke all on function
   idrg_private.current_user_id(),
   idrg_private.current_user_email(),
+  idrg_private.relink_migrated_user(uuid),
   idrg_private.idrg_is_admin(),
   public.idrg_is_admin(),
   idrg_private.idrg_load_account(),
