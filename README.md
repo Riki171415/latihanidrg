@@ -104,3 +104,29 @@ Jika tetap gagal, sesi autentikasi dipertahankan dan tombol Coba muat akun memua
 ## Rata-rata per materi
 
 Dashboard pengelola menampilkan rata-rata nilai skala 0–100 dan jumlah peserta yang sudah mengirim untuk masing-masing dari empat paket. Perhitungan meliputi seluruh peserta yang sesuai filter, terlepas dari halaman tabel. Setiap peserta dihitung sekali per paket, memakai pengerjaan terbaru; draf dan riwayat sebelum revisi tidak menambah jumlah pengiriman. Jika belum ada pengiriman, kartu menampilkan Belum ada nilai, bukan nilai nol. Rata-rata per materi adalah rerata persentase nilai peserta; indikator gabungan tetap dihitung berdasarkan jumlah butir.
+
+## Neon Auth — persiapan alternatif
+
+`neon.ts` mendeklarasikan Managed Better Auth dan Data API untuk protokol PostgREST. Proyek tujuan: `lingering-darkness-93027516`, branch `production`. URL REST yang diberikan penyelenggara tidak dipakai sebagai URL Auth. Jangan mengganti URL Supabase dengan URL REST Neon: skema, RLS, relasi identitas, dan pemindahan data harus diverifikasi dahulu. Akun/password dan nilai Supabase belum dimigrasikan; tidak ada perpindahan otomatis ketika server gagal.
+
+Persiapan lokal (memerlukan login Neon pemilik proyek):
+
+```powershell
+npx neon@latest login
+npx neon@latest init -y --project-id lingering-darkness-93027516 --branch production --services postgres,auth
+npx neon@latest deploy
+npx neon@latest neon-auth domain add https://latihanidrg.netlify.app
+```
+
+Pertahankan `dataApi:true` pada neon.ts setelah init karena aplikasi memakai PostgREST. Jika instalasi tooling agen gagal, gunakan init dengan `--no-agent-setup`; kegagalan login harus diselesaikan sebelum deploy. CLI dapat memakai `--config-dir .neon-private` jika folder konfigurasi pengguna tidak bisa ditulis; login dan perintah berikutnya harus memakai folder yang sama.
+
+Setelah deploy, `.env.local` (atau `.env` yang sudah ada) berisi URL Auth resmi. File env dan kredensial CLI diabaikan Git. Build memakai variabel lingkungan `NEON_AUTH_BASE_URL` untuk menerbitkan halaman `/neon-auth.html`: pendaftaran nama/email/password, masuk, baca pengguna saat ini, pemulihan sesi saat halaman dimuat ulang, dan keluar. Halaman ini adalah uji integrasi identitas alternatif; akses latihan dan nilai masih memakai Supabase. Tanpa URL Auth yang valid, halaman alternatif tidak diterbitkan. Untuk Netlify, set hanya URL Auth publik tersebut sebagai variabel build; jangan mengekspos DATABASE_URL.
+
+Uji layanan nyata dilakukan terpisah dari pengujian lokal, menggunakan email yang pemiliknya sudah memberi izin. Jangan menjalankan ulang untuk akun lama atau membagikan password/token:
+
+```powershell
+$env:NEON_TEST_EMAIL='rikipermanaputra@gmail.com'
+npm run verify:neon-auth
+```
+
+Skrip membuat password acak tanpa mencetak atau menyimpannya, mendaftar melalui SDK `@neon/auth`, membaca user/session kembali, memeriksa pemulihan sesi oleh klien baru, keluar dan masuk ulang, lalu keluar di akhir. Jika email sudah terdaftar, skrip berhenti tanpa mengubah password akun tersebut. Pengguna dapat menetapkan password sendiri melalui pemulihan akun setelah uji. Pengujian ini belum berarti migrasi tabel latihan selesai. Jangan menganggap uji berhasil sebelum keluaran PASS dari layanan nyata.

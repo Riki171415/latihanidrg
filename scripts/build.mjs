@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {build} from "esbuild";
+import {parseEnv} from "node:util";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
@@ -48,3 +49,21 @@ for (const file of ["pdf.mjs","pdf.worker.mjs"]) {
 await fs.copyFile(path.join(root,"node_modules/pdfjs-dist/LICENSE"),path.join(dist,"vendor","pdfjs-LICENSE.txt"));
 await fs.cp(path.join(root,"node_modules/pdfjs-dist/standard_fonts"),path.join(dist,"vendor/standard_fonts"),{recursive:true});
 console.log("Build selesai — 28 PDF, 4 paket praktik, 112 soal A–E.");
+
+// Only publish the alternative identity page when the deployed Auth URL exists.
+// DATABASE_URL and all credentials must never enter browser configuration.
+let neonAuthURL=process.env.NEON_AUTH_BASE_URL;
+for(const envName of ['.env.local','.env']){
+  if(neonAuthURL)break;
+  try{neonAuthURL=parseEnv(await fs.readFile(path.join(root,envName),'utf8')).NEON_AUTH_BASE_URL;}
+  catch(error){if(error.code!=='ENOENT')throw error;}
+}
+if(neonAuthURL){
+  const {createNeonIdentity}=await import('../src/neon-identity.js');
+  createNeonIdentity(neonAuthURL); // validate the public endpoint, without requests
+  const neonTemplate=await fs.readFile(path.join(root,'neon-auth.html'),'utf8');
+  await fs.writeFile(path.join(dist,'neon-auth.html'),neonTemplate.replace('__NEON_CONFIG__',JSON.stringify({authBaseURL:neonAuthURL}).replaceAll('<','\\u003c')));
+  await build({entryPoints:[path.join(root,'src/neon-auth.js')],bundle:true,format:'iife',outfile:path.join(dist,'neon-auth.js'),minify:true,target:'es2022',legalComments:'eof'});
+}else{
+  for(const file of ['neon-auth.html','neon-auth.js'])await fs.rm(path.join(dist,file),{force:true});
+}
