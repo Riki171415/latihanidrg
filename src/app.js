@@ -646,13 +646,16 @@ $("register-form").addEventListener("submit",event=>{
     try{
       restoreFailed=false;
       await cloud.requireDirectSignup();
-      const {data,error}=await cloud.client.auth.signUp({email,password,options:{data:metadata}});
+      const {data,error}=await cloud.client.auth.signUp({email,password,options:{data:{...metadata,displayName:metadata.full_name}}});
       if(error)throw error;
       let sessionUser=data.user;
       if(!data.session){
         const signed=await cloud.client.auth.signInWithPassword({email,password});
         if(signed.error)throw signed.error;
         sessionUser=signed.data.user;
+      }
+      if(cloud.provider==="neon"){
+        await cloud.rpc("idrg_complete_profile",{p_full_name:metadata.full_name,p_username:metadata.username,p_phone:metadata.phone,p_institution:metadata.institution});
       }
       await restoreAccount(sessionUser);
     }finally{$("register-password").value="";}

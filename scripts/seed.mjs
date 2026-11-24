@@ -21,3 +21,7 @@ console.log('Seed ready: 112 questions; existing revision keys stay immutable.')
 const names=(await fs.readdir(path.join(root,'supabase/migrations'))).filter(n=>n.endsWith('.sql')).sort();
 const migrations=await Promise.all(names.map(n=>fs.readFile(path.join(root,'supabase/migrations',n),'utf8')));
 await fs.writeFile(path.join(root,'supabase/setup.sql'),migrations.join('\n')+'\n'+sql);
+
+const neonSchema=await fs.readFile(path.join(root,'neon/schema.sql'),'utf8');
+await fs.mkdir(path.join(root,'neon'),{recursive:true});
+await fs.writeFile(path.join(root,'neon/setup.sql'),neonSchema+'\n'+sql);

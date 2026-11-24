@@ -35,10 +35,37 @@ const template = await fs.readFile(path.join(root,"index.html"),"utf8");
 const publicBank=data.map(c=>({id:c.id,module:c.module,title:c.title,records:c.records,pdf:c.pdf,
   reference:c.reference,displayId:c.displayId,displayModule:c.displayModule,simulation:c.simulation,documentType:c.documentType,contentRevision:c.contentRevision,items:c.items.map(q=>({prompt:q.prompt,options:q.options}))}));
 const payload = JSON.stringify(publicBank).replaceAll("<",String.fromCharCode(92)+"u003c");
+const envFiles={};
+for(const envName of ['.env','.env.local']){
+  try{Object.assign(envFiles,parseEnv(await fs.readFile(path.join(root,envName),'utf8')));}
+  catch(error){if(error.code!=='ENOENT')throw error;}
+}
+const readEnv=key=>(process.env[key]??envFiles[key]??'').trim();
+
 const config=JSON.parse(await fs.readFile(path.join(root,'src/config.json'),'utf8'));
-config.supabaseUrl=process.env.SUPABASE_URL||config.supabaseUrl;
-config.supabasePublishableKey=process.env.SUPABASE_PUBLISHABLE_KEY||config.supabasePublishableKey;
-const endpoint=new URL(config.supabaseUrl); if(endpoint.protocol!=="https:"||!endpoint.hostname.endsWith(".supabase.co")||!config.supabasePublishableKey.startsWith("sb_publishable_"))throw new Error("Invalid public Supabase configuration.");
+config.supabaseUrl=readEnv('SUPABASE_URL')||config.supabaseUrl;
+config.supabasePublishableKey=readEnv('SUPABASE_PUBLISHABLE_KEY')||config.supabasePublishableKey;
+const backendProvider=readEnv('BACKEND_PROVIDER')||config.provider||'supabase';
+if(!['supabase','neon'].includes(backendProvider))throw new Error('BACKEND_PROVIDER tidak valid: '+backendProvider);
+config.provider=backendProvider;
+const neonAuthURL=readEnv('NEON_AUTH_BASE_URL')||config.neonAuthUrl||'';
+const neonDataApiURL=readEnv('NEON_DATA_API_URL')||config.neonDataApiUrl||'';
+if(neonAuthURL){
+  const {createNeonIdentity}=await import('../src/neon-identity.js');
+  createNeonIdentity(neonAuthURL); // validate the public endpoint, without requests
+  config.neonAuthUrl=neonAuthURL.replace(/\/$/,'');
+}
+if(neonDataApiURL){
+  const restUrl=new URL(neonDataApiURL);
+  if(restUrl.protocol!=='https:'||!restUrl.hostname.endsWith('.neon.tech')||!restUrl.pathname.includes('/rest/v1'))throw new Error('NEON_DATA_API_URL tidak valid.');
+  config.neonDataApiUrl=restUrl.href.replace(/\/$/,'');
+}
+if(config.provider==='neon'){
+  if(!config.neonAuthUrl||!config.neonDataApiUrl)throw new Error('BACKEND_PROVIDER=neon memerlukan NEON_AUTH_BASE_URL dan NEON_DATA_API_URL.');
+}else{
+  const endpoint=new URL(config.supabaseUrl);
+  if(endpoint.protocol!=="https:"||!endpoint.hostname.endsWith(".supabase.co")||!config.supabasePublishableKey.startsWith("sb_publishable_"))throw new Error("Invalid public Supabase configuration.");
+}
 await fs.writeFile(path.join(dist,"index.html"),template.replace("__CASE_DATA__",payload).replace("__APP_CONFIG__",JSON.stringify(config).replaceAll("<",String.fromCharCode(92)+"u003c")));
 await build({entryPoints:[path.join(root,'src/cloud.js')],bundle:true,format:'iife',globalName:'IDRGCloud',outfile:path.join(dist,'cloud.js'),minify:true,target:'es2022',legalComments:'eof'});
 for (const file of ["app.js","styles.css","pdf-viewer.js"]) await fs.copyFile(path.join(root,"src",file),path.join(dist,file));
@@ -52,15 +79,7 @@ console.log("Build selesai — 28 PDF, 4 paket praktik, 112 soal A–E.");
 
 // Only publish the alternative identity page when the deployed Auth URL exists.
 // DATABASE_URL and all credentials must never enter browser configuration.
-let neonAuthURL=process.env.NEON_AUTH_BASE_URL;
-for(const envName of ['.env.local','.env']){
-  if(neonAuthURL)break;
-  try{neonAuthURL=parseEnv(await fs.readFile(path.join(root,envName),'utf8')).NEON_AUTH_BASE_URL;}
-  catch(error){if(error.code!=='ENOENT')throw error;}
-}
 if(neonAuthURL){
-  const {createNeonIdentity}=await import('../src/neon-identity.js');
-  createNeonIdentity(neonAuthURL); // validate the public endpoint, without requests
   const neonTemplate=await fs.readFile(path.join(root,'neon-auth.html'),'utf8');
   await fs.writeFile(path.join(dist,'neon-auth.html'),neonTemplate.replace('__NEON_CONFIG__',JSON.stringify({authBaseURL:neonAuthURL}).replaceAll('<','\\u003c')));
   await build({entryPoints:[path.join(root,'src/neon-auth.js')],bundle:true,format:'iife',outfile:path.join(dist,'neon-auth.js'),minify:true,target:'es2022',legalComments:'eof'});

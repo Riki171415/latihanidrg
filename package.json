@@ -10,6 +10,8 @@
     "seed": "node scripts/seed.mjs",
     "test": "node tests/database.mjs",
     "pretest": "node scripts/seed.mjs",
+    "test:neon": "node tests/neon-database.mjs",
+    "pretest:neon": "node scripts/seed.mjs",
     "verify:neon-auth": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/verify-neon-auth.mjs"
   },
   "engines": {
