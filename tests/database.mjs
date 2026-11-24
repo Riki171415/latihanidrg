@@ -21,6 +21,10 @@ try{
     return (await db.query(`select public.${name}(${placeholders}) as value`,args)).rows[0].value;
   };
   await login(uid1);
+  const loadedAccount=await rpc('idrg_load_account');
+  assert.equal(loadedAccount.person.user_id,uid1);
+  assert.deepEqual(loadedAccount.attempts,[]);
+  assert.equal(loadedAccount.admin,false);
   assert.equal((await db.query('select * from public.idrg_profiles')).rows.length,1);
   assert.equal(await rpc('idrg_is_admin'),false,'signup metadata must not assign admin');
   await assert.rejects(db.query('select * from idrg_private.questions'));
@@ -69,6 +73,7 @@ try{
   await db.query("insert into idrg_private.staff_roles values($1,'admin')",[uid2]);
   await login(uid2);
   assert.equal(await rpc('idrg_is_admin'),true);
+  assert.equal((await rpc('idrg_load_account')).admin,true);
   await db.exec('reset role');
   await db.query("insert into idrg_private.admin_allowlist values('one@example.test')");
   await login(uid1);assert.equal(await rpc('idrg_is_admin'),true);
@@ -83,6 +88,7 @@ try{
   await db.exec('reset role;set role anon');
   await assert.rejects(db.query('select * from public.idrg_profiles'));
   await assert.rejects(rpc('idrg_start_packet',['4']));
+  await assert.rejects(rpc('idrg_load_account'));
   await assert.rejects(rpc('idrg_start_packet_versioned',['4','2026-11-24.1']));
   await login(uid1);
   const current=await rpc('idrg_start_packet_versioned',['4','2026-11-24.1']);
@@ -110,6 +116,9 @@ try{
   assert.equal(traumaAnswers['M6-05-2'],'0');
   assert.equal((await rpc('idrg_submit_attempt',[traumaBank.id,traumaAnswers,traumaBank.version])).correct_count,32);
   await login(uid2);
+  const ownAccount=await rpc('idrg_load_account');
+  assert.equal(ownAccount.person.user_id,uid2);
+  assert(ownAccount.attempts.every(a=>a.user_id===uid2),'account RPC must not return another participant, including for admin');
   // uid2 is no longer an active admin after its email was made unverified above.
   await assert.rejects(rpc('idrg_review',[current.id]));
   console.log('PASS: PostgreSQL RLS, signup profiles, no self-promotion, owner isolation, server grading, immutable submission, revision keys, optimistic conflicts, admin filters, anonymous denial.');

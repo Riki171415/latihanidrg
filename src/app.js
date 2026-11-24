@@ -540,10 +540,11 @@ $("download-csv").addEventListener("click",() => {
   setTimeout(() => URL.revokeObjectURL(url),1000);
 });
 
-function authMessage(message,error=false){
+function authMessage(message,error=false,retry=false){
   $("auth-message").hidden=!message;
   $("auth-message").textContent=message;
   $("auth-message").classList.toggle("error",error);
+  $("auth-retry").hidden=!retry;
 }
 function authMode(mode){
   for(const [key,id] of Object.entries({login:"setup",register:"register-form",reset:"reset-form",update:"update-password-form"}))$(id).hidden=key!==mode;
@@ -587,10 +588,14 @@ async function restoreAccount(){
       $("nav-admin").hidden=!isAdmin;$("nav-account").hidden=false;
       $("save-state").textContent="Terhubung ke akun Anda";
       if(!profile.complete)openAccount();else if(isAdmin)await openAdmin();else renderRecap();
-    }catch(error){startPage();authMessage(cloud.friendly(error),true);}
+    }catch(error){startPage();authMessage(cloud.friendly(error),true,true);}
   })();
   try{await restoring;}finally{restoring=null;}
 }
+$("auth-retry").addEventListener("click",async()=>{
+  $("auth-retry").disabled=true;
+  try{await restoreAccount();}finally{$("auth-retry").disabled=false;}
+});
 async function logout(){
   try{await flushSave();}catch{} // Unsynced answers remain in the account-specific recovery cache.
   const {error}=await cloud.client.auth.signOut({scope:"local"});

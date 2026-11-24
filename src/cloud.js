@@ -19,12 +19,25 @@ export async function rpc(name,args={}){
 }
 export async function loadAccount(){
   const {data:{user},error}=await client.auth.getUser();
-  if(error||!user)return null;
-  const {data:person,error:profileError}=await client.from('idrg_profiles').select('*').eq('user_id',user.id).single();
-  if(profileError&&profileError.code!=='PGRST116')throw profileError;
-  const {data:attempts,error:attemptError}=await client.from('idrg_attempts').select('*').eq('user_id',user.id).order('created_at',{ascending:true});
-  if(attemptError)throw attemptError;
-  return {user,person,attempts,admin:await rpc('idrg_is_admin')};
+  if(error){
+    if(error.name==='AuthSessionMissingError'||error.status===401||error.status===403)return null;
+    throw error;
+  }
+  if(!user)return null;
+  let lastError;
+  // A bounded retry applies only to this read-only RPC. Never replay a save or
+  // submission: the first request could already have committed its changes.
+  for(let attempt=0;attempt<2;attempt++){
+    const result=await client.rpc('idrg_load_account').abortSignal(AbortSignal.timeout(10000));
+    if(!result.error)return {user,...result.data};
+    lastError=result.error;
+    if(!isTemporaryAccountError(lastError,result.status))throw lastError;
+    if(attempt===0)await new Promise(resolve=>setTimeout(resolve,1000+Math.random()*500));
+  }
+  throw new Error('Login berhasil, tetapi data akun belum dapat dimuat karena layanan sedang sibuk. Gunakan tombol Coba muat akun; Anda tidak perlu mengganti password.');
+}
+function isTemporaryAccountError(error,status){
+  return [503,504,520].includes(status)||error.code==='PGRST003'||/timed out acquiring|timeout|abort|failed to fetch|network/i.test(error.message??'');
 }
 export function attemptFromRow(row){
   return {id:row.id,index:row.case_index,question:row.question_index,answers:row.answers,finished:!!row.submitted_at,
@@ -33,12 +46,13 @@ export function attemptFromRow(row){
 }
 export function friendly(error){
   const message=error?.message??String(error);
+  if(/^PGRST00[0-3]$/.test(error?.code??'')||error?.status===504||/timed out acquiring connection/i.test(message))return 'Layanan data Supabase sedang tidak tersedia. Tunggu sebentar lalu coba lagi.';
   if(/Invalid login credentials/i.test(message))return 'Email atau password tidak sesuai.';
   if(/Email not confirmed/i.test(message))return 'Akun belum aktif untuk masuk langsung. Hubungi pengelola pelatihan.';
   if(/User already registered|already been registered/i.test(message))return 'Email sudah terdaftar. Silakan masuk menggunakan akun tersebut.';
   if(/Database error saving new user|duplicate key/i.test(message))return 'Pendaftaran belum berhasil. Periksa isian; username mungkin sudah digunakan.';
   if(/rate limit|too many/i.test(message))return 'Terlalu banyak permintaan. Coba lagi beberapa saat.';
   if(/schema cache|does not exist|could not find.*function/i.test(message))return 'Layanan akun belum selesai disiapkan. Hubungi pengelola pelatihan.';
-  if(/fetch|network/i.test(message))return 'Koneksi terputus. Jawaban belum tersimpan ke server; coba simpan lagi.';
+  if(/fetch|network/i.test(message))return 'Koneksi terputus. Periksa koneksi internet lalu coba lagi.';
   return message;
 }
