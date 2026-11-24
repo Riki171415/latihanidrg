@@ -23,3 +23,6 @@
 .simulation-note{padding:14px 16px;margin-bottom:20px;border:1px solid #c7d9ef;border-left:4px solid #375c8e;border-radius:6px;background:#f3f7fd;color:#234c7a;font-size:14px;line-height:1.6}.archived-attempt td{background:#f5f7fb}.record-body p{white-space:pre-line}
 
 #record-body p{white-space:pre-line}
+
+.material-average{font-size:2rem;font-weight:750;color:var(--primary,#164e63);margin:.6rem 0}
+#admin-material-averages{margin-bottom:1.5rem}

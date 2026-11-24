@@ -681,6 +681,13 @@ async function openAdmin(reset=true){
     $("admin-institution").replaceChildren(make("option","Semua instansi"));$("admin-institution").firstChild.value="";
     for(const name of adminData.institutions){const option=make("option",name);option.value=name;$("admin-institution").append(option);}
     $("admin-institution").value=selected;
+    $("admin-material-averages").replaceChildren();
+    for(const packet of modules){
+      const summary=adminData.materials?.find(item=>item.packet_id===packet.id);
+      const card=make("article",undefined,"card"),body=make("div");
+      body.append(make("h3",packet.name),make("p",summary?.average==null?"Belum ada nilai":scoreNumber.format(Number(summary.average))+" / 100","material-average"),make("p",(summary?.submitted??0)+" peserta sudah mengirim","small muted"));
+      card.append(body);$("admin-material-averages").append(card);
+    }
     $("admin-rows").replaceChildren();
     for(const person of adminData.rows){
       const row=make("tr"),name=make("td");name.append(make("b",person.full_name),make("small",person.email),make("small","@"+person.username));row.append(name,make("td",person.institution));

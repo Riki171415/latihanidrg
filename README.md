@@ -100,3 +100,7 @@ Field formulir terdapat pada chartFields menurut pasien/episode. Catatan diagnos
 Login memuat profil, riwayat pengerjaan, dan hak admin melalui satu RPC baca idrg_load_account setelah identitas diperiksa oleh Supabase Auth. Fungsi menggunakan security invoker, tetap memeriksa UID pemilik, dan tidak memberikan akses anonim. Pengambilan akun dibatasi 10 detik per permintaan dan diulang paling banyak satu kali untuk gangguan sementara.
 
 Jika tetap gagal, sesi autentikasi dipertahankan dan tombol Coba muat akun memuat ulang data tanpa meminta atau mengirim ulang password. Kesalahan autentikasi tetap dibedakan dari gangguan pool/schema cache. Operasi simpan dan kirim jawaban tidak diputar ulang otomatis karena respons gagal tidak memastikan transaksi belum tersimpan. Perbaikan aplikasi mengurangi beban dan memperbaiki pemulihan, tetapi tidak menggantikan pemulihan layanan PostgREST ketika masih mengembalikan PGRST002/PGRST003.
+
+## Rata-rata per materi
+
+Dashboard pengelola menampilkan rata-rata nilai skala 0–100 dan jumlah peserta yang sudah mengirim untuk masing-masing dari empat paket. Perhitungan meliputi seluruh peserta yang sesuai filter, terlepas dari halaman tabel. Setiap peserta dihitung sekali per paket, memakai pengerjaan terbaru; draf dan riwayat sebelum revisi tidak menambah jumlah pengiriman. Jika belum ada pengiriman, kartu menampilkan Belum ada nilai, bukan nilai nol. Rata-rata per materi adalah rerata persentase nilai peserta; indikator gabungan tetap dihitung berdasarkan jumlah butir.

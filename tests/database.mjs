@@ -81,6 +81,17 @@ try{
   const dashboard=await rpc('idrg_admin_dashboard',['','',0,25]);
   assert.equal(dashboard.participants,2);assert.equal(dashboard.submitted,1);assert.equal(Number(dashboard.average),100);
   assert.equal(dashboard.rows.length,2);
+  assert.deepEqual(dashboard.materials,[{packet_id:'2-casemix',submitted:1,average:100}]);
+  assert.deepEqual((await rpc('idrg_admin_dashboard',['nonexistent','',0,25])).materials,[]);
+  assert.deepEqual((await rpc('idrg_admin_dashboard',['','',1,1])).materials,dashboard.materials,'means cover all filtered participants, independent of pagination');
+  const secondAttempt=await rpc('idrg_start_packet',['2-casemix']);
+  assert.equal((await rpc('idrg_admin_dashboard')).materials[0].submitted,1,'drafts do not affect averages');
+  await rpc('idrg_submit_attempt',[secondAttempt.id,Object.fromEntries(Object.entries(allRight).slice(0,4)),secondAttempt.version]);
+  const averaged=await rpc('idrg_admin_dashboard');
+  assert.deepEqual(averaged.materials,[{packet_id:'2-casemix',submitted:2,average:75}],'each participant contributes their final grade once; original revision history is not double counted');
+  assert.equal((await rpc('idrg_admin_dashboard',['Updated','Changed institution'])).materials[0].average,100);
+
+
   assert.equal((await rpc('idrg_review',[attempt.id])).length,8);
   assert.equal((await rpc('idrg_admin_dashboard',['Updated','Changed institution',0,25])).participants,1);
   await db.exec('reset role');await db.query('update auth.users set email_confirmed_at=null where id=$1',[uid2]);await login(uid2);

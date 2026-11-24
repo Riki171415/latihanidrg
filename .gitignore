@@ -6,3 +6,7 @@ dist/
 !.env.example
 
 supabase/admin.local.sql
+
+.neon
+.neon-cli-cache/
+.neon-private/
