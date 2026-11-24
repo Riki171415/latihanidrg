@@ -34,7 +34,7 @@ const make = (tag, content, className) => {
   return element;
 };
 const cloud = IDRGCloud;
-let identity = null, isAdmin = false, saveTimer = null, restoring = null, recovering = false;
+let identity = null, isAdmin = false, saveTimer = null, restoring = null, recovering = false, restoreFailed = false;
 let saveQueue = Promise.resolve();
 let authEpoch=0,moduleRequest=0;
 let profile = null;
@@ -584,7 +584,7 @@ function identityFields(prefix){
   return values;
 }
 function clearIdentity(){
-  authEpoch++;moduleRequest++;clearTimeout(saveTimer);identity=null;profile=null;session=null;activeModule=null;isAdmin=false;adminData=null;
+  authEpoch++;moduleRequest++;clearTimeout(saveTimer);identity=null;profile=null;session=null;activeModule=null;isAdmin=false;adminData=null;restoreFailed=false;
   for(const id of ["detail-name","detail-contact","recap-student","recap-name","result-student"])$(id).textContent="";
   $("nav-admin").hidden=true;$("nav-account").hidden=true;
   for(const id of ["admin-rows","detail-packets","detail-review","review","score-table","recap-modules","recap-casemix"])$(id).replaceChildren();
@@ -600,6 +600,7 @@ async function restoreAccount(knownUser=null){
       const account=await cloud.loadAccount(knownUser);
       if(epoch!==authEpoch)return;
       if(!account){clearIdentity();return;}
+      restoreFailed=false;
       identity=account.user;isAdmin=account.admin;
       profile={name:account.person?.full_name??account.user.email,person:account.person,complete:!!account.person,materials:{},olderMaterials:[]};
       for(const row of account.attempts){
@@ -610,19 +611,20 @@ async function restoreAccount(knownUser=null){
       $("nav-admin").hidden=!isAdmin;$("nav-account").hidden=false;
       $("save-state").textContent="Terhubung ke akun Anda";
       if(!profile.complete)openAccount();else if(isAdmin)await openAdmin();else renderRecap();
-    }catch(error){startPage();authMessage(cloud.friendly(error),true,true);}
+    }catch(error){restoreFailed=true;startPage();authMessage(cloud.friendly(error),true,true);}
   })();
   try{await restoring;}finally{restoring=null;}
 }
 $("auth-retry").addEventListener("click",async()=>{
   $("auth-retry").disabled=true;
+  restoreFailed=false;
   try{await restoreAccount();}finally{$("auth-retry").disabled=false;}
 });
 async function logout(){
   try{await flushSave();}catch{} // Unsynced answers remain in the account-specific recovery cache.
   const {error}=await cloud.client.auth.signOut({scope:"local"});
   if(error){notify(cloud.friendly(error));return;}
-  recovering=false;notify("");
+  recovering=false;restoreFailed=false;notify("");
 }
 $("auth-login").addEventListener("click",()=>authMode("login"));
 $("auth-register").addEventListener("click",()=>authMode("register"));
@@ -630,6 +632,7 @@ $("auth-forgot").addEventListener("click",()=>{authMode("reset");$("reset-email"
 $("setup").addEventListener("submit",event=>{
   event.preventDefault();withForm(event.currentTarget,async()=>{
     authMessage("");
+    restoreFailed=false;
     const {data,error}=await cloud.client.auth.signInWithPassword({email:$("login-email").value.trim(),password:$("login-password").value});
     $("login-password").value="";
     if(error)throw error;
@@ -641,6 +644,7 @@ $("register-form").addEventListener("submit",event=>{
     const metadata=identityFields("register");
     const email=$("register-email").value.trim(),password=$("register-password").value;
     try{
+      restoreFailed=false;
       await cloud.requireDirectSignup();
       const {data,error}=await cloud.client.auth.signUp({email,password,options:{data:metadata}});
       if(error)throw error;
@@ -664,7 +668,7 @@ $("update-password-form").addEventListener("submit",event=>{
   event.preventDefault();withForm(event.currentTarget,async()=>{
     const {error}=await cloud.client.auth.updateUser({password:$("new-password").value});
     $("new-password").value="";if(error)throw error;
-    recovering=false;await restoreAccount();notify("Password berhasil diperbarui.");
+    recovering=false;restoreFailed=false;await restoreAccount();notify("Password berhasil diperbarui.");
   });
 });
 $("dismiss-message").addEventListener("click",()=>notify(""));
@@ -751,8 +755,8 @@ async function adminReview(attempt){
   try{
     const draftBank=attempt.submitted_at?null:await bankForRevision(attempt.revision);
     const [questions,history]=await Promise.all([
-      attempt.submitted_at?cloud.rpc("idrg_review",{p_id:attempt.id}):Promise.resolve(availableCases(attempt.packet_id,draftBank).flatMap(c=>c.items.map((q,i)=>({...q,item_id:keyFor(c,i)})))),
-      cloud.rpc("idrg_attempt_history",{p_id:attempt.id})]);
+      attempt.submitted_at?cloud.readRpc("idrg_review",{p_id:attempt.id}):Promise.resolve(availableCases(attempt.packet_id,draftBank).flatMap(c=>c.items.map((q,i)=>({...q,item_id:keyFor(c,i)})))),
+      cloud.readRpc("idrg_attempt_history",{p_id:attempt.id})]);
     if(!isAdmin||identity?.id!==owner)return;
     $("detail-review").replaceChildren();
     if(history.length){const summary=make("article",undefined,"card");summary.append(make("h3","Riwayat nilai"),make("p",history.map(h=>(h.round===0?"Nilai awal":"Nilai revisi")+": "+grade(h.correct_count,h.total_count)+" / 100").join(" · ")));$("detail-review").append(summary);}
@@ -776,7 +780,7 @@ async function initializeAccount(){
   cloud.client.auth.onAuthStateChange((event)=>{
     if(event==="PASSWORD_RECOVERY"){recovering=true;startPage();authMode("update");}
     else if(event==="SIGNED_OUT"){clearIdentity();}
-    else if(event==="SIGNED_IN"&&!identity&&!recovering)setTimeout(()=>restoreAccount(),0);
+    else if(event==="SIGNED_IN"&&!identity&&!recovering&&!restoreFailed)setTimeout(()=>{if(!identity&&!recovering&&!restoreFailed)restoreAccount();},0);
   });
   const {data:{session:authSession}}=await cloud.client.auth.getSession();
   if(authSession&&!recovering)await restoreAccount();

@@ -55,7 +55,7 @@ export async function loadAccount(knownUser=null){
   }
 }
 function isTemporaryAccountError(error,status){
-  return [503,504,520].includes(status)||error?.code==='PGRST003'||error?.name==='TimeoutError'||error?.name==='AbortError'||/timed out acquiring|timeout|abort|failed to fetch|network/i.test(error?.message??'');
+  return [502,503,504,520,521,522,523,524].includes(status)||/^PGRST00[0-3]$/.test(error?.code??'')||error?.name==='TimeoutError'||error?.name==='AbortError'||/timed out acquiring|timeout|abort|failed to fetch|network/i.test(error?.message??'');
 }
 export function attemptFromRow(row){
   return {id:row.id,index:row.case_index,question:row.question_index,answers:row.answers,finished:!!row.submitted_at,
@@ -64,7 +64,7 @@ export function attemptFromRow(row){
 }
 export function friendly(error){
   const message=error?.message??String(error);
-  if(/^PGRST00[0-3]$/.test(error?.code??'')||error?.status===504||/timed out acquiring connection/i.test(message))return 'Layanan data Supabase sedang tidak tersedia. Tunggu sebentar lalu coba lagi.';
+  if(/^PGRST00[0-3]$/.test(error?.code??'')||[502,503,504,520,521,522,523,524].includes(error?.status)||/timed out acquiring connection/i.test(message))return 'Layanan data Supabase sedang tidak tersedia. Tunggu sebentar lalu coba lagi.';
   if(/Invalid login credentials/i.test(message))return 'Email atau password tidak sesuai.';
   if(/Email not confirmed/i.test(message))return 'Akun belum aktif untuk masuk langsung. Hubungi pengelola pelatihan.';
   if(/User already registered|already been registered/i.test(message))return 'Email sudah terdaftar. Silakan masuk menggunakan akun tersebut.';
