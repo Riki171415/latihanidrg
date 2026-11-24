@@ -54,7 +54,11 @@ function notify(message, retry = false) {
 }
 function draftKey(attempt) { return "idrg-account-draft:" + identity.id + ":" + attempt.id; }
 function cacheDraft(attempt) {
-  try { localStorage.setItem(draftKey(attempt),JSON.stringify({answers:attempt.answers,index:attempt.index,question:attempt.question,version:attempt.version})); } catch {}
+  try { localStorage.setItem(draftKey(attempt),JSON.stringify({answers:attempt.answers,index:attempt.index,question:attempt.question,version:attempt.version,dirty:!!attempt.dirty})); } catch {}
+}
+function savePosition() {
+  if (!identity || !session?.id || session.finished) return;
+  cacheDraft(session);
 }
 function save() {
   if (!identity || !session?.id || session.finished) return;
@@ -63,7 +67,7 @@ function save() {
   $("save-state").textContent = "Menyimpan jawaban…";
   clearTimeout(saveTimer);
   const attempt = session;
-  saveTimer = setTimeout(() => queueSave(attempt).catch(error => notify(cloud.friendly(error),true)),450);
+  saveTimer = setTimeout(() => queueSave(attempt).catch(error => notify(cloud.friendly(error),true)),2500);
 }
 function queueSave(attempt) {
   const task = saveQueue.catch(() => {}).then(async () => {
@@ -89,7 +93,19 @@ async function flushSave() {
   clearTimeout(saveTimer);
   await queueSave(session);
 }
+function releasePdfContainer() {
+  pdfRequest++;
+  const container = $("case-pdf");
+  if (pdfViewer) {
+    pdfViewer.then(v => v.clearPdf(container)).catch(() => {});
+  } else {
+    container.querySelectorAll("canvas").forEach(c => { c.width = 0; c.height = 0; });
+    container.replaceChildren();
+    container.setAttribute("aria-busy", "false");
+  }
+}
 function screen(which) {
+  if (which !== "practice") releasePdfContainer();
   if (!profile && !["start","guide"].includes(which)) which="start";
   if (["admin","admin-detail"].includes(which) && !isAdmin) which=profile?"recap":"start";
   if (profile && !profile.complete && !["start","account","guide"].includes(which)) which="account";
@@ -129,7 +145,7 @@ function updateProgress() {
 function go(index, question = 0) {
   session.index = index;
   session.question = question;
-  save();
+  savePosition();
   renderCase(true);
   window.scrollTo(0, 0);
 }
@@ -152,10 +168,7 @@ function renderCase(focus = false) {
   $("record-body").replaceChildren();
   $("case-pdf").dataset.src = c.pdf;
   if (!$("case-pdf").hidden) renderCasePdf(c.pdf);
-  else {
-    pdfRequest++;
-    $("case-pdf").replaceChildren();
-  }
+  else releasePdfContainer();
   $("pdf-filename").textContent = (c.displayId??c.id) + ".pdf";
   $("pdf-open").href = c.pdf;
   $("case-pdf").setAttribute("aria-label","Berkas kasus " + (c.displayId??c.id) + " — " + c.title);
@@ -186,7 +199,7 @@ function renderQuestion(focus = false) {
     const b = make("button", "Soal " + (n + 1));
     b.type = "button";
     b.setAttribute("aria-current", n === i ? "step" : "false");
-    b.addEventListener("click", () => {session.question = n; save(); renderQuestion(true);});
+    b.addEventListener("click", () => {session.question = n; savePosition(); renderQuestion(true);});
     $("question-selector").append(b);
   });
   const fieldset = make("fieldset");
@@ -231,7 +244,7 @@ function moveQuestion(delta) {
   if (next < 0) return go(position() - 1, 3);
   if (next > 3) return go(position() + 1, 0);
   session.question = next;
-  save();
+  savePosition();
   renderQuestion(true);
 
 }
@@ -259,19 +272,24 @@ async function openModule(id, previousAttempt=null) {
   if (!profile?.complete) return openAccount();
   try {
     await flushSave();
-    const row = previousAttempt ? null : await cloud.rpc("idrg_start_packet_versioned",{p_packet_id:id,p_revision:bankRevision});
-    const nextSession=previousAttempt??cloud.attemptFromRow(row);
-    const caseBank=await bankForRevision(nextSession.revision);
+    const existing=previousAttempt??(profile.materials[id]?.revision===bankRevision?profile.materials[id]:null);
+    const row = existing ? null : await cloud.rpc("idrg_start_packet_versioned",{p_packet_id:id,p_revision:bankRevision});
+    const nextSession=existing??cloud.attemptFromRow(row);
+    const caseBank=nextSession.caseBank??await bankForRevision(nextSession.revision);
     if(request!==moduleRequest||identity?.id!==owner)return;
     activeModule = id;
     session = nextSession;
     session.caseBank=caseBank;
     try {
       const cached = JSON.parse(localStorage.getItem(draftKey(session)));
+      const answersDiffer = !!cached && JSON.stringify(cached.answers)!==JSON.stringify(session.answers);
       if (!session.finished && cached && cached.version===session.version) {
-        session.answers=cached.answers;session.index=cached.index;session.question=cached.question;session.dirty=true;
-        notify("Jawaban yang belum terkirim dipulihkan. Menyimpan kembali…",true);
-      } else if(cached && cached.version!==session.version) notify("Ada perubahan dari perangkat lain. Data terbaru dari server digunakan.");
+        session.index=cached.index;session.question=cached.question;
+        if (cached.dirty || answersDiffer) {
+          session.answers=cached.answers;session.dirty=true;
+          notify("Jawaban yang belum terkirim dipulihkan. Menyimpan kembali…",true);
+        }
+      } else if(cached && cached.version!==session.version && (cached.dirty || answersDiffer)) notify("Ada perubahan dari perangkat lain. Data terbaru dari server digunakan.");
     } catch {}
     if(session.revision===bankRevision)profile.materials[id] = session;
     if (session.finished) {
@@ -283,8 +301,9 @@ async function openModule(id, previousAttempt=null) {
   } catch(error) {notify(cloud.friendly(error),!!session?.dirty);}
 }
 async function loadReview(attempt) {
-  const [questions,history]=await Promise.all([cloud.rpc("idrg_review",{p_id:attempt.id}),cloud.rpc("idrg_attempt_history",{p_id:attempt.id})]);
-  attempt.review=Object.fromEntries(questions.map(q=>[q.item_id,q]));attempt.history=history;
+  if(attempt.review&&attempt.history&&attempt.reviewVersion===attempt.version)return;
+  const [questions,history]=await Promise.all([cloud.readRpc("idrg_review",{p_id:attempt.id}),cloud.readRpc("idrg_attempt_history",{p_id:attempt.id})]);
+  attempt.review=Object.fromEntries(questions.map(q=>[q.item_id,q]));attempt.history=history;attempt.reviewVersion=attempt.version;
 }
 function attemptStats(attempt,entries) {
   const stats=summarize(reviewFor(entries,attempt?.answers??{}));
@@ -332,7 +351,6 @@ function renderRecap() {
   $("recap-detail").textContent = submitted
     ? submitted + " dari " + modules.length + " paket dikirim · " + totalRight + " dari " + totalGraded + " butir benar"
     : "Nilai dihitung dari jawaban pada paket yang sudah dikirim.";
-  renderScores();
   $("recap-title").focus({preventScroll:true});
 }
 function renderScores() {
@@ -491,7 +509,11 @@ function showDocument(mode) {
   $("pdf-zoom").hidden = !pdf;
   $("view-pdf").setAttribute("aria-pressed",pdf);
   $("view-text").setAttribute("aria-pressed",!pdf);
-  if (pdf && !$("case-pdf").querySelector("canvas")) renderCasePdf(cases()[position()].pdf);
+  if (pdf) {
+    if (!$("case-pdf").querySelector("canvas")) renderCasePdf(cases()[position()].pdf);
+  } else {
+    releasePdfContainer();
+  }
 }
 let pdfViewer = null;
 let pdfRequest = 0;
@@ -570,12 +592,12 @@ function clearIdentity(){
   $("save-state").textContent="Belum masuk";
   authMode("login");startPage();
 }
-async function restoreAccount(){
+async function restoreAccount(knownUser=null){
   if(restoring)return restoring;
   const epoch=authEpoch;
   restoring=(async()=>{
     try{
-      const account=await cloud.loadAccount();
+      const account=await cloud.loadAccount(knownUser);
       if(epoch!==authEpoch)return;
       if(!account){clearIdentity();return;}
       identity=account.user;isAdmin=account.admin;
@@ -608,10 +630,10 @@ $("auth-forgot").addEventListener("click",()=>{authMode("reset");$("reset-email"
 $("setup").addEventListener("submit",event=>{
   event.preventDefault();withForm(event.currentTarget,async()=>{
     authMessage("");
-    const {error}=await cloud.client.auth.signInWithPassword({email:$("login-email").value.trim(),password:$("login-password").value});
+    const {data,error}=await cloud.client.auth.signInWithPassword({email:$("login-email").value.trim(),password:$("login-password").value});
     $("login-password").value="";
     if(error)throw error;
-    await restoreAccount();
+    await restoreAccount(data.user);
   });
 });
 $("register-form").addEventListener("submit",event=>{
@@ -622,11 +644,13 @@ $("register-form").addEventListener("submit",event=>{
       await cloud.requireDirectSignup();
       const {data,error}=await cloud.client.auth.signUp({email,password,options:{data:metadata}});
       if(error)throw error;
+      let sessionUser=data.user;
       if(!data.session){
         const signed=await cloud.client.auth.signInWithPassword({email,password});
         if(signed.error)throw signed.error;
+        sessionUser=signed.data.user;
       }
-      await restoreAccount();
+      await restoreAccount(sessionUser);
     }finally{$("register-password").value="";}
   });
 });
@@ -672,7 +696,7 @@ async function openAdmin(reset=true){
   screen("admin");$("admin-status").textContent="Memuat data peserta…";
   try{
     const selected=$("admin-institution").value;
-    const response=await cloud.rpc("idrg_admin_dashboard",{p_search:$("admin-search").value.trim(),p_institution:selected,p_page:adminPage,p_page_size:25});
+    const response=await cloud.readRpc("idrg_admin_dashboard",{p_search:$("admin-search").value.trim(),p_institution:selected,p_page:adminPage,p_page_size:25});
     if(!isAdmin||identity?.id!==owner)return;
     adminData=response;
     $("admin-participants").textContent=adminData.participants;
